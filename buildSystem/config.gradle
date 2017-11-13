@@ -1,0 +1,27 @@
+ext {
+    appConfiguration = [
+            applicationId       : "au.com.carecareers.android",
+            // Sdk and tools
+            minSdkVersion       : 16,
+            targetSdkVersion    : 26,
+            compileSdkVersion   : 26,
+            buildToolsVersion   : "26.0.2",
+
+            appMajorVersion     : 0,
+            appMinorVersion     : 0,
+            appPatchVersion     : 1,
+            appVersionClassifier: "",
+    ]
+
+    buildVersionCode = {
+        return appConfiguration.appMajorVersion * 100000 + appConfiguration.appMinorVersion * 100 + appConfiguration.appPatchVersion
+    }
+
+    buildVersionName = {
+        String versionName = "${appConfiguration.appMajorVersion}.${appConfiguration.appMinorVersion}.${appConfiguration.appPatchVersion}"
+        if (appConfiguration.appVersionClassifier != null && !appConfiguration.appVersionClassifier.isEmpty()) {
+            versionName = versionName + "_" + appConfiguration.appVersionClassifier
+        }
+        return versionName
+    }
+}

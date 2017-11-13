@@ -1,0 +1,70 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion appConfiguration.compileSdkVersion
+    buildToolsVersion appConfiguration.buildToolsVersion
+
+    defaultConfig {
+        applicationId appConfiguration.applicationId
+        minSdkVersion appConfiguration.minSdkVersion
+        targetSdkVersion appConfiguration.targetSdkVersion
+        versionCode buildVersionCode()
+        versionName buildVersionName()
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            buildConfigField "String", "BASE_URL", '"http://test.com"'
+            minifyEnabled false
+            shrinkResources false
+            debuggable true
+        }
+        release {
+            buildConfigField "String", "BASE_URL", '"http://test.com"'
+            minifyEnabled true
+            shrinkResources true
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //support libraries
+    implementation support.appCompat
+    implementation support.constraintLayout
+    implementation support.recyclerView
+    implementation support.cardView
+    implementation support.exifInterface
+
+    //Networking
+    implementation networking.retrofit2
+    implementation networking.okhttp3
+    implementation networking.loggingInterceptor
+    implementation networking.gson
+    implementation networking.gsonConverter
+
+    //Injection
+    implementation injection.dagger
+    annotationProcessor injection.daggerCompiler
+
+    implementation injection.butterKnife
+    annotationProcessor injection.butterKnifeCompiler
+
+    //Rx
+    implementation rx.rxJava
+    implementation rx.rxAndroid
+
+    //Image
+    implementation image.picasso
+    implementation image.androidImageCropper
+
+    //UI
+    implementation ui.calligraphy
+
+    //Test
+    testImplementation tests.jUnit
+    androidTestImplementation androidTests.testRunner
+    androidTestImplementation androidTests.espressoCore
+}

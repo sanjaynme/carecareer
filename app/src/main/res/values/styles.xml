@@ -1,0 +1,41 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="TextViewSingleLine">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:lines">1</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:clickable">true</item>
+    </style>
+    <!--Submit Button style common to all modules-->
+    <style name="TextViewSingleLine.SubmitWrap">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:minWidth">@dimen/dimen_50dp</item>
+        <item name="android:textSize">@dimen/txt_14sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:layout_margin">@dimen/dimen_14dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:padding">@dimen/dimen_14dp</item>
+        <item name="android:background">@color/colorAccent</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="FullScreenDialogStyle">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
+</resources>

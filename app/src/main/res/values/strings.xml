@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Care careers</string>
+    <string name="tv_uploading">Uploading...</string>
+    <string name="tv_upload_percent">Upload percent</string>
+    <string name="tv_crop">Crop</string>
+    <string name="tv_cancel">Cancel</string>
+    <string name="err_no_data_available">No Data Available</string>
+    <string name="tv_turn_on">Turn On</string>
+</resources>
