@@ -11,6 +11,7 @@ import au.com.carecareers.android.R;
 import au.com.carecareers.android.application.CareCareerApp;
 import au.com.carecareers.android.base.view.IBaseView;
 import au.com.carecareers.android.customViews.EbAlertDialog;
+import au.com.carecareers.android.data.local.SharedPreferenceManager;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.utilities.ViewUtils;
 import butterknife.ButterKnife;
@@ -22,6 +23,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public abstract class BaseActivity extends AppCompatActivity implements IBaseView {
     private ProgressDialog mProgressDialog;
+    protected SharedPreferenceManager preferenceManager;
 
     @LayoutRes
     public abstract int getLayout();
@@ -83,5 +85,17 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     private String getMessage(int message) {
         return getString(message);
+    }
+
+    protected void transitionBackPressed() {
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
+    protected void transitionFadeOut() {
+        overridePendingTransition(0, R.anim.fade_out);
+    }
+
+    protected void transitionActivityOpen() {
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 }
