@@ -1,18 +1,23 @@
-package au.com.carecareers.android.splashModule;
+package au.com.carecareers.android.loginModule.landing;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.injection.component.BaseComponent;
-import au.com.carecareers.android.loginModule.login.LoginActivity;
 
-public class SplashActivity extends BaseActivity {
+public class LandingActivity extends BaseActivity {
+    public static void start(Context context) {
+        Intent intent = new Intent();
+        intent.setClass(context, LandingActivity.class);
+        context.startActivity(intent);
+    }
 
     @Override
     public int getLayout() {
-        return R.layout.activity_splash;
+        return R.layout.activity_landing;
     }
 
     @Override
@@ -23,11 +28,5 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                LoginActivity.start(SplashActivity.this);
-            }
-        }, 2000);
     }
 }

@@ -58,6 +58,11 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
     }
 
     @Override
+    public void showError(int message) {
+
+    }
+
+    @Override
     public void sendAnalyticsData() {
 
     }

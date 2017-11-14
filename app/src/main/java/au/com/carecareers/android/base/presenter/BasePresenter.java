@@ -9,11 +9,11 @@ import au.com.carecareers.android.base.view.IBaseView;
  * Created by Nischal Manandhar on 13/11/2017.
  */
 
-public class BasePresenter<V extends IBaseView, I extends IBaseInteractor> implements IBasePresenter<V, I> {
+public abstract class BasePresenter<V extends IBaseView, I extends IBaseInteractor> implements IBasePresenter<V, I> {
     private V mView;
     private I mInteractor;
 
-    @Inject
+
     public BasePresenter(I interactor) {
         mInteractor = interactor;
     }

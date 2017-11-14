@@ -8,9 +8,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import au.com.carecareers.android.R;
+import au.com.carecareers.android.application.CareCareerApp;
 import au.com.carecareers.android.base.view.IBaseView;
 import au.com.carecareers.android.customViews.EbAlertDialog;
+import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.utilities.ViewUtils;
+import butterknife.ButterKnife;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
@@ -23,13 +26,14 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     @LayoutRes
     public abstract int getLayout();
 
-    protected abstract void injectComponent();
+    protected abstract void injectComponent(BaseComponent baseComponent);
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
-        injectComponent();
+        injectComponent(((CareCareerApp) getApplication()).getBaseComponent());
+        ButterKnife.bind(this);
         mProgressDialog = new ProgressDialog(this);
     }
 
@@ -65,6 +69,11 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     @Override
     public void showAlertDialog(int message) {
         EbAlertDialog.showAlertDialog(this, getMessage(message));
+    }
+
+    @Override
+    public void showError(int message) {
+
     }
 
     @Override

@@ -2,7 +2,13 @@ package au.com.carecareers.android.application;
 
 import android.app.Application;
 
-import au.com.carecareers.android.R;
+import javax.inject.Inject;
+
+import au.com.carecareers.android.BuildConfig;
+import au.com.carecareers.android.injection.component.BaseComponent;
+import au.com.carecareers.android.injection.component.DaggerBaseComponent;
+import au.com.carecareers.android.injection.module.AppModule;
+import au.com.carecareers.android.injection.module.NetModule;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 /**
@@ -10,13 +16,23 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
  */
 
 public class CareCareerApp extends Application {
+    @Inject
+    CalligraphyConfig mCalligraphyConfig;
+    private BaseComponent mBaseComponent;
+
     @Override
     public void onCreate() {
         super.onCreate();
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                //.setDefaultFontPath("fonts/Roboto-RobotoRegular.ttf")
-                .setFontAttrId(R.attr.fontPath)
-                .build()
-        );
+
+        mBaseComponent = DaggerBaseComponent.builder()
+                .appModule(new AppModule(this))
+                .netModule(new NetModule(BuildConfig.BASE_URL))
+                .build();
+
+        CalligraphyConfig.initDefault(mCalligraphyConfig);
+    }
+
+    public BaseComponent getBaseComponent() {
+        return mBaseComponent;
     }
 }

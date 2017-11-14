@@ -4,8 +4,10 @@ import android.content.Context;
 
 import javax.inject.Singleton;
 
+import au.com.carecareers.android.R;
 import dagger.Module;
 import dagger.Provides;
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 /**
  * Created by Nischal Manandhar on 13/11/2017.
@@ -14,7 +16,7 @@ import dagger.Provides;
 public class AppModule {
     private Context mContext;
 
-    AppModule(Context context) {
+    public AppModule(Context context) {
         mContext = context;
     }
 
@@ -24,4 +26,12 @@ public class AppModule {
         return mContext;
     }
 
+    @Provides
+    @Singleton
+    CalligraphyConfig provideCalligraphyConfig() {
+        return new CalligraphyConfig.Builder()
+                //.setDefaultFontPath("")
+                .setFontAttrId(R.attr.font)
+                .build();
+    }
 }
