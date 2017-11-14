@@ -4,8 +4,8 @@ package au.com.carecareers.android.contracts;
  * Created by Nischal Manandhar on 13/11/2017.
  */
 
-public class AppContracts {
-    private AppContracts() {
+public class AppContract {
+    private AppContract() {
 
     }
 

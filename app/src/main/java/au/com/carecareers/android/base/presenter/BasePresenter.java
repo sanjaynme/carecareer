@@ -1,21 +1,22 @@
 package au.com.carecareers.android.base.presenter;
 
-import javax.inject.Inject;
-
 import au.com.carecareers.android.base.interactor.IBaseInteractor;
 import au.com.carecareers.android.base.view.IBaseView;
+import io.reactivex.disposables.CompositeDisposable;
 
 /**
  * Created by Nischal Manandhar on 13/11/2017.
  */
 
 public abstract class BasePresenter<V extends IBaseView, I extends IBaseInteractor> implements IBasePresenter<V, I> {
+    private final String TAG = "BasePresenter";
     private V mView;
     private I mInteractor;
+    private CompositeDisposable mCompositeDisposable;
 
-
-    public BasePresenter(I interactor) {
+    public BasePresenter(I interactor, CompositeDisposable compositeDisposable) {
         mInteractor = interactor;
+        this.mCompositeDisposable = compositeDisposable;
     }
 
     @Override
@@ -27,6 +28,7 @@ public abstract class BasePresenter<V extends IBaseView, I extends IBaseInteract
     public void onDetach() {
         mView = null;
         mInteractor = null;
+        mCompositeDisposable.dispose();
     }
 
     @Override
@@ -42,5 +44,10 @@ public abstract class BasePresenter<V extends IBaseView, I extends IBaseInteract
     @Override
     public I getInteractor() {
         return mInteractor;
+    }
+
+    @Override
+    public CompositeDisposable getCompositeDisposable() {
+        return mCompositeDisposable;
     }
 }

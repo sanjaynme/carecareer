@@ -6,6 +6,7 @@ import au.com.carecareers.android.loginModule.login.LoginInteractor;
 import au.com.carecareers.android.loginModule.login.LoginPresenter;
 import dagger.Module;
 import dagger.Provides;
+import io.reactivex.disposables.CompositeDisposable;
 
 /**
  * Created by Nischal Manandhar on 14/11/2017.
@@ -13,7 +14,12 @@ import dagger.Provides;
 @Module
 public class LoginModule {
     public LoginModule() {
+    }
 
+    @Provides
+    @ActivityScope
+    CompositeDisposable proCompositeDisposable() {
+        return new CompositeDisposable();
     }
 
     @Provides

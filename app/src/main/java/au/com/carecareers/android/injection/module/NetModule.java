@@ -1,6 +1,7 @@
 package au.com.carecareers.android.injection.module;
 
 import com.google.gson.Gson;
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.util.concurrent.TimeUnit;
 
@@ -56,7 +57,12 @@ public class NetModule {
     @Provides
     @Singleton
     Retrofit provideRetrofit(OkHttpClient.Builder builder) {
-        return new Retrofit.Builder().baseUrl(mBaseUrl).client(builder.build()).addConverterFactory(GsonConverterFactory.create()).build();
+        return new Retrofit.Builder()
+                .baseUrl(mBaseUrl)
+                .client(builder.build())
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
     }
 
     @Provides
@@ -64,4 +70,5 @@ public class NetModule {
     ApiService provideApiService(Retrofit retrofit) {
         return retrofit.create(ApiService.class);
     }
+
 }

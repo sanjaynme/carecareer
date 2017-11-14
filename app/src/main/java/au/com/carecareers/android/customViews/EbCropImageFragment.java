@@ -17,7 +17,7 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 import java.io.File;
 
 import au.com.carecareers.android.R;
-import au.com.carecareers.android.contracts.AppContracts;
+import au.com.carecareers.android.contracts.AppContract;
 
 
 /**
@@ -34,7 +34,7 @@ public class EbCropImageFragment extends DialogFragment {
     public static EbCropImageFragment newInstance(@NonNull String imagePath) {
         EbCropImageFragment mEbCropImageFragment = new EbCropImageFragment();
         Bundle bundle = new Bundle();
-        bundle.putString(AppContracts.Extras.DATA, imagePath);
+        bundle.putString(AppContract.Extras.DATA, imagePath);
         mEbCropImageFragment.setArguments(bundle);
         return mEbCropImageFragment;
     }
@@ -71,7 +71,7 @@ public class EbCropImageFragment extends DialogFragment {
                 if (!TextUtils.isEmpty(mImagePath)) {
                     mCropImageListener.imageCropCompleted(mImagePath);
                 } else {
-                    Log.d(TAG, AppContracts.Errors.IMAGE_ERROR);
+                    Log.d(TAG, AppContract.Errors.IMAGE_ERROR);
                 }
             }
             if (getDialog() != null) {
@@ -84,7 +84,7 @@ public class EbCropImageFragment extends DialogFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStyle(DialogFragment.STYLE_NORMAL, R.style.FullScreenDialogStyle);
-        mImagePath = getArguments().getString(AppContracts.Extras.DATA);
+        mImagePath = getArguments().getString(AppContract.Extras.DATA);
     }
 
     @Nullable

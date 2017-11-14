@@ -14,7 +14,7 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField "String", "BASE_URL", '"http://test.com"'
+            buildConfigField "String", "BASE_URL", '"http://socialtitali.draftserver.com/v2/webservice/"'
             minifyEnabled false
             shrinkResources false
             debuggable true
@@ -47,8 +47,6 @@ dependencies {
 
     //Injection
     implementation injection.dagger
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation 'com.android.support:design:26.1.0'
     annotationProcessor injection.daggerCompiler
 
     implementation injection.butterKnife
@@ -57,6 +55,7 @@ dependencies {
     //Rx
     implementation rx.rxJava
     implementation rx.rxAndroid
+    implementation rx.rxJavaAdapter
 
     //Image
     implementation image.picasso

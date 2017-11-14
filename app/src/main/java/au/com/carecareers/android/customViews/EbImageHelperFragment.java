@@ -18,7 +18,7 @@ import android.support.v7.app.AlertDialog;
 
 import java.io.File;
 
-import au.com.carecareers.android.contracts.AppContracts;
+import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.utilities.FileUtils;
 import au.com.carecareers.android.utilities.ViewUtils;
 
@@ -49,8 +49,8 @@ public class EbImageHelperFragment extends Fragment {
     public static EbImageHelperFragment newInstance(boolean showCropView, boolean compressImage) {
         EbImageHelperFragment fragment = new EbImageHelperFragment();
         Bundle bundle = new Bundle();
-        bundle.putBoolean(AppContracts.Extras.EXTRA_SHOW_CROP_VIEW, showCropView);
-        bundle.putBoolean(AppContracts.Extras.EXTRA_COMPRESS_IMAGE, compressImage);
+        bundle.putBoolean(AppContract.Extras.EXTRA_SHOW_CROP_VIEW, showCropView);
+        bundle.putBoolean(AppContract.Extras.EXTRA_COMPRESS_IMAGE, compressImage);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -84,7 +84,7 @@ public class EbImageHelperFragment extends Fragment {
                         requestPermissions(new String[]{
                                         Manifest.permission.WRITE_EXTERNAL_STORAGE,
                                         Manifest.permission.CAMERA},
-                                AppContracts.Permission.CAMERA);
+                                AppContract.Permission.CAMERA);
                         return;
                     }
                     openCamera();
@@ -92,7 +92,7 @@ public class EbImageHelperFragment extends Fragment {
                     if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                         //Request permission to read write external storage.
                         requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                                AppContracts.Permission.GALLERY);
+                                AppContract.Permission.GALLERY);
                         return;
                     }
                     openGallery();
@@ -107,8 +107,8 @@ public class EbImageHelperFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        showCropView = getArguments().getBoolean(AppContracts.Extras.EXTRA_SHOW_CROP_VIEW);
-        compressImage = getArguments().getBoolean(AppContracts.Extras.EXTRA_COMPRESS_IMAGE);
+        showCropView = getArguments().getBoolean(AppContract.Extras.EXTRA_SHOW_CROP_VIEW);
+        compressImage = getArguments().getBoolean(AppContract.Extras.EXTRA_COMPRESS_IMAGE);
         setRetainInstance(true);
     }
 
@@ -116,13 +116,13 @@ public class EbImageHelperFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
-                case AppContracts.RequestCode.GALLERY:
+                case AppContract.RequestCode.GALLERY:
                     if (data.getData() != null) {
                         imagePath = FileUtils.getPath(getContext(), data.getData());
                         sendBackImagePath();
                     }
                     break;
-                case AppContracts.RequestCode.CAMERA:
+                case AppContract.RequestCode.CAMERA:
                     sendBackImagePath();
                     break;
             }
@@ -132,7 +132,7 @@ public class EbImageHelperFragment extends Fragment {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
-            case AppContracts.Permission.CAMERA: {
+            case AppContract.Permission.CAMERA: {
                 // If request is cancelled, the results arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED
@@ -145,7 +145,7 @@ public class EbImageHelperFragment extends Fragment {
                 }
                 return;
             }
-            case AppContracts.Permission.GALLERY: {
+            case AppContract.Permission.GALLERY: {
                 // If request is cancelled, the results arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -176,7 +176,7 @@ public class EbImageHelperFragment extends Fragment {
             }
             takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputImageUri);
             // Create the File where the photo should go
-            startActivityForResult(takePictureIntent, AppContracts.RequestCode.CAMERA);
+            startActivityForResult(takePictureIntent, AppContract.RequestCode.CAMERA);
         } else {
             ViewUtils.showToastMessage(getContext(), "No camera app available");
         }
@@ -187,7 +187,7 @@ public class EbImageHelperFragment extends Fragment {
                 Intent.ACTION_PICK,
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/*");
-        startActivityForResult(Intent.createChooser(intent, "Select File"), AppContracts.RequestCode.GALLERY);
+        startActivityForResult(Intent.createChooser(intent, "Select File"), AppContract.RequestCode.GALLERY);
     }
 
     private void sendBackImagePath() {
@@ -214,7 +214,7 @@ public class EbImageHelperFragment extends Fragment {
                     listener.onImageSuccess(imagePath);
                 }
             } else {
-                EbAlertDialog.showAlertDialog(getContext(), AppContracts.Errors.IMAGE_ERROR);
+                EbAlertDialog.showAlertDialog(getContext(), AppContract.Errors.IMAGE_ERROR);
             }
         }
     }

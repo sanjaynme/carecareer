@@ -10,7 +10,9 @@ import android.support.annotation.Nullable;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
+@Singleton
 public class SharedPreferenceManager {
 
     private SharedPreferences prefs;

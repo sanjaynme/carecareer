@@ -37,6 +37,7 @@ ext {
             architectureComponentVersion: "1.0.0-alpha9",
             rxJavaVersion               : "2.1.5",
             rxAndroidVersion            : "2.0.1",
+            rxJavaAdapterVersion        : "1.0.0",
 
             junitVersion                : "4.12",
             espressoCoreVersion         : "3.0.1",
@@ -66,6 +67,7 @@ ext {
                     loggingInterceptor: "com.squareup.okhttp3:logging-interceptor:$versions.okhttpVersion",
                     gson              : "com.google.code.gson:gson:$versions.gsonVersion",
                     gsonConverter     : "com.squareup.retrofit2:converter-gson:$versions.gsonConverterVersion",
+
             ],
 
             injection = [
@@ -76,10 +78,11 @@ ext {
             ],
 
             rx = [
-                    rxAndroid: "io.reactivex.rxjava2:rxandroid:$versions.rxAndroidVersion",
+                    rxAndroid    : "io.reactivex.rxjava2:rxandroid:$versions.rxAndroidVersion",
                     // Because RxAndroid releases are few and far between, it is recommended you also
                     // explicitly depend on RxJava's latest version for bug fixes and new features.
-                    rxJava   : "io.reactivex.rxjava2:rxjava:$versions.rxJavaVersion",
+                    rxJava       : "io.reactivex.rxjava2:rxjava:$versions.rxJavaVersion",
+                    rxJavaAdapter: "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:$versions.rxJavaAdapterVersion"
             ],
 
             image = [
