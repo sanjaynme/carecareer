@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/sign_up_toolbar"
+        layout="@layout/layout_toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btn_register"
+        android:layout_below="@+id/sign_up_toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/dimen_100px">
+
+            <EditText
+                android:id="@+id/et_firstname"
+                style="@style/RegisterEditText"
+                android:layout_marginBottom="@dimen/edittext_bottom_margin"
+                android:hint="@string/first_name"
+                android:inputType="textPersonName|textCapWords"
+                android:textSize="@dimen/dimen_15sp" />
+
+            <EditText
+                android:id="@+id/et_lastname"
+                style="@style/RegisterEditText"
+                android:layout_marginBottom="@dimen/edittext_bottom_margin"
+                android:hint="@string/last_name"
+                android:inputType="textPersonName|textCapWords"
+                android:textSize="@dimen/dimen_15sp" />
+
+            <EditText
+                android:id="@+id/et_email"
+                style="@style/RegisterEditText"
+                android:layout_marginBottom="@dimen/edittext_bottom_margin"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:textSize="@dimen/dimen_15sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/edittext_bottom_margin">
+
+                <EditText
+                    android:id="@+id/et_password"
+                    style="@style/RegisterEditText"
+                    android:hint="@string/sign_up_password"
+                    android:inputType="textPassword"
+                    android:textSize="@dimen/dimen_15sp" />
+
+                <ImageView
+                    android:id="@+id/iv_show_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@id/et_password"
+                    android:layout_alignRight="@id/et_password"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dimen_8dp"
+                    android:layout_marginRight="@dimen/dimen_8dp"
+                    android:background="@null"
+                    android:contentDescription="@null"
+                    android:padding="@dimen/dimen_10dp" />
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/et_state"
+                style="@style/RegisterEditText"
+                android:layout_marginBottom="@dimen/edittext_bottom_margin"
+                android:hint="@string/state"
+                android:inputType="textEmailAddress"
+                android:textSize="@dimen/dimen_15sp" />
+
+            <TextView
+                android:id="@+id/tv_terms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="@dimen/et_left_margin"
+                android:layout_marginRight="@dimen/et_left_margin"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:lineSpacingExtra="@dimen/dimen_10dp"
+                android:text="@string/terms_conditions" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_register"
+        style="@style/Button"
+        android:layout_alignParentBottom="true"
+        android:text="@string/sign_up" />
+</RelativeLayout>

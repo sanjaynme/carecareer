@@ -16,6 +16,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class LoginPresenter extends BasePresenter<LoginContract.ILoginView, LoginContract.ILoginInteractor>
         implements LoginContract.ILoginPresenter {
+
     @Inject
     public LoginPresenter(LoginContract.ILoginInteractor interactor, CompositeDisposable compositeDisposable) {
         super(interactor, compositeDisposable);

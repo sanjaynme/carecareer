@@ -1,8 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="au.com.carecareers.android.loginModule.landing.LandingActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.8"
+        android:background="@drawable/ic_landing">
+
+        <au.com.carecareers.android.customViews.CapitalizedTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btn_register"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="@dimen/dimen_20dp"
+            android:textColor="@color/colorWhite"
+            tools:text="@string/lorem_epsum" />
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_50dp"
+            android:layout_above="@+id/btn_login"
+            android:layout_marginBottom="@dimen/dimen_15dp"
+            android:layout_marginLeft="@dimen/dimen_30dp"
+            android:layout_marginRight="@dimen/dimen_30dp"
+            android:background="@drawable/btn_register_and_login"
+            android:text="@string/register"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/dimen_14sp" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dimen_30dp"
+            android:layout_marginLeft="@dimen/dimen_30dp"
+            android:layout_marginRight="@dimen/dimen_30dp"
+            android:background="@drawable/btn_register_and_login"
+            android:text="@string/login"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/dimen_14sp" />
+
+
+    </RelativeLayout>
+</RelativeLayout>

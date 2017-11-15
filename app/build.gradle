@@ -14,13 +14,13 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField "String", "BASE_URL", '"http://socialtitali.draftserver.com/v2/webservice/"'
+            buildConfigField "String", "BASE_URL", '"https://carecareers.jxt9.com/api/jobboard/v1/"'
             minifyEnabled false
             shrinkResources false
             debuggable true
         }
         release {
-            buildConfigField "String", "BASE_URL", '"http://test.com"'
+            buildConfigField "String", "BASE_URL", '"https://carecareers.jxt9.com/api/jobboard/v1/"'
             minifyEnabled true
             shrinkResources true
             debuggable false

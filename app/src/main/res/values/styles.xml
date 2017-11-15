@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -43,8 +43,59 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/colorWhite</item>
+    </style>
+
+    <style name="CareCareerTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/colorStatusBar</item>
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="RegisterEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/et_height</item>
+        <item name="android:layout_marginLeft">@dimen/et_left_margin</item>
+        <item name="android:layout_marginRight">@dimen/et_right_margin</item>
+        <item name="android:background">@color/register_edittext_background</item>
+        <item name="android:paddingLeft">@dimen/dimen_15dp</item>
+        <item name="android:textColor">@color/editTextColor</item>
+        <item name="android:textColorHint">@color/editTextColor</item>
+    </style>
+
+    <style name="Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:background">@drawable/register_and_login</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">@dimen/dimen_14sp</item>
+    </style>
+
+
+    <style name="Title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/toolbar_title_sixe</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:padding">@dimen/dimen_16dp</item>
+        <!--<item name="fontName">@string/font_avenir_black</item>-->
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="BackArrow">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">20dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:src">@drawable/ic_back_arrow</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
 
 </resources>

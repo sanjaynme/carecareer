@@ -5,7 +5,15 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="colorWhite">#fff</color>
+    <!--splashscreen colors-->
+
     <color name="light_blue_A400">#00B0FF</color>
     <color name="light_blue_A700">#0091EA</color>
+
+    <!--app statusbar color-->
+    <color name="colorStatusBar">#2B343D</color>
+    <color name="signup_background">#424242</color>
+    <color name="editTextColor">#BFBFBF</color>
+    <color name="register_edittext_background">#F7F7F9</color>
 
 </resources>
