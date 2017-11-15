@@ -5,7 +5,6 @@ import android.os.Handler;
 
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseActivity;
-import au.com.carecareers.android.data.local.Contracts;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.loginModule.landing.LandingActivity;
 
@@ -22,8 +21,17 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (preferenceManager.getBoolValues(Contracts.SharedPrefKeys.IS_LOGGED_IN)) {
+        new Handler().
+                postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        LandingActivity.start(SplashActivity.this);
+                        finish();
+                        transitionFadeOut();
+                    }
+                }, 2000);
+    }
+       /* if (preferenceManager.getBoolValues(Contracts.SharedPrefKeys.IS_LOGGED_IN)) {
             if (preferenceManager.getIntValues(Contracts.SharedPrefKeys.IS_PROFILE_COMPLETE)
                     == Contracts.ProfileLoginStatus.PROFILECOMPLETE) {
 //                HomeActivity.start(SplashActivity.this);
@@ -45,5 +53,5 @@ public class SplashActivity extends BaseActivity {
                         }
                     }, 2000);
         }
-    }
+    }*/
 }

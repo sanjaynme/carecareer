@@ -24,9 +24,7 @@ import java.lang.annotation.RetentionPolicy;
 
 import au.com.carecareers.android.R;
 
-/**
- * @author Silvestr Predko.
- */
+
 public class DotProgressBar extends View {
 
     public static final int RIGHT_DIRECTION = 1;
