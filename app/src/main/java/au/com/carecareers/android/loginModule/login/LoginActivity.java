@@ -15,7 +15,7 @@ import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.loginModule.login.injection.LoginModule;
-import au.com.carecareers.android.loginModule.login.model.LoginRequest;
+import au.com.carecareers.android.loginModule.login.model.LoginModel;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -31,7 +31,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
     ImageButton btnShowHidePassword;
 
     @Inject
-    LoginPresenter loginPresenter;
+    LoginPresenter presenter;
 
     public static void start(Context context) {
         Intent intent = new Intent();
@@ -52,20 +52,20 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loginPresenter.onAttach(this);
+        presenter.onAttach(this);
         tvTitle.setText(getResources().getText(R.string.tv_login));
     }
 
     @Override
     protected void onDestroy() {
-        loginPresenter.onDetach();
+        presenter.onDetach();
         super.onDestroy();
     }
 
 
     @OnClick(R.id.btn_login)
     public void loginClicked() {
-        loginPresenter.loginClicked(new LoginRequest());
+        presenter.loginClicked(new LoginModel());
     }
 
 

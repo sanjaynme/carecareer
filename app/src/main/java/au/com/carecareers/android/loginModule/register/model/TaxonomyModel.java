@@ -10,15 +10,6 @@ import java.util.List;
  */
 
 public class TaxonomyModel {
-    String accept = "application/json";
-
-    @Override
-    public String toString() {
-        return "TaxonomyModel{" +
-                "accept='" + accept + '\'' +
-                '}';
-    }
-
     public class TaxonomyResponse {
         @SerializedName("total_items")
         @Expose

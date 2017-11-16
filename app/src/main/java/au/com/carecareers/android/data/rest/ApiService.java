@@ -4,6 +4,7 @@ package au.com.carecareers.android.data.rest;
 import javax.inject.Singleton;
 
 import au.com.carecareers.android.contracts.UrlContract;
+import au.com.carecareers.android.loginModule.login.model.LoginModel;
 import au.com.carecareers.android.loginModule.register.model.TaxonomyModel;
 import au.com.carecareers.android.splashModule.model.AuthenticationModel;
 import io.reactivex.Observable;
@@ -30,4 +31,11 @@ public interface ApiService {
     @Headers({"accept:application/json",})
     @GET(UrlContract.GETSTATES)
     Observable<TaxonomyModel.TaxonomyResponse> getStates(@Header(UrlContract.Keys.AUTHORIZATION) String base64);
+
+    @Headers({"Content-Type:application/x-www-form-urlencoded",
+            "Accept:application/json, text/plain, */*",})
+    @FormUrlEncoded
+    @POST(UrlContract.LOG_IN)
+    Observable<LoginModel.LoginRespones> login(@Header(UrlContract.Keys.AUTHORIZATION) String base64,
+                                               @Field(UrlContract.Keys.GRANT_TYPE) String grantType);
 }

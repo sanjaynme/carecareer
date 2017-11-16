@@ -38,7 +38,7 @@ public class SharedPreferenceManager {
         prefs.edit().putBoolean(key, value).apply();
     }
 
-    public String getStringValues(String key) {
+    public String getStringValues(String key, String password) {
         return prefs.getString(key, "");
     }
 

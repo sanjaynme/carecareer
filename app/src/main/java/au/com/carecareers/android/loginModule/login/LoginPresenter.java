@@ -3,8 +3,7 @@ package au.com.carecareers.android.loginModule.login;
 import javax.inject.Inject;
 
 import au.com.carecareers.android.base.presenter.BasePresenter;
-import au.com.carecareers.android.loginModule.login.model.LoginRequest;
-import au.com.carecareers.android.loginModule.login.model.LoginResponse;
+import au.com.carecareers.android.loginModule.login.model.LoginModel;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
@@ -23,15 +22,15 @@ public class LoginPresenter extends BasePresenter<LoginContract.ILoginView, Logi
     }
 
     @Override
-    public void loginClicked(LoginRequest loginRequest) {
+    public void loginClicked(LoginModel loginRequest) {
         getCompositeDisposable().add(getInteractor().login(loginRequest)
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<LoginResponse>() {
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<LoginModel.LoginRespones>() {
                     @Override
-                    public void accept(LoginResponse loginResponse) throws Exception {
+                    public void accept(LoginModel.LoginRespones loginRespones) throws Exception {
                         if (isViewAttached()) {
-                            //Update ui
+                            getView().navigateToMainActivity();
                         }
                     }
                 }, new Consumer<Throwable>() {

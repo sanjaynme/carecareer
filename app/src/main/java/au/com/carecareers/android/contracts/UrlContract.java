@@ -21,5 +21,6 @@ public class UrlContract {
 
     public class Values {
         public final static String CLIENT_CREDENTIALS = "client_credentials";
+        public final static String PASSWORD = "password";
     }
 }
