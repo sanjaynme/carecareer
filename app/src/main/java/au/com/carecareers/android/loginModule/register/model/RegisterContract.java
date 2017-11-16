@@ -3,7 +3,6 @@ package au.com.carecareers.android.loginModule.register.model;
 import au.com.carecareers.android.base.interactor.IBaseInteractor;
 import au.com.carecareers.android.base.presenter.IBasePresenter;
 import au.com.carecareers.android.base.view.IBaseView;
-import au.com.carecareers.android.loginModule.login.model.LoginRequest;
 import io.reactivex.Observable;
 
 /**
@@ -13,14 +12,16 @@ import io.reactivex.Observable;
 public interface RegisterContract {
     public interface IRegisterView extends IBaseView {
         void navigateToMainActivity();
+
+        void showStates(TaxonomyModel.TaxonomyResponse taxonomyResponse);
+    }
+
+    public interface IRegisterPresenter extends IBasePresenter<RegisterContract.IRegisterView, RegisterContract.IRegisterInteractor> {
+        void getStates(TaxonomyModel taxonomyModel);
+
     }
 
     public interface IRegisterInteractor extends IBaseInteractor {
-        Observable<RegisterResponse> login(LoginRequest request);
-
-    }
-
-    public interface IRegisterPresenter extends IBasePresenter<IRegisterView, IRegisterInteractor> {
-        void registerClicked(RegisterRequest registerRequest);
+        Observable<TaxonomyModel.TaxonomyResponse> getStates(TaxonomyModel request);
     }
 }

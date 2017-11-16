@@ -18,7 +18,7 @@ public class LoginModule {
 
     @Provides
     @ActivityScope
-    CompositeDisposable proCompositeDisposable() {
+    CompositeDisposable provideCompositeDisposable() {
         return new CompositeDisposable();
     }
 

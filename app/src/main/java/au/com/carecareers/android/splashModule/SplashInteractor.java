@@ -29,6 +29,5 @@ public class SplashInteractor extends BaseInteractor implements SplashContract.I
     @Override
     public void saveBasicAuthToken(AuthenticationModel.AuthenticationResponse authenticationResponse) {
         getPreferenceManager().setKeyValues(AppContract.Preferences.AUTHORIZATION_KEY, authenticationResponse.getTokenType() + " " + authenticationResponse.getAccessToken());
-
     }
 }

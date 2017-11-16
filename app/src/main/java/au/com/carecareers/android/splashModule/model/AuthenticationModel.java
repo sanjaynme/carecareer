@@ -7,6 +7,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.UnsupportedEncodingException;
 
+import au.com.carecareers.android.utilities.AppLog;
+
 /**
  * Created by Nikesh on 11/16/2017.
  */
@@ -24,7 +26,7 @@ public class AuthenticationModel {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-
+        AppLog.d("Basic Auth:" + "Basic" + base64);
         return "Basic " + base64;
     }
 

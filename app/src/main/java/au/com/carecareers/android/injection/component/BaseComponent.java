@@ -6,6 +6,8 @@ import au.com.carecareers.android.injection.module.AppModule;
 import au.com.carecareers.android.injection.module.NetModule;
 import au.com.carecareers.android.loginModule.login.injection.LoginModule;
 import au.com.carecareers.android.loginModule.login.injection.LoginSubComponent;
+import au.com.carecareers.android.loginModule.register.injection.RegisterModule;
+import au.com.carecareers.android.loginModule.register.injection.RegisterSubComponent;
 import au.com.carecareers.android.splashModule.injection.SplashModule;
 import au.com.carecareers.android.splashModule.injection.SplashSubComponent;
 import dagger.Component;
@@ -22,5 +24,7 @@ public interface BaseComponent {
     SplashSubComponent provideSplashSubComponent(SplashModule splashModule);
 
     LoginSubComponent provideLoginSubComponent(LoginModule loginModule);
+
+    RegisterSubComponent provideRegisterSubComponent(RegisterModule registerModule);
 
 }
