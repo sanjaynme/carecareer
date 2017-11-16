@@ -13,7 +13,6 @@ import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.loginModule.register.model.RegisterContract;
 import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * Created by Nikesh on 11/15/2017.
@@ -35,7 +34,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        tvTitle.setText("Register");
+        tvTitle.setText(getResources().getText(R.string.register));
     }
 
     @Override
@@ -51,12 +50,5 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
     @Override
     protected void injectComponent(BaseComponent baseComponent) {
 
-    }
-
-    @OnClick(R.id.iv_back_arrow)
-    public void onBackArrowClicked() {
-        onBackPressed();
-//        edtEmail.getText().clear();
-//        edtPassword.getText().clear();
     }
 }

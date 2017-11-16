@@ -15,29 +15,27 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".splashModule.SplashActivity"
-            android:theme="@style/SplashTheme">
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme"
+            android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
         <activity
             android:name=".loginModule.landing.LandingActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/CareCareerTheme"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".loginModule.login.LoginActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/CareCareerTheme"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".loginModule.register.RegisterActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/CareCareerTheme"
             android:windowSoftInputMode="stateAlwaysHidden" />
     </application>
 

@@ -52,7 +52,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        tvTitle.setText("Login");
+        tvTitle.setText(getResources().getText(R.string.login));
         loginPresenter.onAttach(this);
     }
 
@@ -84,13 +84,4 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
             btnShowHidePassword.setImageResource(R.drawable.ic_white_eye);
         }
     }
-
-    @OnClick(R.id.iv_back_arrow)
-    public void onBackArrowClicked() {
-        onBackPressed();
-//        edtEmail.getText().clear();
-//        edtPassword.getText().clear();
-    }
-
-
 }

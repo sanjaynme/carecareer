@@ -12,7 +12,7 @@
     <string name="lorem_epsum">
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </string>
     <string name="register">Register</string>
-    <string name="login">login</string>
+    <string name="login">Login</string>
 
     <!--login-->
     <string name="username">Username</string>
