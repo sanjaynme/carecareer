@@ -53,7 +53,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loginPresenter.onAttach(this);
-        tvTitle.setText(getResources().getText(R.string.login));
+        tvTitle.setText(getResources().getText(R.string.tv_login));
     }
 
     @Override

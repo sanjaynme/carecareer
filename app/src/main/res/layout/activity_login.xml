@@ -13,7 +13,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/submit_view_register"
+        android:layout_above="@+id/btn_login"
         android:layout_below="@+id/login_toolbar"
         android:fillViewport="true">
 
@@ -86,7 +86,7 @@
     </ScrollView>
 
     <au.com.carecareers.android.customViews.SubmitView
-        android:id="@+id/submit_view_register"
+        android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
