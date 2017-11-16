@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 
 import au.com.carecareers.android.R;
@@ -83,7 +84,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     }
 
-    private String getMessage(int message) {
+    protected String getMessage(@StringRes int message) {
         return getString(message);
     }
 

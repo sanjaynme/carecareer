@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -17,43 +18,43 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="@dimen/dimen_100px">
+            android:paddingTop="@dimen/dimen_14dp">
 
             <EditText
                 android:id="@+id/et_firstname"
                 style="@style/EditText"
-                android:layout_marginBottom="@dimen/edittext_bottom_margin"
-                android:hint="@string/first_name"
+                android:layout_marginBottom="@dimen/dimen_16dp"
+                android:hint="@string/hint_first_name"
                 android:inputType="textPersonName|textCapWords"
-                android:textSize="@dimen/dimen_15sp" />
+                android:textSize="@dimen/txt_14sp" />
 
             <EditText
                 android:id="@+id/et_lastname"
                 style="@style/EditText"
-                android:layout_marginBottom="@dimen/edittext_bottom_margin"
-                android:hint="@string/last_name"
+                android:layout_marginBottom="@dimen/dimen_16dp"
+                android:hint="@string/hint_last_name"
                 android:inputType="textPersonName|textCapWords"
-                android:textSize="@dimen/dimen_15sp" />
+                android:textSize="@dimen/txt_14sp" />
 
             <EditText
                 android:id="@+id/et_email"
                 style="@style/EditText"
-                android:layout_marginBottom="@dimen/edittext_bottom_margin"
-                android:hint="@string/email"
+                android:layout_marginBottom="@dimen/dimen_16dp"
+                android:hint="@string/hint_email"
                 android:inputType="textEmailAddress"
-                android:textSize="@dimen/dimen_15sp" />
+                android:textSize="@dimen/txt_14sp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/edittext_bottom_margin">
+                android:layout_marginBottom="@dimen/dimen_16dp">
 
                 <EditText
                     android:id="@+id/et_password"
                     style="@style/EditText"
-                    android:hint="@string/sign_up_password"
+                    android:hint="@string/hint_sign_up_password"
                     android:inputType="textPassword"
-                    android:textSize="@dimen/dimen_15sp" />
+                    android:textSize="@dimen/txt_14sp" />
 
                 <ImageButton
                     android:id="@+id/btn_show_hide_password"
@@ -71,51 +72,40 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/et_right_margin"
-                android:layout_marginLeft="@dimen/et_left_margin"
-                android:layout_marginRight="@dimen/et_right_margin"
-                android:layout_marginStart="@dimen/et_left_margin"
-                android:background="@color/register_edittext_background">
-
-                <ImageButton
-                    android:id="@+id/iv_state"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginEnd="@dimen/dimen_10dp"
-                    android:layout_marginRight="@dimen/dimen_10dp"
-                    android:layout_marginTop="@dimen/dimen_8dp"
-                    android:contentDescription="@null" />
+                android:layout_marginEnd="@dimen/dimen_16dp"
+                android:layout_marginLeft="@dimen/dimen_16dp"
+                android:layout_marginRight="@dimen/dimen_16dp"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:background="@color/editTextBackground">
 
                 <Spinner
                     android:id="@+id/spinner_state"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/et_height"
-                    android:overlapAnchor="false"
+                    android:layout_height="wrap_content"
+                    android:prompt="@string/hint_state"
                     android:spinnerMode="dropdown" />
-
             </RelativeLayout>
-
 
             <TextView
                 android:id="@+id/tv_terms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
-                android:layout_marginLeft="@dimen/et_left_margin"
-                android:layout_marginRight="@dimen/et_left_margin"
+                android:layout_marginLeft="@dimen/dimen_16dp"
+                android:layout_marginRight="@dimen/dimen_16dp"
                 android:layout_marginTop="15dp"
                 android:gravity="center"
                 android:lineSpacingExtra="@dimen/dimen_10dp"
-                android:text="@string/terms_conditions" />
+                android:text="@string/tv_terms_conditions" />
 
         </LinearLayout>
     </ScrollView>
 
-    <Button
-        android:id="@+id/btn_register"
-        style="@style/Button"
+    <au.com.carecareers.android.customViews.SubmitView
+        android:id="@+id/submit_view_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="@string/sign_up" />
+        app:is_submit="true"
+        app:text_submit="@string/tv_register" />
 </RelativeLayout>
