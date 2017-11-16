@@ -21,7 +21,7 @@
 
             <EditText
                 android:id="@+id/et_firstname"
-                style="@style/RegisterEditText"
+                style="@style/EditText"
                 android:layout_marginBottom="@dimen/edittext_bottom_margin"
                 android:hint="@string/first_name"
                 android:inputType="textPersonName|textCapWords"
@@ -29,7 +29,7 @@
 
             <EditText
                 android:id="@+id/et_lastname"
-                style="@style/RegisterEditText"
+                style="@style/EditText"
                 android:layout_marginBottom="@dimen/edittext_bottom_margin"
                 android:hint="@string/last_name"
                 android:inputType="textPersonName|textCapWords"
@@ -37,7 +37,7 @@
 
             <EditText
                 android:id="@+id/et_email"
-                style="@style/RegisterEditText"
+                style="@style/EditText"
                 android:layout_marginBottom="@dimen/edittext_bottom_margin"
                 android:hint="@string/email"
                 android:inputType="textEmailAddress"
@@ -50,7 +50,7 @@
 
                 <EditText
                     android:id="@+id/et_password"
-                    style="@style/RegisterEditText"
+                    style="@style/EditText"
                     android:hint="@string/sign_up_password"
                     android:inputType="textPassword"
                     android:textSize="@dimen/dimen_15sp" />
@@ -71,7 +71,7 @@
 
             <EditText
                 android:id="@+id/et_state"
-                style="@style/RegisterEditText"
+                style="@style/EditText"
                 android:layout_marginBottom="@dimen/edittext_bottom_margin"
                 android:hint="@string/state"
                 android:inputType="textEmailAddress"

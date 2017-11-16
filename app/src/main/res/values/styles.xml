@@ -55,7 +55,7 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="RegisterEditText">
+    <style name="EditText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/et_height</item>
         <item name="android:layout_marginLeft">@dimen/et_left_margin</item>

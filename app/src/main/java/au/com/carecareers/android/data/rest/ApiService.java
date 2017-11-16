@@ -19,4 +19,9 @@ public interface ApiService {
     @POST(UrlContract.LOG_IN)
     Observable<LoginResponse> authLogin(@Field(UrlContract.Keys.COUNTRY_CODE) String countryCode,
                                         @Field(UrlContract.Keys.PHONE) String phoneNumber);
+
+    @FormUrlEncoded
+    @POST(UrlContract.AUTHORIZE)
+    Observable<LoginResponse> auth(@Field(UrlContract.Keys.COUNTRY_CODE) String countryCode,
+                                   @Field(UrlContract.Keys.PHONE) String phoneNumber);
 }

@@ -28,5 +28,10 @@
     <string name="sign_up_password">Password *</string>
 
     <string name="state">State *</string>
+    <string name="submit">Submit</string>
+    <string name="forgot_email">Enter the email you registered with:</string>
+    <string name="email_example">email@example.com</string>
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
 
 </resources>

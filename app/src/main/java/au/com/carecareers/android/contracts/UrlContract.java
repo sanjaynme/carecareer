@@ -10,6 +10,7 @@ public class UrlContract {
     }
 
     public static final String LOG_IN = "register";
+    public static final String AUTHORIZE = "auth";
 
     public class Keys {
         public final static String COUNTRY_CODE = "country_code";
