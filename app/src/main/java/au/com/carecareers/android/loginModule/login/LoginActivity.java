@@ -52,7 +52,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        tvTitle.setText(getResources().getText(R.string.login));
+        tvTitle.setText(getResources().getText(R.string.tv_login));
         loginPresenter.onAttach(this);
     }
 
@@ -63,7 +63,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
     }
 
 
-    @OnClick(R.id.btn_login)
+    @OnClick(R.id.submit_view_register)
     public void loginClicked() {
         loginPresenter.loginClicked(new LoginRequest());
     }

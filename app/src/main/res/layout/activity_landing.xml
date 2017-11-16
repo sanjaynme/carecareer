@@ -18,24 +18,24 @@
             android:layout_centerHorizontal="true"
             android:layout_centerInParent="true"
             android:layout_marginBottom="@dimen/dimen_20dp"
-            android:textColor="@color/black"
+            android:textColor="@color/colorBlack"
             tools:text="@string/lorem_epsum" />
 
         <Button
             android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_50dp"
-            android:layout_above="@+id/btn_login"
+            android:layout_above="@+id/submit_view_register"
             android:layout_marginBottom="@dimen/dimen_15dp"
             android:layout_marginLeft="@dimen/dimen_30dp"
             android:layout_marginRight="@dimen/dimen_30dp"
             android:background="@drawable/btn_register_and_login"
-            android:text="@string/register"
+            android:text="@string/tv_register"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/dimen_14sp" />
+            android:textSize="@dimen/txt_14sp" />
 
         <Button
-            android:id="@+id/btn_login"
+            android:id="@+id/submit_view_register"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_50dp"
             android:layout_alignParentBottom="true"
@@ -43,9 +43,9 @@
             android:layout_marginLeft="@dimen/dimen_30dp"
             android:layout_marginRight="@dimen/dimen_30dp"
             android:background="@drawable/btn_register_and_login"
-            android:text="@string/login"
+            android:text="@string/tv_login"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/dimen_14sp" />
+            android:textSize="@dimen/txt_14sp" />
 
 
     </RelativeLayout>

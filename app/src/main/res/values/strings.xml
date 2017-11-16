@@ -1,37 +1,54 @@
 <resources>
     <string name="app_name">Care careers</string>
+
+    <string name="err_no_data_available">No Data Available</string>
+
+    <string name="title_activity_landing">LandingActivity</string>
+
+    <!--TextViews-->
+    <string name="lorem_epsum">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </string>
+    <string name="tv_register">Register</string>
+    <string name="tv_login">Login</string>
     <string name="tv_uploading">Uploading...</string>
     <string name="tv_upload_percent">Upload percent</string>
     <string name="tv_crop">Crop</string>
     <string name="tv_cancel">Cancel</string>
-    <string name="err_no_data_available">No Data Available</string>
     <string name="tv_turn_on">Turn On</string>
+    <string name="tv_terms_conditions">By registering , you are agreeing to the <u>Terms and Conditions</u></string>
+    <string name="tv_forgot_email">Enter the email you registered with:</string>
+    <string name="tv_submit">Submit</string>
+    <string name="tv_skip"><u>Skip</u></string>
+    <string name="tv_next">Next</string>
+    <string name="tv_profile_greetings">Thank you for registering with Care Careers. Lets\'s get your profile set up so your ready to apply for jobs.</string>
+    <string name="tv_upload_photo">Upload Photo</string>
+    <string name="tv_select_an_avatar"><u>Select an avatar</u></string>
 
-    <!--landing page-->
-    <string name="title_activity_landing">LandingActivity</string>
-    <string name="lorem_epsum">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </string>
-    <string name="register">Register</string>
-    <string name="login">Login</string>
+    <string name="tv_preferred_location">Preferred Location(s)</string>
+    <string name="tv_preferred_industry">Preferred Industry(s)</string>
+    <string name="tv_your_career_move">Your Career Move</string>
 
-    <!--login-->
-    <string name="username">Username</string>
-    <string name="password">Password</string>
-    <string name="forgot_password"><u>Forgot Your Password?</u></string>
+    <!--EditTexts-->
+    <string name="et_username">Username</string>
+    <string name="et_password">Password</string>
+    <string name="et_forgot_password"><u>Forgot Your Password?</u></string>
 
-    <!--register-->
-    <string name="first_name">First Name *</string>
-    <string name="last_name">Last Name *</string>
-    <string name="email">Email *</string>
-    <string name="terms_conditions">By registering , you are agreeing to the <u>Terms and Conditions</u></string>
-    <string name="sign_up">Register</string>
-    <string name="sign_up_password">Password *</string>
+    <!--Hints-->
+    <string name="hint_email_example">email@example.com</string>
+    <string name="hint_current_password">Current Password</string>
+    <string name="hint_new_password">New Password</string>
+    <string name="hint_state">State *</string>
+    <string name="hint_first_name">First Name *</string>
+    <string name="hint_last_name">Last Name *</string>
+    <string name="hint_email">Email *</string>
+    <string name="hint_sign_up_password">Password *</string>
 
-    <string name="state">State *</string>
-    <string name="submit">Submit</string>
-    <string name="forgot_email">Enter the email you registered with:</string>
-    <string name="email_example">email@example.com</string>
-    <string name="current_password">Current Password</string>
-    <string name="new_password">New Password</string>
+    <string name="hint_phone_number">Phone number</string>
+    <string name="hint_work_near_here">I\'d like to work near here*</string>
+    <string name="hint_location_area">Location/area*</string>
+    <string name="hint_profession_role">Profession/role*</string>
+    <string name="hint_work_type">Work type*</string>
+    <string name="hint_what_is_your_next_career_move">What is your next career move?</string>
+
 
 </resources>

@@ -34,7 +34,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        tvTitle.setText(getResources().getText(R.string.register));
+        tvTitle.setText(getResources().getText(R.string.tv_register));
     }
 
     @Override
@@ -44,7 +44,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
 
     @Override
     public int getLayout() {
-        return R.layout.activity_signup;
+        return R.layout.activity_register;
     }
 
     @Override
