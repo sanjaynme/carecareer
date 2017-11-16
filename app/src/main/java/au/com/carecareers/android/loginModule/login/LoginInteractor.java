@@ -26,6 +26,6 @@ public class LoginInteractor extends BaseInteractor implements LoginContract.ILo
     @Override
     public Observable<LoginResponse> login(LoginRequest request) {
         Log.d(TAG, "login: ");
-        return getApiService().authLogin("np", "9849998888");
+        return null;
     }
 }

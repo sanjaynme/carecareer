@@ -10,11 +10,15 @@ public class UrlContract {
     }
 
     public static final String LOG_IN = "register";
-    public static final String AUTHORIZE = "auth";
+    public static final String AUTHORIZE = "oauth/application";
+
 
     public class Keys {
-        public final static String COUNTRY_CODE = "country_code";
-        public static final String PHONE = "phone";
+        public static final String GRANT_TYPE = "grant_type";
+        public final static String AUTHORIZATION = "authorization";
+    }
 
+    public class Values {
+        public final static String CLIENT_CREDENTIALS = "client_credentials";
     }
 }

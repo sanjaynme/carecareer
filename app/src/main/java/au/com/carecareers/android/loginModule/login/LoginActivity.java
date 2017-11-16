@@ -22,8 +22,10 @@ import butterknife.OnClick;
 public class LoginActivity extends BaseActivity implements LoginContract.ILoginView {
     @BindView(R.id.tv_toolbar_title)
     TextView tvTitle;
+
     @BindView(R.id.et_username)
     EditText etUsername;
+
     @BindView(R.id.et_password)
     TextView etPassword;
 
@@ -52,8 +54,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        tvTitle.setText(getResources().getText(R.string.login));
         loginPresenter.onAttach(this);
+        tvTitle.setText(getResources().getText(R.string.login));
     }
 
     @Override

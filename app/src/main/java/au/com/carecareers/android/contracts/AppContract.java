@@ -9,6 +9,11 @@ public class AppContract {
 
     }
 
+    public class Preferences {
+        public final static String AUTHORIZATION_KEY = "authorization_key";
+
+    }
+
     public class Extras {
         public final static String DATA = "data";
         public static final String EXTRA_SHOW_CROP_VIEW = "show_crop_view";
