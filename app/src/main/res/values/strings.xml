@@ -28,6 +28,14 @@
     <string name="tv_preferred_industry">Preferred Industry(s)</string>
     <string name="tv_your_career_move">Your Career Move</string>
 
+    <!--Error-->
+    <string name="err_firstname">Please enter your first name.</string>
+    <string name="err_lastname">Please enter your last name.</string>
+    <string name="err_email">Please enter a email address.</string>
+    <string name="err_email_valid">Please enter a valid email address.</string>
+    <string name="err_password">Please enter a password.</string>
+    <string name="err_password_length">Please enter password of length 8 character.</string>
+
     <!--EditTexts-->
     <string name="et_username">Username</string>
     <string name="et_password">Password</string>

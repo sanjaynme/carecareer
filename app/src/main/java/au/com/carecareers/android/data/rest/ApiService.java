@@ -5,9 +5,11 @@ import javax.inject.Singleton;
 
 import au.com.carecareers.android.contracts.UrlContract;
 import au.com.carecareers.android.loginModule.login.model.LoginModel;
+import au.com.carecareers.android.loginModule.register.model.RegisterModel;
 import au.com.carecareers.android.loginModule.register.model.TaxonomyModel;
 import au.com.carecareers.android.splashModule.model.AuthenticationModel;
 import io.reactivex.Observable;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -38,4 +40,10 @@ public interface ApiService {
     @POST(UrlContract.LOG_IN)
     Observable<LoginModel.LoginRespones> login(@Header(UrlContract.Keys.AUTHORIZATION) String base64,
                                                @Field(UrlContract.Keys.GRANT_TYPE) String grantType);
+
+    @Headers({"Content-Type:application/json",
+            "accept:application/json",})
+    @POST(UrlContract.REGISTER)
+    Observable<RegisterModel.RegisterResponse> register(@Header(UrlContract.Keys.AUTHORIZATION) String base64,
+                                                        @Body RegisterModel.RegisterRequest registerRequest);
 }

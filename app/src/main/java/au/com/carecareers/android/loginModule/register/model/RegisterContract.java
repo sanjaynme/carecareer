@@ -11,17 +11,23 @@ import io.reactivex.Observable;
 
 public interface RegisterContract {
     public interface IRegisterView extends IBaseView {
-        void navigateToMainActivity();
+        void navigateToLoginActivity(RegisterModel.RegisterResponse registerResponse);
 
-        void showStates(TaxonomyModel.TaxonomyResponse taxonomyResponse);
+        void setUpStatesSpinner(TaxonomyModel.TaxonomyResponse taxonomyResponse);
     }
 
     public interface IRegisterPresenter extends IBasePresenter<RegisterContract.IRegisterView, RegisterContract.IRegisterInteractor> {
         void getStates(TaxonomyModel taxonomyModel);
 
+        boolean validateFields(RegisterModel.RegisterRequest registerModel);
+
+        void sendRegisterDetails(RegisterModel.RegisterRequest registerModel);
     }
 
     public interface IRegisterInteractor extends IBaseInteractor {
         Observable<TaxonomyModel.TaxonomyResponse> getStates(TaxonomyModel request);
+
+        Observable<RegisterModel.RegisterResponse> register(RegisterModel.RegisterRequest request);
+
     }
 }

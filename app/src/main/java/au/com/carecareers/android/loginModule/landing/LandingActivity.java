@@ -33,7 +33,7 @@ public class LandingActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
     }
 
-    @OnClick(R.id.submit_view_register)
+    @OnClick(R.id.btn_login)
     void loginClicked() {
         LoginActivity.start(LandingActivity.this);
         transitionActivityOpen();
