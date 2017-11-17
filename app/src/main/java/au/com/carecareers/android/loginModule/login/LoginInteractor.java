@@ -5,11 +5,10 @@ import android.util.Log;
 import javax.inject.Inject;
 
 import au.com.carecareers.android.base.interactor.BaseInteractor;
-import au.com.carecareers.android.contracts.AppContract;
-import au.com.carecareers.android.contracts.UrlContract;
 import au.com.carecareers.android.data.local.SharedPreferenceManager;
 import au.com.carecareers.android.data.rest.ApiService;
 import au.com.carecareers.android.loginModule.login.model.LoginModel;
+import au.com.carecareers.android.splashModule.model.AuthenticationModel;
 import io.reactivex.Observable;
 
 /**
@@ -25,10 +24,8 @@ public class LoginInteractor extends BaseInteractor implements LoginContract.ILo
     }
 
     @Override
-    public Observable<LoginModel.LoginRespones> login(LoginModel request) {
+    public Observable<LoginModel.LoginRespones> login(LoginModel.LoginRequest request) {
         Log.d(TAG, "login: ");
-        String s = getPreferenceManager().getStringValues(AppContract.Preferences.AUTHORIZATION_KEY, UrlContract.Values.PASSWORD);
-        return getApiService().login(s, UrlContract.Values.PASSWORD);
-
+        return getApiService().login(AuthenticationModel.getBase64(), request);
     }
 }

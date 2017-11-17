@@ -79,7 +79,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
         super.onCreate(savedInstanceState);
         presenter.onAttach(this);
         tvTitle.setText(getResources().getText(R.string.tv_register));
-        presenter.getStates(new TaxonomyModel());
+        presenter.getStates();
         registerModel = new RegisterModel.RegisterRequest();
         metaModel = new RegisterModel.RegisterRequest.Meta();
     }

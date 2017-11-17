@@ -33,6 +33,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
     @Inject
     LoginPresenter presenter;
 
+    LoginModel.LoginRequest loginModel;
+
     public static void start(Context context) {
         Intent intent = new Intent();
         intent.setClass(context, LoginActivity.class);
@@ -53,7 +55,9 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presenter.onAttach(this);
+        loginModel = new LoginModel.LoginRequest();
         tvTitle.setText(getResources().getText(R.string.tv_login));
+
     }
 
     @Override
@@ -65,7 +69,13 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
 
     @OnClick(R.id.btn_login)
     public void loginClicked() {
-        presenter.loginClicked(new LoginModel());
+        loginModel.setUsername(etUsername.getText().toString().trim());
+        loginModel.setPassword(etPassword.getText().toString().trim());
+        loginModel.setGrantType("password");
+
+        if (presenter.validateFields(loginModel)) {
+            presenter.loginClicked(loginModel);
+        }
     }
 
 

@@ -17,10 +17,12 @@ public class LoginContract {
     }
 
     public interface ILoginPresenter extends IBasePresenter<ILoginView, ILoginInteractor> {
-        void loginClicked(LoginModel loginRequest);
+        void loginClicked(LoginModel.LoginRequest loginRequest);
+
+        boolean validateFields(LoginModel.LoginRequest loginModel);
     }
 
     public interface ILoginInteractor extends IBaseInteractor {
-        Observable<LoginModel.LoginRespones> login(LoginModel request);
+        Observable<LoginModel.LoginRespones> login(LoginModel.LoginRequest request);
     }
 }

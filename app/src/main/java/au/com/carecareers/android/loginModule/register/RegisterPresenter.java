@@ -26,9 +26,9 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterV
         super(interactor, compositeDisposable);
     }
 
-    public void getStates(TaxonomyModel taxonomyModel) {
+    public void getStates() {
 //        getView().showProgressDialog("Loading...");
-        getCompositeDisposable().add(getInteractor().getStates(taxonomyModel)
+        getCompositeDisposable().add(getInteractor().getStates()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<TaxonomyModel.TaxonomyResponse>() {

@@ -8,6 +8,36 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class LoginModel {
+    public static class LoginRequest {
+        String username;
+        String password;
+        String grant_type;
+
+        public String getUsername() {
+            return username;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+
+        public String getGrantType() {
+            return grant_type;
+        }
+
+        public void setGrantType(String grant_type) {
+            this.grant_type = grant_type;
+        }
+    }
+
     public class LoginRespones {
 
         @SerializedName("access_token")

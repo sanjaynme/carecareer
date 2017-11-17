@@ -2,6 +2,7 @@ package au.com.carecareers.android.loginModule.login;
 
 import javax.inject.Inject;
 
+import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.presenter.BasePresenter;
 import au.com.carecareers.android.loginModule.login.model.LoginModel;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -22,7 +23,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.ILoginView, Logi
     }
 
     @Override
-    public void loginClicked(LoginModel loginRequest) {
+    public void loginClicked(LoginModel.LoginRequest loginRequest) {
         getCompositeDisposable().add(getInteractor().login(loginRequest)
                 .subscribeOn(Schedulers.io())
                 .subscribeOn(AndroidSchedulers.mainThread())
@@ -39,5 +40,20 @@ public class LoginPresenter extends BasePresenter<LoginContract.ILoginView, Logi
 
                     }
                 }));
+    }
+
+    @Override
+    public boolean validateFields(LoginModel.LoginRequest loginModel) {
+        if (loginModel.getUsername().isEmpty()) {
+            getView().showAlertDialog(R.string.err_username);
+            return false;
+        } else if (loginModel.getPassword().length() == 0) {
+            getView().showAlertDialog(R.string.err_password);
+            return false;
+        } else if (loginModel.getPassword().length() < 8) {
+            getView().showAlertDialog(R.string.err_password_length);
+            return false;
+        }
+        return true;
     }
 }

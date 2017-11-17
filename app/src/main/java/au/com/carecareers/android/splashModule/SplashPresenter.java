@@ -20,8 +20,8 @@ public class SplashPresenter extends BasePresenter<SplashContract.ISplashView, S
         super(interactor, compositeDisposable);
     }
 
-    public void auth(AuthenticationModel authenticationModel) {
-        getCompositeDisposable().add(getInteractor().auth(authenticationModel)
+    public void auth() {
+        getCompositeDisposable().add(getInteractor().auth()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<AuthenticationModel.AuthenticationResponse>() {

@@ -10,7 +10,6 @@ import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.loginModule.landing.LandingActivity;
 import au.com.carecareers.android.splashModule.injection.SplashModule;
-import au.com.carecareers.android.splashModule.model.AuthenticationModel;
 
 public class SplashActivity extends BaseActivity implements SplashContract.ISplashView {
     @Inject
@@ -34,7 +33,7 @@ public class SplashActivity extends BaseActivity implements SplashContract.ISpla
                 postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        presenter.auth(new AuthenticationModel());
+                        presenter.auth();
                     }
                 }, 2000);
     }

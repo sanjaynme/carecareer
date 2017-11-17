@@ -30,6 +30,7 @@
 
     <!--Error-->
     <string name="err_firstname">Please enter your first name.</string>
+    <string name="err_username">Please enter your username.</string>
     <string name="err_lastname">Please enter your last name.</string>
     <string name="err_email">Please enter a email address.</string>
     <string name="err_email_valid">Please enter a valid email address.</string>

@@ -22,7 +22,7 @@ public class SplashInteractor extends BaseInteractor implements SplashContract.I
     }
 
     @Override
-    public Observable<AuthenticationModel.AuthenticationResponse> auth(AuthenticationModel request) {
+    public Observable<AuthenticationModel.AuthenticationResponse> auth() {
         return getApiService().auth(AuthenticationModel.getBase64(), UrlContract.Values.CLIENT_CREDENTIALS);
     }
 

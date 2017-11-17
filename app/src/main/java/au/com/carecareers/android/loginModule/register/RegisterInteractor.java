@@ -23,7 +23,7 @@ public class RegisterInteractor extends BaseInteractor implements RegisterContra
     }
 
     @Override
-    public Observable<TaxonomyModel.TaxonomyResponse> getStates(TaxonomyModel request) {
+    public Observable<TaxonomyModel.TaxonomyResponse> getStates() {
         return getApiService().getStates(getPreferenceManager().getStringValues(AppContract.Preferences.AUTHORIZATION_KEY, UrlContract.Values.AUTHORIZATION_VALUE));
     }
 

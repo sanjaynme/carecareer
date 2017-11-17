@@ -17,7 +17,7 @@ public interface RegisterContract {
     }
 
     public interface IRegisterPresenter extends IBasePresenter<RegisterContract.IRegisterView, RegisterContract.IRegisterInteractor> {
-        void getStates(TaxonomyModel taxonomyModel);
+        void getStates();
 
         boolean validateFields(RegisterModel.RegisterRequest registerModel);
 
@@ -25,7 +25,7 @@ public interface RegisterContract {
     }
 
     public interface IRegisterInteractor extends IBaseInteractor {
-        Observable<TaxonomyModel.TaxonomyResponse> getStates(TaxonomyModel request);
+        Observable<TaxonomyModel.TaxonomyResponse> getStates();
 
         Observable<RegisterModel.RegisterResponse> register(RegisterModel.RegisterRequest request);
 
