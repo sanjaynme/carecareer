@@ -4,6 +4,7 @@
     <string name="err_no_data_available">No Data Available</string>
 
     <string name="title_activity_landing">LandingActivity</string>
+    <string name="title_personal_details">Personal Details</string>
 
     <!--TextViews-->
     <string name="lorem_epsum">

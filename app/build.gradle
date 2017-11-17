@@ -60,6 +60,7 @@ dependencies {
     //Image
     implementation image.picasso
     implementation image.androidImageCropper
+    implementation image.circleImageView
 
     //UI
     implementation ui.calligraphy

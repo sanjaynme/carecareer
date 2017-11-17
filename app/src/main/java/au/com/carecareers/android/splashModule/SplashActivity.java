@@ -7,6 +7,7 @@ import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.loginModule.landing.LandingActivity;
+import au.com.carecareers.android.profileModule.ProfileSetupActivity;
 
 public class SplashActivity extends BaseActivity {
     @Override
@@ -25,7 +26,7 @@ public class SplashActivity extends BaseActivity {
                 postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        LandingActivity.start(SplashActivity.this);
+                        ProfileSetupActivity.start(SplashActivity.this);
                         finish();
                         transitionFadeOut();
                     }

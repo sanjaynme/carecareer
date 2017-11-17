@@ -65,6 +65,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
 
     @OnClick(R.id.submit_view_register)
     public void loginClicked() {
+
         loginPresenter.loginClicked(new LoginRequest());
     }
 
