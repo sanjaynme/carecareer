@@ -4,9 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -37,24 +40,27 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
     TextView tvTitle;
 
     @BindView(R.id.et_email)
-    EditText edtEmail;
+    EditText etEmail;
 
     @BindView(R.id.et_firstname)
-    EditText edtFirstName;
+    EditText etFirstName;
 
     @BindView(R.id.et_lastname)
-    EditText edtLastName;
+    EditText etLastName;
 
     @BindView(R.id.et_password)
-    EditText edtPassword;
+    EditText etPassword;
 
     @BindView(R.id.spinner_state)
     Spinner spinnerState;
 
     @Inject
     RegisterPresenter presenter;
+
+    @BindView(R.id.btn_show_hide_register_password)
+    ImageButton btnShowHidePassword;
+
     ArrayList<String> statesList = new ArrayList<>();
-    private String stateNames, stateId;
     RegisterModel.RegisterRequest registerModel;
     RegisterModel.RegisterRequest.Meta metaModel;
 
@@ -79,6 +85,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
         super.onCreate(savedInstanceState);
         presenter.onAttach(this);
         tvTitle.setText(getResources().getText(R.string.tv_register));
+        btnShowHidePassword.setImageResource(R.drawable.ic_white_eye);
         presenter.getStates();
         registerModel = new RegisterModel.RegisterRequest();
         metaModel = new RegisterModel.RegisterRequest.Meta();
@@ -86,10 +93,10 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
 
     @OnClick(R.id.submit_view_registeration)
     public void onRegisterClicked() {
-        registerModel.setFirstName(edtFirstName.getText().toString().trim());
-        registerModel.setLastName(edtLastName.getText().toString().trim());
-        registerModel.setEmail(edtEmail.getText().toString().trim());
-        registerModel.setPassword(edtPassword.getText().toString().trim());
+        registerModel.setFirstName(etFirstName.getText().toString().trim());
+        registerModel.setLastName(etLastName.getText().toString().trim());
+        registerModel.setEmail(etEmail.getText().toString().trim());
+        registerModel.setPassword(etPassword.getText().toString().trim());
         registerModel.setSubscribe(0);
         registerModel.setMeta(metaModel);
 
@@ -107,8 +114,8 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
     public void setUpStatesSpinner(final TaxonomyModel.TaxonomyResponse taxonomyResponse) {
         statesList.add(getResources().getString(R.string.hint_state));
         for (int i = 0; i < taxonomyResponse.getEmbedded().getTaxonomies().size(); i++) {
-            stateNames = taxonomyResponse.getEmbedded().getTaxonomies().get(i).getName();
-            stateId = taxonomyResponse.getEmbedded().getTaxonomies().get(i).getId().toString();
+            String stateNames = taxonomyResponse.getEmbedded().getTaxonomies().get(i).getName();
+            String stateId = taxonomyResponse.getEmbedded().getTaxonomies().get(i).getId().toString();
             statesList.add(stateNames);
             AppLog.d("states:" + stateNames);
             AppLog.d("state Id:" + stateId);
@@ -130,4 +137,14 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
         });
     }
 
+    @OnClick(R.id.submit_view_registeration)
+    void showHidePassword() {
+        if (etPassword.getTransformationMethod() == PasswordTransformationMethod.getInstance()) {
+            etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            btnShowHidePassword.setImageResource(R.drawable.ic_white_custom_hide);
+        } else if (etPassword.getTransformationMethod() == HideReturnsTransformationMethod.getInstance()) {
+            etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            btnShowHidePassword.setImageResource(R.drawable.ic_white_eye);
+        }
+    }
 }

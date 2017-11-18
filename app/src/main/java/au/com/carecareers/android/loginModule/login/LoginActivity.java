@@ -22,12 +22,14 @@ import butterknife.OnClick;
 public class LoginActivity extends BaseActivity implements LoginContract.ILoginView {
     @BindView(R.id.tv_toolbar_title)
     TextView tvTitle;
+
     @BindView(R.id.et_username)
     EditText etUsername;
+
     @BindView(R.id.et_password)
     TextView etPassword;
 
-    @BindView(R.id.btn_show_hide_password)
+    @BindView(R.id.btn_show_hide_login_password)
     ImageButton btnShowHidePassword;
 
     @Inject
@@ -56,6 +58,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
         super.onCreate(savedInstanceState);
         presenter.onAttach(this);
         loginModel = new LoginModel.LoginRequest();
+        btnShowHidePassword.setImageResource(R.drawable.ic_white_eye);
         tvTitle.setText(getResources().getText(R.string.tv_login));
 
     }
@@ -84,7 +87,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
 
     }
 
-    @OnClick(R.id.btn_show_hide_password)
+    @OnClick(R.id.btn_show_hide_login_password)
     void showHidePassword() {
         if (etPassword.getTransformationMethod() == PasswordTransformationMethod.getInstance()) {
             etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
