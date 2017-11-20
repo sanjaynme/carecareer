@@ -8,28 +8,30 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.8"
-        android:background="@drawable/ic_landing">
+        android:background="@drawable/banner">
 
         <au.com.carecareers.android.customViews.CapitalizedTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/btn_register"
-            android:layout_centerHorizontal="true"
             android:layout_centerInParent="true"
-            android:layout_marginBottom="@dimen/dimen_20dp"
-            android:textColor="@color/colorBlack"
-            tools:text="@string/lorem_epsum" />
+            android:layout_marginLeft="@dimen/dimen_45dp"
+            android:layout_marginRight="@dimen/dimen_45dp"
+            android:gravity="center"
+            android:text="@string/lorem_epsum"
+            android:textColor="@color/colorWhite" />
 
         <Button
             android:id="@+id/btn_register"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_50dp"
+            android:layout_height="wrap_content"
             android:layout_above="@+id/btn_login"
-            android:layout_marginBottom="@dimen/dimen_15dp"
-            android:layout_marginLeft="@dimen/dimen_30dp"
-            android:layout_marginRight="@dimen/dimen_30dp"
+            android:layout_marginBottom="@dimen/dimen_10dp"
+            android:layout_marginLeft="@dimen/dimen_45dp"
+            android:layout_marginRight="@dimen/dimen_45dp"
+            android:layout_marginTop="@dimen/dimen_145dp"
             android:background="@drawable/btn_register_and_login"
+            android:padding="@dimen/dimen_17dp"
             android:text="@string/tv_register"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/txt_14sp" />
@@ -37,12 +39,13 @@
         <Button
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_50dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/dimen_30dp"
-            android:layout_marginLeft="@dimen/dimen_30dp"
-            android:layout_marginRight="@dimen/dimen_30dp"
+            android:layout_marginBottom="@dimen/dimen_65dp"
+            android:layout_marginLeft="@dimen/dimen_45dp"
+            android:layout_marginRight="@dimen/dimen_45dp"
             android:background="@drawable/btn_register_and_login"
+            android:padding="@dimen/dimen_17dp"
             android:text="@string/tv_login"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/txt_14sp" />

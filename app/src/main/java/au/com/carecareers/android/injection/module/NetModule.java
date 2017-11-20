@@ -70,5 +70,4 @@ public class NetModule {
     ApiService provideApiService(Retrofit retrofit) {
         return retrofit.create(ApiService.class);
     }
-
 }

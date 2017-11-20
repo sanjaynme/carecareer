@@ -76,7 +76,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     @Override
     public void showError(int message) {
-
+        EbAlertDialog.showAlertDialog(this, getMessage(message));
     }
 
     @Override

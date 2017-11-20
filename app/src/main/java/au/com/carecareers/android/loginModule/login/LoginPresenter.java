@@ -1,5 +1,8 @@
 package au.com.carecareers.android.loginModule.login;
 
+import android.util.Log;
+import android.util.Patterns;
+
 import javax.inject.Inject;
 
 import au.com.carecareers.android.R;
@@ -7,7 +10,7 @@ import au.com.carecareers.android.base.presenter.BasePresenter;
 import au.com.carecareers.android.loginModule.login.model.LoginModel;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.Consumer;
+import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -17,40 +20,58 @@ import io.reactivex.schedulers.Schedulers;
 public class LoginPresenter extends BasePresenter<LoginContract.ILoginView, LoginContract.ILoginInteractor>
         implements LoginContract.ILoginPresenter {
 
+
     @Inject
     public LoginPresenter(LoginContract.ILoginInteractor interactor, CompositeDisposable compositeDisposable) {
         super(interactor, compositeDisposable);
     }
 
     @Override
-    public void loginClicked(LoginModel.LoginRequest loginRequest) {
-        getCompositeDisposable().add(getInteractor().login(loginRequest)
-                .subscribeOn(Schedulers.io())
-                .subscribeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<LoginModel.LoginRespones>() {
-                    @Override
-                    public void accept(LoginModel.LoginRespones loginRespones) throws Exception {
-                        if (isViewAttached()) {
-                            getView().navigateToMainActivity();
-                        }
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
+    public void loginClicked(String username, String password) {
+        getView().showProgressDialog(R.string.msg_loading);
 
-                    }
-                }));
+        getCompositeDisposable().add(getInteractor().login(username, password)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(getObserver()));
+    }
+
+    private DisposableObserver<LoginModel.LoginRespones> getObserver() {
+        return new DisposableObserver<LoginModel.LoginRespones>() {
+            @Override
+            public void onNext(LoginModel.LoginRespones loginRespones) {
+                Log.d(TAG, "onNext: ");
+                getView().hideProgressDialog();
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.d(TAG, "onError: ");
+                getView().hideProgressDialog();
+                getView().showError(R.string.err_);
+            }
+
+            @Override
+            public void onComplete() {
+                Log.d(TAG, "onComplete: ");
+                getView().hideProgressDialog();
+                getView().navigateToMainActivity();
+            }
+        };
     }
 
     @Override
-    public boolean validateFields(LoginModel.LoginRequest loginModel) {
-        if (loginModel.getUsername().isEmpty()) {
+    public boolean validateFields(String username, String password) {
+        if (username.isEmpty()) {
             getView().showAlertDialog(R.string.err_username);
             return false;
-        } else if (loginModel.getPassword().length() == 0) {
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(username).matches()) {
+            getView().showAlertDialog(R.string.err_email_valid);
+            return false;
+        } else if (password.length() == 0) {
             getView().showAlertDialog(R.string.err_password);
             return false;
-        } else if (loginModel.getPassword().length() < 8) {
+        } else if (password.length() < 8) {
             getView().showAlertDialog(R.string.err_password_length);
             return false;
         }

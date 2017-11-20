@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.Toolbar;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -36,6 +38,9 @@ import butterknife.OnClick;
  */
 
 public class RegisterActivity extends BaseActivity implements RegisterContract.IRegisterView {
+    @BindView(R.id.sign_up_toolbar)
+    Toolbar toolbar;
+
     @BindView(R.id.tv_toolbar_title)
     TextView tvTitle;
 
@@ -48,7 +53,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
     @BindView(R.id.et_lastname)
     EditText etLastName;
 
-    @BindView(R.id.et_password)
+    @BindView(R.id.et_sign_up_password)
     EditText etPassword;
 
     @BindView(R.id.spinner_state)
@@ -84,11 +89,17 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presenter.onAttach(this);
-        tvTitle.setText(getResources().getText(R.string.tv_register));
-        btnShowHidePassword.setImageResource(R.drawable.ic_white_eye);
+        setupToolbar();
+        btnShowHidePassword.setImageResource(R.drawable.eye_open);
         presenter.getStates();
         registerModel = new RegisterModel.RegisterRequest();
         metaModel = new RegisterModel.RegisterRequest.Meta();
+    }
+
+    private void setupToolbar() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        tvTitle.setText(getResources().getText(R.string.tv_register));
     }
 
     @OnClick(R.id.submit_view_registeration)
@@ -100,14 +111,27 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
         registerModel.setSubscribe(0);
         registerModel.setMeta(metaModel);
 
+        int selectedItemOfMySpinner = spinnerState.getSelectedItemPosition();
+
         if (presenter.validateFields(registerModel)) {
-            presenter.sendRegisterDetails(registerModel);
+            if (selectedItemOfMySpinner == 0) {
+                presenter.validateSpinner(selectedItemOfMySpinner);
+            } else {
+                presenter.sendRegisterDetails(registerModel);
+            }
         }
     }
 
     @Override
     public void navigateToLoginActivity(RegisterModel.RegisterResponse registerResponse) {
+        etFirstName.getText().clear();
+        etLastName.getText().clear();
+        etEmail.getText().clear();
+        etPassword.getText().clear();
+        spinnerState.setSelection(0);
+        finish();
         LoginActivity.start(this);
+        transitionActivityOpen();
     }
 
     @Override
@@ -132,19 +156,29 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
     }
 
-    @OnClick(R.id.submit_view_registeration)
+    @OnClick(R.id.btn_show_hide_register_password)
     void showHidePassword() {
         if (etPassword.getTransformationMethod() == PasswordTransformationMethod.getInstance()) {
             etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-            btnShowHidePassword.setImageResource(R.drawable.ic_white_custom_hide);
+            btnShowHidePassword.setImageResource(R.drawable.eye_blocked);
         } else if (etPassword.getTransformationMethod() == HideReturnsTransformationMethod.getInstance()) {
             etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-            btnShowHidePassword.setImageResource(R.drawable.ic_white_eye);
+            btnShowHidePassword.setImageResource(R.drawable.eye_open);
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                transitionBackPressed();
+                break;
+        }
+        return true;
     }
 }

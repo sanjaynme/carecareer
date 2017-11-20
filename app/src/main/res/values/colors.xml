@@ -12,9 +12,9 @@
     <color name="light_blue_A700">#0091EA</color>
 
     <!--Splash screen colors-->
-    <color name="colorHint">#BFBFBF</color>
-    <color name="editTextBackground">#F7F7F9</color>
-    <color name="textColorPrimary">@color/colorGrey800</color>
+    <color name="colorHint">#9DA1A7</color>
+    <color name="editTextBackground">#F7F7F8</color>
+    <color name="textColorPrimary">#434242</color>
     <color name="textColorSecondary">#F7F7F9</color>
 
     <!--Grey-->

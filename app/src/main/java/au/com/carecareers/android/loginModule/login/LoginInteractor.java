@@ -1,10 +1,9 @@
 package au.com.carecareers.android.loginModule.login;
 
-import android.util.Log;
-
 import javax.inject.Inject;
 
 import au.com.carecareers.android.base.interactor.BaseInteractor;
+import au.com.carecareers.android.contracts.UrlContract;
 import au.com.carecareers.android.data.local.SharedPreferenceManager;
 import au.com.carecareers.android.data.rest.ApiService;
 import au.com.carecareers.android.loginModule.login.model.LoginModel;
@@ -24,8 +23,7 @@ public class LoginInteractor extends BaseInteractor implements LoginContract.ILo
     }
 
     @Override
-    public Observable<LoginModel.LoginRespones> login(LoginModel.LoginRequest request) {
-        Log.d(TAG, "login: ");
-        return getApiService().login(AuthenticationModel.getBase64(), request);
+    public Observable<LoginModel.LoginRespones> login(String username, String password) {
+        return getApiService().login(AuthenticationModel.getBase64(), UrlContract.Values.PASSWORD, username, password);
     }
 }

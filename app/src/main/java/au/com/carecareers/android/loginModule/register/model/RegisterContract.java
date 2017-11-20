@@ -22,6 +22,8 @@ public interface RegisterContract {
         boolean validateFields(RegisterModel.RegisterRequest registerModel);
 
         void sendRegisterDetails(RegisterModel.RegisterRequest registerModel);
+
+        boolean validateSpinner(int selectedItem);
     }
 
     public interface IRegisterInteractor extends IBaseInteractor {

@@ -36,9 +36,12 @@ public interface ApiService {
 
     @Headers({"Content-Type:application/x-www-form-urlencoded",
             "Accept:application/json, text/plain, */*",})
+    @FormUrlEncoded
     @POST(UrlContract.LOG_IN)
     Observable<LoginModel.LoginRespones> login(@Header(UrlContract.Keys.AUTHORIZATION) String base64,
-                                               @Body LoginModel.LoginRequest loginRequest);
+                                               @Field(UrlContract.Keys.GRANT_TYPE) String grantType,
+                                               @Field("username") String username,
+                                               @Field("password") String password);
 
     @Headers({"Content-Type:application/json",
             "accept:application/json",})

@@ -7,8 +7,10 @@
 
     <!--TextViews-->
     <string name="lorem_epsum">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </string>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. </string>
     <string name="tv_register">Register</string>
+    <string name="tv_home">Home</string>
     <string name="tv_login">Login</string>
     <string name="tv_uploading">Uploading...</string>
     <string name="tv_upload_percent">Upload percent</string>
@@ -36,6 +38,9 @@
     <string name="err_email_valid">Please enter a valid email address.</string>
     <string name="err_password">Please enter a password.</string>
     <string name="err_password_length">Please enter password of length 8 character.</string>
+    <string name="err_state_name">Please select a state.</string>
+    <string name="err_">Error</string>
+
 
     <!--EditTexts-->
     <string name="et_username">Username</string>
@@ -59,5 +64,6 @@
     <string name="hint_work_type">Work type*</string>
     <string name="hint_what_is_your_next_career_move">What is your next career move?</string>
 
-
+    <!--Messages-->
+    <string name="msg_loading">Loading...</string>
 </resources>
