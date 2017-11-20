@@ -29,6 +29,7 @@
     <string name="tv_preferred_location">Preferred Location(s)</string>
     <string name="tv_preferred_industry">Preferred Industry(s)</string>
     <string name="tv_your_career_move">Your Career Move</string>
+    <string name="tv_forgot_password">Forgot Password</string>
 
     <!--Error-->
     <string name="err_firstname">Please enter your first name.</string>

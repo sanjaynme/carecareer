@@ -6,6 +6,7 @@ import android.util.Patterns;
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 
 import java.io.IOException;
+import java.lang.annotation.Annotation;
 
 import javax.inject.Inject;
 
@@ -16,7 +17,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Response;
+import okhttp3.ResponseBody;
+import retrofit2.Converter;
+import retrofit2.Retrofit;
 
 /**
  * Created by Nischal Manandhar on 14/11/2017.
@@ -25,6 +28,9 @@ import retrofit2.Response;
 public class LoginPresenter extends BasePresenter<LoginContract.ILoginView, LoginContract.ILoginInteractor>
         implements LoginContract.ILoginPresenter {
 
+
+    private Retrofit retrofit;
+    private RetrofitException application;
 
     @Inject
     public LoginPresenter(LoginContract.ILoginInteractor interactor, CompositeDisposable compositeDisposable) {
@@ -54,9 +60,12 @@ public class LoginPresenter extends BasePresenter<LoginContract.ILoginView, Logi
                 Log.d(TAG, "onError: ");
 
                 if (e instanceof HttpException) {
-                    HttpException httpException = (HttpException) e;
-                    Response response = httpException.response();
+                    ResponseBody body = ((HttpException) e).response().errorBody();
+                    Converter<ResponseBody, Error> errorConverter =
+                            application.getRetrofit().responseBodyConverter(Error.class, new Annotation[0]);
+
                 }
+
 
                 if (e instanceof RetrofitException) {
 
