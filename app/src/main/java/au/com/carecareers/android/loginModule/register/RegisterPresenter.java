@@ -115,5 +115,4 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterV
             }
         };
     }
-
 }

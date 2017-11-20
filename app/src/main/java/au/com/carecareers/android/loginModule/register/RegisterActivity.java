@@ -65,7 +65,6 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
     @BindView(R.id.btn_show_hide_register_password)
     ImageButton btnShowHidePassword;
 
-    ArrayList<String> statesList = new ArrayList<>();
     RegisterModel.RegisterRequest registerModel;
     RegisterModel.RegisterRequest.Meta metaModel;
 
@@ -114,11 +113,11 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
         int selectedItemOfMySpinner = spinnerState.getSelectedItemPosition();
 
         if (presenter.validateFields(registerModel)) {
-            if (selectedItemOfMySpinner == 0) {
+            presenter.sendRegisterDetails(registerModel);
+           /* if (selectedItemOfMySpinner == 0) {
                 presenter.validateSpinner(selectedItemOfMySpinner);
             } else {
-                presenter.sendRegisterDetails(registerModel);
-            }
+            }*/
         }
     }
 
@@ -136,7 +135,8 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
 
     @Override
     public void setUpStatesSpinner(final TaxonomyModel.TaxonomyResponse taxonomyResponse) {
-        statesList.add(getResources().getString(R.string.hint_state));
+        ArrayList<String> statesList = new ArrayList<>();
+//        statesList.add(getResources().getString(R.string.hint_state));
         for (int i = 0; i < taxonomyResponse.getEmbedded().getTaxonomies().size(); i++) {
             String stateNames = taxonomyResponse.getEmbedded().getTaxonomies().get(i).getName();
             String stateId = taxonomyResponse.getEmbedded().getTaxonomies().get(i).getId().toString();
@@ -151,7 +151,13 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
         spinnerState.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                metaModel.setStateId(taxonomyResponse.getEmbedded().getTaxonomies().get(position).getId().toString());
+                String name = taxonomyResponse.getEmbedded().getTaxonomies().get(position).getName();
+                int id = taxonomyResponse.getEmbedded().getTaxonomies().get(position).getId();
+                int position1 = position - 1;
+                AppLog.d("position:" + position1);
+                AppLog.d("name::::" + name);
+                AppLog.d("id:::::" + id);
+                metaModel.setStateId(String.valueOf(id));
             }
 
             @Override
