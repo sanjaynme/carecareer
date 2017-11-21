@@ -12,6 +12,7 @@ import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.homeModule.model.HomeContract;
 import au.com.carecareers.android.injection.component.BaseComponent;
+import au.com.carecareers.android.loginModule.login.model.LoginModel;
 import butterknife.BindView;
 
 /**
@@ -24,11 +25,14 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
 
     @BindView(R.id.tv_toolbar_title)
     TextView tvTitle;
+    private LoginModel.LoginRespones loginResponses;
 
     public static void start(Context context) {
-        Intent intent = new Intent(context, HomeActivity.class);
-        context.startActivity(intent);
+        Intent homeIntent = new Intent();
+        homeIntent.setClass(context, HomeActivity.class);
+        context.startActivity(homeIntent);
     }
+
 
     @Override
     public int getLayout() {
@@ -44,7 +48,6 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setUpToolbar();
-
     }
 
     private void setUpToolbar() {
@@ -63,4 +66,6 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
         }
         return true;
     }
+
+
 }

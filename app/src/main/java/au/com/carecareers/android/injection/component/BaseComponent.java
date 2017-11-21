@@ -4,6 +4,8 @@ import javax.inject.Singleton;
 
 import au.com.carecareers.android.injection.module.AppModule;
 import au.com.carecareers.android.injection.module.NetModule;
+import au.com.carecareers.android.loginModule.changePassword.injection.ChangePasswordModule;
+import au.com.carecareers.android.loginModule.changePassword.injection.ChangePasswordSubComponent;
 import au.com.carecareers.android.loginModule.forgotPassword.injection.ForgotPasswordModule;
 import au.com.carecareers.android.loginModule.forgotPassword.injection.ForgotPasswordSubComponent;
 import au.com.carecareers.android.loginModule.login.injection.LoginModule;
@@ -30,4 +32,6 @@ public interface BaseComponent {
     RegisterSubComponent provideRegisterSubComponent(RegisterModule registerModule);
 
     ForgotPasswordSubComponent provideForgotPasswordSubComponent(ForgotPasswordModule forgotPasswordModule);
+
+    ChangePasswordSubComponent provideChangePasswordSubComponent(ChangePasswordModule changePasswordModule);
 }

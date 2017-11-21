@@ -9,10 +9,11 @@ public class UrlContract {
 
     }
 
-    public static final String LOG_IN = "oauth/candidate";
-    public static final String REGISTER = "candidates/register";
     public static final String AUTHORIZE = "oauth/application";
+    public static final String LOG_IN = "oauth/candidate";
     public static final String GETSTATES = "taxonomies/state";
+    public static final String REGISTER = "candidates/register";
+    public static final String FORGOT_PASSWORD = "candidates/forgot-password";
 
 
     public class Keys {

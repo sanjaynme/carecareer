@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import au.com.carecareers.android.base.view.IBaseView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import okhttp3.ResponseBody;
 
 /**
  * Created by Nischal Manandhar on 13/11/2017.
@@ -58,7 +59,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
     }
 
     @Override
-    public void showError(int message) {
+    public void showError(ResponseBody errorResponse) {
 
     }
 

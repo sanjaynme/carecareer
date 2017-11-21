@@ -9,11 +9,12 @@ import dagger.Provides;
 import io.reactivex.disposables.CompositeDisposable;
 
 /**
- * Created by Nischal Manandhar on 14/11/2017.
+ * Created by Nikesh on 11/21/2017.
  */
 @Module
 public class ForgotPasswordModule {
     public ForgotPasswordModule() {
+
     }
 
     @Provides
@@ -24,14 +25,13 @@ public class ForgotPasswordModule {
 
     @Provides
     @ActivityScope
-    ForgotPasswordContract.IForgotPasswordInteractor provideForgotPasswordInteractor(ForgotPasswordInteractor forgotPasswordInteractor) {
-        return forgotPasswordInteractor;
+    ForgotPasswordContract.IForgotPresenter provideForgotPasswordPresenter(ForgotPasswordPresenter forgotPasswordPresenter) {
+        return forgotPasswordPresenter;
     }
 
     @Provides
     @ActivityScope
-    ForgotPasswordContract.IForgotPasswordPresenter provideForgotPasswordPresenter
-            (ForgotPasswordPresenter forgotPasswordPresenter) {
-        return forgotPasswordPresenter;
+    ForgotPasswordContract.IForgotInteractor provideForgotPasswordInteractor(ForgotPasswordInteractor forgotPasswordInteractor) {
+        return forgotPasswordInteractor;
     }
 }

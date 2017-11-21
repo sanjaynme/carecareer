@@ -18,7 +18,7 @@
             android:layout_marginLeft="@dimen/dimen_45dp"
             android:layout_marginRight="@dimen/dimen_45dp"
             android:gravity="center"
-            android:text="@string/lorem_epsum"
+            android:text="@string/tv_landing_welcom_message"
             android:textColor="@color/colorWhite" />
 
         <Button

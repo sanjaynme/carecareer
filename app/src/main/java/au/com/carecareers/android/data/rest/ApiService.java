@@ -4,6 +4,7 @@ package au.com.carecareers.android.data.rest;
 import javax.inject.Singleton;
 
 import au.com.carecareers.android.contracts.UrlContract;
+import au.com.carecareers.android.loginModule.forgotPassword.model.ForgotPasswordModel;
 import au.com.carecareers.android.loginModule.login.model.LoginModel;
 import au.com.carecareers.android.loginModule.register.model.RegisterModel;
 import au.com.carecareers.android.loginModule.register.model.TaxonomyModel;
@@ -48,4 +49,10 @@ public interface ApiService {
     @POST(UrlContract.REGISTER)
     Observable<RegisterModel.RegisterResponse> register(@Header(UrlContract.Keys.AUTHORIZATION) String base64,
                                                         @Body RegisterModel.RegisterRequest registerRequest);
+
+
+    @Headers({"Content-Type:application/json",
+            "accept:application/json",})
+    @POST(UrlContract.FORGOT_PASSWORD)
+    Observable<ForgotPasswordModel.ForgotPasswordResponse> forgotPassword(String forgotEmail);
 }

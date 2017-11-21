@@ -57,6 +57,7 @@
     <style name="Button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/dimen_15dp</item>
         <item name="android:background">@drawable/register_and_login</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textSize">@dimen/txt_14sp</item>

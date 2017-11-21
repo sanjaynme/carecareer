@@ -3,6 +3,8 @@ package au.com.carecareers.android.loginModule.register;
 import android.util.Log;
 import android.util.Patterns;
 
+import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
+
 import javax.inject.Inject;
 
 import au.com.carecareers.android.R;
@@ -15,6 +17,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.ResponseBody;
 
 /**
  * Created by Nikesh on 11/15/2017.
@@ -44,8 +47,12 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterV
                     @Override
                     public void accept(Throwable throwable) throws Exception {
                         if (isViewAttached()) {
-                            getView().hideProgressDialog();
-                            getView().showAlertDialog(R.string.err_);
+                            Log.d(TAG, "onError: ");
+                            if (throwable instanceof HttpException) {
+                                ResponseBody responseBody = ((HttpException) throwable).response().errorBody();
+                                getView().hideProgressDialog();
+                                getView().showError(responseBody);
+                            }
                         }
                     }
                 }));
@@ -103,11 +110,15 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterV
             }
 
             @Override
-            public void onError(Throwable e) {
+            public void onError(Throwable throwable) {
                 Log.d(TAG, "onError: ");
-                getView().hideProgressDialog();
-                getView().showAlertDialog(R.string.err_);
+                if (throwable instanceof HttpException) {
+                    ResponseBody responseBody = ((HttpException) throwable).response().errorBody();
+                    getView().hideProgressDialog();
+                    getView().showError(responseBody);
+                }
             }
+
 
             @Override
             public void onComplete() {

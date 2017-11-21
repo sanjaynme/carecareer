@@ -9,6 +9,7 @@
     <string name="lorem_epsum">
         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. </string>
+    <string name="tv_landing_welcom_message">Welcome to carecareers,the care sector`s job market</string>
     <string name="tv_register">Register</string>
     <string name="tv_home">Home</string>
     <string name="tv_login">Login</string>
@@ -67,4 +68,15 @@
 
     <!--Messages-->
     <string name="msg_loading">Loading...</string>
+
+
+    <!--Fonts-->
+    <string name="font_sourcesanpro_bold">fonts/SourceSansPro-Bold.ttf</string>
+    <string name="font_sourcesanpro_boldlt">fonts/SourceSansPro-Boldlt.ttf</string>
+    <string name="font_sourcesanpro_extra_light">fonts/SourceSansPro-ExtraLight.ttf</string>
+    <string name="font_sourcesanpro_extra_lightIt">fonts/SourceSansPro-ExtraLightIt.ttf</string>
+    <string name="font_sourcesanpro_It">fonts/SourceSansPro-It.ttf</string>
+    <string name="font_sourcesanpro_light">fonts/SourceSansPro-Light.ttf</string>
+    <string name="font_sourcesanpro_lightlt">fonts/SourceSansPro-LightIt.ttf</string>
+    <string name="font_sourcesanpro_regular">fonts/SourceSansPro-Regular.ttf</string>
 </resources>

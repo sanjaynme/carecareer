@@ -1,14 +1,16 @@
-package au.com.carecareers.android.loginModule.forgotPassword;
+package au.com.carecareers.android.loginModule.changePassword;
 
 import android.util.Log;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 
+import java.io.IOException;
+
 import javax.inject.Inject;
 
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.presenter.BasePresenter;
-import au.com.carecareers.android.loginModule.forgotPassword.model.ForgotPasswordModel;
+import au.com.carecareers.android.loginModule.changePassword.model.ChangePasswordModel;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableObserver;
@@ -19,10 +21,10 @@ import okhttp3.ResponseBody;
  * Created by Nikesh on 11/21/2017.
  */
 
-public class ForgotPasswordPresenter extends BasePresenter<ForgotPasswordContract.IForgotPasswordView, ForgotPasswordContract.IForgotInteractor> implements
-        ForgotPasswordContract.IForgotPresenter {
+public class ChangePasswordPresenter extends BasePresenter<ChangePasswordContract.IChangePasswordView, ChangePasswordContract.IChangeInteractor> implements
+        ChangePasswordContract.IChangePresenter {
     @Inject
-    public ForgotPasswordPresenter(ForgotPasswordContract.IForgotInteractor interactor, CompositeDisposable compositeDisposable) {
+    public ChangePasswordPresenter(ChangePasswordContract.IChangeInteractor interactor, CompositeDisposable compositeDisposable) {
         super(interactor, compositeDisposable);
     }
 
@@ -35,10 +37,10 @@ public class ForgotPasswordPresenter extends BasePresenter<ForgotPasswordContrac
                 .subscribeWith(getObserver()));
     }
 
-    private DisposableObserver<ForgotPasswordModel.ForgotPasswordResponse> getObserver() {
-        return new DisposableObserver<ForgotPasswordModel.ForgotPasswordResponse>() {
+    private DisposableObserver<ChangePasswordModel.ChangePasswordResponse> getObserver() {
+        return new DisposableObserver<ChangePasswordModel.ChangePasswordResponse>() {
             @Override
-            public void onNext(ForgotPasswordModel.ForgotPasswordResponse forgotPasswordResponse) {
+            public void onNext(ChangePasswordModel.ChangePasswordResponse forgotPasswordResponse) {
                 Log.d(TAG, "onNext: ");
                 getView().hideProgressDialog();
             }
@@ -46,10 +48,15 @@ public class ForgotPasswordPresenter extends BasePresenter<ForgotPasswordContrac
             @Override
             public void onError(Throwable e) {
                 Log.d(TAG, "onError: ");
+
+                Log.d(TAG, "onError: ");
                 if (e instanceof HttpException) {
                     ResponseBody responseBody = ((HttpException) e).response().errorBody();
                     getView().hideProgressDialog();
                     getView().showError(responseBody);
+                }
+                if (e instanceof IOException) {
+
                 }
             }
 

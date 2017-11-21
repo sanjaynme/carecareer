@@ -69,7 +69,7 @@
                     android:padding="@dimen/dimen_10dp" />
             </RelativeLayout>
 
-            <RelativeLayout
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/dimen_35dp"
@@ -77,15 +77,27 @@
                 android:layout_marginLeft="@dimen/dimen_15dp"
                 android:layout_marginRight="@dimen/dimen_15dp"
                 android:layout_marginStart="@dimen/dimen_15dp"
-                android:background="@color/editTextBackground">
+                android:background="@color/editTextBackground"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimen_15dp">
 
                 <Spinner
                     android:id="@+id/spinner_state"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:prompt="@string/hint_state"
+                    android:gravity="center"
                     android:spinnerMode="dropdown" />
-            </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/iv_spinner_states"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:background="@color/colorWhite"
+                    android:contentDescription="@null"
+                    android:padding="@dimen/dimen_10dp"
+                    android:src="@drawable/dropdown_4xd" />
+            </FrameLayout>
 
             <TextView
                 android:id="@+id/tv_terms"
@@ -106,8 +118,6 @@
     <Button
         android:id="@+id/submit_view_registeration"
         style="@style/Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:text="@string/tv_register" />
 </RelativeLayout>

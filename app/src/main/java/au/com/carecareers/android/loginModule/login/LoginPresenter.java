@@ -6,7 +6,6 @@ import android.util.Patterns;
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 
 import java.io.IOException;
-import java.lang.annotation.Annotation;
 
 import javax.inject.Inject;
 
@@ -18,7 +17,6 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
-import retrofit2.Converter;
 import retrofit2.Retrofit;
 
 /**
@@ -51,30 +49,22 @@ public class LoginPresenter extends BasePresenter<LoginContract.ILoginView, Logi
             @Override
             public void onNext(LoginModel.LoginRespones loginRespones) {
                 Log.d(TAG, "onNext: ");
+                getInteractor().saveLoginResponse(loginRespones);
                 getView().hideProgressDialog();
-                getView().navigateToMainActivity();
+                getView().navigateToHomeActivity();
             }
 
             @Override
             public void onError(Throwable e) {
-                Log.d(TAG, "onError: ");
-
                 if (e instanceof HttpException) {
-                    ResponseBody body = ((HttpException) e).response().errorBody();
-                    Converter<ResponseBody, Error> errorConverter =
-                            application.getRetrofit().responseBodyConverter(Error.class, new Annotation[0]);
-
+                    ResponseBody responseBody = ((HttpException) e).response().errorBody();
+                    getView().hideProgressDialog();
+                    getView().showError(responseBody);
                 }
 
-
-                if (e instanceof RetrofitException) {
-
-                }
                 if (e instanceof IOException) {
 
                 }
-                getView().hideProgressDialog();
-                getView().showError(R.string.err_);
             }
 
             @Override
@@ -101,5 +91,10 @@ public class LoginPresenter extends BasePresenter<LoginContract.ILoginView, Logi
             return false;
         }
         return true;
+    }
+
+    @Override
+    public void forgetPasswordButtonClicked() {
+        getView().navigateToForgotPassword();
     }
 }

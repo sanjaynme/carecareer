@@ -2,6 +2,8 @@ package au.com.carecareers.android.base.view;
 
 import android.support.annotation.StringRes;
 
+import okhttp3.ResponseBody;
+
 /**
  * Created by Nischal Manandhar on 13/11/2017.
  */
@@ -15,7 +17,7 @@ public interface IBaseView {
 
     void showAlertDialog(@StringRes int message);
 
-    void showError(@StringRes int message);
+    void showError(ResponseBody message);
 
     void sendAnalyticsData();
 }

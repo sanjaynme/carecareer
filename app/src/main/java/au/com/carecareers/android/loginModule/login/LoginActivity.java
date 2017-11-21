@@ -17,6 +17,7 @@ import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.homeModule.HomeActivity;
 import au.com.carecareers.android.injection.component.BaseComponent;
+import au.com.carecareers.android.loginModule.forgotPassword.ForgotPasswordActivity;
 import au.com.carecareers.android.loginModule.login.injection.LoginModule;
 import au.com.carecareers.android.loginModule.login.model.LoginModel;
 import butterknife.BindView;
@@ -91,15 +92,26 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
         }
     }
 
+    @OnClick(R.id.tv_forgot_password)
+    void forgetPasswordButton() {
+        presenter.forgetPasswordButtonClicked();
+    }
 
     @Override
-    public void navigateToMainActivity() {
+    public void navigateToHomeActivity() {
         etUsername.getText().clear();
         etPassword.getText().clear();
         finishAffinity();
         HomeActivity.start(LoginActivity.this);
         transitionActivityOpen();
     }
+
+    @Override
+    public void navigateToForgotPassword() {
+        ForgotPasswordActivity.start(LoginActivity.this);
+        transitionActivityOpen();
+    }
+
 
     @OnClick(R.id.btn_show_hide_login_password)
     void showHidePassword() {
@@ -111,6 +123,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
             btnShowHidePassword.setImageResource(R.drawable.eye_open);
         }
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

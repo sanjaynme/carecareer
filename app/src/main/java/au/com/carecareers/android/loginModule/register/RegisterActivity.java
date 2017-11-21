@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -59,6 +60,8 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
     @BindView(R.id.spinner_state)
     Spinner spinnerState;
 
+    @BindView(R.id.iv_spinner_states)
+    ImageView ivSpinnerState;
     @Inject
     RegisterPresenter presenter;
 
@@ -67,6 +70,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
 
     RegisterModel.RegisterRequest registerModel;
     RegisterModel.RegisterRequest.Meta metaModel;
+    private ArrayList<String> statesList;
 
     public static void start(Context context) {
         Intent signUpIntent = new Intent();
@@ -91,8 +95,10 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
         setupToolbar();
         btnShowHidePassword.setImageResource(R.drawable.eye_open);
         presenter.getStates();
+
         registerModel = new RegisterModel.RegisterRequest();
         metaModel = new RegisterModel.RegisterRequest.Meta();
+
     }
 
     private void setupToolbar() {
@@ -134,8 +140,14 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
     }
 
     @Override
+    protected void onDestroy() {
+        presenter.onDetach();
+        super.onDestroy();
+    }
+
+    @Override
     public void setUpStatesSpinner(final TaxonomyModel.TaxonomyResponse taxonomyResponse) {
-        ArrayList<String> statesList = new ArrayList<>();
+        statesList = new ArrayList<>();
 //        statesList.add(getResources().getString(R.string.hint_state));
         for (int i = 0; i < taxonomyResponse.getEmbedded().getTaxonomies().size(); i++) {
             String stateNames = taxonomyResponse.getEmbedded().getTaxonomies().get(i).getName();
@@ -166,6 +178,11 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
         });
     }
 
+    @OnClick(R.id.iv_spinner_states)
+    void showSpinner() {
+        spinnerState.performClick();
+    }
+
     @OnClick(R.id.btn_show_hide_register_password)
     void showHidePassword() {
         if (etPassword.getTransformationMethod() == PasswordTransformationMethod.getInstance()) {
@@ -186,5 +203,6 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
                 break;
         }
         return true;
+
     }
 }

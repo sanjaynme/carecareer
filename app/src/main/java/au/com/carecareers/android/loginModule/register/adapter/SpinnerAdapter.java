@@ -1,7 +1,7 @@
 package au.com.carecareers.android.loginModule.register.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -43,18 +43,17 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
 
     @Override
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
-//        Typeface externalFont = Typeface.createFromAsset(context.getAssets(), "fonts/sofiapro-light.otf");
+        Typeface externalFont = Typeface.createFromAsset(context.getAssets(), "fonts/SourceSansPro-Regular.ttf");
         if (convertView == null) {
             convertView = inflate.inflate(resourceId, null);
             Holder holder = new Holder();
 
             holder.textView1 = convertView.findViewById(R.id.tv_default_first);
             holder.textView1.setText(spinnerList.get(position));
-            holder.textView1.setTextSize(18);
-//            holder.textView1.setTypeface(externalFont);
-            holder.textView1.setHintTextColor(Color.BLACK);
-            holder.textView1.setTextColor(Color.BLACK);
+            holder.textView1.setTextSize(15);
+            holder.textView1.setTypeface(externalFont);
+            holder.textView1.setHintTextColor(context.getResources().getColor(R.color.colorHint));
+            holder.textView1.setTextColor(context.getResources().getColor(R.color.textColorPrimary));
             convertView.setTag(holder);
         } else {
             convertView = inflate.inflate(resourceId, null);
@@ -62,10 +61,10 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
 
             holder.textView1 = convertView.findViewById(R.id.tv_default_first);
             holder.textView1.setText(spinnerList.get(position));
-            holder.textView1.setTextSize(18);
-//            holder.textView1.setTypeface(externalFont);
-            holder.textView1.setHintTextColor(Color.BLACK);
-            holder.textView1.setTextColor(Color.BLACK);
+            holder.textView1.setTextSize(15);
+            holder.textView1.setTypeface(externalFont);
+            holder.textView1.setHintTextColor(context.getResources().getColor(R.color.colorHint));
+            holder.textView1.setTextColor(context.getResources().getColor(R.color.textColorPrimary));
         }
 
         return convertView;
@@ -75,27 +74,27 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-//        Typeface externalFont = Typeface.createFromAsset(context.getAssets(), "fonts/sofiapro-light.otf");
+        Typeface externalFont = Typeface.createFromAsset(context.getAssets(), "fonts/SourceSansPro-Regular.ttf");
         if (convertView == null) {
             convertView = inflate.inflate(resourceId, null);
             Holder holder = new Holder();
 
             holder.textView1 = convertView.findViewById(R.id.tv_default_first);
             holder.textView1.setText(spinnerList.get(position));
-//            holder.textView1.setTypeface(externalFont);
-            holder.textView1.setHintTextColor(Color.BLACK);
-            holder.textView1.setTextColor(Color.BLACK);
-            holder.textView1.setTextSize(18);
+            holder.textView1.setTypeface(externalFont);
+            holder.textView1.setHintTextColor(context.getResources().getColor(R.color.colorHint));
+            holder.textView1.setTextColor(context.getResources().getColor(R.color.textColorPrimary));
+            holder.textView1.setTextSize(15);
             convertView.setTag(holder);
         } else {
             convertView = inflate.inflate(resourceId, null);
             Holder holder = new Holder();
             holder.textView1 = convertView.findViewById(R.id.tv_default_first);
             holder.textView1.setText(spinnerList.get(position));
-//            holder.textView1.setTypeface(externalFont);
-            holder.textView1.setTextSize(18);
-            holder.textView1.setHintTextColor(Color.BLACK);
-            holder.textView1.setTextColor(Color.BLACK);
+            holder.textView1.setTypeface(externalFont);
+            holder.textView1.setTextSize(15);
+            holder.textView1.setHintTextColor(context.getResources().getColor(R.color.colorHint));
+            holder.textView1.setTextColor(context.getResources().getColor(R.color.textColorPrimary));
         }
         return convertView;
     }
