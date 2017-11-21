@@ -72,19 +72,6 @@
 
             </RelativeLayout>
 
-            <TextView
-                android:id="@+id/tv_forgot_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/rv_password"
-                android:layout_marginBottom="@dimen/dimen_16dp"
-                android:layout_marginLeft="@dimen/dimen_18dp"
-                android:layout_marginStart="@dimen/dimen_18dp"
-                android:layout_marginTop="@dimen/dimen_20dp"
-                android:text="@string/et_forgot_password"
-                android:textColor="@color/textColorPrimary"
-                android:textSize="@dimen/txt_15sp" />
-
         </RelativeLayout>
 
     </ScrollView>
@@ -96,5 +83,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:text="@string/tv_login" />
+
+    <TextView
+        android:id="@+id/tv_forgot_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="@string/et_forgot_password"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="@dimen/txt_15sp" />
 
 </RelativeLayout>
