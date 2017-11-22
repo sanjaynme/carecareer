@@ -11,7 +11,7 @@ import au.com.carecareers.android.base.presenter.BasePresenter;
 import au.com.carecareers.android.loginModule.forgotPassword.model.ForgotPasswordModel;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.observers.DisposableObserver;
+import io.reactivex.observers.DisposableCompletableObserver;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 
@@ -27,7 +27,7 @@ public class ForgotPasswordPresenter extends BasePresenter<ForgotPasswordContrac
     }
 
     @Override
-    public void forgotPassword(String forgotEmail) {
+    public void forgotPassword(ForgotPasswordModel.ForgotPasswordRequest forgotEmail) {
         getView().showProgressDialog(R.string.msg_loading);
         getCompositeDisposable().add(getInteractor().forgotPassword(forgotEmail)
                 .subscribeOn(Schedulers.io())
@@ -35,28 +35,21 @@ public class ForgotPasswordPresenter extends BasePresenter<ForgotPasswordContrac
                 .subscribeWith(getObserver()));
     }
 
-    private DisposableObserver<ForgotPasswordModel.ForgotPasswordResponse> getObserver() {
-        return new DisposableObserver<ForgotPasswordModel.ForgotPasswordResponse>() {
+    private DisposableCompletableObserver getObserver() {
+        return new DisposableCompletableObserver() {
             @Override
-            public void onNext(ForgotPasswordModel.ForgotPasswordResponse forgotPasswordResponse) {
+            public void onComplete() {
                 Log.d(TAG, "onNext: ");
                 getView().hideProgressDialog();
+                getView().navigateToLoginActivity();
             }
 
             @Override
             public void onError(Throwable e) {
                 Log.d(TAG, "onError: ");
-                if (e instanceof HttpException) {
-                    ResponseBody responseBody = ((HttpException) e).response().errorBody();
-                    getView().hideProgressDialog();
-                    getView().showError(responseBody);
-                }
-            }
-
-            @Override
-            public void onComplete() {
-                Log.d(TAG, "onComplete: ");
+                ResponseBody responseBody = ((HttpException) e).response().errorBody();
                 getView().hideProgressDialog();
+                getView().showError(responseBody);
             }
         };
     }

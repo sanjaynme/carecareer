@@ -27,7 +27,6 @@ public class LoginInteractor extends BaseInteractor implements LoginContract.ILo
     @Override
     public Observable<LoginModel.LoginRespones> login(String username, String password) {
         return getApiService().login(AuthenticationModel.getBase64(), UrlContract.Values.PASSWORD, username, password);
-
     }
 
     @Override

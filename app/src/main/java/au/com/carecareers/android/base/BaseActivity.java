@@ -85,7 +85,6 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     }
 
     private String getErrorMessage(ResponseBody errorResponseBody) {
-
         try {
             JSONObject jsonObject = new JSONObject(errorResponseBody.string());
             String details = jsonObject.getString("detail");

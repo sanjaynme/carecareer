@@ -5,7 +5,20 @@ package au.com.carecareers.android.loginModule.forgotPassword.model;
  */
 
 public class ForgotPasswordModel {
-    public class ForgotPasswordResponse {
 
+    public static class ForgotPasswordRequest {
+
+        String email;
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+    }
+
+    public static class ForgotPasswordResponse {
     }
 }

@@ -9,6 +9,7 @@ import au.com.carecareers.android.loginModule.login.model.LoginModel;
 import au.com.carecareers.android.loginModule.register.model.RegisterModel;
 import au.com.carecareers.android.loginModule.register.model.TaxonomyModel;
 import au.com.carecareers.android.splashModule.model.AuthenticationModel;
+import io.reactivex.Completable;
 import io.reactivex.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -54,5 +55,6 @@ public interface ApiService {
     @Headers({"Content-Type:application/json",
             "accept:application/json",})
     @POST(UrlContract.FORGOT_PASSWORD)
-    Observable<ForgotPasswordModel.ForgotPasswordResponse> forgotPassword(String forgotEmail);
+    Completable forgotPassword(@Header(UrlContract.Keys.AUTHORIZATION) String base64,
+                               @Body ForgotPasswordModel.ForgotPasswordRequest forgotEmail);
 }

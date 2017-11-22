@@ -3,10 +3,12 @@ package au.com.carecareers.android.loginModule.forgotPassword;
 import javax.inject.Inject;
 
 import au.com.carecareers.android.base.interactor.BaseInteractor;
+import au.com.carecareers.android.contracts.AppContract;
+import au.com.carecareers.android.contracts.UrlContract;
 import au.com.carecareers.android.data.local.SharedPreferenceManager;
 import au.com.carecareers.android.data.rest.ApiService;
 import au.com.carecareers.android.loginModule.forgotPassword.model.ForgotPasswordModel;
-import io.reactivex.Observable;
+import io.reactivex.Completable;
 
 /**
  * Created by Nikesh on 11/21/2017.
@@ -18,8 +20,9 @@ public class ForgotPasswordInteractor extends BaseInteractor implements ForgotPa
         super(apiService, sharedPreferenceManager);
     }
 
+
     @Override
-    public Observable<ForgotPasswordModel.ForgotPasswordResponse> forgotPassword(String email) {
-        return getApiService().forgotPassword(email);
+    public Completable forgotPassword(ForgotPasswordModel.ForgotPasswordRequest email) {
+        return getApiService().forgotPassword(getPreferenceManager().getStringValues(AppContract.Preferences.AUTHORIZATION_KEY, UrlContract.Values.AUTHORIZATION_VALUE), email);
     }
 }

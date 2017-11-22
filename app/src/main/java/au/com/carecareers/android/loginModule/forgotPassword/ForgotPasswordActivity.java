@@ -15,7 +15,10 @@ import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.loginModule.forgotPassword.injection.ForgotPasswordModule;
+import au.com.carecareers.android.loginModule.forgotPassword.model.ForgotPasswordModel;
+import au.com.carecareers.android.loginModule.login.LoginActivity;
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by Dell on 11/20/2017.
@@ -33,6 +36,7 @@ public class ForgotPasswordActivity extends BaseActivity implements ForgotPasswo
 
     @Inject
     ForgotPasswordPresenter presenter;
+    ForgotPasswordModel.ForgotPasswordRequest forgotPasswordRequest;
 
     @Override
     public int getLayout() {
@@ -55,8 +59,6 @@ public class ForgotPasswordActivity extends BaseActivity implements ForgotPasswo
         super.onCreate(savedInstanceState);
         presenter.onAttach(this);
         setupToolBar();
-        String forgotEmail = etForgotEmail.getText().toString().trim();
-//        presenter.forgotPassword(forgotEmail);
     }
 
     private void setupToolBar() {
@@ -81,5 +83,25 @@ public class ForgotPasswordActivity extends BaseActivity implements ForgotPasswo
                 break;
         }
         return true;
+    }
+
+    @OnClick(R.id.submit_view_forgot_password)
+    public void onForgotPasswordClicked() {
+        forgotPasswordRequest = new ForgotPasswordModel.ForgotPasswordRequest();
+        forgotPasswordRequest.setEmail(etForgotEmail.getText().toString().trim());
+        presenter.forgotPassword(forgotPasswordRequest);
+    }
+
+    @Override
+    public void navigateToLoginActivity() {
+        etForgotEmail.getText().clear();
+        finish();
+        LoginActivity.start(this);
+        transitionActivityOpen();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

@@ -113,7 +113,6 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterV
             public void onNext(RegisterModel.RegisterResponse registerResponse) {
                 Log.d(TAG, "onNext: ");
                 getInteractor().saveRegisterResponse(registerResponse);
-
                 getView().hideProgressDialog();
                 getView().navigateToLoginActivity(registerResponse);
             }
