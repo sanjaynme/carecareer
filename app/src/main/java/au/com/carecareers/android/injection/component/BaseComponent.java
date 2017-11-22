@@ -12,6 +12,7 @@ import au.com.carecareers.android.loginModule.login.injection.LoginModule;
 import au.com.carecareers.android.loginModule.login.injection.LoginSubComponent;
 import au.com.carecareers.android.loginModule.register.injection.RegisterModule;
 import au.com.carecareers.android.loginModule.register.injection.RegisterSubComponent;
+import au.com.carecareers.android.loginModule.termsAndCondition.injection.TermsAndConditionSubComponent;
 import au.com.carecareers.android.loginModule.termsAndCondition.injection.TermsAndConditionsModule;
 import au.com.carecareers.android.splashModule.injection.SplashModule;
 import au.com.carecareers.android.splashModule.injection.SplashSubComponent;
@@ -30,7 +31,7 @@ public interface BaseComponent {
 
     LoginSubComponent provideLoginSubComponent(LoginModule loginModule);
 
-    TermsAndConditionsModule provideTermsAndConditionsSubComponent(TermsAndConditionsModule termsAndConditionsModule);
+    TermsAndConditionSubComponent provideTermsAndConditionsSubComponent(TermsAndConditionsModule termsAndConditionsModule);
 
     RegisterSubComponent provideRegisterSubComponent(RegisterModule registerModule);
 

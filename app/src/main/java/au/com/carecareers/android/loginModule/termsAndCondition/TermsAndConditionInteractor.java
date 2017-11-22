@@ -22,9 +22,8 @@ public class TermsAndConditionInteractor extends BaseInteractor implements Terms
         super(apiService, sharedPreferenceManager);
     }
 
-
     @Override
-    public Observable<TermsAndConditionsModel.TermsAndConditionsRespones> getTermsAndConditions(String type, String idOrSlug) {
+    public Observable<TermsAndConditionsModel.TermsAndConditionsRespones> termsAndConditions(String type, String idOrSlug) {
         return getApiService().getTermsAndConditions(getPreferenceManager().getStringValues(AppContract.Preferences.AUTHORIZATION_KEY, UrlContract.Values.AUTHORIZATION_VALUE), type, idOrSlug);
     }
 }

@@ -22,8 +22,7 @@ import butterknife.BindView;
 
 public class TermsAndConditionActivity extends BaseActivity implements
         TermsAndConditionsContract.ITermsAndConditionsView {
-    @Inject
-    TermsAndConditionPresenter presenter;
+
 
     @BindView(R.id.terms_and_conditions_toolbar)
     Toolbar toolbar;
@@ -31,6 +30,8 @@ public class TermsAndConditionActivity extends BaseActivity implements
     @BindView(R.id.tv_toolbar_title)
     TextView tvTitle;
 
+    @Inject
+    TermsAndConditionPresenter presenter;
 
     public static void start(Context context) {
         Intent intent = new Intent();
@@ -45,7 +46,7 @@ public class TermsAndConditionActivity extends BaseActivity implements
 
     @Override
     protected void injectComponent(BaseComponent baseComponent) {
-        baseComponent.provideTermsAndConditionsSubComponent(new TermsAndConditionsModule());
+        baseComponent.provideTermsAndConditionsSubComponent(new TermsAndConditionsModule()).inject(this);
     }
 
     @Override

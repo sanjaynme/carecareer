@@ -60,6 +60,7 @@ public interface ApiService {
                                @Body ForgotPasswordModel.ForgotPasswordRequest forgotEmail);
 
     @Headers({"accept:application/json",})
+    @FormUrlEncoded
     @GET(UrlContract.PRIVACY_POLICY)
     Observable<TermsAndConditionsModel.TermsAndConditionsRespones> getTermsAndConditions(@Header(UrlContract.Keys.AUTHORIZATION) String base64,
                                                                                          @Field("type") String type,

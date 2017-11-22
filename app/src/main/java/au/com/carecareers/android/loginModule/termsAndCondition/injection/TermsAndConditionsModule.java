@@ -34,6 +34,4 @@ public class TermsAndConditionsModule {
     TermsAndConditionsContract.ITermsAndConditionsPresenter provideTermsAndConditionsPresenter(TermsAndConditionPresenter termsAndConditionPresenter) {
         return termsAndConditionPresenter;
     }
-
-
 }

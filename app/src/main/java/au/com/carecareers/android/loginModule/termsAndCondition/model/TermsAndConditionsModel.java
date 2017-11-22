@@ -1,15 +1,13 @@
 package au.com.carecareers.android.loginModule.termsAndCondition.model;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 /**
  * Created by Sanjay on 14/11/2017.
  */
 
 public class TermsAndConditionsModel {
+
     public class TermsAndConditionsRespones {
-        @SerializedName("id")
+   /*     @SerializedName("id")
         @Expose
         private Integer id;
         @SerializedName("name")
@@ -193,7 +191,7 @@ public class TermsAndConditionsModel {
                     this.href = href;
                 }
             }
-        }
+        }*/
     }
 }
 
