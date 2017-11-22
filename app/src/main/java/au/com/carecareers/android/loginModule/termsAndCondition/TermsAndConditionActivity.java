@@ -12,13 +12,16 @@ import javax.inject.Inject;
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.injection.component.BaseComponent;
+import au.com.carecareers.android.loginModule.termsAndCondition.injection.TermsAndConditionsModule;
 import butterknife.BindView;
 
 /**
  * Created by Sanjay on 11/22/2017.
  */
 
-public class TermsAndConditionActivity extends BaseActivity implements TermsAndConditionsContract.ITermsAndConditionsContractView {
+
+public class TermsAndConditionActivity extends BaseActivity implements
+        TermsAndConditionsContract.ITermsAndConditionsView {
     @Inject
     TermsAndConditionPresenter presenter;
 
@@ -27,6 +30,7 @@ public class TermsAndConditionActivity extends BaseActivity implements TermsAndC
 
     @BindView(R.id.tv_toolbar_title)
     TextView tvTitle;
+
 
     public static void start(Context context) {
         Intent intent = new Intent();
@@ -41,6 +45,7 @@ public class TermsAndConditionActivity extends BaseActivity implements TermsAndC
 
     @Override
     protected void injectComponent(BaseComponent baseComponent) {
+        baseComponent.provideTermsAndConditionsSubComponent(new TermsAndConditionsModule());
     }
 
     @Override
@@ -48,6 +53,9 @@ public class TermsAndConditionActivity extends BaseActivity implements TermsAndC
         super.onCreate(savedInstanceState);
         presenter.onAttach(this);
         setupToolBar();
+        String type = "page";
+        String idOrSlug = "privacy-policy";
+        presenter.termsAndCondition(type, idOrSlug);
     }
 
     private void setupToolBar() {

@@ -9,14 +9,14 @@ import io.reactivex.Observable;
  * Created by Nikesh on 11/15/2017.
  */
 
-public interface RegisterContract {
-    public interface IRegisterView extends IBaseView {
+public class RegisterContract {
+    interface IRegisterView extends IBaseView {
         void navigateToLoginActivity(RegisterModel.RegisterResponse registerResponse);
 
         void setUpStatesSpinner(TaxonomyModel.TaxonomyResponse taxonomyResponse);
     }
 
-    public interface IRegisterPresenter extends IBasePresenter<RegisterContract.IRegisterView, RegisterContract.IRegisterInteractor> {
+    interface IRegisterPresenter extends IBasePresenter<RegisterContract.IRegisterView, RegisterContract.IRegisterInteractor> {
         void getStates();
 
         boolean validateFields(RegisterModel.RegisterRequest registerModel);
@@ -26,7 +26,7 @@ public interface RegisterContract {
         boolean validateSpinner(int selectedItem);
     }
 
-    public interface IRegisterInteractor extends IBaseInteractor {
+    interface IRegisterInteractor extends IBaseInteractor {
         Observable<TaxonomyModel.TaxonomyResponse> getStates();
 
         Observable<RegisterModel.RegisterResponse> register(RegisterModel.RegisterRequest request);

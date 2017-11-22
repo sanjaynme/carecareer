@@ -8,19 +8,6 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class TermsAndConditionsModel {
-    public static class TermsAndConditionsRequest {
-        String type;
-        String id_or_slug;
-
-        public String getType() {
-            return type;
-        }
-
-        public void setType(String type) {
-            this.type = type;
-        }
-    }
-
     public class TermsAndConditionsRespones {
         @SerializedName("id")
         @Expose

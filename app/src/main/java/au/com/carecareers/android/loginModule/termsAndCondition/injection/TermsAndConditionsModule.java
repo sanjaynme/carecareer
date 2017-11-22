@@ -14,6 +14,7 @@ import io.reactivex.disposables.CompositeDisposable;
 @Module
 public class TermsAndConditionsModule {
     public TermsAndConditionsModule() {
+
     }
 
     @Provides
@@ -24,14 +25,15 @@ public class TermsAndConditionsModule {
 
     @Provides
     @ActivityScope
-    TermsAndConditionsContract.ITermsAndConditionsContractPresenter provideTermsAndConditionsPresenter(TermsAndConditionPresenter termsAndConditionPresenter) {
-        return termsAndConditionPresenter;
+    TermsAndConditionsContract.ITermsAndConditionsInteractor provideTermsAndConditionsInteractor(TermsAndConditionInteractor termsAndConditionInteractor) {
+        return termsAndConditionInteractor;
     }
 
     @Provides
     @ActivityScope
-    TermsAndConditionsContract.ITermsAndConditionsContractInteractor provideTermsAndConditionsInteractor(TermsAndConditionInteractor termsAndConditionInteractor) {
-        return termsAndConditionInteractor;
+    TermsAndConditionsContract.ITermsAndConditionsPresenter provideTermsAndConditionsPresenter(TermsAndConditionPresenter termsAndConditionPresenter) {
+        return termsAndConditionPresenter;
     }
+
 
 }
