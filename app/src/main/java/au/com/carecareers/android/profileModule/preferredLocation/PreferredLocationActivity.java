@@ -52,22 +52,23 @@ import butterknife.BindView;
 public class PreferredLocationActivity extends BaseActivity implements OnMapReadyCallback {
     private final String TAG = "PreferredLocation";
     private final int DEFAULT_ZOOM = 15;
+
     @Inject
     Gson gson;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-
     @BindView(R.id.tv_toolbar_title)
     TextView tvToolbarTitle;
     private SupportPlaceAutocompleteFragment autocompleteFragment;
-    private GoogleMap mGoogleMap;
-    private FusedLocationProviderClient mFusedLocationProviderClient;
-    private Location mLastKnownLocation;
-    private CandidateModel mCandidateModel = new CandidateModel();
+    private GoogleMap googleMap;
+    private FusedLocationProviderClient fusedLocationProviderClient;
+    private Location lastKnownLocation;
+    private CandidateModel candidateModel = new CandidateModel();
 
-    public static void startForResult(Activity activity) {
+    public static void startForResult(Activity activity, String extraData) {
         Intent intent = new Intent();
         intent.setClass(activity, PreferredLocationActivity.class);
+        intent.putExtra(AppContract.Extras.DATA, extraData);
         activity.startActivityForResult(intent, AppContract.RequestCode.PREFERRED_LOCATION);
     }
 
@@ -85,9 +86,19 @@ public class PreferredLocationActivity extends BaseActivity implements OnMapRead
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Construct a FusedLocationProviderClient.
-        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        candidateModel = gson.fromJson(getIntent().getStringExtra(AppContract.Extras.DATA), CandidateModel.class);
+
         loadPlaceAutocompleteFragment();
         loadMapFragment();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.putExtra(AppContract.Extras.DATA, gson.toJson(candidateModel));
+        setResult(RESULT_OK, intent);
+        super.onBackPressed();
     }
 
     @Override
@@ -103,13 +114,10 @@ public class PreferredLocationActivity extends BaseActivity implements OnMapRead
                 onBackPressed();
                 break;
             case R.id.menu_done:
-                if (mCandidateModel.address == null) {
+                if (candidateModel.address == null) {
                     showAlertDialog(R.string.err_no_location_selected);
                 } else {
-                    Intent intent = new Intent();
-                    intent.putExtra(AppContract.Extras.DATA, gson.toJson(mCandidateModel));
-                    setResult(RESULT_OK);
-                    finish();
+                    onBackPressed();
                 }
                 break;
         }
@@ -140,8 +148,8 @@ public class PreferredLocationActivity extends BaseActivity implements OnMapRead
         autocompleteFragment.getView().findViewById(R.id.place_autocomplete_clear_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCandidateModel.address = null;
-                mGoogleMap.clear();
+                candidateModel.address = null;
+                googleMap.clear();
                 autocompleteFragment.setText("");
             }
         });
@@ -169,14 +177,11 @@ public class PreferredLocationActivity extends BaseActivity implements OnMapRead
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mGoogleMap = googleMap;
+        this.googleMap = googleMap;
         // Turn on the My Location layer and the related control on the map.
         updateLocationUI();
 
-        // Get the current location of the device and set the position of the map.
-        getDeviceLocation();
-
-        mGoogleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+        this.googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
                 addMarker(latLng, true);
@@ -191,24 +196,48 @@ public class PreferredLocationActivity extends BaseActivity implements OnMapRead
         tvToolbarTitle.setText(getMessage(R.string.title_preferred_location));
     }
 
-
     /*
-    * 1) Update the location button visibility as per the location permission status
+    * 1) Update the location button visibility and current location as per the location permission status
     * 2) If location permission is not granted, request permission
     * */
     private void updateLocationUI() {
-        if (mGoogleMap == null) {
+        if (googleMap == null) {
             return;
         }
         try {
             if (isLocationPermissionGranted()) {
-                mGoogleMap.setMyLocationEnabled(true);
-                mGoogleMap.getUiSettings().setMyLocationButtonEnabled(true);
+                googleMap.setMyLocationEnabled(true);
+                googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+                // Get the current location of the device and set the position of the map.
+                Task<Location> locationResult = fusedLocationProviderClient.getLastLocation();
+                locationResult.addOnCompleteListener(this, new OnCompleteListener<Location>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Location> task) {
+                        if (task.isSuccessful()) {
+                            // Set the map's camera position to the current location of the device.
+                            lastKnownLocation = task.getResult();
+                            if (candidateModel != null && candidateModel.address != null) {
+                                LatLng latLng = new LatLng(Double.parseDouble(candidateModel.address.latitude), Double.parseDouble(candidateModel.address.longitude));
+                                addMarker(latLng, true);
+                            } else {
+                                if (lastKnownLocation != null) {
+                                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
+                                            new LatLng(lastKnownLocation.getLatitude(),
+                                                    lastKnownLocation.getLongitude()), DEFAULT_ZOOM));
+                                }
+                            }
+                        }
+                    }
+                });
             } else {
-                mGoogleMap.setMyLocationEnabled(false);
-                mGoogleMap.getUiSettings().setMyLocationButtonEnabled(false);
-                mLastKnownLocation = null;
+                googleMap.setMyLocationEnabled(false);
+                googleMap.getUiSettings().setMyLocationButtonEnabled(false);
+                lastKnownLocation = null;
                 requestLocationPermission();
+                if (candidateModel != null && candidateModel.address != null) {
+                    LatLng latLng = new LatLng(Double.parseDouble(candidateModel.address.latitude), Double.parseDouble(candidateModel.address.longitude));
+                    addMarker(latLng, true);
+                }
             }
         } catch (SecurityException e) {
             Log.e("Exception: %s", e.getMessage());
@@ -221,27 +250,7 @@ public class PreferredLocationActivity extends BaseActivity implements OnMapRead
     *  Cases: if last known location is not available move camera to default location
     * */
     private void getDeviceLocation() {
-        try {
-            if (isLocationPermissionGranted()) {
-                Task<Location> locationResult = mFusedLocationProviderClient.getLastLocation();
-                locationResult.addOnCompleteListener(this, new OnCompleteListener<Location>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Location> task) {
-                        if (task.isSuccessful()) {
-                            // Set the map's camera position to the current location of the device.
-                            mLastKnownLocation = task.getResult();
-                            if (mLastKnownLocation != null) {
-                                mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
-                                        new LatLng(mLastKnownLocation.getLatitude(),
-                                                mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
-                            }
-                        }
-                    }
-                });
-            }
-        } catch (SecurityException e) {
-            Log.e("Exception: %s", e.getMessage());
-        }
+
     }
 
     private void addMarker(LatLng latLng, boolean updateAutoCompleteFragment) {
@@ -253,24 +262,24 @@ public class PreferredLocationActivity extends BaseActivity implements OnMapRead
                 String addressStr = address.getAddressLine(0);
                 String[] placeName = address.getAddressLine(0).split(",");
 
-                mGoogleMap.clear();
-                mGoogleMap.addMarker(new MarkerOptions()
+                googleMap.clear();
+                googleMap.addMarker(new MarkerOptions()
                         .position(latLng)
                         .title(placeName[0]));
-                mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, DEFAULT_ZOOM));
+                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, DEFAULT_ZOOM));
                 if (updateAutoCompleteFragment) {
                     autocompleteFragment.setText(placeName[0]);
                 }
-                mCandidateModel.address = new CandidateModel.Address();
-                mCandidateModel.address.address = addressStr;
-                mCandidateModel.address.formatted = addressStr;
-                mCandidateModel.address.city = address.getLocality();
-                mCandidateModel.address.state = address.getAdminArea();
-                mCandidateModel.address.country = address.getCountryCode();
-                mCandidateModel.address.postcode = address.getPostalCode();
-                mCandidateModel.address.latitude = String.valueOf(address.getLatitude());
-                mCandidateModel.address.longitude = String.valueOf(address.getLongitude());
-                mCandidateModel.address.mapZoom = DEFAULT_ZOOM;
+                candidateModel.address = new CandidateModel.Address();
+                candidateModel.address.address = placeName[0];
+                candidateModel.address.formatted = addressStr;
+                candidateModel.address.city = address.getLocality();
+                candidateModel.address.state = address.getAdminArea();
+                candidateModel.address.country = address.getCountryCode();
+                candidateModel.address.postcode = address.getPostalCode();
+                candidateModel.address.latitude = String.valueOf(address.getLatitude());
+                candidateModel.address.longitude = String.valueOf(address.getLongitude());
+                candidateModel.address.mapZoom = DEFAULT_ZOOM;
             }
         } catch (IOException e) {
             e.printStackTrace();

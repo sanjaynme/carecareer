@@ -22,15 +22,17 @@ import butterknife.OnClick;
 
 public class ProfileSetupActivity extends BaseActivity implements ProfileSetupContract.IProfileSetupView {
     @Inject
-    Gson mGson;
+    Gson gson;
     @Inject
-    ProfileSetupContract.IProfileSetupPresenter profileSetupPresenter;
+    ProfileSetupContract.IProfileSetupPresenter presenter;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.tv_toolbar_title)
     TextView tvToolbarTitle;
-    private CandidateModel mCandidateModel;
+    @BindView(R.id.tv_preferred_location)
+    TextView tvPreferredLocation;
+    private CandidateModel candidateModel;
 
     public static void start(Context context) {
         Intent intent = new Intent();
@@ -51,6 +53,7 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.candidateModel = new CandidateModel();
     }
 
     @Override
@@ -59,8 +62,13 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
         if (data != null) {
             if (requestCode == AppContract.RequestCode.PREFERRED_LOCATION) {
                 String extra = data.getStringExtra(AppContract.Extras.DATA);
-                CandidateModel candidateModel = mGson.fromJson(extra, CandidateModel.class);
-                mCandidateModel.address = candidateModel.address;
+                CandidateModel candidateModel = gson.fromJson(extra, CandidateModel.class);
+                this.candidateModel.address = candidateModel.address;
+                if (this.candidateModel.address != null) {
+                    setPreferredLocation(this.candidateModel.address.address);
+                } else {
+                    setPreferredLocation("");
+                }
             }
         }
     }
@@ -83,7 +91,32 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
     }
 
     @Override
+    public void setPhoneNumber(String phoneNumber) {
+
+    }
+
+    @Override
+    public void setPreferredLocation(String location) {
+        tvPreferredLocation.setText(location);
+    }
+
+    @Override
+    public void setLocationArea(String locationArea) {
+
+    }
+
+    @Override
+    public void setProfessionRole(String professionRole) {
+
+    }
+
+    @Override
+    public void setWorkType(String workType) {
+
+    }
+
+    @Override
     public void navigateToPreferredLocation() {
-        PreferredLocationActivity.startForResult(this);
+        PreferredLocationActivity.startForResult(this, gson.toJson(candidateModel));
     }
 }

@@ -10,6 +10,17 @@ import au.com.carecareers.android.base.view.IBaseView;
 
 public class ProfileSetupContract {
     public interface IProfileSetupView extends IBaseView {
+        void setPhoneNumber(String phoneNumber);
+
+        void setPreferredLocation(String location);
+
+        void setLocationArea(String locationArea);
+
+        void setProfessionRole(String professionRole);
+
+        void setWorkType(String workType);
+
+
         void navigateToPreferredLocation();
     }
 

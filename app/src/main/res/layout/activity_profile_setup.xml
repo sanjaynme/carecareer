@@ -111,8 +111,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/hint_work_near_here"
+                        android:hint="@string/hint_work_near_here"
                         android:textColor="@color/colorGrey700"
+                        android:textColorHint="@color/colorGrey500"
                         android:textSize="@dimen/txt_14sp" />
 
                     <ImageButton
@@ -139,8 +140,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/hint_location_area"
+                        android:hint="@string/hint_location_area"
                         android:textColor="@color/colorGrey700"
+                        android:textColorHint="@color/colorGrey500"
                         android:textSize="@dimen/txt_14sp" />
 
                     <ImageButton
@@ -191,6 +193,7 @@
                         android:layout_weight="1"
                         android:text="@string/hint_profession_role"
                         android:textColor="@color/colorGrey700"
+                        android:textColorHint="@color/colorGrey500"
                         android:textSize="@dimen/txt_14sp" />
 
                     <ImageButton
@@ -219,6 +222,7 @@
                         android:layout_weight="1"
                         android:text="@string/hint_work_type"
                         android:textColor="@color/colorGrey700"
+                        android:textColorHint="@color/colorGrey500"
                         android:textSize="@dimen/txt_14sp" />
 
                     <ImageButton
@@ -269,6 +273,7 @@
                         android:background="@color/colorPinkLight"
                         android:hint="@string/hint_what_is_your_next_career_move"
                         android:textColor="@color/colorGrey700"
+                        android:textColorHint="@color/colorGrey500"
                         android:textSize="@dimen/txt_14sp" />
 
                     <ImageButton
