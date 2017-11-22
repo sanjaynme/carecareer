@@ -10,11 +10,12 @@ import au.com.carecareers.android.base.view.IBaseView;
  */
 
 public class TermsAndConditionsContract {
+
     public interface ITermsAndConditionsContractView extends IBaseView {
 
     }
 
-    public interface ITermsAndConditionsContractPresenter extends IBasePresenter<ITermsAndConditionsContractView, ITermsAndConditionsContractInteractor> {
+    public interface ITermsAndConditionsContractPresenter extends IBasePresenter<TermsAndConditionsContract.ITermsAndConditionsContractView, TermsAndConditionsContract.ITermsAndConditionsContractInteractor> {
     }
 
     public interface ITermsAndConditionsContractInteractor extends IBaseInteractor {

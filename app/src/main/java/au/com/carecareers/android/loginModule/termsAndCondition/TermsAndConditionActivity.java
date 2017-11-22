@@ -1,6 +1,7 @@
 package au.com.carecareers.android.loginModule.termsAndCondition;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
@@ -11,7 +12,6 @@ import javax.inject.Inject;
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.injection.component.BaseComponent;
-import au.com.carecareers.android.loginModule.termsAndCondition.injection.TermsAndConditionsModule;
 import butterknife.BindView;
 
 /**
@@ -29,7 +29,9 @@ public class TermsAndConditionActivity extends BaseActivity implements TermsAndC
     TextView tvTitle;
 
     public static void start(Context context) {
-
+        Intent intent = new Intent();
+        intent.setClass(context, TermsAndConditionActivity.class);
+        context.startActivity(intent);
     }
 
     @Override
@@ -39,7 +41,6 @@ public class TermsAndConditionActivity extends BaseActivity implements TermsAndC
 
     @Override
     protected void injectComponent(BaseComponent baseComponent) {
-        baseComponent.provideTermsAndConditionsSubComponent(new TermsAndConditionsModule());
     }
 
     @Override

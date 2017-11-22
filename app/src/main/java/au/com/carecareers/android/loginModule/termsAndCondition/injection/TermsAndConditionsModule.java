@@ -30,7 +30,7 @@ public class TermsAndConditionsModule {
 
     @Provides
     @ActivityScope
-    TermsAndConditionsContract.ITermsAndConditionsContractInteractor provideTermsAndConditionsPresenter(TermsAndConditionInteractor termsAndConditionInteractor) {
+    TermsAndConditionsContract.ITermsAndConditionsContractInteractor provideTermsAndConditionsInteractor(TermsAndConditionInteractor termsAndConditionInteractor) {
         return termsAndConditionInteractor;
     }
 
