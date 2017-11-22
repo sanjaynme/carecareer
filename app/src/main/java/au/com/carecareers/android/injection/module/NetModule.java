@@ -8,7 +8,6 @@ import java.util.concurrent.TimeUnit;
 import javax.inject.Singleton;
 
 import au.com.carecareers.android.BuildConfig;
-import au.com.carecareers.android.base.RxErrorHandlingCallAdapterFactory;
 import au.com.carecareers.android.data.rest.ApiService;
 import dagger.Module;
 import dagger.Provides;
@@ -63,7 +62,6 @@ public class NetModule {
                 .client(builder.build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addCallAdapterFactory(RxErrorHandlingCallAdapterFactory.create())
                 .build();
     }
 

@@ -24,12 +24,14 @@ import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.injection.component.BaseComponent;
+import au.com.carecareers.android.loginModule.forgotPassword.ForgotPasswordActivity;
 import au.com.carecareers.android.loginModule.login.LoginActivity;
 import au.com.carecareers.android.loginModule.register.adapter.SpinnerAdapter;
 import au.com.carecareers.android.loginModule.register.injection.RegisterModule;
 import au.com.carecareers.android.loginModule.register.model.RegisterContract;
 import au.com.carecareers.android.loginModule.register.model.RegisterModel;
 import au.com.carecareers.android.loginModule.register.model.TaxonomyModel;
+import au.com.carecareers.android.loginModule.termsAndCondition.TermsAndConditionActivity;
 import au.com.carecareers.android.utilities.AppLog;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -193,6 +195,12 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
         }
     }
 
+    @OnClick(R.id.tv_terms_and_conditions)
+    void termsAndConditionsClicked() {
+        TermsAndConditionActivity.start(RegisterActivity.this);
+        transitionActivityOpen();
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -202,6 +210,5 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
                 break;
         }
         return true;
-
     }
 }

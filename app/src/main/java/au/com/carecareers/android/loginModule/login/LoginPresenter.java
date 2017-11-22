@@ -18,7 +18,6 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
-import retrofit2.Retrofit;
 
 /**
  * Created by Nischal Manandhar on 14/11/2017.
@@ -26,11 +25,6 @@ import retrofit2.Retrofit;
 
 public class LoginPresenter extends BasePresenter<LoginContract.ILoginView, LoginContract.ILoginInteractor>
         implements LoginContract.ILoginPresenter {
-
-
-    private Retrofit retrofit;
-    private RetrofitException application;
-
     @Inject
     public LoginPresenter(LoginContract.ILoginInteractor interactor, CompositeDisposable compositeDisposable) {
         super(interactor, compositeDisposable);

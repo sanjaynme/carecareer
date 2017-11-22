@@ -45,6 +45,10 @@
             android:name=".loginModule.forgotPassword.ForgotPasswordActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".loginModule.termsAndCondition.TermsAndConditionActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
     </application>
 
 </manifest>

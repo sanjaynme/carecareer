@@ -100,7 +100,7 @@
             </FrameLayout>
 
             <TextView
-                android:id="@+id/tv_terms"
+                android:id="@+id/tv_terms_and_conditions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/dimen_45dp"
