@@ -12,6 +12,7 @@ import javax.inject.Inject;
 
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.presenter.BasePresenter;
+import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.loginModule.login.model.LoginModel;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -54,7 +55,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.ILoginView, Logi
                 if (e instanceof HttpException) {
                     ResponseBody responseBody = ((HttpException) e).response().errorBody();
                     getView().hideProgressDialog();
-                    getView().showError(responseBody);
+                    getView().showError(responseBody, AppContract.ErrorTypes.LOGIN);
                 }
 
                 if (e instanceof IOException) {

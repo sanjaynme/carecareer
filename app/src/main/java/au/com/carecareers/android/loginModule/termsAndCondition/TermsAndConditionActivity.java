@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
+import android.webkit.WebView;
 import android.widget.TextView;
 
 import javax.inject.Inject;
@@ -13,6 +14,8 @@ import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.loginModule.termsAndCondition.injection.TermsAndConditionsModule;
+import au.com.carecareers.android.loginModule.termsAndCondition.model.TermsAndConditionsModel;
+import au.com.carecareers.android.utilities.AppLog;
 import butterknife.BindView;
 
 /**
@@ -29,6 +32,9 @@ public class TermsAndConditionActivity extends BaseActivity implements
 
     @BindView(R.id.tv_toolbar_title)
     TextView tvTitle;
+
+    @BindView(R.id.webview_terms_and_conditions)
+    WebView wvTermsAndConditions;
 
     @Inject
     TermsAndConditionPresenter presenter;
@@ -63,5 +69,10 @@ public class TermsAndConditionActivity extends BaseActivity implements
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         tvTitle.setText(getResources().getText(R.string.tv_terms_and_conditions));
+    }
+
+    @Override
+    public void naviagteToTermsAndConditonsWebView(TermsAndConditionsModel.TermsAndConditionsRespones termsAndConditionsRespones) {
+        AppLog.d("Success");
     }
 }

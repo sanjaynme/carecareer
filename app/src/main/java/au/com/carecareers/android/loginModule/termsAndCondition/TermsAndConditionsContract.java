@@ -15,6 +15,7 @@ public class TermsAndConditionsContract {
 
     public interface ITermsAndConditionsView extends IBaseView {
 
+        void naviagteToTermsAndConditonsWebView(TermsAndConditionsModel.TermsAndConditionsRespones termsAndConditionsRespones);
     }
 
     public interface ITermsAndConditionsPresenter extends IBasePresenter<ITermsAndConditionsView, ITermsAndConditionsInteractor> {

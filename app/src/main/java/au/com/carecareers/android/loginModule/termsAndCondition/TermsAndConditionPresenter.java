@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.presenter.BasePresenter;
+import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.loginModule.termsAndCondition.model.TermsAndConditionsModel;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -42,13 +43,14 @@ public class TermsAndConditionPresenter extends BasePresenter<TermsAndConditions
             public void onNext(TermsAndConditionsModel.TermsAndConditionsRespones termsAndConditionsRespones) {
                 Log.d(TAG, "onNext: ");
                 getView().hideProgressDialog();
+                getView().naviagteToTermsAndConditonsWebView(termsAndConditionsRespones);
             }
 
             @Override
             public void onError(Throwable e) {
                 ResponseBody responseBody = ((HttpException) e).response().errorBody();
                 getView().hideProgressDialog();
-                getView().showError(responseBody);
+                getView().showError(responseBody, AppContract.ErrorTypes.TERMS_AND_CONDITIONS);
             }
 
             @Override

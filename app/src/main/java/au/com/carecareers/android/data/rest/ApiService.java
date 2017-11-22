@@ -62,8 +62,14 @@ public interface ApiService {
     @Headers({"accept:application/json",})
     @FormUrlEncoded
     @GET(UrlContract.PRIVACY_POLICY)
+    Observable<TermsAndConditionsModel.TermsAndConditionsRespones> getTermsAndConditions(@Header(UrlContract.Keys.AUTHORIZATION) String base64);
+/*
+ @Headers({"accept:application/json",})
+    @FormUrlEncoded
+    @GET(UrlContract.PRIVACY_POLICY)
     Observable<TermsAndConditionsModel.TermsAndConditionsRespones> getTermsAndConditions(@Header(UrlContract.Keys.AUTHORIZATION) String base64,
                                                                                          @Field("type") String type,
                                                                                          @Field("id_or_slug") String idOrSlug);
+*/
 
 }

@@ -11,6 +11,7 @@ import javax.inject.Inject;
 
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.presenter.BasePresenter;
+import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.loginModule.register.model.RegisterContract;
 import au.com.carecareers.android.loginModule.register.model.RegisterModel;
 import au.com.carecareers.android.loginModule.register.model.TaxonomyModel;
@@ -54,7 +55,7 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterV
                             if (throwable instanceof HttpException) {
                                 ResponseBody responseBody = ((HttpException) throwable).response().errorBody();
                                 getView().hideProgressDialog();
-                                getView().showError(responseBody);
+                                getView().showError(responseBody, AppContract.ErrorTypes.REGISTER);
                             }
                         }
                     }
@@ -123,7 +124,7 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterV
                 if (throwable instanceof HttpException) {
                     ResponseBody responseBody = ((HttpException) throwable).response().errorBody();
                     getView().hideProgressDialog();
-                    getView().showError(responseBody);
+                    getView().showError(responseBody, AppContract.ErrorTypes.REGISTER);
                 }
             }
 

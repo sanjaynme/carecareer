@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.presenter.BasePresenter;
+import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.loginModule.forgotPassword.model.ForgotPasswordModel;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -49,7 +50,7 @@ public class ForgotPasswordPresenter extends BasePresenter<ForgotPasswordContrac
                 Log.d(TAG, "onError: ");
                 ResponseBody responseBody = ((HttpException) e).response().errorBody();
                 getView().hideProgressDialog();
-                getView().showError(responseBody);
+                getView().showError(responseBody, AppContract.ErrorTypes.FORGOT_PASSWORD);
             }
         };
     }
