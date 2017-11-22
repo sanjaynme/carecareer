@@ -41,7 +41,7 @@
         <item name="android:layout_marginRight">@dimen/dimen_15dp</item>
         <item name="android:background">@color/editTextBackground</item>
         <item name="android:padding">@dimen/dimen_15dp</item>
-        <item name="android:textSize">@dimen/txt_14sp</item>
+        <item name="android:textSize">@dimen/txt_15sp</item>
         <item name="android:textColor">@color/textColorPrimary</item>
         <item name="android:textColorHint">@color/colorHint</item>
         <item name="android:drawablePadding">@dimen/dimen_20dp</item>
@@ -69,7 +69,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/toolbar_title_sixe</item>
         <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:padding">@dimen/dimen_16dp</item>
+<!--        <item name="android:padding">@dimen/dimen_16dp</item>-->
         <!--<item name="fontName">@string/font_avenir_black</item>-->
         <item name="android:layout_gravity">center</item>
         <item name="android:textAllCaps">false</item>
@@ -84,6 +84,7 @@
         <item name="android:layout_alignParentLeft">true</item>
         <item name="android:layout_centerVertical">true</item>
     </style>
+
 
 
 </resources>

@@ -31,5 +31,6 @@ public interface RegisterContract {
 
         Observable<RegisterModel.RegisterResponse> register(RegisterModel.RegisterRequest request);
 
+        void saveRegisterResponse(RegisterModel.RegisterResponse registerResponse);
     }
 }

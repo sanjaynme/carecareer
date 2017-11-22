@@ -13,42 +13,46 @@
         <au.com.carecareers.android.customViews.CapitalizedTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/btn_register"
             android:layout_centerInParent="true"
             android:layout_marginLeft="@dimen/dimen_45dp"
             android:layout_marginRight="@dimen/dimen_45dp"
             android:gravity="center"
             android:text="@string/tv_landing_welcom_message"
-            android:textColor="@color/colorWhite" />
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/txt_19sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
 
         <Button
             android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/btn_login"
-            android:layout_marginBottom="@dimen/dimen_10dp"
             android:layout_marginLeft="@dimen/dimen_45dp"
             android:layout_marginRight="@dimen/dimen_45dp"
-            android:layout_marginTop="@dimen/dimen_145dp"
             android:background="@drawable/btn_register_and_login"
             android:padding="@dimen/dimen_17dp"
             android:text="@string/tv_register"
-            android:textColor="@color/colorWhite"
-            android:textSize="@dimen/txt_14sp" />
+            android:textColor="@color/colorWhiteTrans"
+            android:textSize="@dimen/txt_15sp" />
 
         <Button
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/dimen_65dp"
+            android:layout_below="@+id/btn_register"
+            android:layout_marginBottom="@dimen/dimen_67dp"
             android:layout_marginLeft="@dimen/dimen_45dp"
             android:layout_marginRight="@dimen/dimen_45dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
             android:background="@drawable/btn_register_and_login"
             android:padding="@dimen/dimen_17dp"
             android:text="@string/tv_login"
-            android:textColor="@color/colorWhite"
-            android:textSize="@dimen/txt_14sp" />
-
+            android:textColor="@color/colorWhiteTrans"
+            android:textSize="@dimen/txt_15sp" />
     </RelativeLayout>
 </RelativeLayout>

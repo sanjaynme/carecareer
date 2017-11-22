@@ -6,6 +6,7 @@ import android.util.Patterns;
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 import javax.inject.Inject;
 
@@ -77,6 +78,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.ILoginView, Logi
 
     @Override
     public boolean validateFields(String username, String password) {
+        Pattern UpperCasePatten = Pattern.compile("[A-Z ]");
         if (username.isEmpty()) {
             getView().showAlertDialog(R.string.err_username);
             return false;
@@ -88,6 +90,9 @@ public class LoginPresenter extends BasePresenter<LoginContract.ILoginView, Logi
             return false;
         } else if (password.length() < 8) {
             getView().showAlertDialog(R.string.err_password_length);
+            return false;
+        } else if (!UpperCasePatten.matcher(password).find()) {
+            getView().showAlertDialog(R.string.err_password_uppercase);
             return false;
         }
         return true;

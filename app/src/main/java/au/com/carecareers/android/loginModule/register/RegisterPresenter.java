@@ -5,6 +5,8 @@ import android.util.Patterns;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 
+import java.util.regex.Pattern;
+
 import javax.inject.Inject;
 
 import au.com.carecareers.android.R;
@@ -25,6 +27,7 @@ import okhttp3.ResponseBody;
 
 public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterView, RegisterContract.IRegisterInteractor>
         implements RegisterContract.IRegisterPresenter {
+
     @Inject
     public RegisterPresenter(RegisterContract.IRegisterInteractor interactor, CompositeDisposable compositeDisposable) {
         super(interactor, compositeDisposable);
@@ -60,6 +63,7 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterV
 
     @Override
     public boolean validateFields(RegisterModel.RegisterRequest registerModel) {
+        Pattern UpperCasePatten = Pattern.compile("[A-Z ]");
         if (registerModel.getFirstName().isEmpty()) {
             getView().showAlertDialog(R.string.err_firstname);
             return false;
@@ -77,6 +81,9 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterV
             return false;
         } else if (registerModel.getPassword().length() < 8) {
             getView().showAlertDialog(R.string.err_password_length);
+            return false;
+        } else if (!UpperCasePatten.matcher(registerModel.getPassword()).find()) {
+            getView().showAlertDialog(R.string.err_password_uppercase);
             return false;
         }
         return true;
@@ -105,6 +112,8 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterV
             @Override
             public void onNext(RegisterModel.RegisterResponse registerResponse) {
                 Log.d(TAG, "onNext: ");
+                getInteractor().saveRegisterResponse(registerResponse);
+
                 getView().hideProgressDialog();
                 getView().navigateToLoginActivity(registerResponse);
             }

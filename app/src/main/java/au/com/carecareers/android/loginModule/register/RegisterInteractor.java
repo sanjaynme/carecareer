@@ -31,4 +31,9 @@ public class RegisterInteractor extends BaseInteractor implements RegisterContra
     public Observable<RegisterModel.RegisterResponse> register(RegisterModel.RegisterRequest request) {
         return getApiService().register(getPreferenceManager().getStringValues(AppContract.Preferences.AUTHORIZATION_KEY, UrlContract.Values.AUTHORIZATION_VALUE), request);
     }
+
+    @Override
+    public void saveRegisterResponse(RegisterModel.RegisterResponse registerResponse) {
+
+    }
 }

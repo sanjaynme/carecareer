@@ -90,16 +90,19 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
             JSONObject jsonObject = new JSONObject(errorResponseBody.string());
             String details = jsonObject.getString("detail");
             String message = jsonObject.getString("messages");
-            JSONObject msgJsonObject = new JSONObject(message);
-            JSONArray arr = msgJsonObject.getJSONArray("password");
-            JSONObject c = arr.getJSONObject(0);
-            JSONArray ar_in = c.getJSONArray("password");
-            String passwordString = ar_in.toString();
 
-            AppLog.d("details:" + details);
             AppLog.d("message:" + message);
-            AppLog.d("password:" + passwordString);
-            return passwordString;
+
+            if (message.length() == 2) {
+                AppLog.d("details:" + details);
+                return details;
+            } else {
+                JSONObject msgJsonObject = new JSONObject(message);
+                JSONArray passwordArray = msgJsonObject.getJSONArray("email");
+                String emailMessage = passwordArray.getString(0);
+                AppLog.d("password:" + emailMessage);
+                return emailMessage;
+            }
         } catch (Exception e) {
             return e.getMessage();
         }

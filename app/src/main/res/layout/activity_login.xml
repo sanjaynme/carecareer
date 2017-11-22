@@ -19,6 +19,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_85dp"
             android:background="@color/colorWhite">
 
             <ImageView
@@ -26,19 +27,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/dimen_50dp"
                 android:contentDescription="@null"
-                android:paddingBottom="@dimen/dimen_50dp"
-                android:paddingLeft="@dimen/dimen_135dp"
-                android:paddingRight="@dimen/dimen_135dp"
-                android:paddingTop="@dimen/dimen_85dp"
-                android:src="@drawable/cc___logo" />
+                android:src="@drawable/logo_splash" />
 
             <EditText
                 android:id="@+id/et_username"
                 style="@style/EditText"
                 android:layout_below="@+id/iv_logo"
                 android:layout_marginBottom="@dimen/dimen_30dp"
-                android:drawableLeft="@drawable/username"
+                android:drawableLeft="@drawable/ic_user"
                 android:drawablePadding="@dimen/dimen_10dp"
                 android:drawableStart="@drawable/username"
                 android:hint="@string/et_username"
@@ -70,8 +68,7 @@
                     android:layout_marginTop="@dimen/dimen_12dp"
                     android:background="@null"
                     android:contentDescription="@null"
-                    android:padding="@dimen/dimen_8dp"
-                    android:src="@drawable/ic_white_eye" />
+                    android:padding="@dimen/dimen_8dp" />
 
             </RelativeLayout>
 
@@ -85,10 +82,10 @@
                 android:layout_marginTop="@dimen/dimen_20dp"
                 android:text="@string/et_forgot_password"
                 android:textColor="@color/textColorPrimary"
-                android:textSize="@dimen/txt_15sp" />
+                android:textSize="@dimen/txt_14sp" />
+
 
         </RelativeLayout>
-
     </ScrollView>
 
     <Button

@@ -93,10 +93,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:background="@color/colorWhite"
+                    android:background="@color/editTextBackground"
                     android:contentDescription="@null"
                     android:padding="@dimen/dimen_10dp"
-                    android:src="@drawable/dropdown_4xd" />
+                    android:src="@drawable/ic_chevron_down" />
             </FrameLayout>
 
             <TextView

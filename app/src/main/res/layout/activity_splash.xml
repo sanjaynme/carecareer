@@ -3,41 +3,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".splashModule.SplashActivity">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
 
         <ImageView
             android:id="@+id/iv_splash"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_50dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="@dimen/dimen_120dp"
-            android:layout_marginRight="@dimen/dimen_120dp"
-            android:adjustViewBounds="true"
+            android:layout_height="wrap_content"
             android:contentDescription="@null"
-            android:src="@drawable/cc___logo" />
+            android:src="@drawable/logo_splash" />
 
         <au.com.carecareers.android.customViews.DotProgressBar
             android:id="@+id/dot_progress_bar"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_30dp"
-            android:layout_below="@+id/iv_splash"
-            android:layout_centerHorizontal="true"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="@dimen/dimen_45dp"
-            android:layout_marginRight="@dimen/dimen_45dp"
+            android:layout_height="@dimen/dimen_15dp"
             android:layout_marginTop="@dimen/dimen_35dp"
             custom:amount="4"
             custom:animationDirection="right"
             custom:duration="@android:integer/config_shortAnimTime"
             custom:endColor="#AD0C35"
             custom:startColor="#AD0C35" />
-
-    </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>

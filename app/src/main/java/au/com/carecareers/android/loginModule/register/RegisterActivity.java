@@ -95,7 +95,6 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
         setupToolbar();
         btnShowHidePassword.setImageResource(R.drawable.eye_open);
         presenter.getStates();
-
         registerModel = new RegisterModel.RegisterRequest();
         metaModel = new RegisterModel.RegisterRequest.Meta();
 

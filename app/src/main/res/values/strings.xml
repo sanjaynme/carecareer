@@ -9,7 +9,7 @@
     <string name="lorem_epsum">
         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. </string>
-    <string name="tv_landing_welcom_message">Welcome to carecareers,the care sector`s job market</string>
+    <string name="tv_landing_welcom_message">Welcome to carecareers,\nthe care sector\'s job market</string>
     <string name="tv_register">Register</string>
     <string name="tv_home">Home</string>
     <string name="tv_login">Login</string>
@@ -40,6 +40,7 @@
     <string name="err_email_valid">Please enter a valid email address.</string>
     <string name="err_password">Please enter a password.</string>
     <string name="err_password_length">Please enter password of length 8 character.</string>
+    <string name="err_password_uppercase">Password must contain one uppercase letter.</string>
     <string name="err_state_name">Please select a state.</string>
     <string name="err_">Error</string>
 

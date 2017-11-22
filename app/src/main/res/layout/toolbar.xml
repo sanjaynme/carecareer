@@ -3,20 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorPrimary"
-    android:minHeight="?attr/actionBarSize">
+    android:minHeight="80dp">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/dimen_16dp"
-        android:src="@drawable/back_icon"
+        android:layout_centerVertical="true"
         android:contentDescription="@null" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:textSize="@dimen/txt_18sp"
+        android:textSize="24sp"
         android:text="titlsdfsd fe"
         android:textColor="@color/colorWhite" />
 
