@@ -19,7 +19,7 @@ public class LandingActivity extends BaseActivity {
     }
 
     @Override
-    public int getLayout() {
+    protected int getLayout() {
         return R.layout.activity_landing;
     }
 
@@ -43,5 +43,10 @@ public class LandingActivity extends BaseActivity {
     void createAccountClicked() {
         RegisterActivity.start(LandingActivity.this);
         transitionActivityOpen();
+    }
+
+    @Override
+    public void setupToolbar() {
+
     }
 }

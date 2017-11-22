@@ -6,12 +6,11 @@ import android.os.Handler;
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.injection.component.BaseComponent;
-import au.com.carecareers.android.loginModule.landing.LandingActivity;
-import au.com.carecareers.android.profileModule.ProfileSetupActivity;
+import au.com.carecareers.android.profileModule.profileSetup.ProfileSetupActivity;
 
 public class SplashActivity extends BaseActivity {
     @Override
-    public int getLayout() {
+    protected int getLayout() {
         return R.layout.activity_splash;
     }
 
@@ -32,14 +31,19 @@ public class SplashActivity extends BaseActivity {
                     }
                 }, 2000);
     }
+
+    @Override
+    public void setupToolbar() {
+
+    }
        /* if (preferenceManager.getBoolValues(Contracts.SharedPrefKeys.IS_LOGGED_IN)) {
             if (preferenceManager.getIntValues(Contracts.SharedPrefKeys.IS_PROFILE_COMPLETE)
                     == Contracts.ProfileLoginStatus.PROFILECOMPLETE) {
-//                HomeActivity.start(SplashActivity.this);
+//                HomeActivity.startForResult(SplashActivity.this);
                 finish();
                 transitionFadeOut();
             } else {
-//                UpdateActivity.start(SplashActivity.this);
+//                UpdateActivity.startForResult(SplashActivity.this);
                 finish();
                 transitionFadeOut();
             }
@@ -48,7 +52,7 @@ public class SplashActivity extends BaseActivity {
                     postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            LandingActivity.start(SplashActivity.this);
+                            LandingActivity.startForResult(SplashActivity.this);
                             finish();
                             transitionFadeOut();
                         }

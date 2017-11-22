@@ -18,4 +18,6 @@ public interface IBaseView {
     void showError(@StringRes int message);
 
     void sendAnalyticsData();
+
+    void setupToolbar();
 }

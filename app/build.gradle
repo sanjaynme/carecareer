@@ -15,6 +15,7 @@ android {
     buildTypes {
         debug {
             buildConfigField "String", "BASE_URL", '"https://carecareers.jxt9.com/api/jobboard/v1/"'
+            resValue "string", "google_maps_key", (project.findProperty("GOOGLE_MAPS_API_KEY") ?: "")
             minifyEnabled false
             shrinkResources false
             debuggable true
@@ -47,6 +48,7 @@ dependencies {
 
     //Injection
     implementation injection.dagger
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     annotationProcessor injection.daggerCompiler
 
     implementation injection.butterKnife
@@ -64,6 +66,10 @@ dependencies {
 
     //UI
     implementation ui.calligraphy
+
+    //Google
+    implementation google.googlePlaces
+    implementation google.googleLocation
 
     //Test
     testImplementation tests.jUnit

@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     android:background="@color/colorPrimary"
     android:minHeight="?attr/actionBarSize"
-    app:navigationIcon="@drawable/ic_back_arrow">
+    app:navigationIcon="@drawable/ic_back_arrow"
+    app:theme="@style/ToolbarTheme">
 
     <TextView
         android:id="@+id/tv_toolbar_title"

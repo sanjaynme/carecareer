@@ -43,12 +43,17 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
     }
 
     @Override
-    public int getLayout() {
+    protected int getLayout() {
         return R.layout.activity_register;
     }
 
     @Override
     protected void injectComponent(BaseComponent baseComponent) {
+
+    }
+
+    @Override
+    public void setupToolbar() {
 
     }
 }

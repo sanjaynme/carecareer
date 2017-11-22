@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="au.com.carecareers.android.profileModule.ProfileSetupActivity">
+    tools:context="au.com.carecareers.android.profileModule.profileSetup.ProfileSetupActivity">
 
     <include
         android:id="@+id/toolbar"
@@ -96,7 +96,7 @@
                     android:textSize="@dimen/txt_14sp" />
 
                 <LinearLayout
-                    android:id="@+id/ll_work_near_here"
+                    android:id="@+id/ll_preferred_location_main"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/dimen_10dp"
@@ -107,7 +107,7 @@
                     android:paddingTop="@dimen/dimen_16dp">
 
                     <TextView
-                        android:id="@+id/tv_work_near_here"
+                        android:id="@+id/tv_preferred_location"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -116,7 +116,7 @@
                         android:textSize="@dimen/txt_14sp" />
 
                     <ImageButton
-                        android:id="@+id/ib_work_near_here"
+                        android:id="@+id/ib_preferred_location"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:background="@null"

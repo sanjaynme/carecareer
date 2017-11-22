@@ -7,6 +7,7 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toolbar;
 
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.application.CareCareerApp;
@@ -27,7 +28,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     protected SharedPreferenceManager preferenceManager;
 
     @LayoutRes
-    public abstract int getLayout();
+    protected abstract int getLayout();
 
     protected abstract void injectComponent(BaseComponent baseComponent);
 
@@ -38,6 +39,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         injectComponent(((CareCareerApp) getApplication()).getBaseComponent());
         ButterKnife.bind(this);
         mProgressDialog = new ProgressDialog(this);
+        setupToolbar();
     }
 
     @Override

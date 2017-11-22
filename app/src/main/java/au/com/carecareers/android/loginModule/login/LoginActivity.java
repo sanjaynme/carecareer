@@ -40,7 +40,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
     }
 
     @Override
-    public int getLayout() {
+    protected int getLayout() {
         return R.layout.activity_login;
     }
 
@@ -65,10 +65,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
 
     @OnClick(R.id.submit_view_register)
     public void loginClicked() {
-
         loginPresenter.loginClicked(new LoginRequest());
     }
-
 
     @Override
     public void navigateToMainActivity() {
@@ -84,5 +82,10 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
             etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
             btnShowHidePassword.setImageResource(R.drawable.ic_white_eye);
         }
+    }
+
+    @Override
+    public void setupToolbar() {
+
     }
 }

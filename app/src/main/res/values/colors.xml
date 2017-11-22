@@ -15,8 +15,9 @@
     <!--Splash screen colors-->
     <color name="colorHint">#BFBFBF</color>
     <color name="editTextBackground">#F7F7F9</color>
-    <color name="textColorPrimary">@color/colorGrey800</color>
-    <color name="textColorSecondary">@color/colorGrey900</color>
+
+    <color name="textColorPrimary">@color/colorGrey900</color>
+    <color name="textColorSecondary">@color/colorGrey800</color>
 
     <!--Grey-->
     <color name="colorGrey100">#f5f5f5</color>
@@ -29,6 +30,8 @@
     <color name="colorGrey800">#424242</color>
     <color name="colorGrey900">#212121</color>
     <color name="colorGrey">#333333</color>
+
+    <color name="colorSearchBackground">#191F28</color>
 
 
 </resources>
