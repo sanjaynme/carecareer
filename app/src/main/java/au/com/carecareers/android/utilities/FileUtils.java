@@ -75,7 +75,7 @@ public class FileUtils {
      * @return the image directory to save photo to
      */
     public static File getImageDirectory() {
-        File filePath = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), File.separator + "Ebtheme");
+        File filePath = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), File.separator + "CareCareer");
 
         if (!filePath.exists()) {
             if (!(filePath.mkdirs() || filePath.isDirectory())) {
