@@ -22,7 +22,7 @@
     <string name="tv_crop">Crop</string>
     <string name="tv_cancel">Cancel</string>
     <string name="tv_turn_on">Turn On</string>
-    <string name="tv_terms_conditions">By registering , you are agreeing to the <u>Terms and Conditions</u></string>
+    <string name="tv_terms_conditions">By registering , you are agreeing to the \n <u>Terms &amp; Conditions</u></string>
     <string name="tv_forgot_email">Enter the email you registered with:</string>
     <string name="tv_submit">Submit</string>
     <string name="tv_skip"><u>Skip</u></string>
@@ -61,7 +61,7 @@
     <string name="hint_state">State *</string>
     <string name="hint_first_name">First Name *</string>
     <string name="hint_last_name">Last Name *</string>
-    <string name="hint_email">Email *</string>
+    <string name="hint_email">Email address *</string>
     <string name="hint_sign_up_password">Password *</string>
 
     <string name="hint_phone_number">Phone number</string>

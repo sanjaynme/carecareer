@@ -13,13 +13,13 @@ import io.reactivex.Completable;
 public class ForgotPasswordContract {
 
     public interface IForgotPasswordView extends IBaseView {
-
         void navigateToLoginActivity();
     }
 
     public interface IForgotPresenter extends IBasePresenter<IForgotPasswordView, IForgotInteractor> {
-
         void forgotPassword(ForgotPasswordModel.ForgotPasswordRequest forgotEmail);
+
+        boolean validateFields(ForgotPasswordModel.ForgotPasswordRequest forgotPasswordRequest);
     }
 
     public interface IForgotInteractor extends IBaseInteractor {

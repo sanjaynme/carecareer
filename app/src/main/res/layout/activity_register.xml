@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/activity_register"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
 
     <include
         android:id="@+id/sign_up_toolbar"
@@ -25,24 +26,21 @@
                 android:layout_marginBottom="@dimen/dimen_30dp"
                 android:layout_marginTop="@dimen/dimen_45dp"
                 android:hint="@string/hint_first_name"
-                android:inputType="textPersonName|textCapWords"
-                android:textSize="@dimen/txt_14sp" />
+                android:inputType="textPersonName|textCapWords" />
 
             <EditText
                 android:id="@+id/et_lastname"
                 style="@style/EditText"
                 android:layout_marginBottom="@dimen/dimen_30dp"
                 android:hint="@string/hint_last_name"
-                android:inputType="textPersonName|textCapWords"
-                android:textSize="@dimen/txt_14sp" />
+                android:inputType="textPersonName|textCapWords" />
 
             <EditText
                 android:id="@+id/et_email"
                 style="@style/EditText"
                 android:layout_marginBottom="@dimen/dimen_30dp"
                 android:hint="@string/hint_email"
-                android:inputType="textEmailAddress"
-                android:textSize="@dimen/txt_14sp" />
+                android:inputType="textEmailAddress" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -54,7 +52,8 @@
                     style="@style/EditText"
                     android:hint="@string/hint_sign_up_password"
                     android:inputType="textPassword"
-                    android:textSize="@dimen/txt_14sp" />
+                    android:paddingEnd="@dimen/dimen_40dp"
+                    android:paddingRight="@dimen/dimen_40dp" />
 
                 <ImageButton
                     android:id="@+id/btn_show_hide_register_password"
@@ -62,9 +61,9 @@
                     android:layout_height="wrap_content"
                     android:layout_alignEnd="@id/et_sign_up_password"
                     android:layout_alignRight="@id/et_sign_up_password"
-                    android:layout_marginEnd="@dimen/dimen_10dp"
-                    android:layout_marginRight="@dimen/dimen_10dp"
-                    android:layout_marginTop="@dimen/dimen_12dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/dimen_15dp"
+                    android:layout_marginRight="@dimen/dimen_15dp"
                     android:background="@null"
                     android:contentDescription="@null"
                     android:padding="@dimen/dimen_10dp" />
@@ -72,32 +71,31 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/dimen_35dp"
+                android:layout_height="48dp"
                 android:layout_marginEnd="@dimen/dimen_15dp"
                 android:layout_marginLeft="@dimen/dimen_15dp"
                 android:layout_marginRight="@dimen/dimen_15dp"
                 android:layout_marginStart="@dimen/dimen_15dp"
                 android:background="@color/editTextBackground"
-                android:orientation="horizontal"
-                android:padding="@dimen/dimen_15dp">
+                android:orientation="horizontal">
 
                 <Spinner
                     android:id="@+id/spinner_state"
+                    style="@style/Spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:gravity="center"
-                    android:spinnerMode="dropdown" />
+                    android:spinnerMode="dropdown"
+                    android:visibility="gone" />
 
-                <ImageView
-                    android:id="@+id/iv_spinner_states"
+                <ProgressBar
+                    android:id="@+id/spinner_progressbar"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:background="@color/editTextBackground"
-                    android:contentDescription="@null"
-                    android:padding="@dimen/dimen_10dp"
-                    android:src="@drawable/ic_chevron_down" />
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical|end"
+                    android:visibility="visible" />
+
             </FrameLayout>
 
             <TextView
@@ -109,9 +107,10 @@
                 android:layout_marginRight="@dimen/dimen_16dp"
                 android:layout_marginTop="@dimen/dimen_35dp"
                 android:lineSpacingExtra="@dimen/dimen_10dp"
+                android:paddingBottom="@dimen/dimen_15dp"
                 android:text="@string/tv_terms_conditions"
                 android:textColor="@color/textColorPrimary"
-                android:textSize="@dimen/txt_12sp" />
+                android:textSize="@dimen/txt_15sp" />
 
         </LinearLayout>
     </ScrollView>

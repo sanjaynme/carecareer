@@ -7,7 +7,6 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toolbar;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -24,6 +23,12 @@ import butterknife.ButterKnife;
 import okhttp3.ResponseBody;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
+import static au.com.carecareers.android.contracts.AppContract.ErrorTypes.CHANGE_PASSWORD;
+import static au.com.carecareers.android.contracts.AppContract.ErrorTypes.FORGOT_PASSWORD;
+import static au.com.carecareers.android.contracts.AppContract.ErrorTypes.LOGIN;
+import static au.com.carecareers.android.contracts.AppContract.ErrorTypes.REGISTER;
+import static au.com.carecareers.android.contracts.AppContract.ErrorTypes.TERMS_AND_CONDITIONS;
+
 /**
  * Created by Nischal Manandhar on 13/11/2017.
  */
@@ -31,6 +36,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public abstract class BaseActivity extends AppCompatActivity implements IBaseView {
     private ProgressDialog mProgressDialog;
     protected SharedPreferenceManager preferenceManager;
+    private String errorMessage;
 
     @LayoutRes
     protected abstract int getLayout();
@@ -82,31 +88,46 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     }
 
     @Override
-    public void showError(ResponseBody errorResponseBody) {
-        EbAlertDialog.showAlertDialog(this, getErrorMessage(errorResponseBody));
+    public void showError(ResponseBody errorResponseBody, int errorType) {
+        EbAlertDialog.showAlertDialog(this, getErrorMessage(errorResponseBody, errorType));
     }
 
-    private String getErrorMessage(ResponseBody errorResponseBody) {
-        try {
-            JSONObject jsonObject = new JSONObject(errorResponseBody.string());
-            String details = jsonObject.getString("detail");
-            String message = jsonObject.getString("messages");
+    private String getErrorMessage(ResponseBody errorResponseBody, int errorType) {
+        switch (errorType) {
+            case REGISTER:
+                try {
+                    JSONObject jsonObject = new JSONObject(errorResponseBody.string());
+                    String message = jsonObject.getString("messages");
 
-            AppLog.d("message:" + message);
+                    JSONObject msgJsonObject = new JSONObject(message);
+                    JSONArray passwordArray = msgJsonObject.getJSONArray("email");
+                    errorMessage = passwordArray.getString(0);
+                    AppLog.d("password:" + errorMessage);
+                } catch (Exception e) {
+                    return e.getMessage();
+                }
+                break;
 
-            if (message.length() == 2) {
-                AppLog.d("details:" + details);
-                return details;
-            } else {
-                JSONObject msgJsonObject = new JSONObject(message);
-                JSONArray passwordArray = msgJsonObject.getJSONArray("email");
-                String emailMessage = passwordArray.getString(0);
-                AppLog.d("password:" + emailMessage);
-                return emailMessage;
-            }
-        } catch (Exception e) {
-            return e.getMessage();
+            case LOGIN:
+                try {
+                    JSONObject jsonObject = new JSONObject(errorResponseBody.string());
+                    errorMessage = jsonObject.getString("detail");
+                    AppLog.d("details:" + errorMessage);
+                } catch (Exception e) {
+                    return e.getMessage();
+                }
+                break;
+
+            case FORGOT_PASSWORD:
+                break;
+
+            case TERMS_AND_CONDITIONS:
+                break;
+
+            case CHANGE_PASSWORD:
+                break;
         }
+        return errorMessage;
     }
 
     @Override
@@ -129,4 +150,5 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     protected void transitionActivityOpen() {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
+
 }

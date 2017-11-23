@@ -8,6 +8,14 @@ public class AppContract {
     private AppContract() {
 
     }
+    public class ErrorTypes {
+        public final static int LOGIN = 1;
+        public final static int REGISTER = 2;
+        public final static int TERMS_AND_CONDITIONS = 3;
+        public final static int FORGOT_PASSWORD = 4;
+        public final static int CHANGE_PASSWORD = 5;
+
+    }
 
     public class Preferences {
         public final static String AUTHORIZATION_KEY = "authorization_key";

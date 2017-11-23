@@ -15,7 +15,6 @@ public class LoginContract {
     public interface ILoginView extends IBaseView {
         void navigateToHomeActivity();
 
-        void navigateToForgotPassword();
 
     }
 
@@ -24,7 +23,6 @@ public class LoginContract {
 
         boolean validateFields(String username, String password);
 
-        void forgetPasswordButtonClicked();
     }
 
     public interface ILoginInteractor extends IBaseInteractor {

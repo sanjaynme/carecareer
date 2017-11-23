@@ -13,8 +13,7 @@ import butterknife.OnClick;
 
 public class LandingActivity extends BaseActivity {
     public static void start(Context context) {
-        Intent intent = new Intent();
-        intent.setClass(context, LandingActivity.class);
+        Intent intent = new Intent(context, LandingActivity.class);
         context.startActivity(intent);
     }
 
@@ -31,11 +30,6 @@ public class LandingActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            Window window = getWindow();
-//            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-//            window.setStatusBarColor(Color.TRANSPARENT);
-//        }
     }
 
 
@@ -54,5 +48,10 @@ public class LandingActivity extends BaseActivity {
     @Override
     public void setupToolbar() {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

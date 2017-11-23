@@ -46,8 +46,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
     LoginModel.LoginRequest loginModel;
 
     public static void start(Context context) {
-        Intent intent = new Intent();
-        intent.setClass(context, LoginActivity.class);
+        Intent intent = new Intent(context, LoginActivity.class);
         context.startActivity(intent);
     }
 
@@ -67,7 +66,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
         ViewUtils.setupUI(findViewById(R.id.activity_login), this);
         presenter.onAttach(this);
         loginModel = new LoginModel.LoginRequest();
-        btnShowHidePassword.setImageResource(R.drawable.eye_open);
+        btnShowHidePassword.setImageResource(R.drawable.ic_eye);
     }
 
     @Override
@@ -88,7 +87,9 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
 
     @OnClick(R.id.tv_forgot_password)
     void forgetPasswordButton() {
-        presenter.forgetPasswordButtonClicked();
+        finish();
+        ForgotPasswordActivity.start(LoginActivity.this);
+        transitionActivityOpen();
     }
 
     @Override
@@ -100,21 +101,14 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
         transitionActivityOpen();
     }
 
-    @Override
-    public void navigateToForgotPassword() {
-        ForgotPasswordActivity.start(LoginActivity.this);
-        transitionActivityOpen();
-    }
-
-
     @OnClick(R.id.btn_show_hide_login_password)
     void showHidePassword() {
         if (etPassword.getTransformationMethod() == PasswordTransformationMethod.getInstance()) {
             etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-            btnShowHidePassword.setImageResource(R.drawable.eye_blocked);
+            btnShowHidePassword.setImageResource(R.drawable.ic_eye_slash);
         } else if (etPassword.getTransformationMethod() == HideReturnsTransformationMethod.getInstance()) {
             etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-            btnShowHidePassword.setImageResource(R.drawable.eye_open);
+            btnShowHidePassword.setImageResource(R.drawable.ic_eye);
         }
     }
 

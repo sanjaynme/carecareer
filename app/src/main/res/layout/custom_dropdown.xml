@@ -3,10 +3,12 @@
     android:id="@+id/tv_default_first"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/light_blue_A400"
+    android:background="@color/editTextBackground"
     android:gravity="center_vertical"
-    tools:text="@string/hint_state"
-    android:textColor="@color/colorGrey900" />
+    android:textColor="@color/textColorPrimary"
+    android:textColorHint="@color/colorHint"
+    android:textSize="@dimen/txt_15sp"
+    tools:text="@string/hint_state" />
 
 
 

@@ -8,6 +8,7 @@ import au.com.carecareers.android.loginModule.forgotPassword.model.ForgotPasswor
 import au.com.carecareers.android.loginModule.login.model.LoginModel;
 import au.com.carecareers.android.loginModule.register.model.RegisterModel;
 import au.com.carecareers.android.loginModule.register.model.TaxonomyModel;
+import au.com.carecareers.android.loginModule.termsAndCondition.model.TermsAndConditionsModel;
 import au.com.carecareers.android.splashModule.model.AuthenticationModel;
 import io.reactivex.Completable;
 import io.reactivex.Observable;
@@ -18,6 +19,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 /**
  * Created by Nischal Manandhar on 14/11/2017.
@@ -57,4 +59,12 @@ public interface ApiService {
     @POST(UrlContract.FORGOT_PASSWORD)
     Completable forgotPassword(@Header(UrlContract.Keys.AUTHORIZATION) String base64,
                                @Body ForgotPasswordModel.ForgotPasswordRequest forgotEmail);
+
+    @Headers({"accept:application/json",})
+    @GET(UrlContract.PRIVACY_POLICY)
+    Observable<TermsAndConditionsModel.TermsAndConditionsRespones> getTermsAndConditions(@Header(UrlContract.Keys.AUTHORIZATION) String base64,
+                                                                                         @Path("type") String type,
+                                                                                         @Path("id_or_slug") String idOrSlug);
+
+
 }

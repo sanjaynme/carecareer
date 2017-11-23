@@ -1,9 +1,11 @@
 package au.com.carecareers.android.loginModule.forgotPassword;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -50,8 +52,7 @@ public class ForgotPasswordActivity extends BaseActivity implements ForgotPasswo
     }
 
     public static void start(Context context) {
-        Intent intent = new Intent();
-        intent.setClass(context, ForgotPasswordActivity.class);
+        Intent intent = new Intent(context, ForgotPasswordActivity.class);
         context.startActivity(intent);
     }
 
@@ -60,11 +61,6 @@ public class ForgotPasswordActivity extends BaseActivity implements ForgotPasswo
         super.onCreate(savedInstanceState);
         presenter.onAttach(this);
         ViewUtils.setupUI(findViewById(R.id.activity_forgot_password), this);
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
     }
 
     @Override
@@ -89,7 +85,9 @@ public class ForgotPasswordActivity extends BaseActivity implements ForgotPasswo
     public void onForgotPasswordClicked() {
         forgotPasswordRequest = new ForgotPasswordModel.ForgotPasswordRequest();
         forgotPasswordRequest.setEmail(etForgotEmail.getText().toString().trim());
-        presenter.forgotPassword(forgotPasswordRequest);
+        if (presenter.validateFields(forgotPasswordRequest)) {
+            presenter.forgotPassword(forgotPasswordRequest);
+        }
     }
 
     @Override
@@ -102,10 +100,27 @@ public class ForgotPasswordActivity extends BaseActivity implements ForgotPasswo
     @Override
     public void navigateToLoginActivity() {
         etForgotEmail.getText().clear();
-        finish();
-        LoginActivity.start(this);
-        transitionActivityOpen();
+        showForgetMessageDialog("Email is sent.");
     }
 
+    private void showForgetMessageDialog(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(message);
+        builder.setTitle("Care Career");
+        builder.setCancelable(false);
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+                hideProgressDialog();
+                finish();
+                LoginActivity.start(ForgotPasswordActivity.this);
+                transitionBackPressed();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
 
 }

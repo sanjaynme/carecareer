@@ -59,7 +59,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
     }
 
     @Override
-    public void showError(ResponseBody errorResponse) {
+    public void showError(ResponseBody errorResponse,int errorType) {
 
     }
 

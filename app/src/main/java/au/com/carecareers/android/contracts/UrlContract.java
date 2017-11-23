@@ -14,6 +14,8 @@ public class UrlContract {
     public static final String GETSTATES = "taxonomies/state";
     public static final String REGISTER = "candidates/register";
     public static final String FORGOT_PASSWORD = "candidates/forgot-password";
+//    public static final String PRIVACY_POLICY = "Contents/get_content";
+    public static final String PRIVACY_POLICY = "contents/{type}/{id_or_slug}";
 
 
     public class Keys {
@@ -26,4 +28,5 @@ public class UrlContract {
         public final static String PASSWORD = "password";
         public final static String AUTHORIZATION_VALUE = "password";
     }
+
 }

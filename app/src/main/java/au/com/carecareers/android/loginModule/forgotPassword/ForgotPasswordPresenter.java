@@ -1,6 +1,7 @@
 package au.com.carecareers.android.loginModule.forgotPassword;
 
 import android.util.Log;
+import android.util.Patterns;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 
@@ -8,6 +9,7 @@ import javax.inject.Inject;
 
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.presenter.BasePresenter;
+import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.loginModule.forgotPassword.model.ForgotPasswordModel;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -35,6 +37,18 @@ public class ForgotPasswordPresenter extends BasePresenter<ForgotPasswordContrac
                 .subscribeWith(getObserver()));
     }
 
+    @Override
+    public boolean validateFields(ForgotPasswordModel.ForgotPasswordRequest forgotPasswordRequest) {
+        if (forgotPasswordRequest.getEmail().isEmpty()) {
+            getView().showAlertDialog(R.string.err_email);
+            return false;
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(forgotPasswordRequest.getEmail()).matches()) {
+            getView().showAlertDialog(R.string.err_email_valid);
+            return false;
+        }
+        return true;
+    }
+
     private DisposableCompletableObserver getObserver() {
         return new DisposableCompletableObserver() {
             @Override
@@ -49,7 +63,7 @@ public class ForgotPasswordPresenter extends BasePresenter<ForgotPasswordContrac
                 Log.d(TAG, "onError: ");
                 ResponseBody responseBody = ((HttpException) e).response().errorBody();
                 getView().hideProgressDialog();
-                getView().showError(responseBody);
+                getView().showError(responseBody, AppContract.ErrorTypes.FORGOT_PASSWORD);
             }
         };
     }

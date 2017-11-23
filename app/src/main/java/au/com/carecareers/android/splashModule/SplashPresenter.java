@@ -40,4 +40,8 @@ public class SplashPresenter extends BasePresenter<SplashContract.ISplashView, S
                 }));
     }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+    }
 }

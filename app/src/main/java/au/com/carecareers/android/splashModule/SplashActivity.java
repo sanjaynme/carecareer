@@ -1,7 +1,6 @@
 package au.com.carecareers.android.splashModule;
 
 import android.os.Bundle;
-import android.os.Handler;
 
 import javax.inject.Inject;
 
@@ -10,7 +9,6 @@ import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.loginModule.landing.LandingActivity;
 import au.com.carecareers.android.splashModule.injection.SplashModule;
-import au.com.carecareers.android.profileModule.profileSetup.ProfileSetupActivity;
 
 public class SplashActivity extends BaseActivity implements SplashContract.ISplashView {
     @Inject
@@ -30,13 +28,7 @@ public class SplashActivity extends BaseActivity implements SplashContract.ISpla
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presenter.onAttach(this);
-        new Handler().
-                postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        presenter.auth();
-                    }
-                }, 2000);
+        presenter.auth();
     }
 
     @Override
@@ -51,7 +43,13 @@ public class SplashActivity extends BaseActivity implements SplashContract.ISpla
     public void setupToolbar() {
 
     }
-       /* if (preferenceManager.getBoolValues(Contracts.SharedPrefKeys.IS_LOGGED_IN)) {
+
+    @Override
+    protected void onDestroy() {
+        presenter.onDetach();
+        super.onDestroy();
+    }
+    /* if (preferenceManager.getBoolValues(Contracts.SharedPrefKeys.IS_LOGGED_IN)) {
             if (preferenceManager.getIntValues(Contracts.SharedPrefKeys.IS_PROFILE_COMPLETE)
                     == Contracts.ProfileLoginStatus.PROFILECOMPLETE) {
 //                HomeActivity.start(SplashActivity.this);
@@ -74,4 +72,10 @@ public class SplashActivity extends BaseActivity implements SplashContract.ISpla
                     }, 2000);
         }
     }*/
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

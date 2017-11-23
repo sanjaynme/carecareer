@@ -30,7 +30,7 @@
     </style>
 
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/colorWhite</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/colorSplash</item>
     </style>
 
     <style name="EditText">
@@ -43,20 +43,22 @@
         <item name="android:textSize">@dimen/txt_15sp</item>
         <item name="android:textColor">@color/textColorPrimary</item>
         <item name="android:textColorHint">@color/colorHint</item>
-        <item name="android:drawablePadding">@dimen/dimen_20dp</item>
     </style>
 
     <style name="Spinner">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:background">@color/colorHint</item>
-        <item name="android:layout_marginLeft">11dp</item>
-        <item name="android:layout_marginRight">@dimen/dimen_16dp</item>
+        <item name="android:background">@drawable/spinner_bg</item>
+        <item name="android:padding">@dimen/dimen_15dp</item>
+        <item name="android:textSize">@dimen/txt_15sp</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textColorHint">@color/colorHint</item>
+        <item name="android:singleLine">true</item>
     </style>
 
     <style name="Button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:padding">@dimen/dimen_15dp</item>
+        <item name="android:textAllCaps">true</item>
         <item name="android:background">@drawable/register_and_login</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textSize">@dimen/txt_14sp</item>
@@ -68,7 +70,9 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/toolbar_title_size</item>
         <item name="android:textColor">@color/colorWhite</item>
+
         <item name="android:gravity">center</item>
+
         <item name="android:layout_gravity">center</item>
 
     </style>
@@ -84,5 +88,5 @@
     </style>
 
 
-
+    <dimen name="edittext_height">35dp</dimen>
 </resources>

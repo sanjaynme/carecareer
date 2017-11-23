@@ -9,7 +9,7 @@ import io.reactivex.Observable;
  * Created by Nikesh on 11/15/2017.
  */
 
-public interface RegisterContract {
+public class RegisterContract {
     public interface IRegisterView extends IBaseView {
         void navigateToLoginActivity(RegisterModel.RegisterResponse registerResponse);
 

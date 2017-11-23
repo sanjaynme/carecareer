@@ -12,6 +12,7 @@ import javax.inject.Inject;
 
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.presenter.BasePresenter;
+import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.loginModule.login.model.LoginModel;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -54,7 +55,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.ILoginView, Logi
                 if (e instanceof HttpException) {
                     ResponseBody responseBody = ((HttpException) e).response().errorBody();
                     getView().hideProgressDialog();
-                    getView().showError(responseBody);
+                    getView().showError(responseBody, AppContract.ErrorTypes.LOGIN);
                 }
 
                 if (e instanceof IOException) {
@@ -74,7 +75,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.ILoginView, Logi
     public boolean validateFields(String username, String password) {
         Pattern UpperCasePatten = Pattern.compile("[A-Z ]");
         if (username.isEmpty()) {
-            getView().showAlertDialog(R.string.err_username);
+            getView().showAlertDialog(R.string.err_email);
             return false;
         } else if (!Patterns.EMAIL_ADDRESS.matcher(username).matches()) {
             getView().showAlertDialog(R.string.err_email_valid);
@@ -92,8 +93,4 @@ public class LoginPresenter extends BasePresenter<LoginContract.ILoginView, Logi
         return true;
     }
 
-    @Override
-    public void forgetPasswordButtonClicked() {
-        getView().navigateToForgotPassword();
-    }
 }

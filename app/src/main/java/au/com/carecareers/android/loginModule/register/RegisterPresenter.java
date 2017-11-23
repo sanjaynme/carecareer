@@ -11,6 +11,7 @@ import javax.inject.Inject;
 
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.presenter.BasePresenter;
+import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.loginModule.register.model.RegisterContract;
 import au.com.carecareers.android.loginModule.register.model.RegisterModel;
 import au.com.carecareers.android.loginModule.register.model.TaxonomyModel;
@@ -34,7 +35,6 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterV
     }
 
     public void getStates() {
-        getView().showProgressDialog(R.string.msg_loading);
         getCompositeDisposable().add(getInteractor().getStates()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -42,7 +42,7 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterV
                     @Override
                     public void accept(TaxonomyModel.TaxonomyResponse taxonomyResponse) throws Exception {
                         if (isViewAttached()) {
-                            getView().hideProgressDialog();
+//                            getView().hideProgressDialog();
                             getView().setUpStatesSpinner(taxonomyResponse);
                         }
                     }
@@ -51,11 +51,9 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterV
                     public void accept(Throwable throwable) throws Exception {
                         if (isViewAttached()) {
                             Log.d(TAG, "onError: ");
-                            if (throwable instanceof HttpException) {
-                                ResponseBody responseBody = ((HttpException) throwable).response().errorBody();
-                                getView().hideProgressDialog();
-                                getView().showError(responseBody);
-                            }
+                            ResponseBody responseBody = ((HttpException) throwable).response().errorBody();
+//                            getView().hideProgressDialog();
+                            getView().showError(responseBody, AppContract.ErrorTypes.REGISTER);
                         }
                     }
                 }));
@@ -123,7 +121,7 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterV
                 if (throwable instanceof HttpException) {
                     ResponseBody responseBody = ((HttpException) throwable).response().errorBody();
                     getView().hideProgressDialog();
-                    getView().showError(responseBody);
+                    getView().showError(responseBody, AppContract.ErrorTypes.REGISTER);
                 }
             }
 
