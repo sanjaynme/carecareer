@@ -3,7 +3,6 @@ package au.com.carecareers.android.loginModule.register.model;
 import au.com.carecareers.android.base.interactor.IBaseInteractor;
 import au.com.carecareers.android.base.presenter.IBasePresenter;
 import au.com.carecareers.android.base.view.IBaseView;
-import au.com.carecareers.android.loginModule.login.model.LoginRequest;
 import io.reactivex.Observable;
 
 /**
@@ -12,15 +11,26 @@ import io.reactivex.Observable;
 
 public interface RegisterContract {
     public interface IRegisterView extends IBaseView {
-        void navigateToMainActivity();
+        void navigateToLoginActivity(RegisterModel.RegisterResponse registerResponse);
+
+        void setUpStatesSpinner(TaxonomyModel.TaxonomyResponse taxonomyResponse);
+    }
+
+    public interface IRegisterPresenter extends IBasePresenter<RegisterContract.IRegisterView, RegisterContract.IRegisterInteractor> {
+        void getStates();
+
+        boolean validateFields(RegisterModel.RegisterRequest registerModel);
+
+        void sendRegisterDetails(RegisterModel.RegisterRequest registerModel);
+
+        boolean validateSpinner(int selectedItem);
     }
 
     public interface IRegisterInteractor extends IBaseInteractor {
-        Observable<RegisterResponse> login(LoginRequest request);
+        Observable<TaxonomyModel.TaxonomyResponse> getStates();
 
-    }
+        Observable<RegisterModel.RegisterResponse> register(RegisterModel.RegisterRequest request);
 
-    public interface IRegisterPresenter extends IBasePresenter<IRegisterView, IRegisterInteractor> {
-        void registerClicked(RegisterRequest registerRequest);
+        void saveRegisterResponse(RegisterModel.RegisterResponse registerResponse);
     }
 }

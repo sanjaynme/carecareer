@@ -10,9 +10,13 @@
 
     <!--TextViews-->
     <string name="lorem_epsum">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </string>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. </string>
+    <string name="tv_landing_welcom_message">Welcome to carecareers,\nthe care sector\'s job market</string>
     <string name="tv_register">Register</string>
+    <string name="tv_home">Home</string>
     <string name="tv_login">Login</string>
+    <string name="tv_terms_and_conditions">Terms And Conditions</string>
     <string name="tv_uploading">Uploading...</string>
     <string name="tv_upload_percent">Upload percent</string>
     <string name="tv_crop">Crop</string>
@@ -30,6 +34,20 @@
     <string name="tv_preferred_location">Preferred Location(s)</string>
     <string name="tv_preferred_industry">Preferred Industry(s)</string>
     <string name="tv_your_career_move">Your Career Move</string>
+    <string name="tv_forgot_password">Forgot Password</string>
+
+    <!--Error-->
+    <string name="err_firstname">Please enter your first name.</string>
+    <string name="err_username">Please enter your username.</string>
+    <string name="err_lastname">Please enter your last name.</string>
+    <string name="err_email">Please enter a email address.</string>
+    <string name="err_email_valid">Please enter a valid email address.</string>
+    <string name="err_password">Please enter a password.</string>
+    <string name="err_password_length">Please enter password of length 8 character.</string>
+    <string name="err_password_uppercase">Password must contain one uppercase letter.</string>
+    <string name="err_state_name">Please select a state.</string>
+    <string name="err_">Error</string>
+
 
     <!--EditTexts-->
     <string name="et_username">Username</string>
@@ -53,6 +71,20 @@
     <string name="hint_work_type">Work type*</string>
     <string name="hint_what_is_your_next_career_move">What is your next career move?</string>
     <string name="hint_search">Search</string>
+
+    <!--Messages-->
+    <string name="msg_loading">Loading...</string>
+
+
+    <!--Fonts-->
+    <string name="font_sourcesanpro_bold">fonts/SourceSansPro-Bold.ttf</string>
+    <string name="font_sourcesanpro_boldlt">fonts/SourceSansPro-Boldlt.ttf</string>
+    <string name="font_sourcesanpro_extra_light">fonts/SourceSansPro-ExtraLight.ttf</string>
+    <string name="font_sourcesanpro_extra_lightIt">fonts/SourceSansPro-ExtraLightIt.ttf</string>
+    <string name="font_sourcesanpro_It">fonts/SourceSansPro-It.ttf</string>
+    <string name="font_sourcesanpro_light">fonts/SourceSansPro-Light.ttf</string>
+    <string name="font_sourcesanpro_lightlt">fonts/SourceSansPro-LightIt.ttf</string>
+    <string name="font_sourcesanpro_regular">fonts/SourceSansPro-Regular.ttf</string>
 
 
     <string name="menu_done">Done</string>

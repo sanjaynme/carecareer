@@ -4,8 +4,7 @@ package au.com.carecareers.android.loginModule.login;
 import au.com.carecareers.android.base.interactor.IBaseInteractor;
 import au.com.carecareers.android.base.presenter.IBasePresenter;
 import au.com.carecareers.android.base.view.IBaseView;
-import au.com.carecareers.android.loginModule.login.model.LoginRequest;
-import au.com.carecareers.android.loginModule.login.model.LoginResponse;
+import au.com.carecareers.android.loginModule.login.model.LoginModel;
 import io.reactivex.Observable;
 
 /**
@@ -14,14 +13,23 @@ import io.reactivex.Observable;
 
 public class LoginContract {
     public interface ILoginView extends IBaseView {
-        void navigateToMainActivity();
+        void navigateToHomeActivity();
+
+        void navigateToForgotPassword();
+
     }
 
     public interface ILoginPresenter extends IBasePresenter<ILoginView, ILoginInteractor> {
-        void loginClicked(LoginRequest loginRequest);
+        void loginClicked(String username, String password);
+
+        boolean validateFields(String username, String password);
+
+        void forgetPasswordButtonClicked();
     }
 
     public interface ILoginInteractor extends IBaseInteractor {
-        Observable<LoginResponse> login(LoginRequest request);
+        Observable<LoginModel.LoginRespones> login(String username, String password);
+
+        void saveLoginResponse(LoginModel.LoginRespones loginRespones);
     }
 }

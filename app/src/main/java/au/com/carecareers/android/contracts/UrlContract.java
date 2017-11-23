@@ -9,12 +9,21 @@ public class UrlContract {
 
     }
 
-    public static final String LOG_IN = "register";
-    public static final String AUTHORIZE = "auth";
+    public static final String AUTHORIZE = "oauth/application";
+    public static final String LOG_IN = "oauth/candidate";
+    public static final String GETSTATES = "taxonomies/state";
+    public static final String REGISTER = "candidates/register";
+    public static final String FORGOT_PASSWORD = "candidates/forgot-password";
+
 
     public class Keys {
-        public final static String COUNTRY_CODE = "country_code";
-        public static final String PHONE = "phone";
+        public static final String GRANT_TYPE = "grant_type";
+        public final static String AUTHORIZATION = "authorization";
+    }
 
+    public class Values {
+        public final static String CLIENT_CREDENTIALS = "client_credentials";
+        public final static String PASSWORD = "password";
+        public final static String AUTHORIZATION_VALUE = "password";
     }
 }

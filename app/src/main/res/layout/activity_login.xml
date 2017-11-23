@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,13 +12,14 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/submit_view_register"
+        android:layout_above="@+id/btn_login"
         android:layout_below="@+id/login_toolbar"
         android:fillViewport="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_85dp"
             android:background="@color/colorWhite">
 
             <ImageView
@@ -27,17 +27,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_margin="@dimen/dimen_50dp"
+                android:layout_marginBottom="@dimen/dimen_50dp"
                 android:contentDescription="@null"
-                android:src="@drawable/ic_logo" />
+                android:src="@drawable/logo_splash" />
 
             <EditText
                 android:id="@+id/et_username"
                 style="@style/EditText"
                 android:layout_below="@+id/iv_logo"
-                android:layout_marginBottom="@dimen/dimen_16dp"
-                android:drawableLeft="@drawable/ic_logo"
-                android:drawableStart="@drawable/ic_logo"
+                android:layout_marginBottom="@dimen/dimen_30dp"
+                android:drawableLeft="@drawable/ic_user"
+                android:drawablePadding="@dimen/dimen_10dp"
+                android:drawableStart="@drawable/username"
                 android:hint="@string/et_username"
                 android:inputType="textEmailAddress" />
 
@@ -50,23 +51,24 @@
                 <EditText
                     android:id="@+id/et_password"
                     style="@style/EditText"
-                    android:layout_marginBottom="@dimen/dimen_16dp"
-                    android:drawableLeft="@drawable/ic_logo"
-                    android:drawableStart="@drawable/ic_logo"
+                    android:drawableLeft="@drawable/password"
+                    android:drawablePadding="@dimen/dimen_10dp"
+                    android:drawableStart="@drawable/password"
                     android:hint="@string/et_password"
                     android:inputType="textPassword" />
 
                 <ImageButton
-                    android:id="@+id/btn_show_hide_password"
+                    android:id="@+id/btn_show_hide_login_password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignEnd="@id/et_password"
                     android:layout_alignRight="@id/et_password"
                     android:layout_marginEnd="@dimen/dimen_10dp"
                     android:layout_marginRight="@dimen/dimen_10dp"
-                    android:layout_marginTop="@dimen/dimen_8dp"
+                    android:layout_marginTop="@dimen/dimen_12dp"
+                    android:background="@null"
                     android:contentDescription="@null"
-                    android:src="@drawable/ic_white_eye" />
+                    android:padding="@dimen/dimen_8dp" />
 
             </RelativeLayout>
 
@@ -75,22 +77,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rv_password"
-                android:layout_marginBottom="@dimen/dimen_16dp"
-                android:layout_marginLeft="@dimen/dimen_20dp"
-                android:layout_marginStart="@dimen/dimen_20dp"
+                android:layout_marginLeft="@dimen/dimen_16dp"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:layout_marginTop="@dimen/dimen_20dp"
                 android:text="@string/et_forgot_password"
-                android:textColor="@color/colorBlack" />
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/txt_14sp" />
+
 
         </RelativeLayout>
-
     </ScrollView>
 
-    <au.com.carecareers.android.customViews.SubmitView
-        android:id="@+id/submit_view_register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/btn_login"
+        style="@style/Button"
         android:layout_alignParentBottom="true"
-        app:is_submit="true"
-        app:text_submit="@string/tv_login" />
-
+        fontPath="@string/font_sourcesanpro_bold"
+        android:text="@string/tv_login" />
 </RelativeLayout>

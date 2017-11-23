@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorPrimary"
-    android:minHeight="?attr/actionBarSize"
-    app:navigationIcon="@drawable/ic_back_arrow"
-    app:theme="@style/ToolbarTheme">
+    android:minHeight="?actionBarSize"
+    app:navigationIcon="@drawable/ic_back_arrow">
 
     <TextView
         android:id="@+id/tv_toolbar_title"
         style="@style/ToolbarTitle"
         tools:text="TITLE" />
+
 </android.support.v7.widget.Toolbar>

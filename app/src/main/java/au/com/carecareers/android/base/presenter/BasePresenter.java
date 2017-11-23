@@ -9,7 +9,7 @@ import io.reactivex.disposables.CompositeDisposable;
  */
 
 public abstract class BasePresenter<V extends IBaseView, I extends IBaseInteractor> implements IBasePresenter<V, I> {
-    private final String TAG = "BasePresenter";
+    protected final String TAG = "BasePresenter";
     private V mView;
     private I mInteractor;
     private CompositeDisposable mCompositeDisposable;

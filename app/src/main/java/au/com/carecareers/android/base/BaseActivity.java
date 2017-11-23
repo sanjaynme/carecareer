@@ -9,14 +9,19 @@ import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toolbar;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.application.CareCareerApp;
 import au.com.carecareers.android.base.view.IBaseView;
 import au.com.carecareers.android.customViews.EbAlertDialog;
 import au.com.carecareers.android.data.local.SharedPreferenceManager;
 import au.com.carecareers.android.injection.component.BaseComponent;
+import au.com.carecareers.android.utilities.AppLog;
 import au.com.carecareers.android.utilities.ViewUtils;
 import butterknife.ButterKnife;
+import okhttp3.ResponseBody;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
@@ -77,8 +82,31 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     }
 
     @Override
-    public void showError(int message) {
+    public void showError(ResponseBody errorResponseBody) {
+        EbAlertDialog.showAlertDialog(this, getErrorMessage(errorResponseBody));
+    }
 
+    private String getErrorMessage(ResponseBody errorResponseBody) {
+        try {
+            JSONObject jsonObject = new JSONObject(errorResponseBody.string());
+            String details = jsonObject.getString("detail");
+            String message = jsonObject.getString("messages");
+
+            AppLog.d("message:" + message);
+
+            if (message.length() == 2) {
+                AppLog.d("details:" + details);
+                return details;
+            } else {
+                JSONObject msgJsonObject = new JSONObject(message);
+                JSONArray passwordArray = msgJsonObject.getJSONArray("email");
+                String emailMessage = passwordArray.getString(0);
+                AppLog.d("password:" + emailMessage);
+                return emailMessage;
+            }
+        } catch (Exception e) {
+            return e.getMessage();
+        }
     }
 
     @Override
