@@ -27,7 +27,7 @@
     <string name="tv_submit">Submit</string>
     <string name="tv_skip"><u>Skip</u></string>
     <string name="tv_next">Next</string>
-    <string name="tv_profile_greetings">Thank you for registering with Care Careers. Lets\'s get your profile set up so your ready to apply for jobs.</string>
+    <string name="tv_profile_greetings">Thank you for registering. Lets\'s get your profile set up so employers can find you.</string>
     <string name="tv_upload_photo">Upload Photo</string>
     <string name="tv_select_an_avatar"><u>Select an avatar</u></string>
 
@@ -80,10 +80,7 @@
     <string name="font_sourcesanpro_bold">fonts/SourceSansPro-Bold.ttf</string>
     <string name="font_sourcesanpro_boldlt">fonts/SourceSansPro-Boldlt.ttf</string>
     <string name="font_sourcesanpro_extra_light">fonts/SourceSansPro-ExtraLight.ttf</string>
-    <string name="font_sourcesanpro_extra_lightIt">fonts/SourceSansPro-ExtraLightIt.ttf</string>
-    <string name="font_sourcesanpro_It">fonts/SourceSansPro-It.ttf</string>
     <string name="font_sourcesanpro_light">fonts/SourceSansPro-Light.ttf</string>
-    <string name="font_sourcesanpro_lightlt">fonts/SourceSansPro-LightIt.ttf</string>
     <string name="font_sourcesanpro_regular">fonts/SourceSansPro-Regular.ttf</string>
 
 

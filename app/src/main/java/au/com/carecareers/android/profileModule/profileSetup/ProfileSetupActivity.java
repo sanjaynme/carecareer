@@ -6,6 +6,11 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -23,6 +28,7 @@ import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.profileModule.model.CandidateModel;
 import au.com.carecareers.android.profileModule.preferredLocation.PreferredLocationActivity;
 import au.com.carecareers.android.profileModule.profileSetup.injection.ProfileSetupModule;
+import au.com.carecareers.android.utilities.ViewUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -37,10 +43,14 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
     Toolbar toolbar;
     @BindView(R.id.tv_toolbar_title)
     TextView tvToolbarTitle;
+    @BindView(R.id.scroll_view_main)
+    ScrollView scrollView;
     @BindView(R.id.civ_profile_image)
     CircleImageView civProfile;
     @BindView(R.id.tv_preferred_location)
     TextView tvPreferredLocation;
+    @BindView(R.id.et_what_is_your_career_move)
+    EditText etCareerMove;
 
     private CandidateModel candidateModel;
     private EbImageHelperFragment ebImageHelperFragment;
@@ -64,7 +74,23 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ViewUtils.setupUI(findViewById(R.id.activity_profile_setup), this);
         this.candidateModel = new CandidateModel();
+
+        scrollView.setDescendantFocusability(ViewGroup.FOCUS_BEFORE_DESCENDANTS);
+        scrollView.setFocusable(true);
+        scrollView.setFocusableInTouchMode(true);
+        //Todo Fix scroll issue with scrollbar and edittext
+        scrollView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (etCareerMove.hasFocus()) {
+                    etCareerMove.clearFocus();
+                }
+
+                return false;
+            }
+        });
         initImageHelperFragment();
     }
 
@@ -153,5 +179,6 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
     @Override
     public void navigateToPreferredLocation() {
         PreferredLocationActivity.startForResult(this, gson.toJson(candidateModel));
+        transitionActivityOpen();
     }
 }

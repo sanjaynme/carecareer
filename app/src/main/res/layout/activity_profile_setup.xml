@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_profile_setup"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="au.com.carecareers.android.profileModule.profileSetup.ProfileSetupActivity">
@@ -11,7 +12,7 @@
         layout="@layout/layout_toolbar" />
 
     <ScrollView
-        android:id="@+id/activity_profile_setup"
+        android:id="@+id/scroll_view_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/submit_view"
@@ -29,100 +30,93 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="@dimen/dimen_16dp"
+                android:paddingLeft="@dimen/dimen_35dp"
+                android:paddingRight="@dimen/dimen_35dp"
+                android:paddingTop="@dimen/dimen_35dp"
                 android:text="@string/tv_profile_greetings"
                 android:textColor="@color/colorBlack"
-                android:textSize="@dimen/txt_14sp" />
+                android:textSize="@dimen/txt_normal" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/civ_profile_image"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="@dimen/dimen_85dp"
+                android:layout_height="@dimen/dimen_85dp"
                 android:layout_below="@id/tv_profile_greetings"
                 android:layout_centerHorizontal="true"
-                android:layout_margin="@dimen/dimen_16dp"
+                android:layout_margin="@dimen/dimen_24dp"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/tv_upload_photo"
+                fontPath="@string/font_sourcesanpro_boldlt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/civ_profile_image"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/bg_upload_photo"
+                android:paddingBottom="@dimen/dimen_15dp"
+                android:paddingLeft="@dimen/dimen_18dp"
+                android:paddingRight="@dimen/dimen_18dp"
+                android:paddingTop="@dimen/dimen_15dp"
                 android:text="@string/tv_upload_photo"
                 android:textColor="@color/colorWhite"
-                android:textSize="@dimen/txt_14sp" />
+                android:textSize="@dimen/txt_15sp" />
 
             <TextView
                 android:id="@+id/tv_select_avatar"
+                fontPath="@string/font_sourcesanpro_light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_upload_photo"
                 android:layout_centerHorizontal="true"
-                android:layout_margin="@dimen/dimen_15dp"
-                android:text="@string/tv_select_an_avatar" />
+                android:layout_margin="@dimen/dimen_20dp"
+                android:padding="@dimen/dimen_5dp"
+                android:text="@string/tv_select_an_avatar"
+                android:textColor="@color/textColorSecondary"
+                android:textSize="@dimen/txt_14sp" />
 
             <EditText
                 android:id="@+id/et_phone_number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/EditTextProfileSetup"
                 android:layout_below="@id/tv_select_avatar"
-                android:background="@color/colorPinkLight"
+                android:layout_marginBottom="@dimen/dimen_20dp"
+                android:layout_marginTop="@dimen/dimen_20dp"
                 android:hint="@string/hint_phone_number"
-                android:inputType="phone"
-                android:padding="@dimen/dimen_10dp"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/txt_14sp" />
+                android:inputType="phone" />
 
             <LinearLayout
                 android:id="@+id/ll_preferred_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/et_phone_number"
-                android:layout_marginBottom="@dimen/dimen_10dp"
-                android:layout_marginTop="@dimen/dimen_10dp"
+                android:layout_marginBottom="@dimen/dimen_20dp"
+                android:layout_marginTop="@dimen/dimen_20dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tv_label_pref_location"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/dimen_16dp"
-                    android:paddingTop="@dimen/dimen_16dp"
-                    android:text="@string/tv_preferred_location"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/txt_14sp" />
+                    style="@style/TextViewTitleProfileSetup"
+                    android:text="@string/tv_preferred_location" />
 
                 <LinearLayout
                     android:id="@+id/ll_preferred_location_main"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/dimen_10dp"
+                    android:layout_marginBottom="@dimen/dimen_20dp"
                     android:background="@color/colorPinkLight"
                     android:gravity="center"
-                    android:orientation="horizontal"
-                    android:paddingBottom="@dimen/dimen_16dp"
-                    android:paddingTop="@dimen/dimen_16dp">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/tv_preferred_location"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:hint="@string/hint_work_near_here"
-                        android:textColor="@color/colorGrey700"
-                        android:textColorHint="@color/colorGrey500"
-                        android:textSize="@dimen/txt_14sp" />
+                        style="@style/TextViewBodyProfileSetup"
+                        android:hint="@string/hint_work_near_here" />
 
                     <ImageButton
                         android:id="@+id/ib_preferred_location"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@null"
-                        android:contentDescription="@null"
-                        android:src="@android:drawable/arrow_down_float" />
+                        style="@style/IconProfileSetup"
+                        android:src="@drawable/ic_info_grey_small" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -131,27 +125,17 @@
                     android:layout_height="wrap_content"
                     android:background="@color/colorPinkLight"
                     android:gravity="center"
-                    android:orientation="horizontal"
-                    android:paddingBottom="@dimen/dimen_16dp"
-                    android:paddingTop="@dimen/dimen_16dp">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/tv_location_area"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:hint="@string/hint_location_area"
-                        android:textColor="@color/colorGrey700"
-                        android:textColorHint="@color/colorGrey500"
-                        android:textSize="@dimen/txt_14sp" />
+                        style="@style/TextViewBodyProfileSetup"
+                        android:hint="@string/hint_location_area" />
 
                     <ImageButton
                         android:id="@+id/ib_location_area"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@null"
-                        android:contentDescription="@null"
-                        android:src="@android:drawable/arrow_down_float" />
+                        style="@style/IconProfileSetup"
+                        android:src="@drawable/ic_chevron_down" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -161,48 +145,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ll_preferred_location"
-                android:layout_marginBottom="@dimen/dimen_10dp"
-                android:layout_marginTop="@dimen/dimen_10dp"
+                android:layout_marginBottom="@dimen/dimen_20dp"
+                android:layout_marginTop="@dimen/dimen_20dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tv_label_pref_industry"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/dimen_16dp"
-                    android:paddingTop="@dimen/dimen_16dp"
-                    android:text="@string/tv_preferred_industry"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/txt_14sp" />
+                    style="@style/TextViewTitleProfileSetup"
+                    android:text="@string/tv_preferred_industry" />
 
                 <LinearLayout
                     android:id="@+id/ll_profession_role"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/dimen_10dp"
+                    android:layout_marginBottom="@dimen/dimen_20dp"
                     android:background="@color/colorPinkLight"
                     android:gravity="center"
-                    android:orientation="horizontal"
-                    android:paddingBottom="@dimen/dimen_16dp"
-                    android:paddingTop="@dimen/dimen_16dp">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/tv_profession_role"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/hint_profession_role"
-                        android:textColor="@color/colorGrey700"
-                        android:textColorHint="@color/colorGrey500"
-                        android:textSize="@dimen/txt_14sp" />
+                        style="@style/TextViewBodyProfileSetup"
+                        android:text="@string/hint_profession_role" />
 
                     <ImageButton
                         android:id="@+id/ib_profession_role"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@null"
-                        android:contentDescription="@null"
-                        android:src="@android:drawable/arrow_down_float" />
+                        style="@style/IconProfileSetup"
+                        android:src="@drawable/ic_chevron_down" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -211,27 +180,17 @@
                     android:layout_height="wrap_content"
                     android:background="@color/colorPinkLight"
                     android:gravity="center"
-                    android:orientation="horizontal"
-                    android:paddingBottom="@dimen/dimen_16dp"
-                    android:paddingTop="@dimen/dimen_16dp">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/tv_work_type"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/hint_work_type"
-                        android:textColor="@color/colorGrey700"
-                        android:textColorHint="@color/colorGrey500"
-                        android:textSize="@dimen/txt_14sp" />
+                        style="@style/TextViewBodyProfileSetup"
+                        android:text="@string/hint_work_type" />
 
                     <ImageButton
                         android:id="@+id/ib_work_type"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@null"
-                        android:contentDescription="@null"
-                        android:src="@android:drawable/arrow_down_float" />
+                        style="@style/IconProfileSetup"
+                        android:src="@drawable/ic_chevron_down" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -240,49 +199,35 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ll_preferred_industry"
-                android:layout_marginBottom="@dimen/dimen_10dp"
-                android:layout_marginTop="@dimen/dimen_10dp"
+                android:layout_marginBottom="@dimen/dimen_20dp"
+                android:layout_marginTop="@dimen/dimen_20dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tv_label_your_career_move"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/dimen_16dp"
-                    android:paddingTop="@dimen/dimen_16dp"
-                    android:text="@string/tv_your_career_move"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/txt_14sp" />
+                    style="@style/TextViewTitleProfileSetup"
+                    android:text="@string/tv_your_career_move" />
 
                 <LinearLayout
                     android:id="@+id/ll_what_is_your_career_move"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/dimen_10dp"
+                    android:layout_marginBottom="@dimen/dimen_20dp"
                     android:background="@color/colorPinkLight"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:paddingBottom="@dimen/dimen_16dp"
-                    android:paddingTop="@dimen/dimen_16dp">
+                    android:gravity="top"
+                    android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/et_what_is_your_career_move"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@color/colorPinkLight"
+                        style="@style/TextViewBodyProfileSetup"
+                        android:gravity="top"
                         android:hint="@string/hint_what_is_your_next_career_move"
-                        android:textColor="@color/colorGrey700"
-                        android:textColorHint="@color/colorGrey500"
-                        android:textSize="@dimen/txt_14sp" />
+                        android:minLines="4" />
 
                     <ImageButton
                         android:id="@+id/ib_what_is_your_career_move"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@null"
-                        android:contentDescription="@null"
-                        android:src="@android:drawable/arrow_down_float" />
+                        style="@style/IconProfileSetup"
+                        android:src="@drawable/ic_info_grey_small" />
                 </LinearLayout>
 
             </LinearLayout>

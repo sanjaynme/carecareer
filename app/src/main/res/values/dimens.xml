@@ -74,8 +74,8 @@
     <dimen name="dimen_250dp">250dp</dimen>
 
     <!--toolbar title-->
-    <dimen name="toolbar_title_size">@dimen/txt_17sp</dimen>
-    <dimen name="normal_text_size">@dimen/txt_15sp</dimen>
+    <dimen name="txt_toolbar_title">@dimen/txt_17sp</dimen>
+    <dimen name="txt_normal">@dimen/txt_15sp</dimen>
 
 
 </resources>

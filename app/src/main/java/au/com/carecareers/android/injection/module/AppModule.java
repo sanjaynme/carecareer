@@ -28,10 +28,10 @@ public class AppModule {
 
     @Provides
     @Singleton
-    CalligraphyConfig provideCalligraphyConfig() {
+    CalligraphyConfig provideCalligraphyConfig(Context context) {
         return new CalligraphyConfig.Builder()
-                //.setDefaultFontPath("")
-                .setFontAttrId(R.attr.font)
+                .setDefaultFontPath(context.getString(R.string.font_sourcesanpro_regular))
+                .setFontAttrId(R.attr.fontPath)
                 .build();
     }
 }

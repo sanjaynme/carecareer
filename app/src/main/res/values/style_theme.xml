@@ -11,7 +11,7 @@
 
     <style name="ToolbarTheme" parent="Base.V7.Widget.AppCompat.Toolbar">
         <item name="android:textColorPrimary">@color/colorWhite</item>
-        <item name="android:textSize">@dimen/toolbar_title_size</item>
+        <item name="android:textSize">@dimen/txt_toolbar_title</item>
         <item name="android:textAllCaps">false</item>
     </style>
 
@@ -22,6 +22,6 @@
     </style>
 
     <style name="SpinnerTheme" parent="android:Widget.Spinner">
-        <item name="android:background">@drawable/dropdown_4xd</item>
+        <item name="android:background">@drawable/ic_chevron_down</item>
     </style>
 </resources>
