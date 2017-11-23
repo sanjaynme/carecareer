@@ -17,6 +17,7 @@ import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.loginModule.forgotPassword.injection.ForgotPasswordModule;
 import au.com.carecareers.android.loginModule.forgotPassword.model.ForgotPasswordModel;
 import au.com.carecareers.android.loginModule.login.LoginActivity;
+import au.com.carecareers.android.utilities.ViewUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -58,6 +59,7 @@ public class ForgotPasswordActivity extends BaseActivity implements ForgotPasswo
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presenter.onAttach(this);
+        ViewUtils.setupUI(findViewById(R.id.activity_forgot_password), this);
     }
 
     @Override

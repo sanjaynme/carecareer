@@ -20,6 +20,7 @@ import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.loginModule.forgotPassword.ForgotPasswordActivity;
 import au.com.carecareers.android.loginModule.login.injection.LoginModule;
 import au.com.carecareers.android.loginModule.login.model.LoginModel;
+import au.com.carecareers.android.utilities.ViewUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -63,6 +64,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ViewUtils.setupUI(findViewById(R.id.activity_login), this);
         presenter.onAttach(this);
         loginModel = new LoginModel.LoginRequest();
         btnShowHidePassword.setImageResource(R.drawable.eye_open);

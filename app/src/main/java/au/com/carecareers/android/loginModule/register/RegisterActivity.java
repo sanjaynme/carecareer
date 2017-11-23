@@ -24,7 +24,6 @@ import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.injection.component.BaseComponent;
-import au.com.carecareers.android.loginModule.forgotPassword.ForgotPasswordActivity;
 import au.com.carecareers.android.loginModule.login.LoginActivity;
 import au.com.carecareers.android.loginModule.register.adapter.SpinnerAdapter;
 import au.com.carecareers.android.loginModule.register.injection.RegisterModule;
@@ -33,6 +32,7 @@ import au.com.carecareers.android.loginModule.register.model.RegisterModel;
 import au.com.carecareers.android.loginModule.register.model.TaxonomyModel;
 import au.com.carecareers.android.loginModule.termsAndCondition.TermsAndConditionActivity;
 import au.com.carecareers.android.utilities.AppLog;
+import au.com.carecareers.android.utilities.ViewUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -93,6 +93,8 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ViewUtils.setupUI(findViewById(R.id.activity_register), this);
+
         presenter.onAttach(this);
         btnShowHidePassword.setImageResource(R.drawable.eye_open);
         presenter.getStates();
