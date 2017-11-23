@@ -25,6 +25,10 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
 
     @BindView(R.id.tv_toolbar_title)
     TextView tvTitle;
+
+ /*   @BindView(R.id.bottom_nav_bar)
+    BottomNavigationView bottomNavigationView;
+    */
     private LoginModel.LoginRespones loginResponses;
 
     public static void start(Context context) {

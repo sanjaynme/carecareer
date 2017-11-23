@@ -88,4 +88,10 @@
 
 
     <string name="menu_done">Done</string>
+    <!--BottomBarNavigation Menus-->
+    <string name="search">Search</string>
+    <string name="save_lists">Save Lists</string>
+    <string name="applied_jobs">Applied Jobs</string>
+    <string name="job_alerts">Job Alerts</string>
+    <string name="profile">Profile</string>
 </resources>
