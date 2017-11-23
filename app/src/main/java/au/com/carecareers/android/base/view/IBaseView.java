@@ -20,4 +20,6 @@ public interface IBaseView {
     void showError(ResponseBody message,int errorType);
 
     void sendAnalyticsData();
+
+    void setupToolbar();
 }

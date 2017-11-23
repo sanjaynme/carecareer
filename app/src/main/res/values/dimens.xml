@@ -74,7 +74,7 @@
     <dimen name="dimen_250dp">250dp</dimen>
 
     <!--toolbar title-->
-    <dimen name="toolbar_title_sixe">16sp</dimen>
+    <dimen name="toolbar_title_sixe">17sp</dimen>
     <dimen name="toolbar_back_leftmargin">10dp</dimen>
     <dimen name="toolbar_below_margin">13dp</dimen>
     <dimen name="toolbar_above_margin">13dp</dimen>

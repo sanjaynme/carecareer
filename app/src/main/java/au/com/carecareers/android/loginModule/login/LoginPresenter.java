@@ -75,7 +75,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.ILoginView, Logi
     public boolean validateFields(String username, String password) {
         Pattern UpperCasePatten = Pattern.compile("[A-Z ]");
         if (username.isEmpty()) {
-            getView().showAlertDialog(R.string.err_username);
+            getView().showAlertDialog(R.string.err_email);
             return false;
         } else if (!Patterns.EMAIL_ADDRESS.matcher(username).matches()) {
             getView().showAlertDialog(R.string.err_email_valid);
@@ -93,8 +93,4 @@ public class LoginPresenter extends BasePresenter<LoginContract.ILoginView, Logi
         return true;
     }
 
-    @Override
-    public void forgetPasswordButtonClicked() {
-        getView().navigateToForgotPassword();
-    }
 }

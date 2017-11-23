@@ -25,7 +25,7 @@ ext {
             easyPermissionVersion       : "0.2.1",
             helpShiftVersion            : "4.8.0",
             universalImageLoaderVersion : "1.9.4",
-            playServiceVersion          : "11.0.2",
+            playServiceVersion          : "11.6.0",
             libPhoneNumberVersion       : "8.4.1",
             facebookVersion             : "4.22.1",
             saripaarVerson              : "2.0.3",
@@ -93,10 +93,11 @@ ext {
             ],
 
             google = [
-                    playServicePlaces: "com.google.android.gms:play-services-places:$versions.playServiceVersion",
-                    firebaseInvites  : "com.google.firebase:firebase-invites:$versions.playServiceVersion",
+                    googlePlaces   : "com.google.android.gms:play-services-places:$versions.playServiceVersion",
+                    googleLocation : "com.google.android.gms:play-services-location:$versions.playServiceVersion",
+                    firebaseInvites: "com.google.firebase:firebase-invites:$versions.playServiceVersion",
 
-                    libPhoneNumber   : "com.googlecode.libphonenumber:libphonenumber:$versions.libPhoneNumberVersion",
+                    libPhoneNumber : "com.googlecode.libphonenumber:libphonenumber:$versions.libPhoneNumberVersion",
             ],
 
             facebook = [

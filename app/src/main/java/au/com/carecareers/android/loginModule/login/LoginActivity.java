@@ -20,6 +20,7 @@ import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.loginModule.forgotPassword.ForgotPasswordActivity;
 import au.com.carecareers.android.loginModule.login.injection.LoginModule;
 import au.com.carecareers.android.loginModule.login.model.LoginModel;
+import au.com.carecareers.android.utilities.ViewUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -45,13 +46,12 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
     LoginModel.LoginRequest loginModel;
 
     public static void start(Context context) {
-        Intent intent = new Intent();
-        intent.setClass(context, LoginActivity.class);
+        Intent intent = new Intent(context, LoginActivity.class);
         context.startActivity(intent);
     }
 
     @Override
-    public int getLayout() {
+    protected int getLayout() {
         return R.layout.activity_login;
     }
 
@@ -63,16 +63,10 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ViewUtils.setupUI(findViewById(R.id.activity_login), this);
         presenter.onAttach(this);
-        setupToolBar();
         loginModel = new LoginModel.LoginRequest();
-        btnShowHidePassword.setImageResource(R.drawable.eye_open);
-    }
-
-    private void setupToolBar() {
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        tvTitle.setText(getResources().getText(R.string.tv_login));
+        btnShowHidePassword.setImageResource(R.drawable.ic_eye);
     }
 
     @Override
@@ -80,7 +74,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
         presenter.onDetach();
         super.onDestroy();
     }
-
 
     @OnClick(R.id.btn_login)
     public void loginClicked() {
@@ -94,7 +87,9 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
 
     @OnClick(R.id.tv_forgot_password)
     void forgetPasswordButton() {
-        presenter.forgetPasswordButtonClicked();
+        finish();
+        ForgotPasswordActivity.start(LoginActivity.this);
+        transitionActivityOpen();
     }
 
     @Override
@@ -106,24 +101,16 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
         transitionActivityOpen();
     }
 
-    @Override
-    public void navigateToForgotPassword() {
-        ForgotPasswordActivity.start(LoginActivity.this);
-        transitionActivityOpen();
-    }
-
-
     @OnClick(R.id.btn_show_hide_login_password)
     void showHidePassword() {
         if (etPassword.getTransformationMethod() == PasswordTransformationMethod.getInstance()) {
             etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-            btnShowHidePassword.setImageResource(R.drawable.eye_blocked);
+            btnShowHidePassword.setImageResource(R.drawable.ic_eye_slash);
         } else if (etPassword.getTransformationMethod() == HideReturnsTransformationMethod.getInstance()) {
             etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-            btnShowHidePassword.setImageResource(R.drawable.eye_open);
+            btnShowHidePassword.setImageResource(R.drawable.ic_eye);
         }
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -136,5 +123,12 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
                 break;
         }
         return true;
+    }
+
+    @Override
+    public void setupToolbar() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        tvTitle.setText(getResources().getText(R.string.tv_login));
     }
 }

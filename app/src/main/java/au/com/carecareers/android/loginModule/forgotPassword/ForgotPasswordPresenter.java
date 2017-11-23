@@ -1,6 +1,7 @@
 package au.com.carecareers.android.loginModule.forgotPassword;
 
 import android.util.Log;
+import android.util.Patterns;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 
@@ -34,6 +35,18 @@ public class ForgotPasswordPresenter extends BasePresenter<ForgotPasswordContrac
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(getObserver()));
+    }
+
+    @Override
+    public boolean validateFields(ForgotPasswordModel.ForgotPasswordRequest forgotPasswordRequest) {
+        if (forgotPasswordRequest.getEmail().isEmpty()) {
+            getView().showAlertDialog(R.string.err_email);
+            return false;
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(forgotPasswordRequest.getEmail()).matches()) {
+            getView().showAlertDialog(R.string.err_email_valid);
+            return false;
+        }
+        return true;
     }
 
     private DisposableCompletableObserver getObserver() {

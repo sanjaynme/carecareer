@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -24,7 +24,6 @@ import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.injection.component.BaseComponent;
-import au.com.carecareers.android.loginModule.forgotPassword.ForgotPasswordActivity;
 import au.com.carecareers.android.loginModule.login.LoginActivity;
 import au.com.carecareers.android.loginModule.register.adapter.SpinnerAdapter;
 import au.com.carecareers.android.loginModule.register.injection.RegisterModule;
@@ -33,6 +32,7 @@ import au.com.carecareers.android.loginModule.register.model.RegisterModel;
 import au.com.carecareers.android.loginModule.register.model.TaxonomyModel;
 import au.com.carecareers.android.loginModule.termsAndCondition.TermsAndConditionActivity;
 import au.com.carecareers.android.utilities.AppLog;
+import au.com.carecareers.android.utilities.ViewUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -41,6 +41,9 @@ import butterknife.OnClick;
  */
 
 public class RegisterActivity extends BaseActivity implements RegisterContract.IRegisterView {
+    @BindView(R.id.spinner_progressbar)
+    ProgressBar progressBar;
+
     @BindView(R.id.sign_up_toolbar)
     Toolbar toolbar;
 
@@ -62,8 +65,6 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
     @BindView(R.id.spinner_state)
     Spinner spinnerState;
 
-    @BindView(R.id.iv_spinner_states)
-    ImageView ivSpinnerState;
     @Inject
     RegisterPresenter presenter;
 
@@ -75,13 +76,12 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
     private ArrayList<String> statesList;
 
     public static void start(Context context) {
-        Intent signUpIntent = new Intent();
-        signUpIntent.setClass(context, RegisterActivity.class);
-        context.startActivity(signUpIntent);
+        Intent intent = new Intent(context, RegisterActivity.class);
+        context.startActivity(intent);
     }
 
     @Override
-    public int getLayout() {
+    protected int getLayout() {
         return R.layout.activity_register;
     }
 
@@ -93,19 +93,13 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ViewUtils.setupUI(findViewById(R.id.activity_register), this);
+
         presenter.onAttach(this);
-        setupToolbar();
-        btnShowHidePassword.setImageResource(R.drawable.eye_open);
+        btnShowHidePassword.setImageResource(R.drawable.ic_eye);
         presenter.getStates();
         registerModel = new RegisterModel.RegisterRequest();
         metaModel = new RegisterModel.RegisterRequest.Meta();
-
-    }
-
-    private void setupToolbar() {
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        tvTitle.setText(getResources().getText(R.string.tv_register));
     }
 
     @OnClick(R.id.submit_view_registeration)
@@ -120,11 +114,11 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
         int selectedItemOfMySpinner = spinnerState.getSelectedItemPosition();
 
         if (presenter.validateFields(registerModel)) {
-            presenter.sendRegisterDetails(registerModel);
-           /* if (selectedItemOfMySpinner == 0) {
+            if (selectedItemOfMySpinner == 0) {
                 presenter.validateSpinner(selectedItemOfMySpinner);
             } else {
-            }*/
+                presenter.sendRegisterDetails(registerModel);
+            }
         }
     }
 
@@ -140,7 +134,6 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
         transitionActivityOpen();
     }
 
-    @Override
     protected void onDestroy() {
         presenter.onDetach();
         super.onDestroy();
@@ -149,7 +142,9 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
     @Override
     public void setUpStatesSpinner(final TaxonomyModel.TaxonomyResponse taxonomyResponse) {
         statesList = new ArrayList<>();
-//        statesList.add(getResources().getString(R.string.hint_state));
+        progressBar.setVisibility(View.GONE);
+        spinnerState.setVisibility(View.VISIBLE);
+        statesList.add(getResources().getString(R.string.hint_state));
         for (int i = 0; i < taxonomyResponse.getEmbedded().getTaxonomies().size(); i++) {
             String stateNames = taxonomyResponse.getEmbedded().getTaxonomies().get(i).getName();
             String stateId = taxonomyResponse.getEmbedded().getTaxonomies().get(i).getId().toString();
@@ -166,10 +161,9 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 String name = taxonomyResponse.getEmbedded().getTaxonomies().get(position).getName();
                 int id = taxonomyResponse.getEmbedded().getTaxonomies().get(position).getId();
-                int position1 = position - 1;
-                AppLog.d("position:" + position1);
-                AppLog.d("name::::" + name);
-                AppLog.d("id:::::" + id);
+                AppLog.d("position:" + position);
+                AppLog.d("state name::::" + name);
+                AppLog.d("state id:::::" + id);
                 metaModel.setStateId(String.valueOf(id));
             }
 
@@ -179,19 +173,15 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
         });
     }
 
-    @OnClick(R.id.iv_spinner_states)
-    void showSpinner() {
-        spinnerState.performClick();
-    }
 
     @OnClick(R.id.btn_show_hide_register_password)
     void showHidePassword() {
         if (etPassword.getTransformationMethod() == PasswordTransformationMethod.getInstance()) {
             etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-            btnShowHidePassword.setImageResource(R.drawable.eye_blocked);
+            btnShowHidePassword.setImageResource(R.drawable.ic_eye_slash);
         } else if (etPassword.getTransformationMethod() == HideReturnsTransformationMethod.getInstance()) {
             etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-            btnShowHidePassword.setImageResource(R.drawable.eye_open);
+            btnShowHidePassword.setImageResource(R.drawable.ic_eye);
         }
     }
 
@@ -210,5 +200,12 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
                 break;
         }
         return true;
+    }
+
+    @Override
+    public void setupToolbar() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        tvTitle.setText(getResources().getText(R.string.tv_register));
     }
 }

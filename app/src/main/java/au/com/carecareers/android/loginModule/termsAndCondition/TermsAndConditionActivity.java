@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 import javax.inject.Inject;
@@ -59,20 +61,39 @@ public class TermsAndConditionActivity extends BaseActivity implements
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presenter.onAttach(this);
-        setupToolBar();
         String type = "page";
         String idOrSlug = "privacy-policy";
         presenter.termsAndCondition(type, idOrSlug);
     }
 
-    private void setupToolBar() {
+    @Override
+    public void naviagteToTermsAndConditonsWebView(TermsAndConditionsModel.TermsAndConditionsRespones termsAndConditionsRespones) {
+        wvTermsAndConditions.setWebViewClient(new WebViewClient());
+        wvTermsAndConditions.setScrollbarFadingEnabled(false);
+        wvTermsAndConditions.getSettings().setBuiltInZoomControls(true);
+        wvTermsAndConditions.getSettings().setDisplayZoomControls(false);
+        wvTermsAndConditions.getSettings().setJavaScriptEnabled(true);
+        String baseUrl = "file:///android_asset/";
+
+        this.wvTermsAndConditions.loadDataWithBaseURL(baseUrl, termsAndConditionsRespones.getContent(), "text/html", "UTF-8", null);
+        AppLog.d("Success");
+    }
+
+    @Override
+    public void setupToolbar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         tvTitle.setText(getResources().getText(R.string.tv_terms_and_conditions));
     }
 
     @Override
-    public void naviagteToTermsAndConditonsWebView(TermsAndConditionsModel.TermsAndConditionsRespones termsAndConditionsRespones) {
-        AppLog.d("Success");
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                transitionBackPressed();
+                break;
+        }
+        return true;
     }
 }

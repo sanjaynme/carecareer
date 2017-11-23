@@ -2,8 +2,11 @@
     <string name="app_name">Care careers</string>
 
     <string name="err_no_data_available">No Data Available</string>
+    <string name="err_no_location_selected">Please select location.</string>
 
     <string name="title_activity_landing">LandingActivity</string>
+    <string name="title_personal_details">Personal Details</string>
+    <string name="title_preferred_location">Preferred Location</string>
 
     <!--TextViews-->
     <string name="lorem_epsum">
@@ -19,7 +22,7 @@
     <string name="tv_crop">Crop</string>
     <string name="tv_cancel">Cancel</string>
     <string name="tv_turn_on">Turn On</string>
-    <string name="tv_terms_conditions">By registering , you are agreeing to the <u>Terms and Conditions</u></string>
+    <string name="tv_terms_conditions">By registering , you are agreeing to the \n <u>Terms &amp; Conditions</u></string>
     <string name="tv_forgot_email">Enter the email you registered with:</string>
     <string name="tv_submit">Submit</string>
     <string name="tv_skip"><u>Skip</u></string>
@@ -58,7 +61,7 @@
     <string name="hint_state">State *</string>
     <string name="hint_first_name">First Name *</string>
     <string name="hint_last_name">Last Name *</string>
-    <string name="hint_email">Email *</string>
+    <string name="hint_email">Email address *</string>
     <string name="hint_sign_up_password">Password *</string>
 
     <string name="hint_phone_number">Phone number</string>
@@ -67,6 +70,7 @@
     <string name="hint_profession_role">Profession/role*</string>
     <string name="hint_work_type">Work type*</string>
     <string name="hint_what_is_your_next_career_move">What is your next career move?</string>
+    <string name="hint_search">Search</string>
 
     <!--Messages-->
     <string name="msg_loading">Loading...</string>
@@ -81,4 +85,7 @@
     <string name="font_sourcesanpro_light">fonts/SourceSansPro-Light.ttf</string>
     <string name="font_sourcesanpro_lightlt">fonts/SourceSansPro-LightIt.ttf</string>
     <string name="font_sourcesanpro_regular">fonts/SourceSansPro-Regular.ttf</string>
+
+
+    <string name="menu_done">Done</string>
 </resources>

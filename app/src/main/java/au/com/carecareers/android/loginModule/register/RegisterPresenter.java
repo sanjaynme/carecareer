@@ -35,7 +35,6 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterV
     }
 
     public void getStates() {
-        getView().showProgressDialog(R.string.msg_loading);
         getCompositeDisposable().add(getInteractor().getStates()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -43,7 +42,7 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterV
                     @Override
                     public void accept(TaxonomyModel.TaxonomyResponse taxonomyResponse) throws Exception {
                         if (isViewAttached()) {
-                            getView().hideProgressDialog();
+//                            getView().hideProgressDialog();
                             getView().setUpStatesSpinner(taxonomyResponse);
                         }
                     }
@@ -52,11 +51,9 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterV
                     public void accept(Throwable throwable) throws Exception {
                         if (isViewAttached()) {
                             Log.d(TAG, "onError: ");
-                            if (throwable instanceof HttpException) {
-                                ResponseBody responseBody = ((HttpException) throwable).response().errorBody();
-                                getView().hideProgressDialog();
-                                getView().showError(responseBody, AppContract.ErrorTypes.REGISTER);
-                            }
+                            ResponseBody responseBody = ((HttpException) throwable).response().errorBody();
+//                            getView().hideProgressDialog();
+                            getView().showError(responseBody, AppContract.ErrorTypes.REGISTER);
                         }
                     }
                 }));

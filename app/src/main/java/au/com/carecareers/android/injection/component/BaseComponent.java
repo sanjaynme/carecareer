@@ -10,6 +10,10 @@ import au.com.carecareers.android.loginModule.forgotPassword.injection.ForgotPas
 import au.com.carecareers.android.loginModule.forgotPassword.injection.ForgotPasswordSubComponent;
 import au.com.carecareers.android.loginModule.login.injection.LoginModule;
 import au.com.carecareers.android.loginModule.login.injection.LoginSubComponent;
+import au.com.carecareers.android.profileModule.preferredLocation.PreferredLocationActivity;
+import au.com.carecareers.android.profileModule.profileSetup.injection.ProfileSetupModule;
+import au.com.carecareers.android.profileModule.profileSetup.injection.ProfileSetupSubComponent;
+import au.com.carecareers.android.loginModule.login.injection.LoginSubComponent;
 import au.com.carecareers.android.loginModule.register.injection.RegisterModule;
 import au.com.carecareers.android.loginModule.register.injection.RegisterSubComponent;
 import au.com.carecareers.android.loginModule.termsAndCondition.injection.TermsAndConditionSubComponent;
@@ -38,4 +42,8 @@ public interface BaseComponent {
     ForgotPasswordSubComponent provideForgotPasswordSubComponent(ForgotPasswordModule forgotPasswordModule);
 
     ChangePasswordSubComponent provideChangePasswordSubComponent(ChangePasswordModule changePasswordModule);
+
+    ProfileSetupSubComponent provideProfileSetupSubComponent(ProfileSetupModule profileSetupModule);
+
+    void inject(PreferredLocationActivity preferredLocationActivity);
 }

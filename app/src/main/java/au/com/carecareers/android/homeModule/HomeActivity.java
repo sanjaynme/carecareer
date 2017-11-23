@@ -47,13 +47,6 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setUpToolbar();
-    }
-
-    private void setUpToolbar() {
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        tvTitle.setText(getResources().getText(R.string.tv_home));
     }
 
     @Override
@@ -68,4 +61,10 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
     }
 
 
+    @Override
+    public void setupToolbar() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        tvTitle.setText(getResources().getText(R.string.tv_home));
+    }
 }

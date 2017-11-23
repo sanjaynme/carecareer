@@ -1,7 +1,6 @@
 package au.com.carecareers.android.splashModule;
 
 import android.os.Bundle;
-import android.os.Handler;
 
 import javax.inject.Inject;
 
@@ -16,7 +15,7 @@ public class SplashActivity extends BaseActivity implements SplashContract.ISpla
     SplashPresenter presenter;
 
     @Override
-    public int getLayout() {
+    protected int getLayout() {
         return R.layout.activity_splash;
     }
 
@@ -29,13 +28,7 @@ public class SplashActivity extends BaseActivity implements SplashContract.ISpla
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presenter.onAttach(this);
-        new Handler().
-                postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        presenter.auth();
-                    }
-                }, 2000);
+        presenter.auth();
     }
 
     @Override
@@ -45,7 +38,18 @@ public class SplashActivity extends BaseActivity implements SplashContract.ISpla
         transitionFadeOut();
     }
 
-       /* if (preferenceManager.getBoolValues(Contracts.SharedPrefKeys.IS_LOGGED_IN)) {
+
+    @Override
+    public void setupToolbar() {
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        presenter.onDetach();
+        super.onDestroy();
+    }
+    /* if (preferenceManager.getBoolValues(Contracts.SharedPrefKeys.IS_LOGGED_IN)) {
             if (preferenceManager.getIntValues(Contracts.SharedPrefKeys.IS_PROFILE_COMPLETE)
                     == Contracts.ProfileLoginStatus.PROFILECOMPLETE) {
 //                HomeActivity.start(SplashActivity.this);
@@ -68,4 +72,10 @@ public class SplashActivity extends BaseActivity implements SplashContract.ISpla
                     }, 2000);
         }
     }*/
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

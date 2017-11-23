@@ -19,6 +19,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 /**
  * Created by Nischal Manandhar on 14/11/2017.
@@ -60,16 +61,10 @@ public interface ApiService {
                                @Body ForgotPasswordModel.ForgotPasswordRequest forgotEmail);
 
     @Headers({"accept:application/json",})
-    @FormUrlEncoded
-    @GET(UrlContract.PRIVACY_POLICY)
-    Observable<TermsAndConditionsModel.TermsAndConditionsRespones> getTermsAndConditions(@Header(UrlContract.Keys.AUTHORIZATION) String base64);
-/*
- @Headers({"accept:application/json",})
-    @FormUrlEncoded
     @GET(UrlContract.PRIVACY_POLICY)
     Observable<TermsAndConditionsModel.TermsAndConditionsRespones> getTermsAndConditions(@Header(UrlContract.Keys.AUTHORIZATION) String base64,
-                                                                                         @Field("type") String type,
-                                                                                         @Field("id_or_slug") String idOrSlug);
-*/
+                                                                                         @Path("type") String type,
+                                                                                         @Path("id_or_slug") String idOrSlug);
+
 
 }

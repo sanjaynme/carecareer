@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#2B343D</color>
-    <color name="colorPrimaryDark">#2B343D</color>
+    <color name="colorPrimary">#2C3239</color>
+    <color name="colorPrimaryDark">#2C3239</color>
     <color name="colorAccent">#D21242</color>
     <color name="colorAccentTrans">#85D21242</color>
 
     <color name="colorWhite">#fff</color>
     <color name="colorWhiteTrans">#B3ffffff</color>
     <color name="colorBlack">#000</color>
+    <color name="colorPinkLight">#F7F7F9</color>
 
     <color name="light_blue_A400">#00B0FF</color>
     <color name="light_blue_A700">#0091EA</color>
 
     <!--Splash screen colors-->
     <color name="colorHint">#6D6E70</color>
+    <color name="colorSplash">#FDFDFD</color>
     <color name="editTextBackground">#F7F7F8</color>
     <color name="textColorPrimary">#434242</color>
     <color name="textColorSecondary">#F7F7F9</color>
@@ -29,6 +31,8 @@
     <color name="colorGrey800">#424242</color>
     <color name="colorGrey900">#212121</color>
     <color name="colorGrey">#333333</color>
+
+    <color name="colorSearchBackground">#191F28</color>
 
 
 </resources>

@@ -34,7 +34,7 @@ import static android.app.Activity.RESULT_OK;
  * to receive the image path.
  */
 public class EbImageHelperFragment extends Fragment {
-    public static final String TAG = EbImageHelperFragment.class.getSimpleName();
+    public static final String TAG = "EbImageHelperFragment";
     private EbImageHelperListener listener;
     private boolean showCropView, compressImage;
     private String imagePath;

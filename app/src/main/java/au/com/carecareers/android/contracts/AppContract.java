@@ -45,15 +45,15 @@ public class AppContract {
     public class Permission {
         public static final int CAMERA = 0;
         public static final int GALLERY = 1;
+        public static final int LOCATION = 2;
     }
 
     public class RequestCode {
         public static final int CAMERA = 100;
         public static final int GALLERY = 101;
-        public static final int COUNTRY_LIST = 200;
+
         public static final int EDIT_PROFILE = 201;
-        public static final int SEND_EMAIL = 202;
-        public static final int DROP_IN_UI = 203;
+        public static final int PREFERRED_LOCATION = 202;
     }
 
 }

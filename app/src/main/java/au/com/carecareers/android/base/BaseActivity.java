@@ -39,7 +39,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     private String errorMessage;
 
     @LayoutRes
-    public abstract int getLayout();
+    protected abstract int getLayout();
 
     protected abstract void injectComponent(BaseComponent baseComponent);
 
@@ -50,6 +50,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         injectComponent(((CareCareerApp) getApplication()).getBaseComponent());
         ButterKnife.bind(this);
         mProgressDialog = new ProgressDialog(this);
+        setupToolbar();
     }
 
     @Override
@@ -149,4 +150,5 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     protected void transitionActivityOpen() {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
+
 }
