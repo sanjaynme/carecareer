@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@color/colorPrimary"
     android:minHeight="?actionBarSize"
+    android:theme="@style/ToolbarTheme"
     app:navigationIcon="@drawable/ic_back_arrow">
 
     <TextView
