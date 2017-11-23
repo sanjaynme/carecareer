@@ -28,6 +28,7 @@ import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.profileModule.model.CandidateModel;
 import au.com.carecareers.android.profileModule.preferredLocation.PreferredLocationActivity;
 import au.com.carecareers.android.profileModule.profileSetup.injection.ProfileSetupModule;
+import au.com.carecareers.android.profileModule.selectAvatar.SelectAvatarActivity;
 import au.com.carecareers.android.utilities.ViewUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -132,6 +133,12 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
     @OnClick(R.id.tv_upload_photo)
     public void uploadPhotoClicked() {
         ebImageHelperFragment.showChooserDialog();
+    }
+
+    @OnClick(R.id.tv_select_avatar)
+    public void selectAvatar() {
+        SelectAvatarActivity.start(this);
+        transitionActivityOpen();
     }
 
     @OnClick(R.id.ll_preferred_location_main)

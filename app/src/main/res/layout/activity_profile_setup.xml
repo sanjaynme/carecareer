@@ -45,7 +45,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_margin="@dimen/dimen_24dp"
                 android:scaleType="centerCrop"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@drawable/ic_eye" />
 
             <TextView
                 android:id="@+id/tv_upload_photo"
