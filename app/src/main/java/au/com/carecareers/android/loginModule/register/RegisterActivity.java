@@ -1,9 +1,11 @@
 package au.com.carecareers.android.loginModule.register;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -129,10 +131,29 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
         etEmail.getText().clear();
         etPassword.getText().clear();
         spinnerState.setSelection(0);
-        finish();
-        LoginActivity.start(this);
-        transitionActivityOpen();
+        showRegisterSuccessMessageDialog("Registeration has been done successfully.");
     }
+
+    private void showRegisterSuccessMessageDialog(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(message);
+        builder.setTitle("Care Career");
+        builder.setCancelable(false);
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+                hideProgressDialog();
+                finish();
+                LoginActivity.start(RegisterActivity.this);
+                transitionActivityOpen();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
 
     protected void onDestroy() {
         presenter.onDetach();
