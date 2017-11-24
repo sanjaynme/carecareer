@@ -48,6 +48,9 @@
     <string name="err_state_name">Please select a state.</string>
     <string name="err_">Error</string>
 
+    <!--Success-->
+    <string name="sucess_forgot_email">Email has been sent successfully.</string>
+    <string name="sucess_registration">Registeration has been done successfully.</string>
 
     <!--EditTexts-->
     <string name="et_username">Username</string>

@@ -7,9 +7,19 @@
         android:id="@+id/terms_and_conditions_toolbar"
         layout="@layout/layout_toolbar" />
 
+    <ProgressBar
+        android:id="@+id/loading_progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_20dp"
+        android:layout_above="@+id/webview_terms_and_conditions"
+        android:layout_below="@id/terms_and_conditions_toolbar"
+        android:background="@color/colorAccent"
+        android:progress="20" />
+
     <WebView
         android:id="@+id/webview_terms_and_conditions"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/terms_and_conditions_toolbar" />
+         />
 </RelativeLayout>

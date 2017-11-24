@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import javax.inject.Inject;
@@ -35,11 +37,15 @@ public class TermsAndConditionActivity extends BaseActivity implements
     @BindView(R.id.tv_toolbar_title)
     TextView tvTitle;
 
+    @BindView(R.id.loading_progress)
+    ProgressBar loadingProgressBar;
+
     @BindView(R.id.webview_terms_and_conditions)
     WebView wvTermsAndConditions;
 
     @Inject
     TermsAndConditionPresenter presenter;
+    private ProgressBarHandler mProgressBarHandler;
 
     public static void start(Context context) {
         Intent intent = new Intent();
@@ -61,6 +67,8 @@ public class TermsAndConditionActivity extends BaseActivity implements
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presenter.onAttach(this);
+        loadingProgressBar.setIndeterminate(true);
+        loadingProgressBar.setMax(100);
         String type = "page";
         String idOrSlug = "privacy-policy";
         presenter.termsAndCondition(type, idOrSlug);
@@ -74,8 +82,14 @@ public class TermsAndConditionActivity extends BaseActivity implements
         wvTermsAndConditions.getSettings().setDisplayZoomControls(false);
         wvTermsAndConditions.getSettings().setJavaScriptEnabled(true);
         String baseUrl = "file:///android_asset/";
-
-        this.wvTermsAndConditions.loadDataWithBaseURL(baseUrl, termsAndConditionsRespones.getContent(), "text/html", "UTF-8", null);
+        wvTermsAndConditions.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onProgressChanged(WebView view, int progress) {
+                loadingProgressBar.setProgress(progress);
+                super.onProgressChanged(view, progress);
+            }
+        });
+        wvTermsAndConditions.loadDataWithBaseURL(baseUrl, termsAndConditionsRespones.getContent(), "text/html", "UTF-8", null);
         AppLog.d("Success");
     }
 

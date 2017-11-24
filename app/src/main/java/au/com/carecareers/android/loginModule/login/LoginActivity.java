@@ -87,7 +87,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
 
     @OnClick(R.id.tv_forgot_password)
     void forgetPasswordButton() {
-        finish();
         ForgotPasswordActivity.start(LoginActivity.this);
         transitionActivityOpen();
     }

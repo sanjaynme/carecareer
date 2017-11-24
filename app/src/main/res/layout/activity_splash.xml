@@ -21,7 +21,7 @@
         <au.com.carecareers.android.customViews.DotProgressBar
             android:id="@+id/dot_progress_bar"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_20dp"
+            android:layout_height="@dimen/dimen_15dp"
             android:layout_marginTop="@dimen/dimen_35dp"
             custom:amount="4"
             custom:animationDirection="right"

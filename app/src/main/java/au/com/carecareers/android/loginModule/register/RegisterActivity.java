@@ -131,7 +131,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
         etEmail.getText().clear();
         etPassword.getText().clear();
         spinnerState.setSelection(0);
-        showRegisterSuccessMessageDialog("Registeration has been done successfully.");
+        showRegisterSuccessMessageDialog(getResources().getString(R.string.sucess_registration));
     }
 
     private void showRegisterSuccessMessageDialog(String message) {

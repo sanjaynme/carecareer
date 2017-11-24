@@ -59,11 +59,11 @@
                     android:id="@+id/btn_show_hide_register_password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignEnd="@id/et_sign_up_password"
-                    android:layout_alignRight="@id/et_sign_up_password"
+                    android:layout_alignEnd="@+id/et_sign_up_password"
+                    android:layout_alignRight="@+id/et_sign_up_password"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/dimen_15dp"
-                    android:layout_marginRight="@dimen/dimen_15dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
                     android:background="@null"
                     android:contentDescription="@null"
                     android:padding="@dimen/dimen_10dp" />
@@ -91,9 +91,10 @@
 
                 <ProgressBar
                     android:id="@+id/spinner_progressbar"
-                    android:layout_width="wrap_content"
+                    android:layout_width="36dp"
                     android:layout_height="25dp"
                     android:layout_gravity="center_vertical|end"
+                    android:layout_marginRight="@dimen/dimen_8dp"
                     android:visibility="visible" />
 
             </FrameLayout>

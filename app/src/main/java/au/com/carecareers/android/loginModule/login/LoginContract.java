@@ -15,7 +15,6 @@ public class LoginContract {
     public interface ILoginView extends IBaseView {
         void navigateToHomeActivity();
 
-
     }
 
     public interface ILoginPresenter extends IBasePresenter<ILoginView, ILoginInteractor> {
