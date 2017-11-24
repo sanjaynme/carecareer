@@ -16,6 +16,11 @@ import android.widget.TextView;
 
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseActivity;
+import au.com.carecareers.android.homeModule.fragments.ApplicationsFragment;
+import au.com.carecareers.android.homeModule.fragments.JobAlertsFragment;
+import au.com.carecareers.android.homeModule.fragments.SaveListsFragment;
+import au.com.carecareers.android.homeModule.fragments.SearchFragment;
+import au.com.carecareers.android.homeModule.fragments.SettingsFragment;
 import au.com.carecareers.android.homeModule.model.HomeContract;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.loginModule.login.model.LoginModel;

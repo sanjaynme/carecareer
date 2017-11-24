@@ -1,4 +1,4 @@
-package au.com.carecareers.android.homeModule;
+package au.com.carecareers.android.homeModule.fragments;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import javax.inject.Inject;
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseFragment;
 import au.com.carecareers.android.contracts.AppContract;
+import au.com.carecareers.android.homeModule.SettingContract;
+import au.com.carecareers.android.homeModule.SettingPresenter;
 import au.com.carecareers.android.homeModule.injection.SettingsModule;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.loginModule.changePassword.ChangePasswordActivity;

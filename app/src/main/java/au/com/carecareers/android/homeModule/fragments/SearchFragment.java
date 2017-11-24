@@ -1,4 +1,4 @@
-package au.com.carecareers.android.homeModule;
+package au.com.carecareers.android.homeModule.fragments;
 
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseFragment;
@@ -8,7 +8,7 @@ import au.com.carecareers.android.injection.component.BaseComponent;
  * Created by Nikesh on 11/24/2017.
  */
 
-public class ApplicationsFragment extends BaseFragment{
+public class SearchFragment extends BaseFragment {
     @Override
     public void setupToolbar() {
 
@@ -16,10 +16,9 @@ public class ApplicationsFragment extends BaseFragment{
 
     @Override
     public int getLayout() {
-        return R.layout.fragment_applications;
+        return R.layout.fragment_search;
 
     }
-
     @Override
     public void injectComponent(BaseComponent baseComponent) {
 

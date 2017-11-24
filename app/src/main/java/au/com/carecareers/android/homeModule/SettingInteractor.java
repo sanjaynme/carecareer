@@ -20,6 +20,6 @@ public class SettingInteractor extends BaseInteractor implements SettingContract
     @Override
     public void logout() {
         getPreferenceManager().setKeyValues(AppContract.Preferences.IS_LOGGED_IN, false);
-        getPreferenceManager().setKeyValues(AppContract.Preferences.AUTHORIZATION_KEY, "");
+//        getPreferenceManager().setKeyValues(AppContract.Preferences.AUTHORIZATION_KEY, "");
     }
 }

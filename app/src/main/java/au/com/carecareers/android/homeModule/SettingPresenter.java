@@ -55,5 +55,4 @@ public class SettingPresenter extends BasePresenter<SettingContract.ISettingView
             }
         };
     }
-
 }

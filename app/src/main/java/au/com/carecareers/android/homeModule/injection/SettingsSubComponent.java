@@ -1,6 +1,6 @@
 package au.com.carecareers.android.homeModule.injection;
 
-import au.com.carecareers.android.homeModule.SettingsFragment;
+import au.com.carecareers.android.homeModule.fragments.SettingsFragment;
 import au.com.carecareers.android.injection.scope.ActivityScope;
 import dagger.Subcomponent;
 

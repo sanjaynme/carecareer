@@ -50,7 +50,6 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
         if (convertView == null) {
             convertView = inflate.inflate(resourceId, null);
             Holder holder = new Holder();
-
             holder.textView1 = convertView.findViewById(R.id.tv_default_first);
             holder.textView1.setText(spinnerList.get(position));
             holder.textView1.setTextSize(15);

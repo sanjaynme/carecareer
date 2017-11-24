@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -114,4 +115,16 @@ public class ChangePasswordActivity extends BaseActivity implements ChangePasswo
             btnShowHideNewPassword.setImageResource(R.drawable.ic_eye);
         }
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                transitionBackPressed();
+                break;
+        }
+        return true;
+    }
+
 }
