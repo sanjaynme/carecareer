@@ -144,7 +144,7 @@ public class PreferredLocationActivity extends BaseActivity implements OnMapRead
                 .build();
         autocompleteFragment.setFilter(typeFilter);
 
-        ((EditText) autocompleteFragment.getView().findViewById(R.id.place_autocomplete_search_input)).setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
+        ((EditText) autocompleteFragment.getView().findViewById(R.id.place_autocomplete_search_input)).setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         autocompleteFragment.getView().findViewById(R.id.place_autocomplete_clear_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -242,15 +242,6 @@ public class PreferredLocationActivity extends BaseActivity implements OnMapRead
         } catch (SecurityException e) {
             Log.e("Exception: %s", e.getMessage());
         }
-    }
-
-    /*
-    * Get the best and most recent location of the device, which may be null in rare
-    * cases when a location is not available.
-    *  Cases: if last known location is not available move camera to default location
-    * */
-    private void getDeviceLocation() {
-
     }
 
     private void addMarker(LatLng latLng, boolean updateAutoCompleteFragment) {
