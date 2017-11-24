@@ -208,7 +208,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
 
     @OnClick(R.id.tv_terms_and_conditions)
     void termsAndConditionsClicked() {
-        TermsAndConditionActivity.start(RegisterActivity.this);
+        TermsAndConditionActivity.start(RegisterActivity.this, AppContract.Page.TERMS_AND_CONDITIONS);
         transitionActivityOpen();
     }
 

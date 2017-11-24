@@ -8,6 +8,7 @@ public class AppContract {
     private AppContract() {
 
     }
+
     public class ErrorTypes {
         public final static int LOGIN = 1;
         public final static int REGISTER = 2;
@@ -18,6 +19,7 @@ public class AppContract {
     }
 
     public class Preferences {
+        public final static String IS_LOGGED_IN = "is_logged_in";
         public final static String AUTHORIZATION_KEY = "authorization_key";
         public final static String CANDIDATE_ID = "candidate_id";
         public final static String ACCESS_TOKEN = "access_token";
@@ -36,6 +38,12 @@ public class AppContract {
         public static final String EXTRA_SHOW_CROP_VIEW = "show_crop_view";
         public static final String EXTRA_COMPRESS_IMAGE = "compress_image";
         public static final int STATELIST = 1;
+    }
+
+    public class Page {
+        public final static String PAGE_FLAG = "page_flag";
+        public final static int TERMS_AND_CONDITIONS = 1;
+        public final static int PRIVACY_POLICY = 2;
     }
 
     public class Errors {

@@ -68,12 +68,13 @@
     <style name="ToolbarTitle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">@dimen/toolbar_title_sixe</item>
+        <item name="android:textSize">@dimen/txt_toolbar_title</item>
         <item name="android:textColor">@color/colorWhite</item>
-        <!--        <item name="android:padding">@dimen/dimen_16dp</item>-->
-        <!--<item name="fontName">@string/font_avenir_black</item>-->
+
+        <item name="android:gravity">center</item>
+
         <item name="android:layout_gravity">center</item>
-        <item name="android:textAllCaps">false</item>
+
     </style>
 
     <style name="BackArrow">
@@ -86,6 +87,43 @@
         <item name="android:layout_centerVertical">true</item>
     </style>
 
+    <style name="EditTextProfileSetup">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/editTextBackground</item>
+        <item name="android:padding">@dimen/dimen_16dp</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textColorHint">@color/textColorSecondary</item>
+        <item name="android:textSize">@dimen/txt_normal</item>
+    </style>
+
+    <style name="TextViewTitleProfileSetup">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/dimen_16dp</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textSize">@dimen/txt_normal</item>
+        <item name="fontPath">@string/font_sourcesanpro_boldlt</item>
+    </style>
+
+    <style name="TextViewBodyProfileSetup">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@color/editTextBackground</item>
+        <item name="android:padding">@dimen/dimen_16dp</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textColorHint">@color/textColorSecondary</item>
+        <item name="android:textSize">@dimen/txt_normal</item>
+    </style>
+
+    <style name="IconProfileSetup">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@null</item>
+        <item name="android:contentDescription">@null</item>
+        <item name="android:padding">@dimen/dimen_16dp</item>
+    </style>
 
     <dimen name="edittext_height">35dp</dimen>
     <dimen name="dimen_63dp">63dp</dimen>

@@ -15,8 +15,10 @@ import au.com.carecareers.android.R;
 import au.com.carecareers.android.application.CareCareerApp;
 import au.com.carecareers.android.base.view.IBaseView;
 import au.com.carecareers.android.customViews.EbAlertDialog;
-import au.com.carecareers.android.data.local.SharedPreferenceManager;
+import au.com.carecareers.android.homeModule.HomeActivity;
 import au.com.carecareers.android.injection.component.BaseComponent;
+import au.com.carecareers.android.loginModule.landing.LandingActivity;
+import au.com.carecareers.android.profileModule.profileSetup.ProfileSetupActivity;
 import au.com.carecareers.android.utilities.AppLog;
 import au.com.carecareers.android.utilities.ViewUtils;
 import butterknife.ButterKnife;
@@ -35,7 +37,6 @@ import static au.com.carecareers.android.contracts.AppContract.ErrorTypes.TERMS_
 
 public abstract class BaseActivity extends AppCompatActivity implements IBaseView {
     private ProgressDialog mProgressDialog;
-    protected SharedPreferenceManager preferenceManager;
     private String errorMessage;
 
     @LayoutRes
@@ -51,6 +52,16 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         ButterKnife.bind(this);
         mProgressDialog = new ProgressDialog(this);
         setupToolbar();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (!(this instanceof LandingActivity ||
+                this instanceof ProfileSetupActivity ||
+                this instanceof HomeActivity)) {
+            transitionBackPressed();
+        }
     }
 
     @Override
