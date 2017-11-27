@@ -5,7 +5,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.inject.Inject;
+
 import au.com.carecareers.android.R;
+import au.com.carecareers.android.injection.scope.ActivityScope;
+import au.com.carecareers.android.profileModule.selectAvatar.model.AvatarResponse;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -13,9 +22,29 @@ import de.hdodenhof.circleimageview.CircleImageView;
 /**
  * Created by Nischal Manandhar on 23/11/2017.
  */
-
+@ActivityScope
 public class SelectAvatarAdapter extends RecyclerView.Adapter<SelectAvatarAdapter.ViewHolder> {
+    private List<AvatarResponse.Avatar> avatarList;
+    private ItemClickListener listener;
+
+    @Inject
     public SelectAvatarAdapter() {
+        this.avatarList = new ArrayList<>();
+    }
+
+    public void setListener(ItemClickListener listener) {
+        this.listener = listener;
+    }
+
+    public void setAvatarList(List<AvatarResponse.Avatar> avatarList) {
+        this.avatarList = avatarList;
+        notifyDataSetChanged();
+    }
+
+    public void addMoreAvatars(List<AvatarResponse.Avatar> avatarList) {
+        int positionStart = this.avatarList.size() - 1;
+        this.avatarList.addAll(avatarList);
+        notifyItemRangeInserted(positionStart, avatarList.size());
     }
 
     @Override
@@ -36,7 +65,7 @@ public class SelectAvatarAdapter extends RecyclerView.Adapter<SelectAvatarAdapte
 
     @Override
     public int getItemCount() {
-        return 19;
+        return avatarList.size();
     }
 
     @Override
@@ -59,11 +88,26 @@ public class SelectAvatarAdapter extends RecyclerView.Adapter<SelectAvatarAdapte
 
         @Override
         public void bind(int position) {
-
+            Picasso.with(itemView.getContext())
+                    .load(avatarList.get(position).getLinks().getUrl().getHref())
+                    .resize(200, 200)
+                    .centerCrop()
+                    .placeholder(R.color.colorGrey700)
+                    .into(civAvatar);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClicked(avatarList.get(position));
+                }
+            });
         }
     }
 
     interface Binder {
         void bind(int position);
+    }
+
+    public interface ItemClickListener {
+        void onItemClicked(AvatarResponse.Avatar avatar);
     }
 }

@@ -26,8 +26,8 @@ public class LoginContract {
     }
 
     public interface ILoginInteractor extends IBaseInteractor {
-        Observable<LoginModel.LoginRespones> login(String username, String password);
+        Observable<LoginModel.LoginResponse> login(String username, String password);
 
-        void saveLoginResponse(LoginModel.LoginRespones loginRespones);
+        void saveLoginResponse(LoginModel.LoginResponse loginRespones);
     }
 }

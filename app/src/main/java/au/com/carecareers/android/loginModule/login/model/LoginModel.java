@@ -38,7 +38,7 @@ public class LoginModel {
         }
     }
 
-    public class LoginRespones {
+    public class LoginResponse {
 
         @SerializedName("access_token")
         @Expose

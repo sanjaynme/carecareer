@@ -40,10 +40,10 @@ public class LoginPresenter extends BasePresenter<LoginContract.ILoginView, Logi
                 .subscribeWith(getObserver()));
     }
 
-    private DisposableObserver<LoginModel.LoginRespones> getObserver() {
-        return new DisposableObserver<LoginModel.LoginRespones>() {
+    private DisposableObserver<LoginModel.LoginResponse> getObserver() {
+        return new DisposableObserver<LoginModel.LoginResponse>() {
             @Override
-            public void onNext(LoginModel.LoginRespones loginRespones) {
+            public void onNext(LoginModel.LoginResponse loginRespones) {
                 Log.d(TAG, "onNext: ");
                 getInteractor().saveLoginResponse(loginRespones);
                 getView().hideProgressDialog();

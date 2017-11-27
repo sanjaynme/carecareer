@@ -25,21 +25,21 @@ public class LoginInteractor extends BaseInteractor implements LoginContract.ILo
     }
 
     @Override
-    public Observable<LoginModel.LoginRespones> login(String username, String password) {
+    public Observable<LoginModel.LoginResponse> login(String username, String password) {
         return getApiService().login(AuthenticationModel.getBase64(), UrlContract.Values.PASSWORD, username, password);
     }
 
     @Override
-    public void saveLoginResponse(LoginModel.LoginRespones loginRespones) {
+    public void saveLoginResponse(LoginModel.LoginResponse loginResponse) {
         AppLog.d("save login preferences:");
-        getPreferenceManager().setKeyValues(AppContract.Preferences.ACCESS_TOKEN, loginRespones.getAccessToken());
-        getPreferenceManager().setKeyValues(AppContract.Preferences.EXPIRES_IN, loginRespones.getExpiresIn());
-        getPreferenceManager().setKeyValues(AppContract.Preferences.REFRESH_TOKEN, loginRespones.getRefreshToken());
-        getPreferenceManager().setKeyValues(AppContract.Preferences.TOKEN_TYPE, loginRespones.getTokenType());
-        getPreferenceManager().setKeyValues(AppContract.Preferences.SCOPE, loginRespones.getTokenType());
-        getPreferenceManager().setKeyValues(AppContract.Preferences.CANDIDATE_ID, loginRespones.getUser().getId());
-        getPreferenceManager().setKeyValues(AppContract.Preferences.FIRST_NAME, loginRespones.getUser().getFirstName());
-        getPreferenceManager().setKeyValues(AppContract.Preferences.LAST_NAME, loginRespones.getUser().getLastName());
-        getPreferenceManager().setKeyValues(AppContract.Preferences.LAST_LOGIN_DATE, loginRespones.getUser().getLastLoginDate());
+        getPreferenceManager().setKeyValues(AppContract.Preferences.ACCESS_TOKEN, loginResponse.getTokenType() + " " + loginResponse.getAccessToken());
+        getPreferenceManager().setKeyValues(AppContract.Preferences.EXPIRES_IN, loginResponse.getExpiresIn());
+        getPreferenceManager().setKeyValues(AppContract.Preferences.REFRESH_TOKEN, loginResponse.getRefreshToken());
+        getPreferenceManager().setKeyValues(AppContract.Preferences.TOKEN_TYPE, loginResponse.getTokenType());
+        getPreferenceManager().setKeyValues(AppContract.Preferences.SCOPE, loginResponse.getTokenType());
+        getPreferenceManager().setKeyValues(AppContract.Preferences.CANDIDATE_ID, loginResponse.getUser().getId());
+        getPreferenceManager().setKeyValues(AppContract.Preferences.FIRST_NAME, loginResponse.getUser().getFirstName());
+        getPreferenceManager().setKeyValues(AppContract.Preferences.LAST_NAME, loginResponse.getUser().getLastName());
+        getPreferenceManager().setKeyValues(AppContract.Preferences.LAST_LOGIN_DATE, loginResponse.getUser().getLastLoginDate());
     }
 }

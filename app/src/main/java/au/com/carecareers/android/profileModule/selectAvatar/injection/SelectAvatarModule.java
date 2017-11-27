@@ -2,8 +2,9 @@ package au.com.carecareers.android.profileModule.selectAvatar.injection;
 
 import au.com.carecareers.android.injection.scope.ActivityScope;
 import au.com.carecareers.android.profileModule.selectAvatar.SelectAvatarContract;
-import au.com.carecareers.android.profileModule.selectAvatar.SelectAvatarPresenter;
 import au.com.carecareers.android.profileModule.selectAvatar.SelectAvatarInteractor;
+import au.com.carecareers.android.profileModule.selectAvatar.SelectAvatarPresenter;
+import au.com.carecareers.android.profileModule.selectAvatar.adapter.SelectAvatarAdapter;
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.disposables.CompositeDisposable;

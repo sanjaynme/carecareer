@@ -30,6 +30,7 @@ import static au.com.carecareers.android.contracts.AppContract.ErrorTypes.CHANGE
 import static au.com.carecareers.android.contracts.AppContract.ErrorTypes.FORGOT_PASSWORD;
 import static au.com.carecareers.android.contracts.AppContract.ErrorTypes.LOGIN;
 import static au.com.carecareers.android.contracts.AppContract.ErrorTypes.REGISTER;
+import static au.com.carecareers.android.contracts.AppContract.ErrorTypes.SELECT_AVATAR;
 import static au.com.carecareers.android.contracts.AppContract.ErrorTypes.TERMS_AND_CONDITIONS;
 
 /**
@@ -138,6 +139,8 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
                 break;
 
             case CHANGE_PASSWORD:
+                break;
+            case SELECT_AVATAR:
                 break;
         }
         return errorMessage;

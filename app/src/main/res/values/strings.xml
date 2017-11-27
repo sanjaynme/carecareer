@@ -78,11 +78,10 @@
 
 
     <!--Fonts-->
-    <string name="font_sourcesanpro_bold">fonts/SourceSansPro-Bold.ttf</string>
-    <string name="font_sourcesanpro_boldlt">fonts/SourceSansPro-Boldlt.ttf</string>
-    <string name="font_sourcesanpro_extra_light">fonts/SourceSansPro-ExtraLight.ttf</string>
-    <string name="font_sourcesanpro_light">fonts/SourceSansPro-Light.ttf</string>
-    <string name="font_sourcesanpro_regular">fonts/SourceSansPro-Regular.ttf</string>
+    <string name="font_source_san_pro_regular">fonts/SourceSansPro-Regular.ttf</string>
+    <string name="font_source_san_pro_light">fonts/SourceSansPro-Light.ttf</string>
+    <string name="font_source_san_pro_semi_bold">fonts/SourceSansPro-Semibold.ttf</string>
+    <string name="font_source_san_pro_bold">fonts/SourceSansPro-Bold.ttf</string>
 
 
     <string name="menu_done">Done</string>

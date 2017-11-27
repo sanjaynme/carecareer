@@ -29,7 +29,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
  /*   @BindView(R.id.bottom_nav_bar)
     BottomNavigationView bottomNavigationView;
     */
-    private LoginModel.LoginRespones loginResponses;
+    private LoginModel.LoginResponse loginResponses;
 
     public static void start(Context context) {
         Intent homeIntent = new Intent();

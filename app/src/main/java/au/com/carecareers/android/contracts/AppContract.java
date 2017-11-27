@@ -8,12 +8,14 @@ public class AppContract {
     private AppContract() {
 
     }
+
     public class ErrorTypes {
         public final static int LOGIN = 1;
         public final static int REGISTER = 2;
         public final static int TERMS_AND_CONDITIONS = 3;
         public final static int FORGOT_PASSWORD = 4;
         public final static int CHANGE_PASSWORD = 5;
+        public final static int SELECT_AVATAR = 6;
 
     }
 
@@ -28,6 +30,8 @@ public class AppContract {
         public final static String FIRST_NAME = "first_name";
         public final static String LAST_NAME = "last_name";
         public final static String LAST_LOGIN_DATE = "last_name";
+
+        public final static String AVATAR_URL = "avatar_url";
 
     }
 
@@ -52,8 +56,8 @@ public class AppContract {
         public static final int CAMERA = 100;
         public static final int GALLERY = 101;
 
-        public static final int EDIT_PROFILE = 201;
-        public static final int PREFERRED_LOCATION = 202;
+        public static final int PREFERRED_LOCATION = 201;
+        public static final int SELECT_AVATAR = 202;
     }
 
 }

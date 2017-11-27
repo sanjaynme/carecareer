@@ -10,6 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -29,6 +30,7 @@ import au.com.carecareers.android.profileModule.model.CandidateModel;
 import au.com.carecareers.android.profileModule.preferredLocation.PreferredLocationActivity;
 import au.com.carecareers.android.profileModule.profileSetup.injection.ProfileSetupModule;
 import au.com.carecareers.android.profileModule.selectAvatar.SelectAvatarActivity;
+import au.com.carecareers.android.profileModule.selectAvatar.model.AvatarResponse;
 import au.com.carecareers.android.utilities.ViewUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -48,6 +50,8 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
     ScrollView scrollView;
     @BindView(R.id.civ_profile_image)
     CircleImageView civProfile;
+    @BindView(R.id.pb_profile_image)
+    ProgressBar pbProfileImage;
     @BindView(R.id.tv_preferred_location)
     TextView tvPreferredLocation;
     @BindView(R.id.et_what_is_your_career_move)
@@ -77,6 +81,7 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
         super.onCreate(savedInstanceState);
         ViewUtils.setupUI(findViewById(R.id.activity_profile_setup), this);
         this.candidateModel = new CandidateModel();
+        presenter.onAttach(this);
 
         scrollView.setDescendantFocusability(ViewGroup.FOCUS_BEFORE_DESCENDANTS);
         scrollView.setFocusable(true);
@@ -104,11 +109,8 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
             @Override
             public void onImageSuccess(String imagePath) {
                 Log.d("path", "onImageSuccess: " + imagePath);
-                Picasso.with(ProfileSetupActivity.this)
-                        .load(new File(imagePath))
-                        .resize(200, 200)
-                        .centerCrop()
-                        .into(civProfile);
+                presenter.uploadImage(imagePath);
+                setProfileImage(imagePath, false);
             }
         });
     }
@@ -126,6 +128,11 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
                 } else {
                     setPreferredLocation("");
                 }
+            } else if (requestCode == AppContract.RequestCode.SELECT_AVATAR) {
+                String extra = data.getStringExtra(AppContract.Extras.DATA);
+                AvatarResponse.Avatar avatar = gson.fromJson(extra, AvatarResponse.Avatar.class);
+                presenter.setAvatar(avatar);
+                setProfileImage(avatar.getLinks().getUrl().getHref(), true);
             }
         }
     }
@@ -137,13 +144,14 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
 
     @OnClick(R.id.tv_select_avatar)
     public void selectAvatar() {
-        SelectAvatarActivity.start(this);
+        SelectAvatarActivity.startForResult(this);
         transitionActivityOpen();
     }
 
     @OnClick(R.id.ll_preferred_location_main)
     public void preferredLocationClicked() {
-        navigateToPreferredLocation();
+        PreferredLocationActivity.startForResult(this, gson.toJson(candidateModel));
+        transitionActivityOpen();
     }
 
     @OnClick(R.id.ll_location_area)
@@ -156,6 +164,33 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         tvToolbarTitle.setText(getMessage(R.string.title_personal_details));
+    }
+
+    @Override
+    public void setProfileImage(String imagePath, boolean isAvatar) {
+        if (isAvatar) {
+            Picasso.with(ProfileSetupActivity.this)
+                    .load(imagePath)
+                    .resize(200, 200)
+                    .centerCrop()
+                    .into(civProfile);
+        } else {
+            Picasso.with(ProfileSetupActivity.this)
+                    .load(new File(imagePath))
+                    .resize(200, 200)
+                    .centerCrop()
+                    .into(civProfile);
+        }
+    }
+
+    @Override
+    public void showProfileProgress() {
+        pbProfileImage.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProfileProgress() {
+        pbProfileImage.setVisibility(View.GONE);
     }
 
     @Override
@@ -181,11 +216,5 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
     @Override
     public void setWorkType(String workType) {
 
-    }
-
-    @Override
-    public void navigateToPreferredLocation() {
-        PreferredLocationActivity.startForResult(this, gson.toJson(candidateModel));
-        transitionActivityOpen();
     }
 }
