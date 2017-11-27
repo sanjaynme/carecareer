@@ -15,10 +15,25 @@
         android:layout_height="match_parent"
         android:layout_below="@id/toolbar" />
 
+    <TextView
+        android:id="@+id/tv_title"
+        fontPath="@string/font_source_san_pro_semi_bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_marginBottom="@dimen/dimen_16dp"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:gravity="center"
+        android:padding="@dimen/dimen_10dp"
+        android:text="@string/tv_click_on_avatar"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="@dimen/txt_normal" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
-        tools:listitem="@layout/item_select_avatar_left" />
+        android:layout_below="@id/tv_title"
+        android:layout_centerHorizontal="true"
+        tools:listitem="@layout/item_select_avatar" />
 </RelativeLayout>

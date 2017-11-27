@@ -50,11 +50,7 @@ public class SelectAvatarAdapter extends RecyclerView.Adapter<SelectAvatarAdapte
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
-        if (viewType == R.layout.item_select_avatar_right) {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_select_avatar_right, parent, false);
-        } else {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_select_avatar_left, parent, false);
-        }
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_select_avatar, parent, false);
         return new ViewHolder(view);
     }
 
@@ -70,11 +66,7 @@ public class SelectAvatarAdapter extends RecyclerView.Adapter<SelectAvatarAdapte
 
     @Override
     public int getItemViewType(int position) {
-        if (position % 2 == 0) {
-            return R.layout.item_select_avatar_right;
-        } else {
-            return R.layout.item_select_avatar_left;
-        }
+        return R.layout.item_select_avatar;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements Binder {

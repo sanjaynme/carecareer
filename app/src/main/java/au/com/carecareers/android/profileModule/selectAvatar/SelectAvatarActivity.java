@@ -112,7 +112,7 @@ public class SelectAvatarActivity extends BaseActivity implements SelectAvatarCo
 
     @Override
     public void setupAvatarList(AvatarResponse avatarResponse) {
-        GridLayoutManager manager = new GridLayoutManager(this, 2);
+        GridLayoutManager manager = new GridLayoutManager(this, 3);
         avatarAdapter.setListener(avatar -> {
             Intent intent = new Intent();
             intent.putExtra(AppContract.Extras.DATA, gson.toJson(avatar));
@@ -122,8 +122,8 @@ public class SelectAvatarActivity extends BaseActivity implements SelectAvatarCo
         avatarAdapter.setAvatarList(avatarResponse.getEmbedded().getAvatars());
         recyclerView.setAdapter(avatarAdapter);
         recyclerView.setLayoutManager(manager);
-        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.dimen_25dp);
-        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, spacingInPixels, true));
+        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.dimen_16dp);
+        recyclerView.addItemDecoration(new GridSpacingItemDecoration(3, spacingInPixels, true));
         recyclerView.addOnScrollListener(new EndlessRecyclerViewScrollListener(manager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
