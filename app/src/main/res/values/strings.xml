@@ -32,6 +32,14 @@
     <string name="tv_upload_photo">Upload Photo</string>
     <string name="tv_select_an_avatar"><u>Select an avatar</u></string>
     <string name="tv_click_on_avatar">Click on an avatar to add to your profile</string>
+    <string name="tv_edit_profile_details">Edit your profile details below.</string>
+    <string name="tv_preview_profile"><u>Preview profile</u></string>
+    <string name="tv_personal_details">Personal Details</string>
+    <string name="tv_education">Education</string>
+    <string name="tv_employment">Employment</string>
+    <string name="tv_files">Files</string>
+    <string name="tv_personal_search_settings">Personal Search Settings</string>
+
 
     <string name="tv_preferred_location">Preferred Location(s)</string>
     <string name="tv_preferred_industry">Preferred Industry(s)</string>
@@ -92,4 +100,7 @@
     <string name="applied_jobs">Applied Jobs</string>
     <string name="job_alerts">Job Alerts</string>
     <string name="profile">Profile</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

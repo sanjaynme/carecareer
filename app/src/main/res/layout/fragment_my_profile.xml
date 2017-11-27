@@ -1,0 +1,85 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context="au.com.carecareers.android.profileModule.myProfile.MyProfileFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_greetings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:padding="@dimen/dimen_15dp"
+            android:text="Hi, John"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/txt_normal" />
+
+        <TextView
+            android:id="@+id/tv_edit_profile_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_5dp"
+            android:text="@string/tv_edit_profile_details"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/txt_normal" />
+
+        <ImageView
+            android:id="@+id/iv_profile_image"
+            android:layout_width="@dimen/dimen_85dp"
+            android:layout_height="@dimen/dimen_85dp"
+            android:layout_margin="@dimen/dimen_15dp"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_eye" />
+
+        <TextView
+            android:id="@+id/tv_preview_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_40dp"
+            android:padding="@dimen/dimen_5dp"
+            android:text="@string/tv_preview_profile"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/txt_normal" />
+
+        <TextView
+            android:id="@+id/tv_personal_details"
+            style="@style/TVMyProfile"
+            android:layout_marginBottom="@dimen/dimen_15dp"
+            android:text="@string/tv_personal_details" />
+
+        <TextView
+            android:id="@+id/tv_education"
+            style="@style/TVMyProfile"
+            android:layout_marginBottom="@dimen/dimen_15dp"
+            android:text="@string/tv_education" />
+
+        <TextView
+            android:id="@+id/tv_employment"
+            style="@style/TVMyProfile"
+            android:layout_marginBottom="@dimen/dimen_15dp"
+            android:text="@string/tv_employment" />
+
+        <TextView
+            android:id="@+id/tv_files"
+            style="@style/TVMyProfile"
+            android:layout_marginBottom="@dimen/dimen_15dp"
+            android:text="@string/tv_files" />
+
+        <TextView
+            android:id="@+id/tv_personal_search_settings"
+            style="@style/TVMyProfile"
+            android:layout_marginBottom="@dimen/dimen_20dp"
+            android:text="@string/tv_personal_search_settings" />
+
+    </LinearLayout>
+
+</ScrollView>
