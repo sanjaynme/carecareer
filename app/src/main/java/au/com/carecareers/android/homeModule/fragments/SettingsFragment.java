@@ -1,6 +1,7 @@
 package au.com.carecareers.android.homeModule.fragments;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -22,7 +23,7 @@ import au.com.carecareers.android.loginModule.termsAndCondition.TermsAndConditio
 import butterknife.OnClick;
 
 /**
- * Created by Nikesh on 11/24/2017.
+ * Created by Sanjay on 11/24/2017.
  */
 
 public class SettingsFragment extends BaseFragment implements SettingContract.ISettingView {
@@ -72,7 +73,11 @@ public class SettingsFragment extends BaseFragment implements SettingContract.IS
 
     @OnClick(R.id.tv_share_app)
     void onShareAppClicked() {
-        showToastMessage(R.string.tv_settings_share_app);
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "https://www.carecareers.com.au"); // Simple text and URL to share
+        sendIntent.setType("text/plain");
+        this.startActivity(sendIntent);
     }
 
     @Override
@@ -91,7 +96,6 @@ public class SettingsFragment extends BaseFragment implements SettingContract.IS
         builder.setMessage(message);
         builder.setCancelable(false);
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 presenter.onLogout();
@@ -99,7 +103,6 @@ public class SettingsFragment extends BaseFragment implements SettingContract.IS
         });
 
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 hideProgressDialog();

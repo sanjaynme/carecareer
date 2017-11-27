@@ -6,7 +6,7 @@
         <item name="android:layout_height">@dimen/dimen_63dp</item>
         <!--<item name="android:padding">@dimen/dimen_15dp</item>-->
         <item name="android:font">@dimen/dimen_15dp</item>
-        <item name="android:background">@drawable/register_and_login</item>
+        <item name="android:background">@drawable/btn_care_career</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textSize">@dimen/txt_14sp</item>
     </style>

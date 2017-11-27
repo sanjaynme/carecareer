@@ -1,9 +1,11 @@
 package au.com.carecareers.android.loginModule.changePassword;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -11,7 +13,6 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import javax.inject.Inject;
 
@@ -19,6 +20,8 @@ import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.loginModule.changePassword.injection.ChangePasswordModule;
+import au.com.carecareers.android.loginModule.changePassword.model.ChangePasswordModel;
+import au.com.carecareers.android.loginModule.login.LoginActivity;
 import au.com.carecareers.android.utilities.ViewUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -47,6 +50,7 @@ public class ChangePasswordActivity extends BaseActivity implements ChangePasswo
 
     @Inject
     ChangePasswordPresenter presenter;
+    private ChangePasswordModel.ChangePasswordRequest changePasswordRequest;
 
     @Override
     public int getLayout() {
@@ -77,8 +81,6 @@ public class ChangePasswordActivity extends BaseActivity implements ChangePasswo
         presenter.onAttach(this);
         btnShowHideOldPassword.setImageResource(R.drawable.ic_eye);
         btnShowHideNewPassword.setImageResource(R.drawable.ic_eye);
-
-//        presenter.forgotPassword(forgotEmail);
     }
 
     @Override
@@ -89,8 +91,13 @@ public class ChangePasswordActivity extends BaseActivity implements ChangePasswo
     }
 
     @OnClick(R.id.submit_view_change_password)
-    public void loginClicked() {
-        Toast.makeText(this, "Under Development", Toast.LENGTH_SHORT).show();
+    public void changePasswordClicked() {
+        changePasswordRequest = new ChangePasswordModel.ChangePasswordRequest();
+        changePasswordRequest.setNewPassword(etNewPassword.getText().toString().trim());
+        changePasswordRequest.setCurrentPassword(etOldPassword.getText().toString().trim());
+        if (presenter.validateFields(changePasswordRequest)) {
+            presenter.changePassword(changePasswordRequest);
+        }
     }
 
 
@@ -127,4 +134,35 @@ public class ChangePasswordActivity extends BaseActivity implements ChangePasswo
         return true;
     }
 
+    @Override
+    public void navigateToLoginActivity() {
+        etOldPassword.getText().clear();
+        etNewPassword.getText().clear();
+        showChangePasswordMessageDialog(getResources().getString(R.string.sucess_change_password));
+    }
+
+    private void showChangePasswordMessageDialog(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(message);
+        builder.setTitle("Care Career");
+        builder.setCancelable(false);
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+                hideProgressDialog();
+                finish();
+                LoginActivity.start(ChangePasswordActivity.this);
+                transitionActivityOpen();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

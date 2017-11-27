@@ -136,6 +136,17 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
                 break;
 
             case CHANGE_PASSWORD:
+                try {
+                    JSONObject jsonObject = new JSONObject(errorResponseBody.string());
+                    String message = jsonObject.getString("messages");
+
+                    JSONObject msgJsonObject = new JSONObject(message);
+                    JSONArray passwordArray = msgJsonObject.getJSONArray("current_password");
+                    errorMessage = passwordArray.getString(0);
+                    AppLog.d("currentPassword:" + errorMessage);
+                } catch (Exception e) {
+                    return e.getMessage();
+                }
                 break;
         }
         return errorMessage;
@@ -161,5 +172,4 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     protected void transitionActivityOpen() {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
-
 }

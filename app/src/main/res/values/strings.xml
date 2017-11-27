@@ -44,14 +44,18 @@
     <string name="err_email">Please enter a email address.</string>
     <string name="err_email_valid">Please enter a valid email address.</string>
     <string name="err_password">Please enter a password.</string>
+    <string name="err_current_password">Please enter a current password.</string>
+    <string name="err_new_password">Please enter a new password.</string>
     <string name="err_password_length">Please enter password of length 8 character.</string>
     <string name="err_password_uppercase">Password must contain one uppercase letter.</string>
+    <string name="err_new_password_uppercase">New Password must contain one uppercase letter.</string>
     <string name="err_state_name">Please select a state.</string>
     <string name="err_">Error</string>
 
     <!--Success-->
     <string name="sucess_forgot_email">Email has been sent successfully.</string>
     <string name="sucess_registration">Registeration has been done successfully.</string>
+    <string name="sucess_change_password">Password has been changed successfully.</string>
 
     <!--EditTexts-->
     <string name="et_username">Username</string>
@@ -91,7 +95,7 @@
     <string name="menu_done">Done</string>
     <!--BottomBarNavigation Menus-->
     <string name="search">Search</string>
-    <string name="save_lists">Save</string>
+    <string name="save_lists">Saved</string>
     <string name="applications">Applications</string>
     <string name="job_alerts">Job Alerts</string>
     <string name="profile">Profile</string>

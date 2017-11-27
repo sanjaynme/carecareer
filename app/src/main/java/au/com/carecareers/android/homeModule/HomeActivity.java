@@ -23,11 +23,10 @@ import au.com.carecareers.android.homeModule.fragments.SearchFragment;
 import au.com.carecareers.android.homeModule.fragments.SettingsFragment;
 import au.com.carecareers.android.homeModule.model.HomeContract;
 import au.com.carecareers.android.injection.component.BaseComponent;
-import au.com.carecareers.android.loginModule.login.model.LoginModel;
 import butterknife.BindView;
 
 /**
- * Created by Nikesh on 11/20/2017.
+ * Created by Sanjay on 11/20/2017.
  */
 
 public class HomeActivity extends BaseActivity implements HomeContract.IHomeView, BottomNavigationView.OnNavigationItemSelectedListener {
@@ -39,13 +38,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
 
     @BindView(R.id.bottom_nav_bar)
     BottomNavigationView bottomNavigationView;
-
-    private LoginModel.LoginRespones loginResponses;
     private static int currentTabId;
-    private Fragment selectedFragment = null;
-    private boolean transparentToolbar;
-    private boolean NO_STACK = false;
-    private boolean STACK = true;
 
     public static void start(Context context) {
         Intent homeIntent = new Intent();
@@ -85,9 +78,8 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
     @Override
     public void setupToolbar() {
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        transparentToolbar = false;
-//        Fragment fragment = getSupportFragmentManager().findFragmentByTag("Search");
         tvTitle.setVisibility(View.VISIBLE);
         tvTitle.setText(getResources().getText(R.string.tv_home));
     }

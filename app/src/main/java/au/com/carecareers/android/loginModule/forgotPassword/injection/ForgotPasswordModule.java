@@ -9,7 +9,7 @@ import dagger.Provides;
 import io.reactivex.disposables.CompositeDisposable;
 
 /**
- * Created by Nikesh on 11/21/2017.
+ * Created by Sanjay on 11/21/2017.
  */
 @Module
 public class ForgotPasswordModule {

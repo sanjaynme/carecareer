@@ -3,9 +3,11 @@ package au.com.carecareers.android.homeModule;
 import au.com.carecareers.android.base.interactor.IBaseInteractor;
 import au.com.carecareers.android.base.presenter.IBasePresenter;
 import au.com.carecareers.android.base.view.IBaseView;
+import au.com.carecareers.android.homeModule.model.LogOutModel;
+import io.reactivex.Observable;
 
 /**
- * Created by Nikesh on 11/24/2017.
+ * Created by Sanjay on 11/24/2017.
  */
 
 public class SettingContract {
@@ -19,8 +21,9 @@ public class SettingContract {
     }
 
     public interface ISettingInteractor extends IBaseInteractor {
+        Observable<LogOutModel.LogOutResponse> logout();
 
-        void logout();
+        void logOutResponse(LogOutModel.LogOutResponse logOutResponse);
     }
 }
 

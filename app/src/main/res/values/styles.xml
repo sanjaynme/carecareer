@@ -57,9 +57,8 @@
     <style name="Button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/dimen_63dp</item>
-        <!--<item name="android:textScaleX">@dimen/dimen_20dp</item>-->
         <item name="android:textAllCaps">true</item>
-        <item name="android:background">@drawable/register_and_login</item>
+        <item name="android:background">@drawable/btn_care_career</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textSize">@dimen/txt_14sp</item>
     </style>
@@ -70,9 +69,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/txt_toolbar_title</item>
         <item name="android:textColor">@color/colorWhite</item>
-
         <item name="android:gravity">center</item>
-
         <item name="android:layout_gravity">center</item>
 
     </style>

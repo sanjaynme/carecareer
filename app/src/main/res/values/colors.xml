@@ -35,6 +35,7 @@
     <color name="colorSearchBackground">#191F28</color>
     <color name="colorBottomNavigationView">#F0EAEA</color>
     <color name="colorToolbarBlack">#2C3239</color>
+    <color name="colorRedButton">#D21242</color>
 
 
 </resources>

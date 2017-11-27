@@ -14,13 +14,15 @@ public class UrlContract {
     public static final String GETSTATES = "taxonomies/state";
     public static final String REGISTER = "candidates/register";
     public static final String FORGOT_PASSWORD = "candidates/forgot-password";
-//    public static final String PRIVACY_POLICY = "Contents/get_content";
-    public static final String PRIVACY_POLICY = "contents/{type}/{id_or_slug}";
+    public static final String CHANGE_PASSWORD = "candidates/{candidate_id}/password";
+    public static final String PAGE_CONTENT = "contents/{type}/{id_or_slug}";
+    public static final String LOGOUT = "oauth/revoke/";
 
 
     public class Keys {
         public static final String GRANT_TYPE = "grant_type";
         public final static String AUTHORIZATION = "authorization";
+        public final static String CANDIDATE_ID = "candidate_id";
     }
 
     public class Values {

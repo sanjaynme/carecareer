@@ -1,6 +1,9 @@
 package au.com.carecareers.android.splashModule;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 
 import javax.inject.Inject;
 
@@ -32,6 +35,7 @@ public class SplashActivity extends BaseActivity implements SplashContract.ISpla
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         presenter.onAttach(this);
         presenter.auth();
     }

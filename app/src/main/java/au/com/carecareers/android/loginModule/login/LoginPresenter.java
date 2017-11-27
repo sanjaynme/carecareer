@@ -86,9 +86,6 @@ public class LoginPresenter extends BasePresenter<LoginContract.ILoginView, Logi
         } else if (password.length() < 8) {
             getView().showAlertDialog(R.string.err_password_length);
             return false;
-        } else if (!UpperCasePatten.matcher(password).find()) {
-            getView().showAlertDialog(R.string.err_password_uppercase);
-            return false;
         }
         return true;
     }

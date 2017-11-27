@@ -107,7 +107,7 @@
                 android:layout_marginLeft="@dimen/dimen_16dp"
                 android:layout_marginRight="@dimen/dimen_16dp"
                 android:layout_marginTop="@dimen/dimen_35dp"
-                android:lineSpacingExtra="@dimen/dimen_10dp"
+                android:lineSpacingExtra="@dimen/dimen_5dp"
                 android:paddingBottom="@dimen/dimen_15dp"
                 android:text="@string/tv_terms_conditions"
                 android:textColor="@color/textColorPrimary"

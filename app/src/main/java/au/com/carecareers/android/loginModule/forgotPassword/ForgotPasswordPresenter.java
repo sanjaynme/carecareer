@@ -18,7 +18,7 @@ import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 
 /**
- * Created by Nikesh on 11/21/2017.
+ * Created by Sanjay on 11/21/2017.
  */
 
 public class ForgotPasswordPresenter extends BasePresenter<ForgotPasswordContract.IForgotPasswordView, ForgotPasswordContract.IForgotInteractor> implements

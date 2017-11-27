@@ -4,6 +4,8 @@ package au.com.carecareers.android.data.rest;
 import javax.inject.Singleton;
 
 import au.com.carecareers.android.contracts.UrlContract;
+import au.com.carecareers.android.homeModule.model.LogOutModel;
+import au.com.carecareers.android.loginModule.changePassword.model.ChangePasswordModel;
 import au.com.carecareers.android.loginModule.forgotPassword.model.ForgotPasswordModel;
 import au.com.carecareers.android.loginModule.login.model.LoginModel;
 import au.com.carecareers.android.loginModule.register.model.RegisterModel;
@@ -19,6 +21,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 /**
@@ -36,7 +39,7 @@ public interface ApiService {
 
     @Headers({"accept:application/json",})
     @GET(UrlContract.GETSTATES)
-    Observable<TaxonomyModel.TaxonomyResponse> getStates(@Header(UrlContract.Keys.AUTHORIZATION) String base64);
+    Observable<TaxonomyModel.TaxonomyResponse> getStates(@Header(UrlContract.Keys.AUTHORIZATION) String bearer);
 
     @Headers({"Content-Type:application/x-www-form-urlencoded",
             "Accept:application/json, text/plain, */*",})
@@ -50,21 +53,32 @@ public interface ApiService {
     @Headers({"Content-Type:application/json",
             "accept:application/json",})
     @POST(UrlContract.REGISTER)
-    Observable<RegisterModel.RegisterResponse> register(@Header(UrlContract.Keys.AUTHORIZATION) String base64,
+    Observable<RegisterModel.RegisterResponse> register(@Header(UrlContract.Keys.AUTHORIZATION) String bearer,
                                                         @Body RegisterModel.RegisterRequest registerRequest);
 
 
     @Headers({"Content-Type:application/json",
             "accept:application/json",})
     @POST(UrlContract.FORGOT_PASSWORD)
-    Completable forgotPassword(@Header(UrlContract.Keys.AUTHORIZATION) String base64,
+    Completable forgotPassword(@Header(UrlContract.Keys.AUTHORIZATION) String bearer,
                                @Body ForgotPasswordModel.ForgotPasswordRequest forgotEmail);
 
     @Headers({"accept:application/json",})
-    @GET(UrlContract.PRIVACY_POLICY)
-    Observable<TermsAndConditionsModel.TermsAndConditionsRespones> getTermsAndConditions(@Header(UrlContract.Keys.AUTHORIZATION) String base64,
+    @GET(UrlContract.PAGE_CONTENT)
+    Observable<TermsAndConditionsModel.TermsAndConditionsRespones> getTermsAndConditions(@Header(UrlContract.Keys.AUTHORIZATION) String bearer,
                                                                                          @Path("type") String type,
                                                                                          @Path("id_or_slug") String idOrSlug);
 
+    @Headers({"Content-Type:application/json",
+            "accept:application/json",})
+    @PUT(UrlContract.CHANGE_PASSWORD)
+    Completable changePassword(@Header(UrlContract.Keys.AUTHORIZATION) String accessToken,
+                               @Path("candidate_id") String candidateId,
+                               @Body ChangePasswordModel.ChangePasswordRequest changePasswordRequest);
 
+    @Headers({"Content-Type:application/json",
+            "accept:application/json",})
+    @POST(UrlContract.LOGOUT)
+    Observable<LogOutModel.LogOutResponse> logout(@Header(UrlContract.Keys.AUTHORIZATION) String accessToken,
+                       @Body LogOutModel.LogOutRequest logOutRequest);
 }

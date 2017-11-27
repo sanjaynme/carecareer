@@ -8,12 +8,15 @@ import javax.inject.Inject;
 
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.presenter.BasePresenter;
+import au.com.carecareers.android.homeModule.model.LogOutModel;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.observers.DisposableCompletableObserver;
+import io.reactivex.observers.DisposableObserver;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 
 /**
- * Created by Nikesh on 11/24/2017.
+ * Created by Sanjay on 11/24/2017.
  */
 
 public class SettingPresenter extends BasePresenter<SettingContract.ISettingView, SettingContract.ISettingInteractor>
@@ -28,21 +31,18 @@ public class SettingPresenter extends BasePresenter<SettingContract.ISettingView
     @Override
     public void onLogout() {
         getView().showProgressDialog(R.string.msg_loading);
-        getInteractor().logout();
-        getView().hideProgressDialog();
-        getView().navigateToLandingActivity();
-
-        /*getCompositeDisposable().add(getInteractor().logout()
+        getCompositeDisposable().add(getInteractor().logout()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(getObserver()));*/
+                .subscribeWith(getObserver()));
     }
 
-    private DisposableCompletableObserver getObserver() {
-        return new DisposableCompletableObserver() {
+    private DisposableObserver<LogOutModel.LogOutResponse> getObserver() {
+        return new DisposableObserver<LogOutModel.LogOutResponse>() {
             @Override
-            public void onComplete() {
+            public void onNext(LogOutModel.LogOutResponse logOutResponse) {
                 Log.d(TAG, "onNext: ");
+                getInteractor().logOutResponse(logOutResponse);
                 getView().hideProgressDialog();
                 getView().navigateToLandingActivity();
             }
@@ -51,6 +51,11 @@ public class SettingPresenter extends BasePresenter<SettingContract.ISettingView
             public void onError(Throwable e) {
                 Log.d(TAG, "onError: ");
                 ResponseBody responseBody = ((HttpException) e).response().errorBody();
+                getView().hideProgressDialog();
+            }
+
+            @Override
+            public void onComplete() {
                 getView().hideProgressDialog();
             }
         };
