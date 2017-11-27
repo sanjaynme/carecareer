@@ -16,10 +16,12 @@ import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.homeModule.SettingContract;
 import au.com.carecareers.android.homeModule.SettingPresenter;
 import au.com.carecareers.android.homeModule.injection.SettingsModule;
+import au.com.carecareers.android.homeModule.model.TokenRefreshModel;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.loginModule.changePassword.ChangePasswordActivity;
 import au.com.carecareers.android.loginModule.landing.LandingActivity;
 import au.com.carecareers.android.loginModule.termsAndCondition.TermsAndConditionActivity;
+import au.com.carecareers.android.utilities.AppLog;
 import butterknife.OnClick;
 
 /**
@@ -91,6 +93,15 @@ public class SettingsFragment extends BaseFragment implements SettingContract.IS
         transitionActivityOpen();
     }
 
+    @Override
+    public void navigateToSettingActivity(TokenRefreshModel.TokenRefreshResponse tokenRefreshResponse) {
+        AppLog.d("token reponse accesstoken:" + tokenRefreshResponse.getAccessToken());
+        AppLog.d("token reponse expires in:" + tokenRefreshResponse.getExpiresIn());
+        AppLog.d("token reponse refresh token:" + tokenRefreshResponse.getRefreshToken());
+        AppLog.d("token reponse token type:" + tokenRefreshResponse.getTokenType());
+        AppLog.d("token reponse scope:" + tokenRefreshResponse.getScope());
+    }
+
     private void showWarningDialog(String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage(message);
@@ -99,6 +110,7 @@ public class SettingsFragment extends BaseFragment implements SettingContract.IS
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 presenter.onLogout();
+                presenter.refreshToken();
             }
         });
 

@@ -5,6 +5,7 @@ import javax.inject.Singleton;
 
 import au.com.carecareers.android.contracts.UrlContract;
 import au.com.carecareers.android.homeModule.model.LogOutModel;
+import au.com.carecareers.android.homeModule.model.TokenRefreshModel;
 import au.com.carecareers.android.loginModule.changePassword.model.ChangePasswordModel;
 import au.com.carecareers.android.loginModule.forgotPassword.model.ForgotPasswordModel;
 import au.com.carecareers.android.loginModule.login.model.LoginModel;
@@ -72,13 +73,19 @@ public interface ApiService {
     @Headers({"Content-Type:application/json",
             "accept:application/json",})
     @PUT(UrlContract.CHANGE_PASSWORD)
-    Completable changePassword(@Header(UrlContract.Keys.AUTHORIZATION) String accessToken,
+    Completable changePassword(@Header(UrlContract.Keys.ACCESS_TOKEN) String accessToken,
                                @Path("candidate_id") String candidateId,
                                @Body ChangePasswordModel.ChangePasswordRequest changePasswordRequest);
 
     @Headers({"Content-Type:application/json",
             "accept:application/json",})
     @POST(UrlContract.LOGOUT)
-    Observable<LogOutModel.LogOutResponse> logout(@Header(UrlContract.Keys.AUTHORIZATION) String accessToken,
-                       @Body LogOutModel.LogOutRequest logOutRequest);
+    Observable<LogOutModel.LogOutResponse> logout(@Header(UrlContract.Keys.ACCESS_TOKEN) String accessToken,
+                                                  @Body LogOutModel.LogOutRequest logOutRequest);
+
+    @Headers({"Content-Type:application/json",
+            "accept:application/json",})
+    @POST(UrlContract.REFRESH_TOKEN)
+    Observable<TokenRefreshModel.TokenRefreshResponse> refreshToken(@Header(UrlContract.Keys.ACCESS_TOKEN) String accessToken,
+                                                                    @Body TokenRefreshModel.TokenRefreshRequest tokenRefreshRequest);
 }

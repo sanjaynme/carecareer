@@ -45,6 +45,10 @@ public class AppContract {
         public final static int TERMS_AND_CONDITIONS = 1;
         public final static int PRIVACY_POLICY = 2;
     }
+    public class ClientCredentials{
+        public final static String CLIENT_ID = "86e84f17-3fe0-4d3a-a2fd-a93af9ff3355";
+        public final static String CLIENT_SECRET = "nxKQWgERJy9ALyDjGEp4bRw4";
+    }
 
     public class Errors {
         public static final String IMAGE_ERROR = "Image not found";

@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.presenter.BasePresenter;
 import au.com.carecareers.android.homeModule.model.LogOutModel;
+import au.com.carecareers.android.homeModule.model.TokenRefreshModel;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableObserver;
@@ -35,6 +36,37 @@ public class SettingPresenter extends BasePresenter<SettingContract.ISettingView
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(getObserver()));
+    }
+
+    @Override
+    public void refreshToken() {
+        getCompositeDisposable().add(getInteractor().refreshToken()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(getRefreshObserver()));
+    }
+
+    private DisposableObserver<TokenRefreshModel.TokenRefreshResponse> getRefreshObserver() {
+        return new DisposableObserver<TokenRefreshModel.TokenRefreshResponse>() {
+            @Override
+            public void onNext(TokenRefreshModel.TokenRefreshResponse tokenRefreshResponse) {
+                Log.d(TAG, "onNext: ");
+                getView().hideProgressDialog();
+                getView().navigateToSettingActivity(tokenRefreshResponse);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.d(TAG, "onError: ");
+                ResponseBody responseBody = ((HttpException) e).response().errorBody();
+                getView().hideProgressDialog();
+            }
+
+            @Override
+            public void onComplete() {
+                getView().hideProgressDialog();
+            }
+        };
     }
 
     private DisposableObserver<LogOutModel.LogOutResponse> getObserver() {

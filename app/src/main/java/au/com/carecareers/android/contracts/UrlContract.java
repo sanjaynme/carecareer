@@ -17,12 +17,13 @@ public class UrlContract {
     public static final String CHANGE_PASSWORD = "candidates/{candidate_id}/password";
     public static final String PAGE_CONTENT = "contents/{type}/{id_or_slug}";
     public static final String LOGOUT = "oauth/revoke/";
+    public static final String REFRESH_TOKEN = "oauth/refresh/";
 
 
     public class Keys {
         public static final String GRANT_TYPE = "grant_type";
         public final static String AUTHORIZATION = "authorization";
-        public final static String CANDIDATE_ID = "candidate_id";
+        public final static String ACCESS_TOKEN = "access_token";
     }
 
     public class Values {

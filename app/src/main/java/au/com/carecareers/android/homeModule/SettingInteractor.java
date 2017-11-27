@@ -7,6 +7,7 @@ import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.data.local.SharedPreferenceManager;
 import au.com.carecareers.android.data.rest.ApiService;
 import au.com.carecareers.android.homeModule.model.LogOutModel;
+import au.com.carecareers.android.homeModule.model.TokenRefreshModel;
 import au.com.carecareers.android.utilities.AppLog;
 import io.reactivex.Observable;
 
@@ -34,6 +35,14 @@ public class SettingInteractor extends BaseInteractor implements SettingContract
         getPreferenceManager().setKeyValues(AppContract.Preferences.IS_LOGGED_IN, false);
 //        getPreferenceManager().setKeyValues(AppContract.Preferences.AUTHORIZATION_KEY, "");
 //        getPreferenceManager().setKeyValues(AppContract.Preferences.ACCESS_TOKEN, "");
-        logOutResponse.setRevoked(true);
+    }
+
+    @Override
+    public Observable<TokenRefreshModel.TokenRefreshResponse> refreshToken() {
+        TokenRefreshModel.TokenRefreshRequest tokenRefreshRequest = new TokenRefreshModel.TokenRefreshRequest();
+        tokenRefreshRequest.setRefreshToken(getPreferenceManager().getStringValues(AppContract.Preferences.REFRESH_TOKEN));
+        tokenRefreshRequest.setClientId(AppContract.ClientCredentials.CLIENT_ID);
+        tokenRefreshRequest.setClientSecret(AppContract.ClientCredentials.CLIENT_SECRET);
+        return getApiService().refreshToken(getPreferenceManager().getStringValues(AppContract.Preferences.AUTHORIZATION_KEY), tokenRefreshRequest);
     }
 }
