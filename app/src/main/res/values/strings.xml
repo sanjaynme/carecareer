@@ -17,7 +17,6 @@
     <string name="tv_register">Register</string>
     <string name="tv_home">Home</string>
     <string name="tv_login">Login</string>
-    <string name="tv_terms_and_conditions">Terms And Conditions</string>
     <string name="tv_uploading">Uploading...</string>
     <string name="tv_upload_percent">Upload percent</string>
     <string name="tv_crop">Crop</string>
@@ -67,8 +66,8 @@
     <string name="hint_current_password">Current Password</string>
     <string name="hint_new_password">New Password</string>
     <string name="hint_state">State *</string>
-    <string name="hint_first_name">First Name *</string>
-    <string name="hint_last_name">Last Name *</string>
+    <string name="hint_first_name">First name *</string>
+    <string name="hint_last_name">Last name *</string>
     <string name="hint_email">Email address *</string>
     <string name="hint_sign_up_password">Password *</string>
 
@@ -82,6 +81,7 @@
 
     <!--Messages-->
     <string name="msg_loading">Loading...</string>
+    <string name="msg_logout">Do you really want to log out?</string>
 
 
     <!--Fonts-->

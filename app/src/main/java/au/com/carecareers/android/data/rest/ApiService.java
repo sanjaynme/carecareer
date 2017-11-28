@@ -73,7 +73,7 @@ public interface ApiService {
     @Headers({"Content-Type:application/json",
             "accept:application/json",})
     @PUT(UrlContract.CHANGE_PASSWORD)
-    Completable changePassword(@Header(UrlContract.Keys.ACCESS_TOKEN) String accessToken,
+    Completable changePassword(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
                                @Path("candidate_id") String candidateId,
                                @Body ChangePasswordModel.ChangePasswordRequest changePasswordRequest);
 

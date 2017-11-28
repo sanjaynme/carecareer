@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_change_password"
             android:padding="@dimen/dimen_20dp"
-            android:text="@string/tv_terms_and_conditions" />
+            android:text="@string/tv_settings_terms_and_conditions" />
 
         <TextView
             android:id="@+id/tv_privacy_policy"

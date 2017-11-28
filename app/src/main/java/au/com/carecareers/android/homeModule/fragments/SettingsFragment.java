@@ -57,7 +57,7 @@ public class SettingsFragment extends BaseFragment implements SettingContract.IS
 
     @OnClick(R.id.tv_logout)
     void onLogOut() {
-        showWarningDialog("Do you really want to log out?");
+        showWarningDialog(getResources().getString(R.string.msg_logout));
     }
 
 
@@ -110,7 +110,7 @@ public class SettingsFragment extends BaseFragment implements SettingContract.IS
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 presenter.onLogout();
-                presenter.refreshToken();
+//                presenter.refreshToken();
             }
         });
 

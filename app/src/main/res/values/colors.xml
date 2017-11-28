@@ -7,6 +7,7 @@
 
     <color name="colorWhite">#fff</color>
     <color name="colorWhiteTrans">#B3ffffff</color>
+    <color name="colorFadeWhiteTrans">#73ffffff</color>
     <color name="colorBlack">#000</color>
     <color name="colorPinkLight">#F7F7F9</color>
 

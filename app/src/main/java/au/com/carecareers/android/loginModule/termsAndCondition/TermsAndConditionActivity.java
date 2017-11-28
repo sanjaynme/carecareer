@@ -73,7 +73,7 @@ public class TermsAndConditionActivity extends BaseActivity implements
         String type = "page";
 
         if (pageFlag == AppContract.Page.TERMS_AND_CONDITIONS) {
-            tvTitle.setText(getResources().getText(R.string.tv_terms_and_conditions));
+            tvTitle.setText(getResources().getText(R.string.tv_settings_terms_and_conditions));
             String idOrSlug = "terms-of-access-and-use";
             presenter.termsAndCondition(type, idOrSlug);
         } else {

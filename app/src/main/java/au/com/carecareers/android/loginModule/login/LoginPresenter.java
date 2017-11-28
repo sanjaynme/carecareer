@@ -6,7 +6,6 @@ import android.util.Patterns;
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 
 import java.io.IOException;
-import java.util.regex.Pattern;
 
 import javax.inject.Inject;
 
@@ -73,7 +72,6 @@ public class LoginPresenter extends BasePresenter<LoginContract.ILoginView, Logi
 
     @Override
     public boolean validateFields(String username, String password) {
-        Pattern UpperCasePatten = Pattern.compile("[A-Z ]");
         if (username.isEmpty()) {
             getView().showAlertDialog(R.string.err_email);
             return false;

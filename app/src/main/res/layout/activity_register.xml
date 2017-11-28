@@ -111,7 +111,7 @@
                 android:paddingBottom="@dimen/dimen_15dp"
                 android:text="@string/tv_terms_conditions"
                 android:textColor="@color/textColorPrimary"
-                android:textSize="@dimen/txt_15sp" />
+                android:textSize="@dimen/txt_14sp" />
 
         </LinearLayout>
     </ScrollView>
