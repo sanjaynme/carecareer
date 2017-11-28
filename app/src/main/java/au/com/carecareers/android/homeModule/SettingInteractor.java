@@ -45,4 +45,38 @@ public class SettingInteractor extends BaseInteractor implements SettingContract
         tokenRefreshRequest.setClientSecret(AppContract.ClientCredentials.CLIENT_SECRET);
         return getApiService().refreshToken(getPreferenceManager().getStringValues(AppContract.Preferences.AUTHORIZATION_KEY), tokenRefreshRequest);
     }
+
+/*
+    public class RetryWithSessionRefresh implements Interceptor {
+
+        @Override
+        public Response intercept(Chain chain) throws IOException {
+            Request newRequest = chain.request();
+
+            //when saving expire time :
+            int expiresIn = Integer.parseInt(getPreferenceManager().getStringValues(AppContract.Preferences.EXPIRES_IN));
+            Calendar c = Calendar.getInstance();
+            c.add(Calendar.SECOND, expiresIn);
+            getPreferenceManager().setKeyValues("expiretime", c.getTimeInMillis());
+
+            //get expire time from shared preferences
+            long expireTime = getPreferenceManager().getLongValues("expiretime");
+            Calendar calendar = Calendar.getInstance();
+            Date nowDate = calendar.getTime();
+            calendar.setTimeInMillis(expireTime);
+            Date expireDate = calendar.getTime();
+
+            int result = nowDate.compareTo(expireDate);
+
+            if (result == -1) {
+                //refresh token here , and got new access token
+                String newaccessToken = "newaccess";
+                newRequest = chain.request().newBuilder()
+                        .header("Authorization", newaccessToken)
+                        .build();
+            }
+            return chain.proceed(newRequest);
+        }
+    }*/
 }
+

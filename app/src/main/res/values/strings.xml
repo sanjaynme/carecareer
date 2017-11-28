@@ -81,8 +81,7 @@
 
     <!--Messages-->
     <string name="msg_loading">Loading...</string>
-    <string name="msg_logout">Do you really want to log out?</string>
-
+    <string name="msg_logout">Are you sure you want to logout?</string>
 
     <!--Fonts-->
     <string name="font_sourcesanpro_bold">fonts/SourceSansPro-Bold.ttf</string>

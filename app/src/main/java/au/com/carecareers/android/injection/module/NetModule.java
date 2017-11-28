@@ -39,6 +39,12 @@ public class NetModule {
     @Singleton
     OkHttpClient.Builder provideOkhttpBuilder(HttpLoggingInterceptor interceptor) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
+/*
+
+        Dispatcher dispatcher = new Dispatcher();
+        dispatcher.setMaxRequests(1);
+*/
+
         builder.connectTimeout(1, TimeUnit.MINUTES);
         builder.readTimeout(2, TimeUnit.MINUTES);
         builder.readTimeout(2, TimeUnit.MINUTES);
