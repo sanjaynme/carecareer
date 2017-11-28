@@ -9,6 +9,7 @@ import au.com.carecareers.android.loginModule.login.model.LoginModel;
 import au.com.carecareers.android.loginModule.register.model.RegisterModel;
 import au.com.carecareers.android.loginModule.register.model.TaxonomyModel;
 import au.com.carecareers.android.loginModule.termsAndCondition.model.TermsAndConditionsModel;
+import au.com.carecareers.android.profileModule.locationArea.model.LocationAreaResponse;
 import au.com.carecareers.android.profileModule.selectAvatar.model.AvatarRequest;
 import au.com.carecareers.android.profileModule.selectAvatar.model.AvatarResponse;
 import au.com.carecareers.android.profileModule.selectAvatar.model.FileUploadResponse;
@@ -99,4 +100,13 @@ public interface ApiService {
     @POST(UrlContract.UPLOAD_FILE)
     Observable<FileUploadResponse> uploadFile(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
                                               @Part MultipartBody.Part file);
+
+    @Headers(
+            {"Content-Type:application/json",
+                    "accept:application/json"
+            })
+    @GET(UrlContract.LOCATION_AREA)
+    Observable<LocationAreaResponse> getLocationArea(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
+                                                     @Query(UrlContract.Keys.COUNTRY_ID) int countryId,
+                                                     @Query(UrlContract.Keys.PAGE) int page);
 }

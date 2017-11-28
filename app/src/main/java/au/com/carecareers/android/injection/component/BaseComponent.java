@@ -14,6 +14,8 @@ import au.com.carecareers.android.loginModule.register.injection.RegisterModule;
 import au.com.carecareers.android.loginModule.register.injection.RegisterSubComponent;
 import au.com.carecareers.android.loginModule.termsAndCondition.injection.TermsAndConditionSubComponent;
 import au.com.carecareers.android.loginModule.termsAndCondition.injection.TermsAndConditionsModule;
+import au.com.carecareers.android.profileModule.locationArea.injection.LocationAreaModule;
+import au.com.carecareers.android.profileModule.locationArea.injection.LocationAreaSubComponent;
 import au.com.carecareers.android.profileModule.preferredLocation.PreferredLocationActivity;
 import au.com.carecareers.android.profileModule.profileSetup.injection.ProfileSetupModule;
 import au.com.carecareers.android.profileModule.profileSetup.injection.ProfileSetupSubComponent;
@@ -47,6 +49,8 @@ public interface BaseComponent {
     ProfileSetupSubComponent provideProfileSetupSubComponent(ProfileSetupModule profileSetupModule);
 
     SelectAvatarSubComponent provideSelectAvatarSubComponent(SelectAvatarModule selectAvatarModule);
+
+    LocationAreaSubComponent provideLocationAreaSubComponent(LocationAreaModule locationAreaModule);
 
     void inject(PreferredLocationActivity preferredLocationActivity);
 }

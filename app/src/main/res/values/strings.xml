@@ -8,6 +8,7 @@
     <string name="title_personal_details">Personal Details</string>
     <string name="title_preferred_location">Preferred Location</string>
     <string name="title_select_avatar">@string/tv_select_an_avatar</string>
+    <string name="title_location_area">Location/Area</string>
 
     <!--TextViews-->
     <string name="lorem_epsum">

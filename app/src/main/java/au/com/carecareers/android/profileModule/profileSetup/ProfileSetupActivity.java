@@ -26,6 +26,7 @@ import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.customViews.EbImageHelperFragment;
 import au.com.carecareers.android.injection.component.BaseComponent;
+import au.com.carecareers.android.profileModule.locationArea.LocationAreaActivity;
 import au.com.carecareers.android.profileModule.model.CandidateModel;
 import au.com.carecareers.android.profileModule.preferredLocation.PreferredLocationActivity;
 import au.com.carecareers.android.profileModule.profileSetup.injection.ProfileSetupModule;
@@ -156,7 +157,8 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
 
     @OnClick(R.id.ll_location_area)
     public void locationAreaClicked() {
-
+        LocationAreaActivity.startForResult(this);
+        transitionActivityOpen();
     }
 
     @Override
