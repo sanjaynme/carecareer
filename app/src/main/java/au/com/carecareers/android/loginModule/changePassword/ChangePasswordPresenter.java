@@ -39,7 +39,7 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordContrac
         } else if (changePasswordRequest.getCurrentPassword().length() < 8) {
             getView().showAlertDialog(R.string.err_password_length);
             return false;
-        }  else if (changePasswordRequest.getNewPassword().length() == 0) {
+        } else if (changePasswordRequest.getNewPassword().length() == 0) {
             getView().showAlertDialog(R.string.err_new_password);
             return false;
         } else if (changePasswordRequest.getNewPassword().length() < 8) {
@@ -79,6 +79,4 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordContrac
             }
         };
     }
-
-
 }

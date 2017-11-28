@@ -46,7 +46,6 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
         context.startActivity(homeIntent);
     }
 
-
     @Override
     public int getLayout() {
         return R.layout.activity_home;

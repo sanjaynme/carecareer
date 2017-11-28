@@ -21,7 +21,6 @@ import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.loginModule.changePassword.injection.ChangePasswordModule;
 import au.com.carecareers.android.loginModule.changePassword.model.ChangePasswordModel;
-import au.com.carecareers.android.loginModule.login.LoginActivity;
 import au.com.carecareers.android.utilities.ViewUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -152,8 +151,7 @@ public class ChangePasswordActivity extends BaseActivity implements ChangePasswo
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
                 hideProgressDialog();
-                finish();
-                LoginActivity.start(ChangePasswordActivity.this);
+                onBackPressed();
                 transitionActivityOpen();
             }
         });
