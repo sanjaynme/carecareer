@@ -52,7 +52,7 @@
     <string name="err_">Error</string>
 
     <!--Success-->
-    <string name="sucess_forgot_email">Email has been sent successfully.</string>
+    <string name="sucess_forgot_email">A password reset link has been sent to your email. Please reset your password.</string>
     <string name="sucess_registration">Registeration has been done successfully.</string>
     <string name="sucess_change_password">Password has been changed successfully.</string>
 
