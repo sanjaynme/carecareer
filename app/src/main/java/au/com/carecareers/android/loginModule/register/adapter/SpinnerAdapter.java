@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import au.com.carecareers.android.R;
+import au.com.carecareers.android.contracts.AppContract;
 
 /**
  * Created by Sanjay on 03/04/2017.
@@ -43,8 +44,6 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
 
     @Override
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
-
         Typeface externalFont = Typeface.createFromAsset(context.getAssets(), "fonts/SourceSansPro-Regular.ttf");
 
         if (convertView == null) {
@@ -61,7 +60,6 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
         } else {
             convertView = inflate.inflate(resourceId, null);
             Holder holder = new Holder();
-
             holder.textView1 = convertView.findViewById(R.id.tv_default_first);
             holder.textView1.setText(spinnerList.get(position));
             holder.textView1.setTextSize(15);
@@ -71,7 +69,6 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
             holder.textView1.setHintTextColor(context.getResources().getColor(R.color.colorHint));
             holder.textView1.setTextColor(context.getResources().getColor(R.color.colorHint));
         }
-
         return convertView;
 
     }
@@ -85,21 +82,49 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
             Holder holder = new Holder();
 
             holder.textView1 = convertView.findViewById(R.id.tv_default_first);
-            holder.textView1.setText(spinnerList.get(position));
             holder.textView1.setTypeface(externalFont);
             holder.textView1.setHintTextColor(context.getResources().getColor(R.color.colorHint));
             holder.textView1.setTextColor(context.getResources().getColor(R.color.colorHint));
             holder.textView1.setTextSize(15);
+
+            if (spinnerid == AppContract.Extras.STATELIST) {
+                if (position == 0) {
+                    holder.textView1.setText(context.getResources().getString(R.string.hint_state));
+                } else {
+                    holder.textView1.setText(spinnerList.get(position));
+                }
+            } else if (spinnerid == AppContract.Extras.COUNTRYLIST) {
+                if (position == 0) {
+                    holder.textView1.setText("Select a location");
+                } else {
+                    holder.textView1.setText(spinnerList.get(position));
+
+                }
+            }
+
             convertView.setTag(holder);
         } else {
             convertView = inflate.inflate(resourceId, null);
             Holder holder = new Holder();
             holder.textView1 = convertView.findViewById(R.id.tv_default_first);
-            holder.textView1.setText(spinnerList.get(position));
             holder.textView1.setTypeface(externalFont);
             holder.textView1.setTextSize(15);
             holder.textView1.setHintTextColor(context.getResources().getColor(R.color.colorHint));
             holder.textView1.setTextColor(context.getResources().getColor(R.color.colorHint));
+            if (spinnerid == AppContract.Extras.STATELIST) {
+                if (position == 0) {
+                    holder.textView1.setText(context.getResources().getString(R.string.hint_state));
+                } else {
+                    holder.textView1.setText(spinnerList.get(position));
+
+                }
+            } else if (spinnerid == AppContract.Extras.COUNTRYLIST) {
+                if (position == 0) {
+                    holder.textView1.setText("Select a location");
+                } else {
+                    holder.textView1.setText(spinnerList.get(position));
+                }
+            }
         }
         return convertView;
     }

@@ -18,12 +18,18 @@ public class UrlContract {
     public static final String PAGE_CONTENT = "contents/{type}/{id_or_slug}";
     public static final String LOGOUT = "oauth/revoke/";
     public static final String REFRESH_TOKEN = "oauth/refresh/";
+    public static final String GET_LOCATIONS = "locations";
 
 
     public class Keys {
         public static final String GRANT_TYPE = "grant_type";
         public final static String AUTHORIZATION = "authorization";
         public final static String ACCESS_TOKEN = "access_token";
+        public static final String CANDIDATE_ID = "candidate_id";
+        public static final String COUNTRY_ID = "country_id";
+        public static final String PAGE = "page";
+        public static final String TYPE = "type";
+        public static final String ID_OR_SLUG = "id_or_slug";
     }
 
     public class Values {

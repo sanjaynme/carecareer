@@ -6,6 +6,7 @@ import au.com.carecareers.android.homeModule.injection.SettingsModule;
 import au.com.carecareers.android.homeModule.injection.SettingsSubComponent;
 import au.com.carecareers.android.injection.module.AppModule;
 import au.com.carecareers.android.injection.module.NetModule;
+import au.com.carecareers.android.jobSearchModule.SearchModule;
 import au.com.carecareers.android.loginModule.changePassword.injection.ChangePasswordModule;
 import au.com.carecareers.android.loginModule.changePassword.injection.ChangePasswordSubComponent;
 import au.com.carecareers.android.loginModule.forgotPassword.injection.ForgotPasswordModule;
@@ -40,7 +41,9 @@ public interface BaseComponent {
 
     TermsAndConditionSubComponent provideTermsAndConditionsSubComponent(TermsAndConditionsModule termsAndConditionsModule);
 
-    SettingsSubComponent provideSettingsSubComponent(SettingsModule settingsSubComponentModule);
+    SettingsSubComponent provideSettingsSubComponent(SettingsModule settingsModule);
+
+    SearchSubComponent provideSearchSubComponent(SearchModule searchModule);
 
     RegisterSubComponent provideRegisterSubComponent(RegisterModule registerModule);
 

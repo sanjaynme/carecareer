@@ -6,6 +6,7 @@ import javax.inject.Singleton;
 import au.com.carecareers.android.contracts.UrlContract;
 import au.com.carecareers.android.homeModule.model.LogOutModel;
 import au.com.carecareers.android.homeModule.model.TokenRefreshModel;
+import au.com.carecareers.android.jobSearchModule.model.LocationModel;
 import au.com.carecareers.android.loginModule.changePassword.model.ChangePasswordModel;
 import au.com.carecareers.android.loginModule.forgotPassword.model.ForgotPasswordModel;
 import au.com.carecareers.android.loginModule.login.model.LoginModel;
@@ -24,6 +25,7 @@ import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * Created by Nischal Manandhar on 14/11/2017.
@@ -67,14 +69,14 @@ public interface ApiService {
     @Headers({"accept:application/json",})
     @GET(UrlContract.PAGE_CONTENT)
     Observable<TermsAndConditionsModel.TermsAndConditionsRespones> getTermsAndConditions(@Header(UrlContract.Keys.AUTHORIZATION) String bearer,
-                                                                                         @Path("type") String type,
-                                                                                         @Path("id_or_slug") String idOrSlug);
+                                                                                         @Path(UrlContract.Keys.TYPE) String type,
+                                                                                         @Path(UrlContract.Keys.ID_OR_SLUG) String idOrSlug);
 
     @Headers({"Content-Type:application/json",
             "accept:application/json",})
     @PUT(UrlContract.CHANGE_PASSWORD)
     Completable changePassword(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
-                               @Path("candidate_id") String candidateId,
+                               @Path(UrlContract.Keys.CANDIDATE_ID) String candidateId,
                                @Body ChangePasswordModel.ChangePasswordRequest changePasswordRequest);
 
     @Headers({"Content-Type:application/json",
@@ -88,4 +90,12 @@ public interface ApiService {
     @POST(UrlContract.REFRESH_TOKEN)
     Observable<TokenRefreshModel.TokenRefreshResponse> refreshToken(@Header(UrlContract.Keys.ACCESS_TOKEN) String accessToken,
                                                                     @Body TokenRefreshModel.TokenRefreshRequest tokenRefreshRequest);
+
+    @Headers({"Content-Type:application/json",
+            "accept:application/json",})
+    @GET(UrlContract.GET_LOCATIONS)
+    Observable<LocationModel.LocationResponse> getLocations(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
+                                                            @Query(UrlContract.Keys.COUNTRY_ID) int country_id,
+                                                            @Query(UrlContract.Keys.PAGE) int page);
+
 }

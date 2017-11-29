@@ -19,10 +19,10 @@ import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.homeModule.fragments.ApplicationsFragment;
 import au.com.carecareers.android.homeModule.fragments.JobAlertsFragment;
 import au.com.carecareers.android.homeModule.fragments.SaveListsFragment;
-import au.com.carecareers.android.jobSearchModule.SearchFragment;
 import au.com.carecareers.android.homeModule.fragments.SettingsFragment;
 import au.com.carecareers.android.homeModule.model.HomeContract;
 import au.com.carecareers.android.injection.component.BaseComponent;
+import au.com.carecareers.android.jobSearchModule.SearchFragment;
 import butterknife.BindView;
 
 /**
@@ -159,5 +159,4 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
         SearchFragment searchFragment = new SearchFragment();
         setFragmentTransition(searchFragment);
     }
-
 }

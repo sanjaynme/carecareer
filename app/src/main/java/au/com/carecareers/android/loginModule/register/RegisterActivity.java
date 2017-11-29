@@ -161,11 +161,9 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
 
     @Override
     public void setUpStatesSpinner(final TaxonomyModel.TaxonomyResponse taxonomyResponse) {
-        ArrayList<String> statesList;
-        statesList = new ArrayList<>();
+        ArrayList<String> statesList = new ArrayList<>();
         progressBar.setVisibility(View.GONE);
         spinnerState.setVisibility(View.VISIBLE);
-        statesList.add(getResources().getString(R.string.hint_state));
         for (int i = 0; i < taxonomyResponse.getEmbedded().getTaxonomies().size(); i++) {
             String stateNames = taxonomyResponse.getEmbedded().getTaxonomies().get(i).getName();
             String stateId = taxonomyResponse.getEmbedded().getTaxonomies().get(i).getId().toString();

@@ -38,6 +38,7 @@ public class AppContract {
         public static final String EXTRA_SHOW_CROP_VIEW = "show_crop_view";
         public static final String EXTRA_COMPRESS_IMAGE = "compress_image";
         public static final int STATELIST = 1;
+        public static final int COUNTRYLIST = 2;
     }
 
     public class Page {
