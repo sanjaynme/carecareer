@@ -27,6 +27,9 @@ import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.customViews.EbImageHelperFragment;
+import au.com.carecareers.android.customViews.SubmitView;
+import au.com.carecareers.android.data.local.SharedPreferenceManager;
+import au.com.carecareers.android.homeModule.HomeActivity;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.profileModule.locationArea.LocationAreaActivity;
 import au.com.carecareers.android.profileModule.locationArea.model.LocationAreaResponse;
@@ -45,6 +48,8 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
     Gson gson;
     @Inject
     ProfileSetupContract.IProfileSetupPresenter presenter;
+    @Inject
+    SharedPreferenceManager preferenceManager;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -62,6 +67,8 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
     TextView tvLocationArea;
     @BindView(R.id.et_what_is_your_career_move)
     EditText etCareerMove;
+    @BindView(R.id.submit_view)
+    SubmitView submitView;
 
     private CandidateModel candidateModel;
     private EbImageHelperFragment ebImageHelperFragment;
@@ -103,7 +110,33 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
                 return false;
             }
         });
+        initViews();
         initImageHelperFragment();
+    }
+
+    private void initViews() {
+        submitView.setOnClickListener(new SubmitView.SubmitViewClickListener() {
+            @Override
+            public void onSubmitClicked(View view) {
+
+            }
+
+            @Override
+            public void onSkipClicked(View view) {
+                preferenceManager.setKeyValues(AppContract.Preferences.IS_PROFILE_COMPLETE, true);
+                HomeActivity.start(ProfileSetupActivity.this);
+                finish();
+                transitionActivityOpen();
+            }
+
+            @Override
+            public void onNextClicked(View view) {
+                preferenceManager.setKeyValues(AppContract.Preferences.IS_PROFILE_COMPLETE, true);
+                HomeActivity.start(ProfileSetupActivity.this);
+                finish();
+                transitionActivityOpen();
+            }
+        });
     }
 
     private void initImageHelperFragment() {

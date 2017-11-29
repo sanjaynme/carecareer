@@ -78,8 +78,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
 
     @OnClick(R.id.btn_login)
     public void loginClicked() {
-        String username = "nischal.manandhar@ebpearls.com";
-        String password = "Ebpearls@123";
+        String username = etUsername.getText().toString().trim();
+        String password = etPassword.getText().toString().trim();
 
         if (presenter.validateFields(username, password)) {
             presenter.loginClicked(username, password);
