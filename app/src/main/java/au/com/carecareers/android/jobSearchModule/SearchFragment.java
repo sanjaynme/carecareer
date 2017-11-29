@@ -1,12 +1,22 @@
 package au.com.carecareers.android.jobSearchModule;
 
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -20,6 +30,7 @@ import au.com.carecareers.android.jobSearchModule.model.LocationModel;
 import au.com.carecareers.android.loginModule.register.adapter.SpinnerAdapter;
 import au.com.carecareers.android.utilities.AppLog;
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by Sanjay on 11/24/2017.
@@ -31,6 +42,14 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
 
     @BindView(R.id.spinner_job_search_progressbar)
     ProgressBar progressBar;
+
+    @BindView(R.id.tv_welcome_user)
+    TextView tvWelcomeUser;
+
+    @BindView(R.id.btn_search_out)
+    Button btnSearchOut;
+    @BindView(R.id.et_search_keyword)
+    EditText etSearchKeyword;
 
     @BindView(R.id.spinner_locations)
     Spinner spinnerLocations;
@@ -54,8 +73,28 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        getActivity().getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        setUpWelcome();
+        setUpButton();
         presenter.onAttach(this);
         presenter.loadLocations();
+    }
+
+    private void setUpButton() {
+        SpannableString spanString = new SpannableString("Start tour \n Welcome sanjay");
+        spanString.setSpan(new ForegroundColorSpan(Color.BLUE), 12, spanString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spanString.setSpan(new StyleSpan(Typeface.BOLD), 12, spanString.length(), 0);
+        btnSearchOut.setText(spanString);
+    }
+
+    private void setUpWelcome() {
+
+        Spannable wordtoSpan = new SpannableString("I know just how to whisper, And I know just how to cry,I know just where to find the answers");
+
+        wordtoSpan.setSpan(new ForegroundColorSpan(Color.BLUE), 15, 30, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        tvWelcomeUser.setText(wordtoSpan);
     }
 
     @Override
@@ -89,4 +128,12 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
             }
         });
     }
+
+    @OnClick(R.id.btn_job_search)
+    void onJobSearchClicked() {
+        String keywords = etSearchKeyword.getText().toString().trim();
+//        String locationId=
+//        presenter.searchJobs();
+    }
+
 }

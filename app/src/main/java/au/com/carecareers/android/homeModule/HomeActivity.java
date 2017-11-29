@@ -59,8 +59,10 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         currentTabId = bottomNavigationView.getSelectedItemId();
+        openSearch();
     }
 
     @Override
