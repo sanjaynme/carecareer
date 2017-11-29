@@ -76,7 +76,7 @@ public class SettingPresenter extends BasePresenter<SettingContract.ISettingView
                 Log.d(TAG, "onNext: ");
                 getInteractor().logOutResponse(logOutResponse);
                 getView().hideProgressDialog();
-                getView().navigateToLandingActivity();
+                getView().navigateToLoginActivity();
             }
 
             @Override

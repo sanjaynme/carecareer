@@ -13,7 +13,7 @@ import io.reactivex.Observable;
 
 public class SettingContract {
     public interface ISettingView extends IBaseView {
-        void navigateToLandingActivity();
+        void navigateToLoginActivity();
 
         void navigateToSettingActivity(TokenRefreshModel.TokenRefreshResponse tokenRefreshResponse);
     }
