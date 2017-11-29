@@ -80,7 +80,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         tvTitle.setVisibility(View.VISIBLE);
-        tvTitle.setText(getResources().getText(R.string.tv_home));
+        tvTitle.setText(getResources().getText(R.string.tv_menu));
     }
 
     @Override
