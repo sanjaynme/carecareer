@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by Nikesh on 11/15/2017.
+ * Created by Sanjay on 11/15/2017.
  */
 
 public class RegisterModel {

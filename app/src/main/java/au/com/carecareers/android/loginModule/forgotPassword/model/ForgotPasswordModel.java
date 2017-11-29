@@ -1,7 +1,7 @@
 package au.com.carecareers.android.loginModule.forgotPassword.model;
 
 /**
- * Created by Nikesh on 11/21/2017.
+ * Created by Sanjay on 11/21/2017.
  */
 
 public class ForgotPasswordModel {
@@ -17,8 +17,5 @@ public class ForgotPasswordModel {
         public void setEmail(String email) {
             this.email = email;
         }
-    }
-
-    public static class ForgotPasswordResponse {
     }
 }

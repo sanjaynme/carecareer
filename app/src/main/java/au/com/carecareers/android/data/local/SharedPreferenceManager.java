@@ -47,6 +47,7 @@ public class SharedPreferenceManager {
         return prefs.getInt(key, nullValue);
     }
 
+
     public long getLongValues(String key) {
         long nullValue = 0;
         return prefs.getLong(key, nullValue);

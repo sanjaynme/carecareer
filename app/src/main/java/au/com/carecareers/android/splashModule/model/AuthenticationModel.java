@@ -10,7 +10,7 @@ import java.io.UnsupportedEncodingException;
 import au.com.carecareers.android.utilities.AppLog;
 
 /**
- * Created by Nikesh on 11/16/2017.
+ * Created by Sanjay on 11/16/2017.
  */
 
 public class AuthenticationModel {

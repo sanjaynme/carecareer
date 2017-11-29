@@ -7,7 +7,7 @@ import au.com.carecareers.android.splashModule.model.AuthenticationModel;
 import io.reactivex.Observable;
 
 /**
- * Created by Nikesh on 11/16/2017.
+ * Created by Sanjay on 11/16/2017.
  */
 
 public class SplashContract {

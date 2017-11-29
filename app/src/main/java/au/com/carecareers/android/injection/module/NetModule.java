@@ -22,6 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class NetModule {
     private String mBaseUrl;
+//    TokenAuthenticator tokenAuthenticator=new TokenAuthenticator();
 
     public NetModule(String baseUrl) {
         this.mBaseUrl = baseUrl;
@@ -39,6 +40,12 @@ public class NetModule {
     @Singleton
     OkHttpClient.Builder provideOkhttpBuilder(HttpLoggingInterceptor interceptor) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
+
+/*
+        Dispatcher dispatcher = new Dispatcher();
+        dispatcher.setMaxRequests(1);
+*/
+
         builder.connectTimeout(1, TimeUnit.MINUTES);
         builder.readTimeout(2, TimeUnit.MINUTES);
         builder.readTimeout(2, TimeUnit.MINUTES);

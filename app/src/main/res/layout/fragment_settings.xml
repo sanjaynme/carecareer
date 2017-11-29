@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite">
+
+        <TextView
+            android:id="@+id/tv_change_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_20dp"
+            android:text="@string/tv_settings_change_password" />
+
+        <TextView
+            android:id="@+id/tv_terms_and_conditions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_change_password"
+            android:padding="@dimen/dimen_20dp"
+            android:text="@string/tv_settings_terms_and_conditions" />
+
+        <TextView
+            android:id="@+id/tv_privacy_policy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_terms_and_conditions"
+            android:padding="@dimen/dimen_20dp"
+            android:text="@string/tv_settings_privacy_policy" />
+
+        <TextView
+            android:id="@+id/tv_share_app"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_privacy_policy"
+            android:padding="@dimen/dimen_20dp"
+            android:text="@string/tv_settings_share_app" />
+
+        <TextView
+            android:id="@+id/tv_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_share_app"
+            android:padding="@dimen/dimen_20dp"
+            android:text="@string/tv_settings_logout" />
+
+    </RelativeLayout>
+</LinearLayout>

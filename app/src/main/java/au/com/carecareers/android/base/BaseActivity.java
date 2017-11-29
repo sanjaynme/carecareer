@@ -15,7 +15,6 @@ import au.com.carecareers.android.R;
 import au.com.carecareers.android.application.CareCareerApp;
 import au.com.carecareers.android.base.view.IBaseView;
 import au.com.carecareers.android.customViews.EbAlertDialog;
-import au.com.carecareers.android.data.local.SharedPreferenceManager;
 import au.com.carecareers.android.homeModule.HomeActivity;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.loginModule.landing.LandingActivity;
@@ -39,7 +38,6 @@ import static au.com.carecareers.android.contracts.AppContract.ErrorTypes.TERMS_
 
 public abstract class BaseActivity extends AppCompatActivity implements IBaseView {
     private ProgressDialog mProgressDialog;
-    protected SharedPreferenceManager preferenceManager;
     private String errorMessage;
 
     @LayoutRes
@@ -139,6 +137,17 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
                 break;
 
             case CHANGE_PASSWORD:
+                try {
+                    JSONObject jsonObject = new JSONObject(errorResponseBody.string());
+                    String message = jsonObject.getString("messages");
+
+                    JSONObject msgJsonObject = new JSONObject(message);
+                    JSONArray passwordArray = msgJsonObject.getJSONArray("current_password");
+                    errorMessage = passwordArray.getString(0);
+                    AppLog.d("currentPassword:" + errorMessage);
+                } catch (Exception e) {
+                    return e.getMessage();
+                }
                 break;
             case SELECT_AVATAR:
                 break;
@@ -166,5 +175,4 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     protected void transitionActivityOpen() {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
-
 }

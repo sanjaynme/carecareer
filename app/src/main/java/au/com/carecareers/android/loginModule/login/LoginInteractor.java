@@ -32,6 +32,7 @@ public class LoginInteractor extends BaseInteractor implements LoginContract.ILo
     @Override
     public void saveLoginResponse(LoginModel.LoginResponse loginResponse) {
         AppLog.d("save login preferences:");
+        getPreferenceManager().setKeyValues(AppContract.Preferences.IS_LOGGED_IN, true);
         getPreferenceManager().setKeyValues(AppContract.Preferences.ACCESS_TOKEN, loginResponse.getTokenType() + " " + loginResponse.getAccessToken());
         getPreferenceManager().setKeyValues(AppContract.Preferences.EXPIRES_IN, loginResponse.getExpiresIn());
         getPreferenceManager().setKeyValues(AppContract.Preferences.REFRESH_TOKEN, loginResponse.getRefreshToken());

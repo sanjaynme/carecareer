@@ -19,13 +19,12 @@
     <string name="tv_register">Register</string>
     <string name="tv_home">Home</string>
     <string name="tv_login">Login</string>
-    <string name="tv_terms_and_conditions">Terms And Conditions</string>
     <string name="tv_uploading">Uploading...</string>
     <string name="tv_upload_percent">Upload percent</string>
     <string name="tv_crop">Crop</string>
     <string name="tv_cancel">Cancel</string>
     <string name="tv_turn_on">Turn On</string>
-    <string name="tv_terms_conditions">By registering , you are agreeing to the \n <u>Terms &amp; Conditions</u></string>
+    <string name="tv_terms_conditions">By registering, you are agreeing to the \n <u>Terms &amp; Conditions</u></string>
     <string name="tv_forgot_email">Enter the email you registered with:</string>
     <string name="tv_submit">Submit</string>
     <string name="tv_skip"><u>Skip</u></string>
@@ -55,11 +54,18 @@
     <string name="err_email">Please enter a email address.</string>
     <string name="err_email_valid">Please enter a valid email address.</string>
     <string name="err_password">Please enter a password.</string>
+    <string name="err_current_password">Please enter a current password.</string>
+    <string name="err_new_password">Please enter a new password.</string>
     <string name="err_password_length">Please enter password of length 8 character.</string>
     <string name="err_password_uppercase">Password must contain one uppercase letter.</string>
+    <string name="err_new_password_uppercase">New Password must contain one uppercase letter.</string>
     <string name="err_state_name">Please select a state.</string>
     <string name="err_">Error</string>
 
+    <!--Success-->
+    <string name="sucess_forgot_email">A password reset link has been sent to your email. Please reset your password.</string>
+    <string name="sucess_registration">Registeration has been done successfully.</string>
+    <string name="sucess_change_password">Password has been changed successfully.</string>
 
     <!--EditTexts-->
     <string name="et_username">Username</string>
@@ -71,8 +77,8 @@
     <string name="hint_current_password">Current Password</string>
     <string name="hint_new_password">New Password</string>
     <string name="hint_state">State *</string>
-    <string name="hint_first_name">First Name *</string>
-    <string name="hint_last_name">Last Name *</string>
+    <string name="hint_first_name">First name *</string>
+    <string name="hint_last_name">Last name *</string>
     <string name="hint_email">Email address *</string>
     <string name="hint_sign_up_password">Password *</string>
 
@@ -86,7 +92,7 @@
 
     <!--Messages-->
     <string name="msg_loading">Loading...</string>
-
+    <string name="msg_logout">Are you sure you want to logout?</string>
 
     <!--Fonts-->
     <string name="font_source_san_pro_regular">fonts/SourceSansPro-Regular.ttf</string>
@@ -98,10 +104,17 @@
     <string name="menu_done">Done</string>
     <!--BottomBarNavigation Menus-->
     <string name="search">Search</string>
-    <string name="save_lists">Save Lists</string>
-    <string name="applied_jobs">Applied Jobs</string>
+    <string name="save_lists">Saved</string>
+    <string name="applications">Applications</string>
     <string name="job_alerts">Job Alerts</string>
     <string name="profile">Profile</string>
+
+    <!--SettingsProfile-->
+    <string name="tv_settings_change_password">Change Password</string>
+    <string name="tv_settings_terms_and_conditions">Terms &amp; Conditions</string>
+    <string name="tv_settings_privacy_policy">Privacy Policy</string>
+    <string name="tv_settings_share_app">Share app</string>
+    <string name="tv_settings_logout">Logout</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

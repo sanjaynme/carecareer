@@ -39,7 +39,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * Created by Nikesh on 11/15/2017.
+ * Created by Sanjay on 11/15/2017.
  */
 
 public class RegisterActivity extends BaseActivity implements RegisterContract.IRegisterView {
@@ -75,7 +75,6 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
 
     RegisterModel.RegisterRequest registerModel;
     RegisterModel.RegisterRequest.Meta metaModel;
-    private ArrayList<String> statesList;
 
     public static void start(Context context) {
         Intent intent = new Intent(context, RegisterActivity.class);
@@ -131,7 +130,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
         etEmail.getText().clear();
         etPassword.getText().clear();
         spinnerState.setSelection(0);
-        showRegisterSuccessMessageDialog("Registeration has been done successfully.");
+        showRegisterSuccessMessageDialog(getResources().getString(R.string.sucess_registration));
     }
 
     private void showRegisterSuccessMessageDialog(String message) {
@@ -162,6 +161,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
 
     @Override
     public void setUpStatesSpinner(final TaxonomyModel.TaxonomyResponse taxonomyResponse) {
+        ArrayList<String> statesList;
         statesList = new ArrayList<>();
         progressBar.setVisibility(View.GONE);
         spinnerState.setVisibility(View.VISIBLE);
@@ -208,7 +208,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
 
     @OnClick(R.id.tv_terms_and_conditions)
     void termsAndConditionsClicked() {
-        TermsAndConditionActivity.start(RegisterActivity.this);
+        TermsAndConditionActivity.start(RegisterActivity.this, AppContract.Page.TERMS_AND_CONDITIONS);
         transitionActivityOpen();
     }
 

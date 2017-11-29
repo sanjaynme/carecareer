@@ -77,6 +77,6 @@
     <!--toolbar title-->
     <dimen name="txt_toolbar_title">@dimen/txt_17sp</dimen>
     <dimen name="txt_normal">@dimen/txt_15sp</dimen>
-
+    <dimen name="edittext_height">35dp</dimen>
 
 </resources>

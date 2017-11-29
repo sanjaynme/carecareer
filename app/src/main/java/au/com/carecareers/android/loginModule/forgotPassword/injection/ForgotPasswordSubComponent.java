@@ -5,7 +5,7 @@ import au.com.carecareers.android.loginModule.forgotPassword.ForgotPasswordActiv
 import dagger.Subcomponent;
 
 /**
- * Created by Nikesh on 11/21/2017.
+ * Created by Sanjay on 11/21/2017.
  */
 @ActivityScope
 @Subcomponent(modules = ForgotPasswordModule.class)

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#2C3239</color>
+    <color name="colorPrimary">#D21242</color>
     <color name="colorPrimaryDark">#2C3239</color>
     <color name="colorAccent">#D21242</color>
     <color name="colorAccentTrans">#85D21242</color>
 
     <color name="colorWhite">#fff</color>
     <color name="colorWhiteTrans">#B3ffffff</color>
+    <color name="colorFadeWhiteTrans">#73ffffff</color>
     <color name="colorBlack">#000</color>
     <color name="colorPinkLight">#F7F7F9</color>
 
@@ -33,6 +34,9 @@
     <color name="colorGrey">#333333</color>
 
     <color name="colorSearchBackground">#191F28</color>
+    <color name="colorBottomNavigationView">#F0EAEA</color>
+    <color name="colorToolbarBlack">#2C3239</color>
+    <color name="colorRedButton">#D21242</color>
 
 
 </resources>

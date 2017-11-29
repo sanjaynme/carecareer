@@ -23,7 +23,7 @@ import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 
 /**
- * Created by Nikesh on 11/15/2017.
+ * Created by Sanjay on 11/15/2017.
  */
 
 public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterView, RegisterContract.IRegisterInteractor>
@@ -118,11 +118,9 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterV
             @Override
             public void onError(Throwable throwable) {
                 Log.d(TAG, "onError: ");
-                if (throwable instanceof HttpException) {
-                    ResponseBody responseBody = ((HttpException) throwable).response().errorBody();
-                    getView().hideProgressDialog();
-                    getView().showError(responseBody, AppContract.ErrorTypes.REGISTER);
-                }
+                ResponseBody responseBody = ((HttpException) throwable).response().errorBody();
+                getView().hideProgressDialog();
+                getView().showError(responseBody, AppContract.ErrorTypes.REGISTER);
             }
 
 

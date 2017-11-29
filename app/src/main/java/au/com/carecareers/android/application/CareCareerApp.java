@@ -18,6 +18,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 public class CareCareerApp extends Application {
     @Inject
     CalligraphyConfig mCalligraphyConfig;
+
     private BaseComponent mBaseComponent;
 
     @Override

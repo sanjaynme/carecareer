@@ -5,7 +5,7 @@ import au.com.carecareers.android.loginModule.changePassword.ChangePasswordActiv
 import dagger.Subcomponent;
 
 /**
- * Created by Nikesh on 11/21/2017.
+ * Created by Sanjay on 11/21/2017.
  */
 @ActivityScope
 @Subcomponent(modules = ChangePasswordModule.class)

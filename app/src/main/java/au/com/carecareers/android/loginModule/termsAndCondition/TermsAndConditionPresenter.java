@@ -6,7 +6,6 @@ import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 
 import javax.inject.Inject;
 
-import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.presenter.BasePresenter;
 import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.loginModule.termsAndCondition.model.TermsAndConditionsModel;
@@ -30,7 +29,7 @@ public class TermsAndConditionPresenter extends BasePresenter<TermsAndConditions
 
     @Override
     public void termsAndCondition(String type, String idOrSlug) {
-        getView().showProgressDialog(R.string.msg_loading);
+//        getView().showProgressDialog(R.string.msg_loading);
         getCompositeDisposable().add(getInteractor().termsAndConditions(type, idOrSlug)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

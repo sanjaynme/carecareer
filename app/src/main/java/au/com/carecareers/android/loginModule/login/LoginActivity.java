@@ -17,6 +17,7 @@ import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.loginModule.forgotPassword.ForgotPasswordActivity;
+import au.com.carecareers.android.loginModule.landing.LandingActivity;
 import au.com.carecareers.android.loginModule.login.injection.LoginModule;
 import au.com.carecareers.android.loginModule.login.model.LoginModel;
 import au.com.carecareers.android.profileModule.profileSetup.ProfileSetupActivity;
@@ -116,7 +117,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                onBackPressed();
+                finish();
+                LandingActivity.start(this);
                 transitionBackPressed();
                 etUsername.getText().clear();
                 etPassword.getText().clear();
@@ -130,5 +132,13 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         tvTitle.setText(getResources().getText(R.string.tv_login));
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        LandingActivity.start(this);
+        transitionBackPressed();
+        super.onBackPressed();
     }
 }

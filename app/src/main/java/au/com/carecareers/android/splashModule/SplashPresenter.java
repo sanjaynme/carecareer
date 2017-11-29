@@ -10,7 +10,7 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by Nikesh on 11/16/2017.
+ * Created by Sanjay on 11/16/2017.
  */
 
 public class SplashPresenter extends BasePresenter<SplashContract.ISplashView, SplashContract.ISplashInteractor>

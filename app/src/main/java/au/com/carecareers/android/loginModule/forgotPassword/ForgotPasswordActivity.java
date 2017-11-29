@@ -99,7 +99,7 @@ public class ForgotPasswordActivity extends BaseActivity implements ForgotPasswo
     @Override
     public void navigateToLoginActivity() {
         etForgotEmail.getText().clear();
-        showForgetMessageDialog("Email has been sent successfully.");
+        showForgetMessageDialog(getResources().getString(R.string.sucess_forgot_email));
     }
 
     private void showForgetMessageDialog(String message) {
@@ -114,6 +114,7 @@ public class ForgotPasswordActivity extends BaseActivity implements ForgotPasswo
                 dialog.cancel();
                 hideProgressDialog();
                 onBackPressed();
+                transitionActivityOpen();
             }
         });
         AlertDialog alert = builder.create();
