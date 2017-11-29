@@ -70,6 +70,7 @@
     <string name="hint_last_name">Last name *</string>
     <string name="hint_email">Email address *</string>
     <string name="hint_sign_up_password">Password *</string>
+    <string name="hint_search_keywords">Keywords</string>
 
     <string name="hint_phone_number">Phone number</string>
     <string name="hint_work_near_here">I\'d like to work near here*</string>
@@ -105,4 +106,10 @@
     <string name="tv_settings_privacy_policy">Privacy Policy</string>
     <string name="tv_settings_share_app">Share app</string>
     <string name="tv_settings_logout">Logout</string>
+
+    <!--JobSearch Screen-->
+    <string name="tv_search">Search</string>
+    <string name="tv_favorite_searches"><u>View my favourite searches</u></string>
+    <string name="tv_starting_out">Starting out \nEntering the sector</string>
+    <string name="tv_welcome">Welcome</string>
 </resources>

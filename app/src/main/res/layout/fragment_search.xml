@@ -1,6 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_welcome_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_30dp"
+                android:layout_marginLeft="@dimen/dimen_30dp"
+                android:layout_marginStart="@dimen/dimen_30dp"
+                android:layout_marginTop="@dimen/dimen_30dp"
+                android:text="@string/tv_welcome"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/txt_14sp" />
+
+            <EditText
+                android:id="@+id/et_search_keyword"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_30dp"
+                android:hint="@string/hint_search_keywords"
+                android:inputType="text" />
+
+            <FrameLayout
+                android:id="@+id/fl_search_locations"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="@dimen/dimen_30dp"
+                android:layout_marginEnd="@dimen/dimen_15dp"
+                android:layout_marginLeft="@dimen/dimen_15dp"
+                android:layout_marginRight="@dimen/dimen_15dp"
+                android:layout_marginStart="@dimen/dimen_15dp"
+                android:background="@color/editTextBackground"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/spinner_locations"
+                    style="@style/Spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:spinnerMode="dropdown"
+                    android:visibility="gone" />
+
+                <ProgressBar
+                    android:id="@+id/spinner_job_search_progressbar"
+                    android:layout_width="36dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginEnd="@dimen/dimen_8dp"
+                    android:layout_marginRight="@dimen/dimen_8dp"
+                    android:visibility="visible" />
+
+            </FrameLayout>
+
+            <Button
+                android:id="@+id/btn_search_out"
+                style="@style/Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_30dp"
+                android:layout_marginLeft="@dimen/dimen_30dp"
+                android:layout_marginRight="@dimen/dimen_30dp"
+                android:background="@drawable/btn_job_search_unpressed"
+                android:padding="@dimen/dimen_17dp"
+                android:text="@string/tv_search"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/txt_15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/dimen_30dp"
+                android:text="@string/tv_favorite_searches"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <Button
+                android:id="@+id/btn_job_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_30dp"
+                android:layout_marginLeft="@dimen/dimen_30dp"
+                android:layout_marginRight="@dimen/dimen_30dp"
+                android:background="@color/editTextBackground"
+                android:drawableEnd="@drawable/ic_chevron_down"
+                android:drawableRight="@drawable/ic_chevron_down"
+                android:gravity="start"
+                android:padding="@dimen/dimen_30dp"
+                android:text="@string/tv_starting_out"
+                android:textAlignment="textStart"
+                android:textAllCaps="false"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/txt_15sp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>
