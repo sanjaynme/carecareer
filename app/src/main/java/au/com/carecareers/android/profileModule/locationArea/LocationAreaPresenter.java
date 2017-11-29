@@ -21,8 +21,12 @@ public class LocationAreaPresenter extends BasePresenter<LocationAreaContract.IL
     }
 
     @Override
-    public void loadLocationArea(int pageNumber) {
-        getView().showProgressBar();
+    public void loadLocationArea(int pageNumber, boolean isLoadMore) {
+        if (isLoadMore) {
+            getView().showFooterProgress();
+        } else {
+            getView().showProgressBar();
+        }
         getCompositeDisposable().add(
                 getInteractor().getLocationArea(pageNumber)
                         .subscribeOn(Schedulers.io())
@@ -31,20 +35,35 @@ public class LocationAreaPresenter extends BasePresenter<LocationAreaContract.IL
                             @Override
                             public void onNext(LocationAreaResponse locationAreaResponse) {
                                 if (isViewAttached()) {
-                                    getView().hideProgressBar();
                                     getView().showRecyclerView();
-                                    getView().setupRecyclerView(locationAreaResponse);
+                                    if (isLoadMore) {
+                                        getView().hideFooterProgress();
+                                        if (locationAreaResponse.getEmbedded() != null) {
+                                            getView().addMoreItems(locationAreaResponse);
+                                        }
+                                    } else {
+                                        getView().hideProgressBar();
+                                        getView().setList(locationAreaResponse);
+                                    }
                                 }
                             }
 
                             @Override
                             public void onError(Throwable e) {
-
+                                if (isLoadMore) {
+                                    getView().hideFooterProgress();
+                                } else {
+                                    getView().hideProgressBar();
+                                }
                             }
 
                             @Override
                             public void onComplete() {
-
+                                if (isLoadMore) {
+                                    getView().hideFooterProgress();
+                                } else {
+                                    getView().hideProgressBar();
+                                }
                             }
                         })
         );

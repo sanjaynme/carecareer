@@ -4,9 +4,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -24,7 +26,7 @@ import butterknife.ButterKnife;
  * Created by Nischal Manandhar on 28/11/2017.
  */
 @ActivityScope
-public class LocationAreaAdapter extends RecyclerView.Adapter<LocationAreaAdapter.ViewHolder> implements Filterable {
+public class LocationAreaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements Filterable {
     private List<LocationAreaResponse.Location> originalList;
     private List<LocationAreaResponse.Location> filteredList;
     private LocationAreaFilter filter = new LocationAreaFilter();
@@ -36,25 +38,66 @@ public class LocationAreaAdapter extends RecyclerView.Adapter<LocationAreaAdapte
     }
 
     public void setListLocation(List<LocationAreaResponse.Location> listLocation) {
-        this.originalList = listLocation;
         this.filteredList = listLocation;
+        this.originalList = this.filteredList;
         notifyDataSetChanged();
     }
 
+    public void showFooterProgress() {
+        LocationAreaResponse.Location location = new LocationAreaResponse.Location();
+        location.setId(-1);
+        this.filteredList.add(location);
+        notifyItemInserted(filteredList.size());
+    }
+
+    public void removeFooterProgress() {
+        this.filteredList.remove(filteredList.size() - 1);
+        notifyItemRemoved(filteredList.size());
+    }
+
+    public void addMoreItems(List<LocationAreaResponse.Location> listLocation) {
+        int lastPosition = filteredList.size() - 1;
+        this.filteredList.addAll(listLocation);
+        this.originalList = this.filteredList;
+        notifyItemRangeInserted(lastPosition + 1, listLocation.size());
+    }
+
+    public List<LocationAreaResponse.Area> getCheckedItems() {
+        List<LocationAreaResponse.Area> listSelectedAreas = new ArrayList<>();
+        for (LocationAreaResponse.Location location : filteredList) {
+            for (LocationAreaResponse.Area area : location.getEmbedded().getAreas()) {
+                if (area.isChecked()) {
+                    listSelectedAreas.add(area);
+                }
+            }
+        }
+        return listSelectedAreas;
+    }
+
     @Override
-    public LocationAreaAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_category, parent, false);
-        return new ViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view;
+        if (viewType == R.layout.item_category) {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_category, parent, false);
+            return new ItemHolder(view);
+        } else {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_footer_progress, parent, false);
+            return new FooterViewHolder(view);
+        }
     }
 
     @Override
     public int getItemViewType(int position) {
-        return super.getItemViewType(position);
+        return filteredList.get(position).getId() != -1 ? R.layout.item_category : R.layout.item_footer_progress;
     }
 
     @Override
-    public void onBindViewHolder(LocationAreaAdapter.ViewHolder holder, int position) {
-        holder.bind(position);
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        if (holder instanceof ItemHolder) {
+            ((ItemHolder) holder).bind(position);
+        } else {
+            ((FooterViewHolder) holder).bind(position);
+        }
     }
 
     @Override
@@ -67,7 +110,7 @@ public class LocationAreaAdapter extends RecyclerView.Adapter<LocationAreaAdapte
         return filter;
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements Binder {
+    class ItemHolder extends RecyclerView.ViewHolder implements Binder {
         @BindView(R.id.ll_item_category)
         LinearLayout llItemCategory;
         @BindView(R.id.ll_sub_category)
@@ -76,7 +119,7 @@ public class LocationAreaAdapter extends RecyclerView.Adapter<LocationAreaAdapte
         @BindView(R.id.tv_category_title)
         TextView tvCategoryTitle;
 
-        public ViewHolder(View itemView) {
+        ItemHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
@@ -88,14 +131,31 @@ public class LocationAreaAdapter extends RecyclerView.Adapter<LocationAreaAdapte
             llSubCategory.removeAllViews();
             if (listArea != null && !listArea.isEmpty()) {
                 for (LocationAreaResponse.Area area : listArea) {
-                    LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                    TextView tv = new TextView(itemView.getContext());
-                    tv.setLayoutParams(lparams);
-                    tv.setText(area.getName());
-                    llSubCategory.addView(tv);
+                    LinearLayout subCategory = (LinearLayout) LayoutInflater.from(itemView.getContext()).inflate(R.layout.item_sub_category, llSubCategory, false);
+                    CheckBox cbSubCategory = subCategory.findViewById(R.id.cb_sub_category);
+                    cbSubCategory.setText(area.getName());
+                    cbSubCategory.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                        area.setChecked(buttonView.isChecked());
+                    });
+                    cbSubCategory.setChecked(area.isChecked());
+                    llSubCategory.addView(subCategory);
                 }
             }
+        }
+    }
+
+    class FooterViewHolder extends RecyclerView.ViewHolder implements Binder {
+        @BindView(R.id.pb_li_footer)
+        ProgressBar pbFooter;
+
+        public FooterViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+        }
+
+        @Override
+        public void bind(int position) {
+            pbFooter.setIndeterminate(true);
         }
     }
 
@@ -105,37 +165,34 @@ public class LocationAreaAdapter extends RecyclerView.Adapter<LocationAreaAdapte
         protected FilterResults performFiltering(CharSequence constraint) {
             String filterString = constraint.toString().toLowerCase();
             FilterResults filterResults = new FilterResults();
-            //Todo fix filterable in location/area
             List<LocationAreaResponse.Location> tempOriginalList = originalList;
             List<LocationAreaResponse.Location> tempFilterList = new ArrayList<>(tempOriginalList.size());
-            for (LocationAreaResponse.Location location : tempOriginalList) {
-                List<LocationAreaResponse.Area> tempAreaList = null;
-                for (LocationAreaResponse.Area area : location.getEmbedded().getAreas()) {
-                    tempAreaList = new ArrayList<>();
-                    String filterable = area.getName().toLowerCase();
-                    if (filterable.contains(filterString)) {
-                        tempAreaList.add(area);
+            if (filterString.isEmpty()) {
+                tempFilterList.addAll(tempOriginalList);
+            } else {
+                for (LocationAreaResponse.Location location : tempOriginalList) {
+                    List<LocationAreaResponse.Area> listAreas = location.getEmbedded().getAreas();
+                    List<LocationAreaResponse.Area> tempAreaList = new ArrayList<>();
+                    for (LocationAreaResponse.Area area : listAreas) {
+                        String filterable = area.getName().toLowerCase();
+                        if (filterable.startsWith(filterString)) {
+                            tempAreaList.add(area);
+                        }
+                    }
+                    if (tempAreaList.size() > 0) {
+                        LocationAreaResponse.Location tempLocation = new LocationAreaResponse.Location();
+                        tempLocation.setId(location.getId());
+                        tempLocation.setName(location.getName());
+                        tempLocation.setCountryId(location.getCountryId());
+                        tempLocation.setActive(location.getActive());
+                        tempLocation.setLinks(location.getLinks());
+                        tempLocation.setPosition(location.getPosition());
+                        tempLocation.setEmbedded(new LocationAreaResponse.EmbeddedArea());
+                        tempLocation.getEmbedded().setAreas(tempAreaList);
+                        tempFilterList.add(tempLocation);
                     }
                 }
-                if (tempAreaList != null) {
-                    location.getEmbedded().setAreas(tempAreaList);
-                }
-                tempFilterList.add(location);
             }
-            /*for (int i = 0; i < tempOriginalList.size(); i++) {
-                List<LocationAreaResponse.Area> tempAreaList = new ArrayList<>();
-                for (int j = 0; j < tempOriginalList.get(i).getEmbedded().getAreas().size(); j++) {
-                    String filterableString = tempOriginalList.get(i).getEmbedded().getAreas().get(j).getName().toLowerCase();
-                    if (filterableString.contains(filterString)) {
-                        tempAreaList.add(tempOriginalList.get(i).getEmbedded().getAreas().get(j));
-                    }
-                }
-                LocationAreaResponse.Location location = new LocationAreaResponse.Location();
-                location.setName(tempOriginalList.get(i).getName());
-                location.setEmbedded(tempOriginalList.get(i).getEmbedded());
-                location.getEmbedded().setAreas(tempAreaList);
-                tempFilterList.add(location);
-            }*/
 
             filterResults.values = tempFilterList;
             filterResults.count = tempFilterList.size();

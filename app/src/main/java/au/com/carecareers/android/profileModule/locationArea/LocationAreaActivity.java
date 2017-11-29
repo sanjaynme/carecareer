@@ -15,12 +15,17 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
+import java.util.List;
+
 import javax.inject.Inject;
 
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.customViews.EbProgressView;
+import au.com.carecareers.android.customViews.EndlessRecyclerViewScrollListener;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.profileModule.locationArea.adapter.LocationAreaAdapter;
 import au.com.carecareers.android.profileModule.locationArea.injection.LocationAreaModule;
@@ -34,6 +39,8 @@ public class LocationAreaActivity extends BaseActivity implements LocationAreaCo
     LocationAreaAdapter locationAreaAdapter;
     @Inject
     LocationAreaContract.ILocationAreaPresenter presenter;
+    @Inject
+    Gson gson;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.tv_toolbar_title)
@@ -46,6 +53,7 @@ public class LocationAreaActivity extends BaseActivity implements LocationAreaCo
     EbProgressView ebProgressView;
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
+    private int totalPage;
 
     public static void startForResult(Activity activity) {
         Intent intent = new Intent();
@@ -68,7 +76,8 @@ public class LocationAreaActivity extends BaseActivity implements LocationAreaCo
         super.onCreate(savedInstanceState);
         ViewUtils.setupUI(findViewById(R.id.activity_location_area), this);
         presenter.onAttach(this);
-        presenter.loadLocationArea(1);
+        setupRecyclerView();
+        presenter.loadLocationArea(1, locationAreaAdapter.getItemCount() > 0);
         etSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -86,6 +95,21 @@ public class LocationAreaActivity extends BaseActivity implements LocationAreaCo
                     ibCross.setVisibility(View.VISIBLE);
                 } else {
                     ibCross.setVisibility(View.GONE);
+                }
+            }
+        });
+    }
+
+    private void setupRecyclerView() {
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        manager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(manager);
+        recyclerView.setAdapter(locationAreaAdapter);
+        recyclerView.addOnScrollListener(new EndlessRecyclerViewScrollListener(manager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                if (page <= totalPage && etSearch.getText().toString().isEmpty()) {
+                    presenter.loadLocationArea(page, locationAreaAdapter.getItemCount() > 0);
                 }
             }
         });
@@ -116,7 +140,15 @@ public class LocationAreaActivity extends BaseActivity implements LocationAreaCo
                 onBackPressed();
                 break;
             case R.id.menu_done:
-
+                List<LocationAreaResponse.Area> list = locationAreaAdapter.getCheckedItems();
+                if (list.isEmpty()) {
+                    showAlertDialog(R.string.err_no_area_selected);
+                } else {
+                    Intent intent = new Intent();
+                    intent.putExtra(AppContract.Extras.DATA, gson.toJson(list));
+                    setResult(RESULT_OK, intent);
+                    onBackPressed();
+                }
                 break;
         }
         return true;
@@ -140,6 +172,18 @@ public class LocationAreaActivity extends BaseActivity implements LocationAreaCo
     }
 
     @Override
+    public void showFooterProgress() {
+        //Todo show footer progress
+        // locationAreaAdapter.showFooterProgress();
+    }
+
+    @Override
+    public void hideFooterProgress() {
+        //Todo hide footer progress
+        //locationAreaAdapter.removeFooterProgress();
+    }
+
+    @Override
     public void setErrorMessage(int message) {
         ebProgressView.setMessage(getMessage(message));
     }
@@ -160,16 +204,13 @@ public class LocationAreaActivity extends BaseActivity implements LocationAreaCo
     }
 
     @Override
-    public void setupRecyclerView(LocationAreaResponse locationAreaResponse) {
-        LinearLayoutManager manager = new LinearLayoutManager(this);
-        manager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(manager);
-        recyclerView.setAdapter(locationAreaAdapter);
+    public void setList(LocationAreaResponse locationAreaResponse) {
+        totalPage = locationAreaResponse.getPageCount();
         locationAreaAdapter.setListLocation(locationAreaResponse.getEmbedded().getLocations());
     }
 
     @Override
     public void addMoreItems(LocationAreaResponse locationAreaResponse) {
-
+        locationAreaAdapter.addMoreItems(locationAreaResponse.getEmbedded().getLocations());
     }
 }

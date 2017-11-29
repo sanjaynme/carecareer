@@ -10,6 +10,9 @@
         android:id="@+id/tv_category_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/ic_chevron_down"
+        android:drawablePadding="@dimen/dimen_10dp"
+        android:drawableRight="@drawable/ic_chevron_down"
         android:paddingBottom="@dimen/dimen_15dp"
         android:paddingLeft="@dimen/dimen_16dp"
         android:paddingRight="@dimen/dimen_16dp"
@@ -17,6 +20,11 @@
         android:textColor="@color/textColorPrimary"
         android:textSize="@dimen/txt_normal"
         tools:text="Category" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1dp"
+        android:background="@color/colorGrey300" />
 
     <LinearLayout
         android:id="@+id/ll_sub_category"

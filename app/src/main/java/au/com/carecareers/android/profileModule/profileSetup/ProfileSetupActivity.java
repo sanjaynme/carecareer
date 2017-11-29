@@ -15,9 +15,11 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -27,6 +29,7 @@ import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.customViews.EbImageHelperFragment;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.profileModule.locationArea.LocationAreaActivity;
+import au.com.carecareers.android.profileModule.locationArea.model.LocationAreaResponse;
 import au.com.carecareers.android.profileModule.model.CandidateModel;
 import au.com.carecareers.android.profileModule.preferredLocation.PreferredLocationActivity;
 import au.com.carecareers.android.profileModule.profileSetup.injection.ProfileSetupModule;
@@ -55,6 +58,8 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
     ProgressBar pbProfileImage;
     @BindView(R.id.tv_preferred_location)
     TextView tvPreferredLocation;
+    @BindView(R.id.tv_location_area)
+    TextView tvLocationArea;
     @BindView(R.id.et_what_is_your_career_move)
     EditText etCareerMove;
 
@@ -134,6 +139,15 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
                 AvatarResponse.Avatar avatar = gson.fromJson(extra, AvatarResponse.Avatar.class);
                 presenter.setAvatar(avatar);
                 setProfileImage(avatar.getLinks().getUrl().getHref(), true);
+            } else if (requestCode == AppContract.RequestCode.LOCATION_AREA) {
+                String extra = data.getStringExtra(AppContract.Extras.DATA);
+                List<LocationAreaResponse.Area> listArea = gson.fromJson(extra, new TypeToken<List<LocationAreaResponse.Area>>() {
+                }.getType());
+                if (listArea.size() > 1) {
+                    setLocationArea(listArea.get(0).getName() + " and " + (listArea.size() - 1) + " more");
+                } else {
+                    setLocationArea(listArea.get(0).getName());
+                }
             }
         }
     }
@@ -207,7 +221,7 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
 
     @Override
     public void setLocationArea(String locationArea) {
-
+        tvLocationArea.setText(locationArea);
     }
 
     @Override

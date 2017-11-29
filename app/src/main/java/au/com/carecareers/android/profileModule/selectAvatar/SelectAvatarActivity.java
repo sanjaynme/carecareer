@@ -18,10 +18,10 @@ import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.customViews.EbProgressView;
+import au.com.carecareers.android.customViews.EndlessRecyclerViewScrollListener;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.profileModule.selectAvatar.adapter.GridSpacingItemDecoration;
 import au.com.carecareers.android.profileModule.selectAvatar.adapter.SelectAvatarAdapter;
-import au.com.carecareers.android.profileModule.selectAvatar.injection.EndlessRecyclerViewScrollListener;
 import au.com.carecareers.android.profileModule.selectAvatar.injection.SelectAvatarModule;
 import au.com.carecareers.android.profileModule.selectAvatar.model.AvatarResponse;
 import butterknife.BindView;
@@ -41,6 +41,7 @@ public class SelectAvatarActivity extends BaseActivity implements SelectAvatarCo
     RecyclerView recyclerView;
     @BindView(R.id.eb_progress_view)
     EbProgressView ebProgressView;
+    private int totalPageCount;
 
     public static void start(Context context) {
         Intent intent = new Intent();
@@ -68,7 +69,30 @@ public class SelectAvatarActivity extends BaseActivity implements SelectAvatarCo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presenter.onAttach(this);
+        setupRecyclerView();
         presenter.loadAvatarList(1, avatarAdapter.getItemCount() > 0);
+    }
+
+    private void setupRecyclerView() {
+        GridLayoutManager manager = new GridLayoutManager(this, 3);
+        avatarAdapter.setListener(avatar -> {
+            Intent intent = new Intent();
+            intent.putExtra(AppContract.Extras.DATA, gson.toJson(avatar));
+            setResult(RESULT_OK, intent);
+            onBackPressed();
+        });
+        recyclerView.setAdapter(avatarAdapter);
+        recyclerView.setLayoutManager(manager);
+        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.dimen_16dp);
+        recyclerView.addItemDecoration(new GridSpacingItemDecoration(3, spacingInPixels, true));
+        recyclerView.addOnScrollListener(new EndlessRecyclerViewScrollListener(manager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                if (page < totalPageCount) {
+                    presenter.loadAvatarList(page, avatarAdapter.getItemCount() > 0);
+                }
+            }
+        });
     }
 
     @Override
@@ -112,32 +136,12 @@ public class SelectAvatarActivity extends BaseActivity implements SelectAvatarCo
 
     @Override
     public void setupAvatarList(AvatarResponse avatarResponse) {
-        GridLayoutManager manager = new GridLayoutManager(this, 3);
-        avatarAdapter.setListener(avatar -> {
-            Intent intent = new Intent();
-            intent.putExtra(AppContract.Extras.DATA, gson.toJson(avatar));
-            setResult(RESULT_OK, intent);
-            onBackPressed();
-        });
+        totalPageCount = avatarResponse.getPageCount();
         avatarAdapter.setAvatarList(avatarResponse.getEmbedded().getAvatars());
-        recyclerView.setAdapter(avatarAdapter);
-        recyclerView.setLayoutManager(manager);
-        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.dimen_16dp);
-        recyclerView.addItemDecoration(new GridSpacingItemDecoration(3, spacingInPixels, true));
-        recyclerView.addOnScrollListener(new EndlessRecyclerViewScrollListener(manager) {
-            @Override
-            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                if (page < avatarResponse.getPageCount()) {
-                    presenter.loadAvatarList(page, avatarAdapter.getItemCount() > 0);
-                }
-            }
-        });
-
     }
 
     @Override
     public void addMoreAvatars(AvatarResponse avatarResponse) {
         avatarAdapter.addMoreAvatars(avatarResponse.getEmbedded().getAvatars());
-        recyclerView.scrollToPosition(avatarAdapter.getItemCount() - 1);
     }
 }

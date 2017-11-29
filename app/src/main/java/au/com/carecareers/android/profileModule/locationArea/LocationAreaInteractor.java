@@ -24,7 +24,7 @@ public class LocationAreaInteractor extends BaseInteractor implements LocationAr
     public Observable<LocationAreaResponse> getLocationArea(int pageNumber) {
         return getApiService().getLocationArea(
                 getPreferenceManager().getStringValues(AppContract.Preferences.ACCESS_TOKEN),
-                pageNumber,
+                1,
                 pageNumber
         );
     }

@@ -16,6 +16,10 @@ public class LocationAreaContract {
 
         void hideProgressBar();
 
+        void showFooterProgress();
+
+        void hideFooterProgress();
+
         void setErrorMessage(int message);
 
         void hideErrorMessage();
@@ -24,13 +28,13 @@ public class LocationAreaContract {
 
         void hideRecyclerView();
 
-        void setupRecyclerView(LocationAreaResponse locationAreaResponse);
+        void setList(LocationAreaResponse locationAreaResponse);
 
         void addMoreItems(LocationAreaResponse locationAreaResponse);
     }
 
     public interface ILocationAreaPresenter extends IBasePresenter<ILocationAreaView, ILocationAreaInteractor> {
-        void loadLocationArea(int pageNumber);
+        void loadLocationArea(int pageNumber, boolean isLoadMore);
     }
 
     public interface ILocationAreaInteractor extends IBaseInteractor {

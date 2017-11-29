@@ -175,7 +175,7 @@ public class LocationAreaResponse {
         }
     }
 
-    public class EmbeddedArea {
+    public static class EmbeddedArea {
 
         @SerializedName("areas")
         @Expose
@@ -210,6 +210,9 @@ public class LocationAreaResponse {
         @SerializedName("_links")
         @Expose
         private Links links;
+        @SerializedName("is_checked")
+        @Expose
+        private boolean isChecked;
 
         public Integer getId() {
             return id;
@@ -259,6 +262,13 @@ public class LocationAreaResponse {
             this.links = links;
         }
 
+        public boolean isChecked() {
+            return isChecked;
+        }
+
+        public void setChecked(boolean checked) {
+            isChecked = checked;
+        }
     }
 
 }
