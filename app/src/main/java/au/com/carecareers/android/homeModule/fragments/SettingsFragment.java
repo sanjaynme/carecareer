@@ -18,7 +18,7 @@ import au.com.carecareers.android.homeModule.injection.SettingsModule;
 import au.com.carecareers.android.homeModule.model.TokenRefreshModel;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.loginModule.changePassword.ChangePasswordActivity;
-import au.com.carecareers.android.loginModule.landing.LandingActivity;
+import au.com.carecareers.android.loginModule.login.LoginActivity;
 import au.com.carecareers.android.loginModule.termsAndCondition.TermsAndConditionActivity;
 import au.com.carecareers.android.utilities.AppLog;
 import butterknife.OnClick;
@@ -86,9 +86,9 @@ public class SettingsFragment extends BaseFragment implements SettingContract.IS
     }
 
     @Override
-    public void navigateToLandingActivity() {
+    public void navigateToLoginActivity() {
         getActivity().finish();
-        LandingActivity.start(getActivity());
+        LoginActivity.start(getActivity());
         transitionActivityOpen();
     }
 
