@@ -72,6 +72,7 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
 
     private CandidateModel candidateModel;
     private EbImageHelperFragment ebImageHelperFragment;
+    private List<LocationAreaResponse.Area> listArea;
 
     public static void start(Context context) {
         Intent intent = new Intent();
@@ -174,7 +175,7 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
                 setProfileImage(avatar.getLinks().getUrl().getHref(), true);
             } else if (requestCode == AppContract.RequestCode.LOCATION_AREA) {
                 String extra = data.getStringExtra(AppContract.Extras.DATA);
-                List<LocationAreaResponse.Area> listArea = gson.fromJson(extra, new TypeToken<List<LocationAreaResponse.Area>>() {
+                listArea = gson.fromJson(extra, new TypeToken<List<LocationAreaResponse.Area>>() {
                 }.getType());
                 if (listArea.size() > 1) {
                     setLocationArea(listArea.get(0).getName() + " and " + (listArea.size() - 1) + " more");
@@ -204,7 +205,7 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
 
     @OnClick(R.id.ll_location_area)
     public void locationAreaClicked() {
-        LocationAreaActivity.startForResult(this);
+        LocationAreaActivity.startForResult(this, gson.toJson(listArea));
         transitionActivityOpen();
     }
 

@@ -31,6 +31,7 @@ public class UrlContract {
         public final static String AUTHORIZATION = "authorization";
         public final static String ACCESS_TOKEN = "access_token";
         public static final String PAGE = "page";
+        public static final String LIMIT = "limit";
         public static final String CANDIDATE_ID = "candidate_id";
         public static final String COUNTRY_ID = "country_id";
     }

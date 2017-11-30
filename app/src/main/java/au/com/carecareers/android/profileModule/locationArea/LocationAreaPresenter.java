@@ -68,4 +68,38 @@ public class LocationAreaPresenter extends BasePresenter<LocationAreaContract.IL
                         })
         );
     }
+
+    @Override
+    public void loadLocationWithoutPagination() {
+        getView().showProgressBar();
+        getCompositeDisposable().add(
+                getInteractor().getLocationAreaWithoutPagination()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableObserver<LocationAreaResponse>() {
+                            @Override
+                            public void onNext(LocationAreaResponse locationAreaResponse) {
+                                if (isViewAttached()) {
+                                    getView().showRecyclerView();
+                                    getView().hideProgressBar();
+                                    getView().setList(locationAreaResponse);
+                                }
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                                if (isViewAttached()) {
+                                    getView().hideProgressBar();
+                                }
+                            }
+
+                            @Override
+                            public void onComplete() {
+                                if (isViewAttached()) {
+                                    getView().hideProgressBar();
+                                }
+                            }
+                        })
+        );
+    }
 }

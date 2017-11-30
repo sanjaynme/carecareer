@@ -16,7 +16,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -25,7 +27,6 @@ import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.customViews.EbProgressView;
-import au.com.carecareers.android.customViews.EndlessRecyclerViewScrollListener;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.profileModule.locationArea.adapter.LocationAreaAdapter;
 import au.com.carecareers.android.profileModule.locationArea.injection.LocationAreaModule;
@@ -53,11 +54,14 @@ public class LocationAreaActivity extends BaseActivity implements LocationAreaCo
     EbProgressView ebProgressView;
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
+    private MenuItem menuItemDone;
     private int totalPage;
+    private List<LocationAreaResponse.Area> listArea;
 
-    public static void startForResult(Activity activity) {
+    public static void startForResult(Activity activity, String data) {
         Intent intent = new Intent();
         intent.setClass(activity, LocationAreaActivity.class);
+        intent.putExtra(AppContract.Extras.DATA, data);
         activity.startActivityForResult(intent, AppContract.RequestCode.LOCATION_AREA);
     }
 
@@ -76,8 +80,9 @@ public class LocationAreaActivity extends BaseActivity implements LocationAreaCo
         super.onCreate(savedInstanceState);
         ViewUtils.setupUI(findViewById(R.id.activity_location_area), this);
         presenter.onAttach(this);
+        listArea = new ArrayList<>();
         setupRecyclerView();
-        presenter.loadLocationArea(1, locationAreaAdapter.getItemCount() > 0);
+        presenter.loadLocationWithoutPagination();
         etSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -101,18 +106,30 @@ public class LocationAreaActivity extends BaseActivity implements LocationAreaCo
     }
 
     private void setupRecyclerView() {
+        String extra = getIntent().getStringExtra(AppContract.Extras.DATA);
+        listArea = gson.fromJson(extra, new TypeToken<List<LocationAreaResponse.Area>>() {
+        }.getType());
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(manager);
+        locationAreaAdapter.setListener(() -> {
+            if (locationAreaAdapter.getCheckedItems().isEmpty()) {
+                menuItemDone.setVisible(false);
+            } else {
+                menuItemDone.setVisible(true);
+            }
+        });
         recyclerView.setAdapter(locationAreaAdapter);
-        recyclerView.addOnScrollListener(new EndlessRecyclerViewScrollListener(manager) {
+
+        /*Remove pagination as per requirement*/
+       /* recyclerView.addOnScrollListener(new EndlessRecyclerViewScrollListener(manager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 if (page <= totalPage && etSearch.getText().toString().isEmpty()) {
                     presenter.loadLocationArea(page, locationAreaAdapter.getItemCount() > 0);
                 }
             }
-        });
+        });*/
     }
 
     @OnClick(R.id.ib_cross)
@@ -130,6 +147,8 @@ public class LocationAreaActivity extends BaseActivity implements LocationAreaCo
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_preferred_location, menu);
+        menuItemDone = menu.findItem(R.id.menu_done);
+        menuItemDone.setVisible(false);
         return true;
     }
 
@@ -207,6 +226,9 @@ public class LocationAreaActivity extends BaseActivity implements LocationAreaCo
     public void setList(LocationAreaResponse locationAreaResponse) {
         totalPage = locationAreaResponse.getPageCount();
         locationAreaAdapter.setListLocation(locationAreaResponse.getEmbedded().getLocations());
+        if (listArea != null && !listArea.isEmpty()) {
+            locationAreaAdapter.persistCheckedList(listArea);
+        }
     }
 
     @Override

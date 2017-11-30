@@ -32,6 +32,7 @@ public class SettingInteractor extends BaseInteractor implements SettingContract
     @Override
     public void logOutResponse(LogOutModel.LogOutResponse logOutResponse) {
         AppLog.d("Logout Successfull");
+        getPreferenceManager().setKeyValues(AppContract.Preferences.IS_PROFILE_COMPLETE, false);
         getPreferenceManager().setKeyValues(AppContract.Preferences.IS_LOGGED_IN, false);
 //        getPreferenceManager().setKeyValues(AppContract.Preferences.AUTHORIZATION_KEY, "");
 //        getPreferenceManager().setKeyValues(AppContract.Preferences.ACCESS_TOKEN, "");

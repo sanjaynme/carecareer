@@ -56,6 +56,13 @@ public class SettingsActivity extends BaseActivity implements SettingContract.IS
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        presenter.onAttach(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        presenter.onDetach();
+        super.onDestroy();
     }
 
     @Override
@@ -76,7 +83,7 @@ public class SettingsActivity extends BaseActivity implements SettingContract.IS
 
     @OnClick(R.id.tv_logout)
     void onLogOut() {
-        showWarningDialog(getResources().getString(R.string.msg_logout));
+        showWarningDialog(getString(R.string.msg_logout));
     }
 
 
@@ -125,7 +132,7 @@ public class SettingsActivity extends BaseActivity implements SettingContract.IS
     }
 
     private void showWarningDialog(String message) {
-        EbAlertDialog.showAlertDialogWithCallback(this, message, new EbAlertDialog.ConfirmationDialogCallback() {
+        EbAlertDialog.showLogOutWithCallback(this, message, new EbAlertDialog.ConfirmationDialogCallback() {
             @Override
             public void onOkClicked() {
                 presenter.onLogout();

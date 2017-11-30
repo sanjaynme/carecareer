@@ -129,5 +129,5 @@ public interface ApiService {
     @GET(UrlContract.LOCATION_AREA)
     Observable<LocationAreaResponse> getLocationArea(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
                                                      @Query(UrlContract.Keys.COUNTRY_ID) int countryId,
-                                                     @Query(UrlContract.Keys.PAGE) int page);
+                                                     @Query(UrlContract.Keys.LIMIT) int limit);
 }

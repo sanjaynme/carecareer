@@ -30,6 +30,7 @@ public class LocationAreaAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private List<LocationAreaResponse.Location> originalList;
     private List<LocationAreaResponse.Location> filteredList;
     private LocationAreaFilter filter = new LocationAreaFilter();
+    private Listener listener;
 
     @Inject
     public LocationAreaAdapter() {
@@ -41,6 +42,26 @@ public class LocationAreaAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         this.filteredList = listLocation;
         this.originalList = this.filteredList;
         notifyDataSetChanged();
+    }
+
+    /**
+     * @param listArea list of previously selected area list
+     */
+    public void persistCheckedList(List<LocationAreaResponse.Area> listArea) {
+        for (LocationAreaResponse.Location location : filteredList) {
+            for (LocationAreaResponse.Area area : location.getEmbedded().getAreas()) {
+                for (LocationAreaResponse.Area persistedArea : listArea) {
+                    if (area.getId().equals(persistedArea.getId())) {
+                        area.setChecked(persistedArea.isChecked());
+                    }
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
+
+    public void setListener(Listener listener) {
+        this.listener = listener;
     }
 
     public void showFooterProgress() {
@@ -110,6 +131,14 @@ public class LocationAreaAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         return filter;
     }
 
+    interface Binder {
+        void bind(int position);
+    }
+
+    public interface Listener {
+        void onCheckedChanged();
+    }
+
     class ItemHolder extends RecyclerView.ViewHolder implements Binder {
         @BindView(R.id.ll_item_category)
         LinearLayout llItemCategory;
@@ -136,6 +165,9 @@ public class LocationAreaAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                     cbSubCategory.setText(area.getName());
                     cbSubCategory.setOnCheckedChangeListener((buttonView, isChecked) -> {
                         area.setChecked(buttonView.isChecked());
+                        if (listener != null) {
+                            listener.onCheckedChanged();
+                        }
                     });
                     cbSubCategory.setChecked(area.isChecked());
                     llSubCategory.addView(subCategory);
@@ -204,9 +236,5 @@ public class LocationAreaAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             filteredList = (List<LocationAreaResponse.Location>) results.values;
             notifyDataSetChanged();
         }
-    }
-
-    interface Binder {
-        void bind(int position);
     }
 }

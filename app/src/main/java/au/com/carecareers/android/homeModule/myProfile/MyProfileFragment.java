@@ -74,6 +74,7 @@ public class MyProfileFragment extends BaseFragment {
                 .load(preferenceManager.getStringValues(AppContract.Preferences.AVATAR_URL))
                 .resize(200, 200)
                 .centerCrop()
+                .placeholder(R.drawable.ic_profile_placeholder)
                 .into(ivProfile);
     }
 

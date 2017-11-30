@@ -69,6 +69,18 @@ public class EbAlertDialog {
     }
 
     /**
+     * Shows logout dialog with default title and ok button
+     *
+     * @param context                    context to build the dialog
+     * @param message                    message for the dialog
+     * @param confirmationDialogCallback callback to take action
+     */
+    public static void showLogOutWithCallback(@NonNull Context context, @NonNull String message, final ConfirmationDialogCallback confirmationDialogCallback) {
+        //createDialog(context, null, message, null, "OK", true, confirmationDialogCallback);
+        createDefaultConfirmationDialog(context, null, message, "Cancel", "Log out", true, confirmationDialogCallback);
+    }
+
+    /**
      * Shows not cancellable alert dialog with default title and ok button
      *
      * @param context                    context to build the dialog

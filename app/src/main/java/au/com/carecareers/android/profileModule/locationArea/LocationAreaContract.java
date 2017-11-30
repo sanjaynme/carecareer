@@ -35,9 +35,13 @@ public class LocationAreaContract {
 
     public interface ILocationAreaPresenter extends IBasePresenter<ILocationAreaView, ILocationAreaInteractor> {
         void loadLocationArea(int pageNumber, boolean isLoadMore);
+
+        void loadLocationWithoutPagination();
     }
 
     public interface ILocationAreaInteractor extends IBaseInteractor {
         Observable<LocationAreaResponse> getLocationArea(int pageNumber);
+
+        Observable<LocationAreaResponse> getLocationAreaWithoutPagination();
     }
 }

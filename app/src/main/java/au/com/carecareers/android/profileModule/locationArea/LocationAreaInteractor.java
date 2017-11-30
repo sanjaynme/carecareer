@@ -28,4 +28,13 @@ public class LocationAreaInteractor extends BaseInteractor implements LocationAr
                 pageNumber
         );
     }
+
+    @Override
+    public Observable<LocationAreaResponse> getLocationAreaWithoutPagination() {
+        return getApiService().getLocationArea(
+                getPreferenceManager().getStringValues(AppContract.Preferences.ACCESS_TOKEN),
+                1,
+                1000
+        );
+    }
 }
