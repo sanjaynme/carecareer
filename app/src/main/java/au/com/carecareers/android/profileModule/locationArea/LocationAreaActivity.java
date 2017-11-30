@@ -18,7 +18,6 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -80,7 +79,6 @@ public class LocationAreaActivity extends BaseActivity implements LocationAreaCo
         super.onCreate(savedInstanceState);
         ViewUtils.setupUI(findViewById(R.id.activity_location_area), this);
         presenter.onAttach(this);
-        listArea = new ArrayList<>();
         setupRecyclerView();
         presenter.loadLocationWithoutPagination();
         etSearch.addTextChangedListener(new TextWatcher() {
@@ -109,6 +107,7 @@ public class LocationAreaActivity extends BaseActivity implements LocationAreaCo
         String extra = getIntent().getStringExtra(AppContract.Extras.DATA);
         listArea = gson.fromJson(extra, new TypeToken<List<LocationAreaResponse.Area>>() {
         }.getType());
+
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(manager);
@@ -159,15 +158,10 @@ public class LocationAreaActivity extends BaseActivity implements LocationAreaCo
                 onBackPressed();
                 break;
             case R.id.menu_done:
-                List<LocationAreaResponse.Area> list = locationAreaAdapter.getCheckedItems();
-                if (list.isEmpty()) {
-                    showAlertDialog(R.string.err_no_area_selected);
-                } else {
-                    Intent intent = new Intent();
-                    intent.putExtra(AppContract.Extras.DATA, gson.toJson(list));
-                    setResult(RESULT_OK, intent);
-                    onBackPressed();
-                }
+                Intent intent = new Intent();
+                intent.putExtra(AppContract.Extras.DATA, gson.toJson(locationAreaAdapter.getCheckedItems()));
+                setResult(RESULT_OK, intent);
+                onBackPressed();
                 break;
         }
         return true;
@@ -228,6 +222,9 @@ public class LocationAreaActivity extends BaseActivity implements LocationAreaCo
         locationAreaAdapter.setListLocation(locationAreaResponse.getEmbedded().getLocations());
         if (listArea != null && !listArea.isEmpty()) {
             locationAreaAdapter.persistCheckedList(listArea);
+            menuItemDone.setVisible(true);
+        } else {
+            menuItemDone.setVisible(false);
         }
     }
 
