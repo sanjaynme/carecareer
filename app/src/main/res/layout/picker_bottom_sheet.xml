@@ -1,0 +1,40 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        fontPath="@string/font_source_san_pro_semi_bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bottom_line"
+        android:gravity="center"
+        android:padding="@dimen/dimen_16dp"
+        android:text="@string/tv_upload_photo"
+        android:textAllCaps="true"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="@dimen/txt_16sp" />
+
+    <TextView
+        android:id="@+id/tv_take_photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bottom_line"
+        android:gravity="center"
+        android:padding="@dimen/dimen_16dp"
+        android:text="@string/tv_take_photo"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="@dimen/txt_normal" />
+
+    <TextView
+        android:id="@+id/tv_choose_from_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bottom_line"
+        android:gravity="center"
+        android:padding="@dimen/dimen_16dp"
+        android:text="@string/tv_choose_from_gallery"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="@dimen/txt_normal" />
+
+</LinearLayout>

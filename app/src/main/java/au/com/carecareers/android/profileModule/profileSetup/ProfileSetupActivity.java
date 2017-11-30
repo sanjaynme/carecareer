@@ -187,7 +187,7 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
 
     @OnClick(R.id.tv_upload_photo)
     public void uploadPhotoClicked() {
-        ebImageHelperFragment.showChooserDialog();
+        ebImageHelperFragment.showBottomSheetFragment();
     }
 
     @OnClick(R.id.tv_select_avatar)
