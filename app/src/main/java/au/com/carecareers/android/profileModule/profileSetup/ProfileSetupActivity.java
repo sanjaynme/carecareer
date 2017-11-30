@@ -223,12 +223,14 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
                     .load(imagePath)
                     .resize(200, 200)
                     .centerCrop()
+                    .placeholder(R.drawable.ic_profile_placeholder)
                     .into(ivProfile);
         } else {
             Picasso.with(ProfileSetupActivity.this)
                     .load(new File(imagePath))
                     .resize(200, 200)
                     .centerCrop()
+                    .placeholder(R.drawable.ic_profile_placeholder)
                     .into(ivProfile);
         }
     }

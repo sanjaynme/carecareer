@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -69,13 +70,15 @@ public class MyProfileFragment extends BaseFragment {
                 preferenceManager.getStringValues(AppContract.Preferences.LAST_NAME)
                 + "!";
         tvName.setText(fullName);
-
-        Picasso.with(getContext())
-                .load(preferenceManager.getStringValues(AppContract.Preferences.AVATAR_URL))
-                .resize(200, 200)
-                .centerCrop()
-                .placeholder(R.drawable.ic_profile_placeholder)
-                .into(ivProfile);
+        String avatarUrl = preferenceManager.getStringValues(AppContract.Preferences.AVATAR_URL);
+        if (!TextUtils.isEmpty(avatarUrl)) {
+            Picasso.with(getContext())
+                    .load(avatarUrl)
+                    .resize(200, 200)
+                    .centerCrop()
+                    .placeholder(R.drawable.ic_profile_placeholder)
+                    .into(ivProfile);
+        }
     }
 
     @Override
