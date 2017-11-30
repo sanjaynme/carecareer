@@ -1,6 +1,9 @@
-package au.com.carecareers.android.jobSearchModule;
+package au.com.carecareers.android.jobSearchModule.injection;
 
 import au.com.carecareers.android.injection.scope.ActivityScope;
+import au.com.carecareers.android.jobSearchModule.SearchContract;
+import au.com.carecareers.android.jobSearchModule.SearchInteractor;
+import au.com.carecareers.android.jobSearchModule.SearchPresenter;
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.disposables.CompositeDisposable;

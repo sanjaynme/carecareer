@@ -32,7 +32,7 @@ import au.com.carecareers.android.loginModule.register.injection.RegisterModule;
 import au.com.carecareers.android.loginModule.register.model.RegisterContract;
 import au.com.carecareers.android.loginModule.register.model.RegisterModel;
 import au.com.carecareers.android.loginModule.register.model.TaxonomyModel;
-import au.com.carecareers.android.loginModule.termsAndCondition.TermsAndConditionActivity;
+import au.com.carecareers.android.loginModule.termsAndCondition.PagesActivity;
 import au.com.carecareers.android.utilities.AppLog;
 import au.com.carecareers.android.utilities.ViewUtils;
 import butterknife.BindView;
@@ -206,7 +206,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
 
     @OnClick(R.id.tv_terms_and_conditions)
     void termsAndConditionsClicked() {
-        TermsAndConditionActivity.start(RegisterActivity.this, AppContract.Page.TERMS_AND_CONDITIONS);
+        PagesActivity.start(RegisterActivity.this, AppContract.Page.TERMS_AND_CONDITIONS);
         transitionActivityOpen();
     }
 

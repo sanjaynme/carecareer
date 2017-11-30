@@ -79,13 +79,18 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
         <activity
-            android:name=".loginModule.termsAndCondition.TermsAndConditionActivity"
+            android:name=".loginModule.termsAndCondition.PagesActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
         <activity
             android:name=".profileModule.selectAvatar.SelectAvatarActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <activity
+            android:name=".jobSearchModule.JobAdsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+
     </application>
 
 </manifest>

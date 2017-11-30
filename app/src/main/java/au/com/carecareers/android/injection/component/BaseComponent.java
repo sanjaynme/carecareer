@@ -6,7 +6,7 @@ import au.com.carecareers.android.homeModule.injection.SettingsModule;
 import au.com.carecareers.android.homeModule.injection.SettingsSubComponent;
 import au.com.carecareers.android.injection.module.AppModule;
 import au.com.carecareers.android.injection.module.NetModule;
-import au.com.carecareers.android.jobSearchModule.SearchModule;
+import au.com.carecareers.android.jobSearchModule.injection.SearchModule;
 import au.com.carecareers.android.loginModule.changePassword.injection.ChangePasswordModule;
 import au.com.carecareers.android.loginModule.changePassword.injection.ChangePasswordSubComponent;
 import au.com.carecareers.android.loginModule.forgotPassword.injection.ForgotPasswordModule;

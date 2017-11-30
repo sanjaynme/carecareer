@@ -23,7 +23,12 @@ public class SearchInteractor extends BaseInteractor implements SearchContract.I
     @Override
     public Observable<LocationModel.LocationResponse> loadLocations() {
         int country_id =1;
-        int page=1;
-        return getApiService().getLocations(getPreferenceManager().getStringValues(AppContract.Preferences.AUTHORIZATION_KEY),country_id,page);
+//        int page=1;
+        return getApiService().getLocations(getPreferenceManager().getStringValues(AppContract.Preferences.AUTHORIZATION_KEY),country_id);
+    }
+
+    @Override
+    public Observable<LocationModel.LocationResponse> searchJobs(String keywords, int locationId) {
+        return null;
     }
 }

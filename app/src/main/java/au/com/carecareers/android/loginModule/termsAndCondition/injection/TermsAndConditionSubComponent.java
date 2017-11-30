@@ -1,7 +1,7 @@
 package au.com.carecareers.android.loginModule.termsAndCondition.injection;
 
 import au.com.carecareers.android.injection.scope.ActivityScope;
-import au.com.carecareers.android.loginModule.termsAndCondition.TermsAndConditionActivity;
+import au.com.carecareers.android.loginModule.termsAndCondition.PagesActivity;
 import dagger.Subcomponent;
 
 /**
@@ -10,5 +10,5 @@ import dagger.Subcomponent;
 @ActivityScope
 @Subcomponent(modules = TermsAndConditionsModule.class)
 public interface TermsAndConditionSubComponent {
-    void inject(TermsAndConditionActivity termsAndConditionActivity);
+    void inject(PagesActivity termsAndConditionActivity);
 }

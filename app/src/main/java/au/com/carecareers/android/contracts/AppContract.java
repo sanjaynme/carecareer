@@ -45,6 +45,7 @@ public class AppContract {
         public final static String PAGE_FLAG = "page_flag";
         public final static int TERMS_AND_CONDITIONS = 1;
         public final static int PRIVACY_POLICY = 2;
+        public static final int STARTING_OUT = 3;
     }
     public class ClientCredentials{
         public final static String CLIENT_ID = "86e84f17-3fe0-4d3a-a2fd-a93af9ff3355";

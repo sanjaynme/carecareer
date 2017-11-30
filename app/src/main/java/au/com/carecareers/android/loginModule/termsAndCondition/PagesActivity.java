@@ -27,7 +27,7 @@ import butterknife.BindView;
  */
 
 
-public class TermsAndConditionActivity extends BaseActivity implements
+public class PagesActivity extends BaseActivity implements
         TermsAndConditionsContract.ITermsAndConditionsView {
     @BindView(R.id.terms_and_conditions_toolbar)
     Toolbar toolbar;
@@ -46,7 +46,7 @@ public class TermsAndConditionActivity extends BaseActivity implements
 
     public static void start(Context context, int flag) {
         Intent intent = new Intent();
-        intent.setClass(context, TermsAndConditionActivity.class);
+        intent.setClass(context, PagesActivity.class);
         intent.putExtra(AppContract.Page.PAGE_FLAG, flag);
         context.startActivity(intent);
     }
@@ -76,9 +76,13 @@ public class TermsAndConditionActivity extends BaseActivity implements
             tvTitle.setText(getResources().getText(R.string.tv_settings_terms_and_conditions));
             String idOrSlug = "terms-of-access-and-use";
             presenter.termsAndCondition(type, idOrSlug);
-        } else {
+        } else if(pageFlag == AppContract.Page.PRIVACY_POLICY){
             tvTitle.setText(getResources().getText(R.string.tv_settings_privacy_policy));
             String idOrSlug = "privacy-policy";
+            presenter.termsAndCondition(type, idOrSlug);
+        }else if(pageFlag == AppContract.Page.STARTING_OUT){
+            tvTitle.setText(getResources().getText(R.string.tv_title_starting_out));
+            String idOrSlug = "starting-out";
             presenter.termsAndCondition(type, idOrSlug);
         }
     }

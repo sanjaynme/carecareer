@@ -130,35 +130,41 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
 
     private void openProfile() {
         SettingsFragment settingsFragment = new SettingsFragment();
-        setFragmentTransition(settingsFragment);
+        setFragmentTransition(settingsFragment, "settingsFragment");
     }
 
-    private void setFragmentTransition(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-        FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_right, R.anim.slide_out_left);
-        ft.replace(R.id.rl_container, fragment);
-        ft.commit();
-    }
 
     private void openJobAlerts() {
         JobAlertsFragment jobAlertsFragment = new JobAlertsFragment();
-        setFragmentTransition(jobAlertsFragment);
+        setFragmentTransition(jobAlertsFragment, "jobAlertsFragment");
     }
 
     private void openApplications() {
         ApplicationsFragment applicationsFragment = new ApplicationsFragment();
-        setFragmentTransition(applicationsFragment);
+        setFragmentTransition(applicationsFragment, "applicationsFragment");
     }
 
-    private void openMenuSavedLists() {
+    public void openMenuSavedLists() {
         SaveListsFragment saveListsFragment = new SaveListsFragment();
-        setFragmentTransition(saveListsFragment);
+        setFragmentTransition(saveListsFragment, "saveListsFragment");
     }
 
     private void openSearch() {
         SearchFragment searchFragment = new SearchFragment();
-        setFragmentTransition(searchFragment);
+        setFragmentTransition(searchFragment, "searchFragment");
+    }
+
+    private void setFragmentTransition(Fragment fragment, String fragmentName) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_right, R.anim.slide_out_left);
+        ft.replace(R.id.rl_container, fragment, fragmentName);
+        ft.commit();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

@@ -9,6 +9,7 @@ import au.com.carecareers.android.injection.component.BaseComponent;
  */
 
 public class SaveListsFragment extends BaseFragment {
+
     @Override
     public void setupToolbar() {
 
@@ -24,4 +25,5 @@ public class SaveListsFragment extends BaseFragment {
     public void injectComponent(BaseComponent baseComponent) {
 
     }
+
 }

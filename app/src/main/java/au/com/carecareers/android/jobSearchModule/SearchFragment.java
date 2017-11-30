@@ -1,22 +1,23 @@
 package au.com.carecareers.android.jobSearchModule;
 
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -26,9 +27,12 @@ import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseFragment;
 import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.injection.component.BaseComponent;
+import au.com.carecareers.android.jobSearchModule.injection.SearchModule;
 import au.com.carecareers.android.jobSearchModule.model.LocationModel;
 import au.com.carecareers.android.loginModule.register.adapter.SpinnerAdapter;
+import au.com.carecareers.android.loginModule.termsAndCondition.PagesActivity;
 import au.com.carecareers.android.utilities.AppLog;
+import au.com.carecareers.android.utilities.ViewUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -46,14 +50,15 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
     @BindView(R.id.tv_welcome_user)
     TextView tvWelcomeUser;
 
-    @BindView(R.id.btn_search_out)
-    Button btnSearchOut;
+    @BindView(R.id.btn_starting_out)
+    Button btnStartingOut;
     @BindView(R.id.et_search_keyword)
     EditText etSearchKeyword;
 
     @BindView(R.id.spinner_locations)
     Spinner spinnerLocations;
 
+    LocationModel.LocationResponse.Embedded.SearchLocation locationModel;
 
     @Override
     public void injectComponent(BaseComponent baseComponent) {
@@ -73,28 +78,43 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getActivity().getWindow().setSoftInputMode(
-                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        ViewUtils.setupUI(view, getActivity());
         setUpWelcome();
         setUpButton();
         presenter.onAttach(this);
         presenter.loadLocations();
+//        locationModel = new LocationModel.LocationResponse.Embedded.SearchLocation();
     }
 
     private void setUpButton() {
-        SpannableString spanString = new SpannableString("Start tour \n Welcome sanjay");
-        spanString.setSpan(new ForegroundColorSpan(Color.BLUE), 12, spanString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        spanString.setSpan(new StyleSpan(Typeface.BOLD), 12, spanString.length(), 0);
-        btnSearchOut.setText(spanString);
+        SpannableString spanString = new SpannableString(getResources().getString(R.string.tv_starting_out));
+        spanString.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.textColorPrimary)), 0, 12, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spanString.setSpan(new StyleSpan(Typeface.BOLD), 0, 12, 0);
+        btnStartingOut.setText(spanString);
     }
 
     private void setUpWelcome() {
+        String name = "lkdnaskjfdbasfkjbaskjfbnasff";
+        SpannableString nameString = new SpannableString("Welcome, " + name);
+        nameString.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.textColorPrimary)), 15, 30, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        nameString.setSpan(new StyleSpan(Typeface.BOLD), 8, 9 + name.length(), 0);
+        SpannableStringBuilder spanString = new SpannableStringBuilder("\n Search for your next career move");
+        tvWelcomeUser.setText(TextUtils.concat(nameString, spanString));
+    }
 
-        Spannable wordtoSpan = new SpannableString("I know just how to whisper, And I know just how to cry,I know just where to find the answers");
+    @OnClick(R.id.btn_starting_out)
+    void startingOutClicked() {
+        PagesActivity.start(getActivity(), AppContract.Page.STARTING_OUT);
+        transitionActivityOpen();
+    }
 
-        wordtoSpan.setSpan(new ForegroundColorSpan(Color.BLUE), 15, 30, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-        tvWelcomeUser.setText(wordtoSpan);
+    @OnClick(R.id.tv_view_my_fav_search)
+    void viewMyFavSearchClicked() {
+      /*  SaveListsFragment saveListsFragment = new SaveListsFragment();
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.rl_container, saveListsFragment)
+                .addToBackStack(null)
+                .commit();*/
     }
 
     @Override
@@ -117,10 +137,11 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 String countryNames = locationResponse.getEmbedded().getLocations().get(position).getName();
-                String countryId = locationResponse.getEmbedded().getLocations().get(position).getId().toString();
+                int countryId = locationResponse.getEmbedded().getLocations().get(position).getId();
                 AppLog.d("position:" + position);
                 AppLog.d("country selected name::::" + countryNames);
                 AppLog.d("country selected id:::::" + countryId);
+//                locationModel.setId(countryId);
             }
 
             @Override
@@ -129,11 +150,23 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
         });
     }
 
-    @OnClick(R.id.btn_job_search)
-    void onJobSearchClicked() {
-        String keywords = etSearchKeyword.getText().toString().trim();
-//        String locationId=
-//        presenter.searchJobs();
+    @Override
+    public void navigateToJobAds(LocationModel.LocationResponse locationResponse) {
+        JobAdsActivity.start(getActivity());
+        transitionActivityOpen();
     }
 
+    @OnClick(R.id.btn_job_search)
+    void onJobSearchClicked() {
+    /*    String keywords = etSearchKeyword.getText().toString().trim();
+        int locationId = locationModel.getId();
+        presenter.searchJobs(keywords, locationId);*/
+        Toast.makeText(getActivity(), "Search", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onDestroyView() {
+        presenter.onDetach();
+        super.onDestroyView();
+    }
 }

@@ -2,7 +2,7 @@ package au.com.carecareers.android.injection.component;
 
 import au.com.carecareers.android.injection.scope.ActivityScope;
 import au.com.carecareers.android.jobSearchModule.SearchFragment;
-import au.com.carecareers.android.jobSearchModule.SearchModule;
+import au.com.carecareers.android.jobSearchModule.injection.SearchModule;
 import dagger.Subcomponent;
 
 /**

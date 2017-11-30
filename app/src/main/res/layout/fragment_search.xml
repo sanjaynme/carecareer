@@ -25,9 +25,9 @@
                 android:layout_marginLeft="@dimen/dimen_30dp"
                 android:layout_marginStart="@dimen/dimen_30dp"
                 android:layout_marginTop="@dimen/dimen_30dp"
-                android:text="@string/tv_welcome"
                 android:textColor="@color/textColorPrimary"
-                android:textSize="@dimen/txt_14sp" />
+                android:textSize="@dimen/txt_14sp"
+                tools:text="@string/tv_landing_welcom_message" />
 
             <EditText
                 android:id="@+id/et_search_keyword"
@@ -79,7 +79,7 @@
                 android:layout_marginBottom="@dimen/dimen_30dp"
                 android:layout_marginLeft="@dimen/dimen_30dp"
                 android:layout_marginRight="@dimen/dimen_30dp"
-                android:background="@drawable/btn_job_search_unpressed"
+                android:background="@drawable/btn_job_search"
                 android:padding="@dimen/dimen_17dp"
                 android:text="@string/tv_search"
                 android:textAllCaps="false"
@@ -87,29 +87,30 @@
                 android:textSize="@dimen/txt_15sp" />
 
             <TextView
+                android:id="@+id/tv_view_my_fav_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="@dimen/dimen_30dp"
+                android:padding="@dimen/dimen_15dp"
                 android:text="@string/tv_favorite_searches"
                 android:textColor="@color/colorPrimaryDark" />
 
             <Button
-                android:id="@+id/btn_search_out"
+                android:id="@+id/btn_starting_out"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/dimen_30dp"
                 android:layout_marginLeft="@dimen/dimen_30dp"
                 android:layout_marginRight="@dimen/dimen_30dp"
-                android:background="@color/editTextBackground"
+                android:background="@color/colorWhite"
                 android:drawableEnd="@drawable/ic_chevron_down"
                 android:drawableRight="@drawable/ic_chevron_down"
                 android:gravity="start"
                 android:padding="@dimen/dimen_30dp"
-                android:text="@string/tv_starting_out"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
-                android:textColor="@color/colorBlack"
+                android:textColor="@color/colorHint"
                 android:textSize="@dimen/txt_15sp" />
 
         </LinearLayout>

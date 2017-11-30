@@ -35,6 +35,20 @@
     <string name="tv_preferred_industry">Preferred Industry(s)</string>
     <string name="tv_your_career_move">Your Career Move</string>
     <string name="tv_forgot_password">Forgot Password</string>
+    <!--SettingsProfile-->
+    <string name="tv_settings_change_password">Change Password</string>
+    <string name="tv_settings_terms_and_conditions">Terms &amp; Conditions</string>
+    <string name="tv_settings_privacy_policy">Privacy Policy</string>
+    <string name="tv_settings_share_app">Share app</string>
+    <string name="tv_settings_logout">Logout</string>
+
+    <!--JobSearch Screen-->
+    <string name="tv_search">Search</string>
+    <string name="tv_favorite_searches"><u>View my favourite searches</u></string>
+    <string name="tv_starting_out">Starting out \nEntering the sector</string>
+    <string name="tv_title_starting_out">Starting Out</string>
+    <string name="tv_apply">Apply</string>
+    <string name="tv_view_details">View Details</string>
 
     <!--Error-->
     <string name="err_firstname">Please enter your first name.</string>
@@ -100,16 +114,5 @@
     <string name="job_alerts">Job Alerts</string>
     <string name="profile">Profile</string>
 
-    <!--SettingsProfile-->
-    <string name="tv_settings_change_password">Change Password</string>
-    <string name="tv_settings_terms_and_conditions">Terms &amp; Conditions</string>
-    <string name="tv_settings_privacy_policy">Privacy Policy</string>
-    <string name="tv_settings_share_app">Share app</string>
-    <string name="tv_settings_logout">Logout</string>
 
-    <!--JobSearch Screen-->
-    <string name="tv_search">Search</string>
-    <string name="tv_favorite_searches"><u>View my favourite searches</u></string>
-    <string name="tv_starting_out">Starting out \nEntering the sector</string>
-    <string name="tv_welcome">Welcome</string>
 </resources>

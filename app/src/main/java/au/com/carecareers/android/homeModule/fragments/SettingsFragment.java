@@ -19,7 +19,7 @@ import au.com.carecareers.android.homeModule.model.TokenRefreshModel;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.loginModule.changePassword.ChangePasswordActivity;
 import au.com.carecareers.android.loginModule.login.LoginActivity;
-import au.com.carecareers.android.loginModule.termsAndCondition.TermsAndConditionActivity;
+import au.com.carecareers.android.loginModule.termsAndCondition.PagesActivity;
 import au.com.carecareers.android.utilities.AppLog;
 import butterknife.OnClick;
 
@@ -62,13 +62,13 @@ public class SettingsFragment extends BaseFragment implements SettingContract.IS
 
     @OnClick(R.id.tv_terms_and_conditions)
     void onTermsAndConditionsClicked() {
-        TermsAndConditionActivity.start(getActivity(), AppContract.Page.TERMS_AND_CONDITIONS);
+        PagesActivity.start(getActivity(), AppContract.Page.TERMS_AND_CONDITIONS);
         transitionActivityOpen();
     }
 
     @OnClick(R.id.tv_privacy_policy)
     void onPrivacyPolicyClicked() {
-        TermsAndConditionActivity.start(getActivity(), AppContract.Page.PRIVACY_POLICY);
+        PagesActivity.start(getActivity(), AppContract.Page.PRIVACY_POLICY);
         transitionActivityOpen();
     }
 

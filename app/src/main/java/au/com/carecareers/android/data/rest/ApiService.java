@@ -95,7 +95,8 @@ public interface ApiService {
             "accept:application/json",})
     @GET(UrlContract.GET_LOCATIONS)
     Observable<LocationModel.LocationResponse> getLocations(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
-                                                            @Query(UrlContract.Keys.COUNTRY_ID) int country_id,
-                                                            @Query(UrlContract.Keys.PAGE) int page);
+                                                            @Query(UrlContract.Keys.COUNTRY_ID) int country_id
+//                                                            @Query(UrlContract.Keys.PAGE) int page
+    );
 
 }

@@ -57,18 +57,17 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
             holder.textView1.setHintTextColor(context.getResources().getColor(R.color.colorHint));
             holder.textView1.setTextColor(context.getResources().getColor(R.color.colorHint));
             convertView.setTag(holder);
-        } else {
-            convertView = inflate.inflate(resourceId, null);
-            Holder holder = new Holder();
-            holder.textView1 = convertView.findViewById(R.id.tv_default_first);
-            holder.textView1.setText(spinnerList.get(position));
-            holder.textView1.setTextSize(15);
-            holder.textView1.setPadding(15, 15, 15, 15);
-
-            holder.textView1.setTypeface(externalFont);
-            holder.textView1.setHintTextColor(context.getResources().getColor(R.color.colorHint));
-            holder.textView1.setTextColor(context.getResources().getColor(R.color.colorHint));
         }
+        convertView = inflate.inflate(resourceId, null);
+        Holder holder = new Holder();
+        holder.textView1 = convertView.findViewById(R.id.tv_default_first);
+        holder.textView1.setText(spinnerList.get(position));
+        holder.textView1.setTextSize(15);
+        holder.textView1.setPadding(15, 15, 15, 15);
+        holder.textView1.setTypeface(externalFont);
+        holder.textView1.setHintTextColor(context.getResources().getColor(R.color.colorHint));
+        holder.textView1.setTextColor(context.getResources().getColor(R.color.colorHint));
+
         return convertView;
 
     }
@@ -86,45 +85,21 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
             holder.textView1.setHintTextColor(context.getResources().getColor(R.color.colorHint));
             holder.textView1.setTextColor(context.getResources().getColor(R.color.colorHint));
             holder.textView1.setTextSize(15);
-
-            if (spinnerid == AppContract.Extras.STATELIST) {
-                if (position == 0) {
-                    holder.textView1.setText(context.getResources().getString(R.string.hint_state));
-                } else {
-                    holder.textView1.setText(spinnerList.get(position));
-                }
-            } else if (spinnerid == AppContract.Extras.COUNTRYLIST) {
-                if (position == 0) {
-                    holder.textView1.setText("Select a location");
-                } else {
-                    holder.textView1.setText(spinnerList.get(position));
-
-                }
-            }
-
             convertView.setTag(holder);
+        }
+        Holder holder = (Holder) convertView.getTag();
+        if (position == getCount()) {
+            if (spinnerid == AppContract.Extras.COUNTRYLIST) {
+                holder.textView1.setText("Select a location");
+            }
         } else {
-            convertView = inflate.inflate(resourceId, null);
-            Holder holder = new Holder();
             holder.textView1 = convertView.findViewById(R.id.tv_default_first);
+            holder.textView1.setText(spinnerList.get(position));
             holder.textView1.setTypeface(externalFont);
             holder.textView1.setTextSize(15);
             holder.textView1.setHintTextColor(context.getResources().getColor(R.color.colorHint));
             holder.textView1.setTextColor(context.getResources().getColor(R.color.colorHint));
-            if (spinnerid == AppContract.Extras.STATELIST) {
-                if (position == 0) {
-                    holder.textView1.setText(context.getResources().getString(R.string.hint_state));
-                } else {
-                    holder.textView1.setText(spinnerList.get(position));
 
-                }
-            } else if (spinnerid == AppContract.Extras.COUNTRYLIST) {
-                if (position == 0) {
-                    holder.textView1.setText("Select a location");
-                } else {
-                    holder.textView1.setText(spinnerList.get(position));
-                }
-            }
         }
         return convertView;
     }
