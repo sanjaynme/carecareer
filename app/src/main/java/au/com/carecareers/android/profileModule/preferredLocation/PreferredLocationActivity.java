@@ -144,7 +144,9 @@ public class PreferredLocationActivity extends BaseActivity implements OnMapRead
                 .build();
         autocompleteFragment.setFilter(typeFilter);
 
-        ((EditText) autocompleteFragment.getView().findViewById(R.id.place_autocomplete_search_input)).setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
+        EditText etSearch = ((EditText) autocompleteFragment.getView().findViewById(R.id.place_autocomplete_search_input));
+        etSearch.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
+
         autocompleteFragment.getView().findViewById(R.id.place_autocomplete_clear_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -256,21 +258,21 @@ public class PreferredLocationActivity extends BaseActivity implements OnMapRead
                 googleMap.clear();
                 googleMap.addMarker(new MarkerOptions()
                         .position(latLng)
-                        .title(placeName[0]));
+                        .title(addressStr));
                 googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, DEFAULT_ZOOM));
                 if (updateAutoCompleteFragment) {
-                    autocompleteFragment.setText(placeName[0]);
+                    autocompleteFragment.setText(addressStr);
                 }
                 candidateModel.address = new CandidateModel.Address();
-                candidateModel.address.address = placeName[0];
+                candidateModel.address.address = addressStr;
                 candidateModel.address.formatted = addressStr;
                 candidateModel.address.city = address.getLocality();
                 candidateModel.address.state = address.getAdminArea();
                 candidateModel.address.country = address.getCountryCode();
                 candidateModel.address.postcode = address.getPostalCode();
                 candidateModel.address.latitude = String.valueOf(address.getLatitude());
+                candidateModel.address.mapZoom = (int) googleMap.getCameraPosition().zoom;
                 candidateModel.address.longitude = String.valueOf(address.getLongitude());
-                candidateModel.address.mapZoom = DEFAULT_ZOOM;
             }
         } catch (IOException e) {
             e.printStackTrace();

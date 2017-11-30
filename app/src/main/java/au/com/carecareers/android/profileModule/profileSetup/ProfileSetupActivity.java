@@ -115,6 +115,12 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
         initImageHelperFragment();
     }
 
+    @Override
+    protected void onDestroy() {
+        presenter.onDetach();
+        super.onDestroy();
+    }
+
     private void initViews() {
         submitView.setOnClickListener(new SubmitView.SubmitViewClickListener() {
             @Override
