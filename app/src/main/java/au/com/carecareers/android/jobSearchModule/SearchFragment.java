@@ -11,7 +11,6 @@ import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -26,11 +25,12 @@ import javax.inject.Inject;
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseFragment;
 import au.com.carecareers.android.contracts.AppContract;
+import au.com.carecareers.android.data.local.SharedPreferenceManager;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.jobSearchModule.injection.SearchModule;
 import au.com.carecareers.android.jobSearchModule.model.LocationModel;
-import au.com.carecareers.android.loginModule.register.adapter.SpinnerAdapter;
 import au.com.carecareers.android.loginModule.getPages.PagesActivity;
+import au.com.carecareers.android.loginModule.register.adapter.SpinnerAdapter;
 import au.com.carecareers.android.utilities.AppLog;
 import au.com.carecareers.android.utilities.ViewUtils;
 import butterknife.BindView;
@@ -58,7 +58,12 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
     @BindView(R.id.spinner_locations)
     Spinner spinnerLocations;
 
-    LocationModel.LocationResponse.Embedded.SearchLocation locationModel;
+    ArrayList<LocationModel.LocationResponse.Embedded.SearchLocation> countryList;
+    @Inject
+    SharedPreferenceManager preferenceManager;
+    ArrayList<String> countryName;
+    private int pos;
+    private int id;
 
     @Override
     public void injectComponent(BaseComponent baseComponent) {
@@ -67,7 +72,6 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
 
     @Override
     public void setupToolbar() {
-
     }
 
     @Override
@@ -83,7 +87,6 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
         setUpButton();
         presenter.onAttach(this);
         presenter.loadLocations();
-//        locationModel = new LocationModel.LocationResponse.Embedded.SearchLocation();
     }
 
     private void setUpButton() {
@@ -94,10 +97,13 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
     }
 
     private void setUpWelcome() {
-        String name = "lkdnaskjfdbasfkjbaskjfbnasff";
-        SpannableString nameString = new SpannableString("Welcome, " + name);
+        String fullName = " "
+                + preferenceManager.getStringValues(AppContract.Preferences.FIRST_NAME)
+                + " " +
+                preferenceManager.getStringValues(AppContract.Preferences.LAST_NAME);
+        SpannableString nameString = new SpannableString("Welcome, " + fullName);
         nameString.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.textColorPrimary)), 15, 30, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        nameString.setSpan(new StyleSpan(Typeface.BOLD), 8, 9 + name.length(), 0);
+        nameString.setSpan(new StyleSpan(Typeface.BOLD), 8, 9 + fullName.length(), 0);
         SpannableStringBuilder spanString = new SpannableStringBuilder("\n Search for your next career move");
         tvWelcomeUser.setText(TextUtils.concat(nameString, spanString));
     }
@@ -121,19 +127,26 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
     public void sendCountryData(LocationModel.LocationResponse locationResponse) {
         progressBar.setVisibility(View.GONE);
         spinnerLocations.setVisibility(View.VISIBLE);
-        ArrayList<String> countryList = new ArrayList<>();
+        countryName = new ArrayList<>();
+        countryList = new ArrayList<>();
+        countryName.add("Select a location");
         for (int i = 0; i < locationResponse.getEmbedded().getLocations().size(); i++) {
-            String countryNames = locationResponse.getEmbedded().getLocations().get(i).getName();
-            String countryId = locationResponse.getEmbedded().getLocations().get(i).getId().toString();
-            countryList.add(countryNames);
-            AppLog.d("country:" + countryNames);
-            AppLog.d("country Id:" + countryId);
+            LocationModel.LocationResponse.Embedded.SearchLocation searchLocations = new LocationModel.LocationResponse.Embedded.SearchLocation();
+            searchLocations.name = locationResponse.getEmbedded().getLocations().get(i).getName();
+            searchLocations.id = locationResponse.getEmbedded().getLocations().get(i).getId();
+            countryName.add(searchLocations.name);
+            countryList.add(searchLocations);
+            AppLog.d("country:" + searchLocations.name);
+            AppLog.d("country Id:" + searchLocations.id);
         }
-        final SpinnerAdapter statesAdapter = new SpinnerAdapter(getActivity(), R.layout.item_spinner, countryList, AppContract.Extras.COUNTRYLIST);
+        final SpinnerAdapter statesAdapter = new SpinnerAdapter(getActivity(), R.layout.item_spinner, countryName, AppContract.Extras.COUNTRYLIST);
         statesAdapter.setDropDownViewResource(R.layout.custom_dropdown);
         spinnerLocations.setAdapter(statesAdapter);
+        spinnerLocations.setSelection(statesAdapter.getCount());
 
-        spinnerLocations.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+
+      /*  spinnerLocations.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 String countryNames = locationResponse.getEmbedded().getLocations().get(position).getName();
@@ -148,6 +161,8 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
+*/
+
     }
 
     @Override
@@ -161,6 +176,13 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
     /*    String keywords = etSearchKeyword.getText().toString().trim();
         int locationId = locationModel.getId();
         presenter.searchJobs(keywords, locationId);*/
+
+        if (spinnerLocations.getSelectedItemPosition() != countryList.size()) {
+            pos = spinnerLocations.getSelectedItemPosition();
+            id = countryList.get(pos).id;
+            AppLog.d("sanjay pos:::" + pos);
+            AppLog.d("sanjay id:::" + id);
+        }
         Toast.makeText(getActivity(), "Search", Toast.LENGTH_SHORT).show();
     }
 

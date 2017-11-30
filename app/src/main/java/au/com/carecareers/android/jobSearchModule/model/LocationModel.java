@@ -156,7 +156,7 @@ public class LocationModel {
             }
         }
 
-        public class Embedded {
+        public static class Embedded {
             @SerializedName("locations")
             @Expose
             private List<SearchLocation> locations = null;
@@ -169,17 +169,17 @@ public class LocationModel {
                 this.locations = locations;
             }
 
-            public class SearchLocation {
+            public static class SearchLocation {
 
                 @SerializedName("id")
                 @Expose
-                private Integer id;
+                public Integer id;
                 @SerializedName("country_id")
                 @Expose
                 private Integer countryId;
                 @SerializedName("name")
                 @Expose
-                private String name;
+                public String name;
                 @SerializedName("active")
                 @Expose
                 private Integer active;

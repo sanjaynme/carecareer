@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.contracts.AppContract;
+import au.com.carecareers.android.utilities.AppLog;
 
 /**
  * Created by Sanjay on 03/04/2017.
@@ -58,9 +59,7 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
             holder.textView1.setTextColor(context.getResources().getColor(R.color.colorHint));
             convertView.setTag(holder);
         }
-        convertView = inflate.inflate(resourceId, null);
-        Holder holder = new Holder();
-        holder.textView1 = convertView.findViewById(R.id.tv_default_first);
+        Holder holder = (Holder) convertView.getTag();
         holder.textView1.setText(spinnerList.get(position));
         holder.textView1.setTextSize(15);
         holder.textView1.setPadding(15, 15, 15, 15);
@@ -79,7 +78,6 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
         if (convertView == null) {
             convertView = inflate.inflate(resourceId, null);
             Holder holder = new Holder();
-
             holder.textView1 = convertView.findViewById(R.id.tv_default_first);
             holder.textView1.setTypeface(externalFont);
             holder.textView1.setHintTextColor(context.getResources().getColor(R.color.colorHint));
@@ -89,17 +87,20 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
         }
         Holder holder = (Holder) convertView.getTag();
         if (position == getCount()) {
+            AppLog.d("inside count");
             if (spinnerid == AppContract.Extras.COUNTRYLIST) {
-                holder.textView1.setText("Select a location");
+                AppLog.d("inside location" + spinnerList.get(position));
+                holder.textView1.setText(context.getResources().getText(R.string.err_no_location_selected));
+            } else {
+                AppLog.d("ouside location");
             }
         } else {
-            holder.textView1 = convertView.findViewById(R.id.tv_default_first);
+            AppLog.d("outside count" + spinnerList.get(position));
             holder.textView1.setText(spinnerList.get(position));
             holder.textView1.setTypeface(externalFont);
             holder.textView1.setTextSize(15);
             holder.textView1.setHintTextColor(context.getResources().getColor(R.color.colorHint));
             holder.textView1.setTextColor(context.getResources().getColor(R.color.colorHint));
-
         }
         return convertView;
     }
