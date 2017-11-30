@@ -32,7 +32,7 @@ import au.com.carecareers.android.loginModule.register.injection.RegisterModule;
 import au.com.carecareers.android.loginModule.register.model.RegisterContract;
 import au.com.carecareers.android.loginModule.register.model.RegisterModel;
 import au.com.carecareers.android.loginModule.register.model.TaxonomyModel;
-import au.com.carecareers.android.loginModule.termsAndCondition.PagesActivity;
+import au.com.carecareers.android.loginModule.getPages.PagesActivity;
 import au.com.carecareers.android.utilities.AppLog;
 import au.com.carecareers.android.utilities.ViewUtils;
 import butterknife.BindView;

@@ -15,11 +15,13 @@ public class AppContract {
         public final static int TERMS_AND_CONDITIONS = 3;
         public final static int FORGOT_PASSWORD = 4;
         public final static int CHANGE_PASSWORD = 5;
+        public final static int SELECT_AVATAR = 6;
 
     }
 
     public class Preferences {
         public final static String IS_LOGGED_IN = "is_logged_in";
+        public final static String IS_PROFILE_COMPLETE = "is_profile_complete";
         public final static String AUTHORIZATION_KEY = "authorization_key";
         public final static String CANDIDATE_ID = "candidate_id";
         public final static String ACCESS_TOKEN = "access_token";
@@ -29,7 +31,9 @@ public class AppContract {
         public final static String SCOPE = "scope";
         public final static String FIRST_NAME = "first_name";
         public final static String LAST_NAME = "last_name";
-        public final static String LAST_LOGIN_DATE = "last_name";
+        public final static String LAST_LOGIN_DATE = "last_login_date";
+
+        public final static String AVATAR_URL = "avatar_url";
 
     }
 
@@ -47,7 +51,8 @@ public class AppContract {
         public final static int PRIVACY_POLICY = 2;
         public static final int STARTING_OUT = 3;
     }
-    public class ClientCredentials{
+
+    public class ClientCredentials {
         public final static String CLIENT_ID = "86e84f17-3fe0-4d3a-a2fd-a93af9ff3355";
         public final static String CLIENT_SECRET = "nxKQWgERJy9ALyDjGEp4bRw4";
     }
@@ -66,8 +71,9 @@ public class AppContract {
         public static final int CAMERA = 100;
         public static final int GALLERY = 101;
 
-        public static final int EDIT_PROFILE = 201;
-        public static final int PREFERRED_LOCATION = 202;
+        public static final int PREFERRED_LOCATION = 201;
+        public static final int SELECT_AVATAR = 202;
+        public static final int LOCATION_AREA = 203;
     }
 
 }

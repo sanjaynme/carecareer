@@ -34,12 +34,21 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
 
     public abstract void injectComponent(BaseComponent baseComponent);
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true
+
+        );
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(getLayout(), container, false);
         injectComponent(((CareCareerApp) getActivity().getApplication()).getBaseComponent());
         unbinder = ButterKnife.bind(this, view);
+        setupToolbar();
         return view;
     }
 

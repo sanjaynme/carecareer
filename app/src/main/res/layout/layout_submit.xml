@@ -6,7 +6,7 @@
 
     <TextView
         android:id="@+id/tv_submit"
-        fontPath="@string/font_sourcesanpro_bold"
+        fontPath="@string/font_source_san_pro_bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/tv_skip"
-        fontPath="@string/font_sourcesanpro_bold"
+        fontPath="@string/font_source_san_pro_bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -31,7 +31,7 @@
 
     <TextView
         android:id="@+id/tv_next"
-        fontPath="@string/font_sourcesanpro_bold"
+        fontPath="@string/font_source_san_pro_bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"

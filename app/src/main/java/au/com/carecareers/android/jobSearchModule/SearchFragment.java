@@ -30,7 +30,7 @@ import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.jobSearchModule.injection.SearchModule;
 import au.com.carecareers.android.jobSearchModule.model.LocationModel;
 import au.com.carecareers.android.loginModule.register.adapter.SpinnerAdapter;
-import au.com.carecareers.android.loginModule.termsAndCondition.PagesActivity;
+import au.com.carecareers.android.loginModule.getPages.PagesActivity;
 import au.com.carecareers.android.utilities.AppLog;
 import au.com.carecareers.android.utilities.ViewUtils;
 import butterknife.BindView;

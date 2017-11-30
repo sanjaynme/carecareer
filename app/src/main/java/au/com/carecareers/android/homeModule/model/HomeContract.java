@@ -10,7 +10,7 @@ import au.com.carecareers.android.base.view.IBaseView;
 
 public class HomeContract {
     public interface IHomeView extends IBaseView {
-
+        void setToolbarTitle(String title);
     }
 
     public interface IHomePresenter extends IBasePresenter<HomeContract.IHomeView, HomeContract.IHomeInteractor> {

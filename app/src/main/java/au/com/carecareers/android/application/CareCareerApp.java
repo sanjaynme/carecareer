@@ -32,7 +32,7 @@ public class CareCareerApp extends Application {
                 .build();
 
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath(getString(R.string.font_sourcesanpro_regular))
+                .setDefaultFontPath(getString(R.string.font_source_san_pro_regular))
                 .setFontAttrId(R.attr.fontPath)
                 .build());
     }

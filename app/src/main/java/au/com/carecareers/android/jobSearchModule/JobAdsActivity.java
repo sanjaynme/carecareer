@@ -17,7 +17,6 @@ public class JobAdsActivity extends BaseActivity implements JobAdsContract.IJobA
         Intent intent = new Intent();
         intent.setClass(context, JobAdsActivity.class);
         context.startActivity(intent);
-
     }
 
     @Override

@@ -25,13 +25,4 @@ public class AppModule {
     Context provideContext() {
         return mContext;
     }
-
-    @Provides
-    @Singleton
-    CalligraphyConfig provideCalligraphyConfig(Context context) {
-        return new CalligraphyConfig.Builder()
-                .setDefaultFontPath(context.getString(R.string.font_sourcesanpro_regular))
-                .setFontAttrId(R.attr.fontPath)
-                .build();
-    }
 }

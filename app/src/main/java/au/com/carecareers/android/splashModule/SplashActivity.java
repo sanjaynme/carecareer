@@ -1,9 +1,6 @@
 package au.com.carecareers.android.splashModule;
 
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Window;
-import android.view.WindowManager;
 
 import javax.inject.Inject;
 
@@ -14,6 +11,7 @@ import au.com.carecareers.android.data.local.SharedPreferenceManager;
 import au.com.carecareers.android.homeModule.HomeActivity;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.loginModule.landing.LandingActivity;
+import au.com.carecareers.android.profileModule.profileSetup.ProfileSetupActivity;
 import au.com.carecareers.android.splashModule.injection.SplashModule;
 
 public class SplashActivity extends BaseActivity implements SplashContract.ISplashView {
@@ -42,12 +40,18 @@ public class SplashActivity extends BaseActivity implements SplashContract.ISpla
 
     @Override
     public void navigateToLandingActivity() {
-        if (!preferenceManager.getBoolValues(AppContract.Preferences.IS_LOGGED_IN)) {
-            LandingActivity.start(SplashActivity.this);
-            finish();
-            transitionFadeOut();
+        if (preferenceManager.getBoolValues(AppContract.Preferences.IS_LOGGED_IN)) {
+            if (preferenceManager.getBoolValues(AppContract.Preferences.IS_PROFILE_COMPLETE)) {
+                HomeActivity.start(SplashActivity.this);
+                finish();
+                transitionFadeOut();
+            } else {
+                ProfileSetupActivity.start(this);
+                finish();
+                transitionFadeOut();
+            }
         } else {
-            HomeActivity.start(SplashActivity.this);
+            LandingActivity.start(this);
             finish();
             transitionFadeOut();
         }

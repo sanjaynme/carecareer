@@ -2,8 +2,10 @@ package au.com.carecareers.android.injection.component;
 
 import javax.inject.Singleton;
 
-import au.com.carecareers.android.homeModule.injection.SettingsModule;
-import au.com.carecareers.android.homeModule.injection.SettingsSubComponent;
+import au.com.carecareers.android.loginModule.getPages.injection.PagesModule;
+import au.com.carecareers.android.settingsModule.injection.SettingsModule;
+import au.com.carecareers.android.settingsModule.injection.SettingsSubComponent;
+import au.com.carecareers.android.homeModule.myProfile.MyProfileFragment;
 import au.com.carecareers.android.injection.module.AppModule;
 import au.com.carecareers.android.injection.module.NetModule;
 import au.com.carecareers.android.jobSearchModule.injection.SearchModule;
@@ -15,8 +17,9 @@ import au.com.carecareers.android.loginModule.login.injection.LoginModule;
 import au.com.carecareers.android.loginModule.login.injection.LoginSubComponent;
 import au.com.carecareers.android.loginModule.register.injection.RegisterModule;
 import au.com.carecareers.android.loginModule.register.injection.RegisterSubComponent;
-import au.com.carecareers.android.loginModule.termsAndCondition.injection.TermsAndConditionSubComponent;
-import au.com.carecareers.android.loginModule.termsAndCondition.injection.TermsAndConditionsModule;
+import au.com.carecareers.android.loginModule.getPages.injection.PagesSubComponent;
+import au.com.carecareers.android.profileModule.locationArea.injection.LocationAreaModule;
+import au.com.carecareers.android.profileModule.locationArea.injection.LocationAreaSubComponent;
 import au.com.carecareers.android.profileModule.preferredLocation.PreferredLocationActivity;
 import au.com.carecareers.android.profileModule.profileSetup.injection.ProfileSetupModule;
 import au.com.carecareers.android.profileModule.profileSetup.injection.ProfileSetupSubComponent;
@@ -39,7 +42,7 @@ public interface BaseComponent {
 
     LoginSubComponent provideLoginSubComponent(LoginModule loginModule);
 
-    TermsAndConditionSubComponent provideTermsAndConditionsSubComponent(TermsAndConditionsModule termsAndConditionsModule);
+    PagesSubComponent provideTermsAndConditionsSubComponent(PagesModule pagesModule);
 
     SettingsSubComponent provideSettingsSubComponent(SettingsModule settingsModule);
 
@@ -55,5 +58,9 @@ public interface BaseComponent {
 
     SelectAvatarSubComponent provideSelectAvatarSubComponent(SelectAvatarModule selectAvatarModule);
 
+    LocationAreaSubComponent provideLocationAreaSubComponent(LocationAreaModule locationAreaModule);
+
     void inject(PreferredLocationActivity preferredLocationActivity);
+
+    void inject(MyProfileFragment myProfileFragment);
 }

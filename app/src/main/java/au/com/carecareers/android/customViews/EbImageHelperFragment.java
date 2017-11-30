@@ -15,6 +15,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
+import android.view.Gravity;
 
 import java.io.File;
 
@@ -72,6 +73,7 @@ public class EbImageHelperFragment extends Fragment {
                 "Take Photo",
                 "Choose from Gallery",
                 "Cancel"};
+        getActivity().getWindow().setGravity(Gravity.BOTTOM);
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Add Photo!");
         builder.setItems(items, new DialogInterface.OnClickListener() {
@@ -102,6 +104,40 @@ public class EbImageHelperFragment extends Fragment {
             }
         });
         builder.show();
+    }
+
+    /**
+     * Show bottomSheet dialog with option "Take Photo" or "Choose from gallery"
+     */
+    public void showBottomSheetFragment() {
+        PickerButtonSheetFragment pickerButtonSheetFragment = PickerButtonSheetFragment.getInstance();
+        pickerButtonSheetFragment.show(getActivity().getSupportFragmentManager(), pickerButtonSheetFragment.getTag());
+        pickerButtonSheetFragment.setListener(new PickerButtonSheetFragment.ItemClickListener() {
+            @Override
+            public void onTakePhotoClicked() {
+                if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
+                        ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                    //Request permission to read write external storage and use camera.
+                    requestPermissions(new String[]{
+                                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                    Manifest.permission.CAMERA},
+                            AppContract.Permission.CAMERA);
+                    return;
+                }
+                openCamera();
+            }
+
+            @Override
+            public void onChooseFromGalleryClicked() {
+                if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    //Request permission to read write external storage.
+                    requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                            AppContract.Permission.GALLERY);
+                    return;
+                }
+                openGallery();
+            }
+        });
     }
 
     @Override

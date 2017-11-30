@@ -89,7 +89,6 @@ public class AvatarResponse {
     }
 
     public static class Avatar {
-
         @SerializedName("id")
         @Expose
         private Integer id;
@@ -128,109 +127,73 @@ public class AvatarResponse {
     public static class Links {
         @SerializedName("self")
         @Expose
-        private Self self;
+        private UrlLink self;
         @SerializedName("first")
         @Expose
-        private First first;
+        private UrlLink first;
         @SerializedName("last")
         @Expose
-        private Last last;
+        private UrlLink last;
         @SerializedName("next")
         @Expose
-        private Next next;
+        private UrlLink next;
+        @SerializedName("url")
+        @Expose
+        private UrlLink url;// Link to avatar image in avatar list
+        @SerializedName("avatar_url")
+        @Expose
+        private UrlLink avatarUrl;// Link to saved avatar image
 
-        public Self getSelf() {
+        public UrlLink getSelf() {
             return self;
         }
 
-        public void setSelf(Self self) {
+        public void setSelf(UrlLink self) {
             this.self = self;
         }
 
-        public First getFirst() {
+        public UrlLink getFirst() {
             return first;
         }
 
-        public void setFirst(First first) {
+        public void setFirst(UrlLink first) {
             this.first = first;
         }
 
-        public Last getLast() {
+        public UrlLink getLast() {
             return last;
         }
 
-        public void setLast(Last last) {
+        public void setLast(UrlLink last) {
             this.last = last;
         }
 
-        public Next getNext() {
+        public UrlLink getNext() {
             return next;
         }
 
-        public void setNext(Next next) {
+        public void setNext(UrlLink next) {
             this.next = next;
         }
-    }
-    public static class First {
-        @SerializedName("href")
-        @Expose
-        private String href;
 
-        public String getHref() {
-            return href;
+        public UrlLink getUrl() {
+            return url;
         }
 
-        public void setHref(String href) {
-            this.href = href;
-        }
-    }
-
-    public static class Last {
-
-        @SerializedName("href")
-        @Expose
-        private String href;
-
-        public String getHref() {
-            return href;
+        public void setUrl(UrlLink url) {
+            this.url = url;
         }
 
-        public void setHref(String href) {
-            this.href = href;
+        public UrlLink getAvatarUrl() {
+            return avatarUrl;
+        }
+
+        public void setAvatarUrl(UrlLink avatarUrl) {
+            this.avatarUrl = avatarUrl;
         }
     }
 
-    public static class Self {
-
-        @SerializedName("href")
-        @Expose
-        private String href;
-
-        public String getHref() {
-            return href;
-        }
-
-        public void setHref(String href) {
-            this.href = href;
-        }
-    }
-
-    public static class Next {
-
-        @SerializedName("href")
-        @Expose
-        private String href;
-
-        public String getHref() {
-            return href;
-        }
-
-        public void setHref(String href) {
-            this.href = href;
-        }
-    }
-
-    public static class Url {
+    public static class UrlLink {
 
         @SerializedName("href")
         @Expose

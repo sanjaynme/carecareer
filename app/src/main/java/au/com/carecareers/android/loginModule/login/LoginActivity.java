@@ -15,12 +15,12 @@ import javax.inject.Inject;
 
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseActivity;
-import au.com.carecareers.android.homeModule.HomeActivity;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.loginModule.forgotPassword.ForgotPasswordActivity;
 import au.com.carecareers.android.loginModule.landing.LandingActivity;
 import au.com.carecareers.android.loginModule.login.injection.LoginModule;
 import au.com.carecareers.android.loginModule.login.model.LoginModel;
+import au.com.carecareers.android.profileModule.profileSetup.ProfileSetupActivity;
 import au.com.carecareers.android.utilities.ViewUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -97,7 +97,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
         etUsername.getText().clear();
         etPassword.getText().clear();
         finishAffinity();
-        HomeActivity.start(LoginActivity.this);
+        // HomeActivity.start(LoginActivity.this);
+        ProfileSetupActivity.start(LoginActivity.this);
         transitionActivityOpen();
     }
 

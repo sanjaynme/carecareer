@@ -95,7 +95,7 @@
     <Button
         android:id="@+id/btn_login"
         style="@style/Button"
-        fontPath="@string/font_sourcesanpro_bold"
+        fontPath="@string/font_source_san_pro_bold"
         android:layout_alignParentBottom="true"
         android:text="@string/tv_login" />
 </RelativeLayout>
