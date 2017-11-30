@@ -11,7 +11,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 
 import au.com.carecareers.android.R;
@@ -20,8 +19,8 @@ import au.com.carecareers.android.homeModule.fragments.ApplicationsFragment;
 import au.com.carecareers.android.homeModule.fragments.JobAlertsFragment;
 import au.com.carecareers.android.homeModule.fragments.SaveListsFragment;
 import au.com.carecareers.android.homeModule.fragments.SearchFragment;
-import au.com.carecareers.android.homeModule.fragments.SettingsFragment;
 import au.com.carecareers.android.homeModule.model.HomeContract;
+import au.com.carecareers.android.homeModule.myProfile.MyProfileFragment;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import butterknife.BindView;
 
@@ -30,11 +29,11 @@ import butterknife.BindView;
  */
 
 public class HomeActivity extends BaseActivity implements HomeContract.IHomeView, BottomNavigationView.OnNavigationItemSelectedListener {
-    @BindView(R.id.home_toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
 
     @BindView(R.id.tv_toolbar_title)
-    TextView tvTitle;
+    TextView tvToolbarTitle;
 
     @BindView(R.id.bottom_nav_bar)
     BottomNavigationView bottomNavigationView;
@@ -64,23 +63,16 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                transitionBackPressed();
-                break;
-        }
-        return true;
-    }
-
-    @Override
     public void setupToolbar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        tvTitle.setVisibility(View.VISIBLE);
-        tvTitle.setText(getResources().getText(R.string.tv_home));
+        setToolbarTitle(getResources().getString(R.string.tv_home));
+    }
+
+    @Override
+    public void setToolbarTitle(String title) {
+        tvToolbarTitle.setText(title);
     }
 
     @Override
@@ -127,8 +119,10 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
     }
 
     private void openProfile() {
-        SettingsFragment settingsFragment = new SettingsFragment();
-        setFragmentTransition(settingsFragment);
+       /* SettingsFragment settingsFragment = new SettingsFragment();
+        setFragmentTransition(settingsFragment);*/
+        MyProfileFragment myProfileFragment = MyProfileFragment.getInstance();
+        setFragmentTransition(myProfileFragment);
     }
 
     private void setFragmentTransition(Fragment fragment) {
@@ -159,5 +153,4 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
         SearchFragment searchFragment = new SearchFragment();
         setFragmentTransition(searchFragment);
     }
-
 }

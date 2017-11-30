@@ -31,7 +31,7 @@ public class AppContract {
         public final static String SCOPE = "scope";
         public final static String FIRST_NAME = "first_name";
         public final static String LAST_NAME = "last_name";
-        public final static String LAST_LOGIN_DATE = "last_name";
+        public final static String LAST_LOGIN_DATE = "last_login_date";
 
         public final static String AVATAR_URL = "avatar_url";
 

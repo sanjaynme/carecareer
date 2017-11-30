@@ -2,8 +2,9 @@ package au.com.carecareers.android.injection.component;
 
 import javax.inject.Singleton;
 
-import au.com.carecareers.android.homeModule.injection.SettingsModule;
-import au.com.carecareers.android.homeModule.injection.SettingsSubComponent;
+import au.com.carecareers.android.settingsModule.injection.SettingsModule;
+import au.com.carecareers.android.settingsModule.injection.SettingsSubComponent;
+import au.com.carecareers.android.homeModule.myProfile.MyProfileFragment;
 import au.com.carecareers.android.injection.module.AppModule;
 import au.com.carecareers.android.injection.module.NetModule;
 import au.com.carecareers.android.loginModule.changePassword.injection.ChangePasswordModule;
@@ -57,4 +58,6 @@ public interface BaseComponent {
     LocationAreaSubComponent provideLocationAreaSubComponent(LocationAreaModule locationAreaModule);
 
     void inject(PreferredLocationActivity preferredLocationActivity);
+
+    void inject(MyProfileFragment myProfileFragment);
 }

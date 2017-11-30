@@ -45,13 +45,13 @@
                 android:layout_centerHorizontal="true"
                 android:layout_margin="@dimen/dimen_24dp">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/civ_profile_image"
+                <ImageView
+                    android:id="@+id/iv_profile_image"
                     android:layout_width="@dimen/dimen_85dp"
                     android:layout_height="@dimen/dimen_85dp"
                     android:layout_gravity="center"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_eye" />
+                    android:src="@drawable/ic_profile_placeholder" />
 
                 <ProgressBar
                     android:id="@+id/pb_profile_image"

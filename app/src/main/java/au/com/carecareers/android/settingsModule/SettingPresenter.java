@@ -1,4 +1,4 @@
-package au.com.carecareers.android.homeModule;
+package au.com.carecareers.android.settingsModule;
 
 import android.util.Log;
 

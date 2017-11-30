@@ -10,6 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -41,7 +42,6 @@ import au.com.carecareers.android.profileModule.selectAvatar.model.AvatarRespons
 import au.com.carecareers.android.utilities.ViewUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileSetupActivity extends BaseActivity implements ProfileSetupContract.IProfileSetupView {
     @Inject
@@ -57,8 +57,8 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
     TextView tvToolbarTitle;
     @BindView(R.id.scroll_view_main)
     ScrollView scrollView;
-    @BindView(R.id.civ_profile_image)
-    CircleImageView civProfile;
+    @BindView(R.id.iv_profile_image)
+    ImageView ivProfile;
     @BindView(R.id.pb_profile_image)
     ProgressBar pbProfileImage;
     @BindView(R.id.tv_preferred_location)
@@ -222,13 +222,13 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
                     .load(imagePath)
                     .resize(200, 200)
                     .centerCrop()
-                    .into(civProfile);
+                    .into(ivProfile);
         } else {
             Picasso.with(ProfileSetupActivity.this)
                     .load(new File(imagePath))
                     .resize(200, 200)
                     .centerCrop()
-                    .into(civProfile);
+                    .into(ivProfile);
         }
     }
 

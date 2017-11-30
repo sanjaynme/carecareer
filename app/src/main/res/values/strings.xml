@@ -10,6 +10,7 @@
     <string name="title_preferred_location">Preferred Location</string>
     <string name="title_select_avatar">@string/tv_select_an_avatar</string>
     <string name="title_location_area">Location/Area</string>
+    <string name="title_my_profile">My profile</string>
 
     <!--TextViews-->
     <string name="lorem_epsum">
@@ -42,6 +43,7 @@
     <string name="tv_take_photo">Take photo</string>
     <string name="tv_choose_from_gallery">Choose from gallery</string>
     <string name="tv_personal_search_settings">Personal Search Settings</string>
+    <string name="tv_hi">Hi, </string>
 
 
     <string name="tv_preferred_location">Preferred Location(s)</string>
@@ -104,6 +106,9 @@
 
 
     <string name="menu_done">Done</string>
+    <string name="menu_settings">Settings</string>
+
+
     <!--BottomBarNavigation Menus-->
     <string name="search">Search</string>
     <string name="save_lists">Saved</string>

@@ -1,6 +1,6 @@
-package au.com.carecareers.android.homeModule.injection;
+package au.com.carecareers.android.settingsModule.injection;
 
-import au.com.carecareers.android.homeModule.fragments.SettingsFragment;
+import au.com.carecareers.android.settingsModule.SettingsActivity;
 import au.com.carecareers.android.injection.scope.ActivityScope;
 import dagger.Subcomponent;
 
@@ -10,5 +10,5 @@ import dagger.Subcomponent;
 @ActivityScope
 @Subcomponent(modules = SettingsModule.class)
 public interface SettingsSubComponent {
-    void inject(SettingsFragment settingsFragment);
+    void inject(SettingsActivity settingsActivity);
 }

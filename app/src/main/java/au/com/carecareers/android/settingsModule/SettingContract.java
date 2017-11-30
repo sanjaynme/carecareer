@@ -1,4 +1,4 @@
-package au.com.carecareers.android.homeModule;
+package au.com.carecareers.android.settingsModule;
 
 import au.com.carecareers.android.base.interactor.IBaseInteractor;
 import au.com.carecareers.android.base.presenter.IBasePresenter;

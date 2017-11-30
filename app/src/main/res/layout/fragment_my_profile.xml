@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context="au.com.carecareers.android.profileModule.myProfile.MyProfileFragment">
+    tools:context=".homeModule.myProfile.MyProfileFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,16 +11,36 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_greetings"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/dimen_10dp"
             android:layout_marginTop="@dimen/dimen_5dp"
-            android:padding="@dimen/dimen_15dp"
-            android:text="Hi, John"
-            android:textColor="@color/textColorPrimary"
-            android:textSize="@dimen/txt_normal" />
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/dimen_15dp">
+
+            <TextView
+                android:id="@+id/tv_greetings_hi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_hi"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/txt_normal" />
+
+            <TextView
+                android:id="@+id/tv_greetings_name"
+                fontPath="@string/font_source_san_pro_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/txt_normal"
+                tools:text="  User" />
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/tv_edit_profile_detail"
@@ -38,7 +58,7 @@
             android:layout_margin="@dimen/dimen_15dp"
             android:contentDescription="@null"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_eye" />
+            android:src="@drawable/ic_profile_placeholder" />
 
         <TextView
             android:id="@+id/tv_preview_profile"

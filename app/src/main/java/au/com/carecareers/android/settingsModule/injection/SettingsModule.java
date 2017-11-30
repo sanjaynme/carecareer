@@ -1,8 +1,8 @@
-package au.com.carecareers.android.homeModule.injection;
+package au.com.carecareers.android.settingsModule.injection;
 
-import au.com.carecareers.android.homeModule.SettingContract;
-import au.com.carecareers.android.homeModule.SettingInteractor;
-import au.com.carecareers.android.homeModule.SettingPresenter;
+import au.com.carecareers.android.settingsModule.SettingContract;
+import au.com.carecareers.android.settingsModule.SettingInteractor;
+import au.com.carecareers.android.settingsModule.SettingPresenter;
 import au.com.carecareers.android.injection.scope.ActivityScope;
 import dagger.Module;
 import dagger.Provides;
