@@ -39,9 +39,9 @@ public class JobAdsAdapter extends RecyclerView.Adapter<JobAdsAdapter.JobAdsView
 
     @Override
     public void onBindViewHolder(JobAdsViewHolder holder, int position) {
-        if (jobSearchResponseData.get(position).jobTypes._1.equalsIgnoreCase("_1")) {
+     /*   if (jobSearchResponseData.get(position).jobTypes._1.equalsIgnoreCase("_1")) {
             mListener.onRecyclerLongItemClick(jobSearchResponseData.get(holder.getAdapterPosition()).pageCount, jobSearchResponseData.get(holder.getAdapterPosition()).pageCount);
-        }
+        }*/
     }
 
     @Override

@@ -39,10 +39,10 @@ public class JobAdsModel {
         private Integer showPremiums;
         @SerializedName("job_types")
         @Expose
-        private List<JobAdsTypes> jobTypes = null;
+        public List<JobAdsTypes> jobTypes = null;
         @SerializedName("countries")
         @Expose
-        private List<JobsDetailsModel.JobsDetailResponse.JobEmbedded.JobCountry> countries = null;
+        private List<JobsDetailsModel.JobsDetailResponse.JobEmbedded.Country> countries = null;
         @SerializedName("job_counts")
         @Expose
         private JobCounts jobCounts;
