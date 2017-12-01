@@ -1,4 +1,4 @@
-package au.com.carecareers.android.jobSearchModule;
+package au.com.carecareers.android.jobAdsModule;
 
 import au.com.carecareers.android.base.interactor.IBaseInteractor;
 import au.com.carecareers.android.base.presenter.IBasePresenter;

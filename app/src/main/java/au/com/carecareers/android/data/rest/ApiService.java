@@ -6,13 +6,14 @@ import javax.inject.Singleton;
 import au.com.carecareers.android.contracts.UrlContract;
 import au.com.carecareers.android.homeModule.model.LogOutModel;
 import au.com.carecareers.android.homeModule.model.TokenRefreshModel;
+import au.com.carecareers.android.jobAdsModule.model.JobAdsModel;
 import au.com.carecareers.android.jobSearchModule.model.LocationModel;
 import au.com.carecareers.android.loginModule.changePassword.model.ChangePasswordModel;
 import au.com.carecareers.android.loginModule.forgotPassword.model.ForgotPasswordModel;
+import au.com.carecareers.android.loginModule.getPages.model.PagesModel;
 import au.com.carecareers.android.loginModule.login.model.LoginModel;
 import au.com.carecareers.android.loginModule.register.model.RegisterModel;
 import au.com.carecareers.android.loginModule.register.model.TaxonomyModel;
-import au.com.carecareers.android.loginModule.getPages.model.PagesModel;
 import au.com.carecareers.android.profileModule.locationArea.model.LocationAreaResponse;
 import au.com.carecareers.android.profileModule.selectAvatar.model.AvatarRequest;
 import au.com.carecareers.android.profileModule.selectAvatar.model.AvatarResponse;
@@ -85,6 +86,7 @@ public interface ApiService {
     Completable changePassword(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
                                @Path(UrlContract.Keys.CANDIDATE_ID) String candidateId,
                                @Body ChangePasswordModel.ChangePasswordRequest changePasswordRequest);
+
     @Headers(
             {"Content-Type:application/json",
                     "accept:application/json"
@@ -104,6 +106,7 @@ public interface ApiService {
     @POST(UrlContract.REFRESH_TOKEN)
     Observable<TokenRefreshModel.TokenRefreshResponse> refreshToken(@Header(UrlContract.Keys.ACCESS_TOKEN) String accessToken,
                                                                     @Body TokenRefreshModel.TokenRefreshRequest tokenRefreshRequest);
+
     @Headers(
             {"Content-Type:application/json",
                     "accept:application/json"
@@ -138,5 +141,12 @@ public interface ApiService {
                                                             @Query(UrlContract.Keys.COUNTRY_ID) int country_id
 //                                                            @Query(UrlContract.Keys.PAGE) int page
     );
+
+    @Headers({"Content-Type:application/json",
+            "accept:application/json",})
+    @GET(UrlContract.GET_JOB_ADS)
+    Observable<JobAdsModel.JobAdsResponse> getJobAds(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
+                                                     @Query(UrlContract.Keys.KEYWORD) String keyWord,
+                                                     @Query(UrlContract.Keys.LOCATION_ID) int locationId);
 
 }

@@ -3,6 +3,7 @@ package au.com.carecareers.android.jobSearchModule;
 import au.com.carecareers.android.base.interactor.IBaseInteractor;
 import au.com.carecareers.android.base.presenter.IBasePresenter;
 import au.com.carecareers.android.base.view.IBaseView;
+import au.com.carecareers.android.jobAdsModule.model.JobAdsModel;
 import au.com.carecareers.android.jobSearchModule.model.LocationModel;
 import io.reactivex.Observable;
 
@@ -16,7 +17,7 @@ public class SearchContract {
 
         void sendCountryData(LocationModel.LocationResponse locationResponse);
 
-        void navigateToJobAds(LocationModel.LocationResponse locationResponse);
+        void navigateToJobAds(JobAdsModel.JobAdsResponse jobAdsResponse);
     }
 
     public interface ISearchPresenter extends IBasePresenter<ISearchView, ISearchInteractor> {
@@ -30,7 +31,7 @@ public class SearchContract {
 
         Observable<LocationModel.LocationResponse> loadLocations();
 
-        Observable<LocationModel.LocationResponse> searchJobs(String keywords, int locationId);
+        Observable<JobAdsModel.JobAdsResponse> searchJobAds(String keywords, int locationId);
 
     }
 }

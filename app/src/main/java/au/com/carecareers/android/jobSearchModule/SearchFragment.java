@@ -18,6 +18,8 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 
 import javax.inject.Inject;
@@ -27,6 +29,9 @@ import au.com.carecareers.android.base.BaseFragment;
 import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.data.local.SharedPreferenceManager;
 import au.com.carecareers.android.injection.component.BaseComponent;
+import au.com.carecareers.android.jobAdsModule.JobAdsActivity;
+import au.com.carecareers.android.jobAdsModule.model.JobAdsModel;
+import au.com.carecareers.android.jobDetailsModule.JobDetailsActivity;
 import au.com.carecareers.android.jobSearchModule.injection.SearchModule;
 import au.com.carecareers.android.jobSearchModule.model.LocationModel;
 import au.com.carecareers.android.loginModule.getPages.PagesActivity;
@@ -164,27 +169,22 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
     }
 
     @Override
-    public void navigateToJobAds(LocationModel.LocationResponse locationResponse) {
-        JobAdsActivity.start(getActivity());
+    public void navigateToJobAds(JobAdsModel.JobAdsResponse jobAdsResponse) {
+        Gson gson = new Gson();
+        JobAdsActivity.start(getActivity(), gson.toJson(jobAdsResponse));
         transitionActivityOpen();
     }
 
     @OnClick(R.id.btn_job_search)
     void onJobSearchClicked() {
-    /*    String keywords = etSearchKeyword.getText().toString().trim();
-        int locationId = locationModel.getId();
+        String keywords = etSearchKeyword.getText().toString().trim();
+        /*int locationId = countryList.get(0).id;
         presenter.searchJobs(keywords, locationId);*/
-
-//        if (spinnerLocations.getSelectedItemPosition() != countryList.size()) {
-//            pos = spinnerLocations.getSelectedItemPosition();
-//            id = countryList.get(pos).id;
-//            AppLog.d("sanjay pos:::" + pos);
-//            AppLog.d("sanjay id:::" + id);
-//        }
-//        Toast.makeText(getActivity(), "Search", Toast.LENGTH_SHORT).show();
-
-        JobAdsActivity.start(getActivity());
+        JobDetailsActivity.start(getActivity());
         transitionActivityOpen();
+
+//        JobAdsActivity.start(getActivity(), "");
+//        transitionActivityOpen();
     }
 
     @Override

@@ -21,23 +21,37 @@
 
 
         <EditText
-            android:id="@+id/et_search"
+            android:id="@+id/et_job_search"
             style="@style/EllipsizeEditText"
             android:layout_width="match_parent"
-            android:layout_height="35.5dp"
+            android:layout_height="@dimen/dimen_40dp"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="50dp"
             android:layout_marginLeft="50dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="50dp"
             android:layout_marginStart="50dp"
             android:background="@color/colorWhite"
             android:cursorVisible="false"
             android:drawableLeft="@drawable/ic_search_unselected"
-            android:drawablePadding="@dimen/dimen_20dp"
             android:drawableStart="@drawable/ic_search_unselected"
             android:inputType="text"
             android:paddingLeft="@dimen/dimen_10dp"
-            android:paddingRight="@dimen/dimen_10dp" />
+            android:paddingStart="@dimen/dimen_10dp" />
+
+        <TextView
+            android:id="@+id/tv_filters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="18dp"
+            android:paddingEnd="@dimen/dimen_5dp"
+            android:paddingRight="@dimen/dimen_5dp"
+            android:text="Filters"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/txt_15sp" />
+
     </RelativeLayout>
 
     <RelativeLayout

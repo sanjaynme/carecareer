@@ -170,7 +170,6 @@ public class LocationModel {
             }
 
             public static class SearchLocation {
-
                 @SerializedName("id")
                 @Expose
                 public Integer id;

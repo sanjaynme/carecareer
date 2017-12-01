@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.presenter.BasePresenter;
+import au.com.carecareers.android.jobAdsModule.model.JobAdsModel;
 import au.com.carecareers.android.jobSearchModule.model.LocationModel;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -31,17 +32,18 @@ public class SearchPresenter extends BasePresenter<SearchContract.ISearchView, S
     @Override
     public void searchJobs(String keywords, int locationId) {
         getView().showProgressDialog(R.string.msg_loading);
-        getCompositeDisposable().add(getInteractor().searchJobs(keywords, locationId).subscribeOn(Schedulers.io()
-        ).observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(getSearchObserver()));
+        getCompositeDisposable().add(getInteractor().searchJobAds(keywords, locationId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(getJobSearchObserver()));
     }
 
-    private DisposableObserver<LocationModel.LocationResponse> getSearchObserver() {
-        return new DisposableObserver<LocationModel.LocationResponse>() {
+    private DisposableObserver<JobAdsModel.JobAdsResponse> getJobSearchObserver() {
+        return new DisposableObserver<JobAdsModel.JobAdsResponse>() {
             @Override
-            public void onNext(LocationModel.LocationResponse locationResponse) {
+            public void onNext(JobAdsModel.JobAdsResponse jobAdsResponse) {
                 getView().hideProgressDialog();
-                getView().navigateToJobAds(locationResponse);
+                getView().navigateToJobAds(jobAdsResponse);
             }
 
             @Override

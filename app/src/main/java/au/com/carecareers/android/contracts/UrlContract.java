@@ -5,6 +5,7 @@ package au.com.carecareers.android.contracts;
  */
 
 public class UrlContract {
+
     private UrlContract() {
 
     }
@@ -23,6 +24,7 @@ public class UrlContract {
     public static final String SET_AVATAR = "candidates/{" + Keys.CANDIDATE_ID + "}/avatar";//PUT
     public static final String UPLOAD_FILE = "upload-file";//POST
     public static final String LOCATION_AREA = "locations-areas";//POST
+    public static final String GET_JOB_ADS = "locations-areas";
 
 
     public class Keys {
@@ -35,6 +37,8 @@ public class UrlContract {
         public static final String LIMIT = "limit";
         public static final String CANDIDATE_ID = "candidate_id";
         public static final String COUNTRY_ID = "country_id";
+        public static final String KEYWORD ="keyword" ;
+        public static final String LOCATION_ID ="location_id" ;
     }
 
     public class Values {

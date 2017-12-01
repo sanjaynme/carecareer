@@ -1,8 +1,7 @@
-package au.com.carecareers.android.injection.component;
+package au.com.carecareers.android.jobSearchModule.injection;
 
 import au.com.carecareers.android.injection.scope.ActivityScope;
 import au.com.carecareers.android.jobSearchModule.SearchFragment;
-import au.com.carecareers.android.jobSearchModule.injection.SearchModule;
 import dagger.Subcomponent;
 
 /**

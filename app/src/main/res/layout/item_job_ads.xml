@@ -8,11 +8,11 @@
     card_view:cardUseCompatPadding="true">
 
     <RelativeLayout
+        android:id="@+id/rl_jobAds"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dimen_10dp"
         android:layout_marginRight="@dimen/dimen_10dp">
-
 
         <TextView
             android:id="@+id/tv_item_company_name"
@@ -20,9 +20,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/dimen_20dp"
             android:lines="1"
+            android:text="sdfdsfffff sdhgkj kjhkj hkj hkj hkj hkj hkj hkjh kjh kjhkjh kjhkj hkjhkjh kjh kjhkjh kjhjfds fsdf sdf sdf sdf sd fds fsd fsdfdsf sd fsdf dsfdfsdf"
             android:textColor="@color/textColorPrimary"
-            android:textSize="15sp"
-            tools:text="sdfdsfffff sdhgkj kjhkj hkj hkj hkj hkj hkj hkjh kjh kjhkjh kjhkj hkjhkjh kjh kjhkjh kjhjfds fsdf sdf sdf sdf sd fds fsd fsdfdsf sd fsdf dsfdfsdf" />
+            android:textSize="15sp" />
 
         <ImageView
             android:id="@+id/iv_item_background"
@@ -44,7 +44,7 @@
             android:layout_marginRight="@dimen/dimen_10dp"
             android:textColor="@color/textColorPrimary"
             android:textSize="15sp"
-            tools:text="Profession" />
+            android:text="Profession" />
 
         <TextView
             android:id="@+id/tv_item_posted_date"
@@ -56,7 +56,7 @@
             android:layout_marginRight="@dimen/dimen_10dp"
             android:textColor="@color/textColorPrimary"
             android:textSize="15sp"
-            tools:text="Date posted" />
+            android:text="Date posted" />
 
         <TextView
             android:id="@+id/tv_item_work_type"
@@ -68,7 +68,7 @@
             android:layout_marginRight="@dimen/dimen_10dp"
             android:textColor="@color/textColorPrimary"
             android:textSize="15sp"
-            tools:text="Work Type" />
+            android:text="Work Type" />
 
         <TextView
             android:id="@+id/tv_item_location"
@@ -80,7 +80,7 @@
             android:layout_marginRight="@dimen/dimen_10dp"
             android:textColor="@color/textColorPrimary"
             android:textSize="15sp"
-            tools:text="Location" />
+            android:text="Location" />
 
         <View
             android:id="@+id/view"
@@ -93,7 +93,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/view">
-
 
             <ImageView
                 android:id="@+id/iv_item_save"
@@ -125,7 +124,7 @@
                 android:src="@drawable/ic_star_unselected" />
 
             <Button
-                android:id="@+id/btn_job_search"
+                android:id="@+id/btn_job_view_details"
                 style="@style/Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

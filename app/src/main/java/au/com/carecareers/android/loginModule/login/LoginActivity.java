@@ -32,7 +32,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
     @BindView(R.id.login_toolbar)
     Toolbar toolbar;
 
-    @BindView(R.id.et_username)
+    @BindView(R.id.et_email)
     EditText etUsername;
 
     @BindView(R.id.et_password)
