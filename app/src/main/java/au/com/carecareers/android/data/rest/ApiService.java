@@ -13,6 +13,7 @@ import au.com.carecareers.android.loginModule.register.model.RegisterModel;
 import au.com.carecareers.android.loginModule.register.model.TaxonomyModel;
 import au.com.carecareers.android.loginModule.termsAndCondition.model.TermsAndConditionsModel;
 import au.com.carecareers.android.profileModule.locationArea.model.LocationAreaResponse;
+import au.com.carecareers.android.profileModule.professionRole.model.ProfessionRoleResponse;
 import au.com.carecareers.android.profileModule.selectAvatar.model.AvatarRequest;
 import au.com.carecareers.android.profileModule.selectAvatar.model.AvatarResponse;
 import au.com.carecareers.android.profileModule.selectAvatar.model.FileUploadResponse;
@@ -30,7 +31,6 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
-import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -85,6 +85,7 @@ public interface ApiService {
     Completable changePassword(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
                                @Path("candidate_id") String candidateId,
                                @Body ChangePasswordModel.ChangePasswordRequest changePasswordRequest);
+
     @Headers(
             {"Content-Type:application/json",
                     "accept:application/json"
@@ -104,6 +105,7 @@ public interface ApiService {
     @POST(UrlContract.REFRESH_TOKEN)
     Observable<TokenRefreshModel.TokenRefreshResponse> refreshToken(@Header(UrlContract.Keys.ACCESS_TOKEN) String accessToken,
                                                                     @Body TokenRefreshModel.TokenRefreshRequest tokenRefreshRequest);
+
     @Headers(
             {"Content-Type:application/json",
                     "accept:application/json"
@@ -130,4 +132,12 @@ public interface ApiService {
     Observable<LocationAreaResponse> getLocationArea(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
                                                      @Query(UrlContract.Keys.COUNTRY_ID) int countryId,
                                                      @Query(UrlContract.Keys.LIMIT) int limit);
+
+    @Headers(
+            {"Content-Type:application/json",
+                    "accept:application/json"
+            })
+    @GET(UrlContract.PROFESSION_ROLE)
+    Observable<ProfessionRoleResponse> getProfessionRole(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
+                                                         @Query(UrlContract.Keys.LIMIT) int limit);
 }

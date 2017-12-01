@@ -36,6 +36,8 @@ import au.com.carecareers.android.profileModule.locationArea.LocationAreaActivit
 import au.com.carecareers.android.profileModule.locationArea.model.LocationAreaResponse;
 import au.com.carecareers.android.profileModule.model.CandidateModel;
 import au.com.carecareers.android.profileModule.preferredLocation.PreferredLocationActivity;
+import au.com.carecareers.android.profileModule.professionRole.ProfessionRoleActivity;
+import au.com.carecareers.android.profileModule.professionRole.model.ProfessionRoleResponse;
 import au.com.carecareers.android.profileModule.profileSetup.injection.ProfileSetupModule;
 import au.com.carecareers.android.profileModule.selectAvatar.SelectAvatarActivity;
 import au.com.carecareers.android.profileModule.selectAvatar.model.AvatarResponse;
@@ -65,6 +67,10 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
     TextView tvPreferredLocation;
     @BindView(R.id.tv_location_area)
     TextView tvLocationArea;
+    @BindView(R.id.tv_profession_role)
+    TextView tvProfessionRole;
+    @BindView(R.id.tv_work_type)
+    TextView tvWorkType;
     @BindView(R.id.et_what_is_your_career_move)
     EditText etCareerMove;
     @BindView(R.id.submit_view)
@@ -72,7 +78,8 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
 
     private CandidateModel candidateModel;
     private EbImageHelperFragment ebImageHelperFragment;
-    private List<LocationAreaResponse.Area> listArea;
+    private List<LocationAreaResponse.Area> areaList;
+    private List<ProfessionRoleResponse.Role> roleList;
 
     public static void start(Context context) {
         Intent intent = new Intent();
@@ -181,12 +188,21 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
                 setProfileImage(avatar.getLinks().getUrl().getHref(), true);
             } else if (requestCode == AppContract.RequestCode.LOCATION_AREA) {
                 String extra = data.getStringExtra(AppContract.Extras.DATA);
-                listArea = gson.fromJson(extra, new TypeToken<List<LocationAreaResponse.Area>>() {
+                areaList = gson.fromJson(extra, new TypeToken<List<LocationAreaResponse.Area>>() {
                 }.getType());
-                if (listArea.size() > 1) {
-                    setLocationArea(listArea.get(0).getName() + " and " + (listArea.size() - 1) + " more");
+                if (areaList.size() > 1) {
+                    setLocationArea(areaList.get(0).getName() + " and " + (areaList.size() - 1) + " more");
                 } else {
-                    setLocationArea(listArea.get(0).getName());
+                    setLocationArea(areaList.get(0).getName());
+                }
+            } else if (requestCode == AppContract.RequestCode.PROFESSION_ROLE) {
+                String extra = data.getStringExtra(AppContract.Extras.DATA);
+                roleList = gson.fromJson(extra, new TypeToken<List<ProfessionRoleResponse.Role>>() {
+                }.getType());
+                if (roleList.size() > 1) {
+                    setProfessionRole(roleList.get(0).getName() + " and " + (roleList.size() - 1) + " more");
+                } else {
+                    setProfessionRole(roleList.get(0).getName());
                 }
             }
         }
@@ -211,7 +227,13 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
 
     @OnClick(R.id.ll_location_area)
     public void locationAreaClicked() {
-        LocationAreaActivity.startForResult(this, gson.toJson(listArea));
+        LocationAreaActivity.startForResult(this, gson.toJson(areaList));
+        transitionActivityOpen();
+    }
+
+    @OnClick(R.id.ll_profession_role)
+    public void professionRoleClicked() {
+        ProfessionRoleActivity.startForResult(this, gson.toJson(roleList));
         transitionActivityOpen();
     }
 
@@ -268,11 +290,11 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
 
     @Override
     public void setProfessionRole(String professionRole) {
-
+        tvProfessionRole.setText(professionRole);
     }
 
     @Override
     public void setWorkType(String workType) {
-
+        tvWorkType.setText(workType);
     }
 }

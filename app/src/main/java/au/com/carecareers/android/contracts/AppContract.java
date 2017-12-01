@@ -72,6 +72,7 @@ public class AppContract {
         public static final int PREFERRED_LOCATION = 201;
         public static final int SELECT_AVATAR = 202;
         public static final int LOCATION_AREA = 203;
+        public static final int PROFESSION_ROLE = 204;
     }
 
 }

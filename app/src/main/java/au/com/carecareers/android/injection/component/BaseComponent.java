@@ -2,8 +2,6 @@ package au.com.carecareers.android.injection.component;
 
 import javax.inject.Singleton;
 
-import au.com.carecareers.android.settingsModule.injection.SettingsModule;
-import au.com.carecareers.android.settingsModule.injection.SettingsSubComponent;
 import au.com.carecareers.android.homeModule.myProfile.MyProfileFragment;
 import au.com.carecareers.android.injection.module.AppModule;
 import au.com.carecareers.android.injection.module.NetModule;
@@ -20,10 +18,14 @@ import au.com.carecareers.android.loginModule.termsAndCondition.injection.TermsA
 import au.com.carecareers.android.profileModule.locationArea.injection.LocationAreaModule;
 import au.com.carecareers.android.profileModule.locationArea.injection.LocationAreaSubComponent;
 import au.com.carecareers.android.profileModule.preferredLocation.PreferredLocationActivity;
+import au.com.carecareers.android.profileModule.professionRole.injection.ProfessionRoleModule;
+import au.com.carecareers.android.profileModule.professionRole.injection.ProfessionRoleSubcomponent;
 import au.com.carecareers.android.profileModule.profileSetup.injection.ProfileSetupModule;
 import au.com.carecareers.android.profileModule.profileSetup.injection.ProfileSetupSubComponent;
 import au.com.carecareers.android.profileModule.selectAvatar.injection.SelectAvatarModule;
 import au.com.carecareers.android.profileModule.selectAvatar.injection.SelectAvatarSubComponent;
+import au.com.carecareers.android.settingsModule.injection.SettingsModule;
+import au.com.carecareers.android.settingsModule.injection.SettingsSubComponent;
 import au.com.carecareers.android.splashModule.injection.SplashModule;
 import au.com.carecareers.android.splashModule.injection.SplashSubComponent;
 import dagger.Component;
@@ -56,6 +58,8 @@ public interface BaseComponent {
     SelectAvatarSubComponent provideSelectAvatarSubComponent(SelectAvatarModule selectAvatarModule);
 
     LocationAreaSubComponent provideLocationAreaSubComponent(LocationAreaModule locationAreaModule);
+
+    ProfessionRoleSubcomponent provideProfessionRoleSubComponent(ProfessionRoleModule professionRoleModule);
 
     void inject(PreferredLocationActivity preferredLocationActivity);
 

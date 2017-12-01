@@ -23,7 +23,8 @@ public class UrlContract {
     public static final String GET_AVATARS = "avatars";//GET
     public static final String SET_AVATAR = "candidates/{" + Keys.CANDIDATE_ID + "}/avatar";//PUT
     public static final String UPLOAD_FILE = "upload-file";//POST
-    public static final String LOCATION_AREA = "locations-areas";//POST
+    public static final String LOCATION_AREA = "locations-areas";//GET
+    public static final String PROFESSION_ROLE = "professions-roles";//GET
 
 
     public class Keys {

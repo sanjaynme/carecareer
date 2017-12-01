@@ -11,6 +11,7 @@
     <string name="title_select_avatar">@string/tv_select_an_avatar</string>
     <string name="title_location_area">Location/Area</string>
     <string name="title_my_profile">My profile</string>
+    <string name="title_profession_role">Profession/role</string>
 
     <!--TextViews-->
     <string name="lorem_epsum">
