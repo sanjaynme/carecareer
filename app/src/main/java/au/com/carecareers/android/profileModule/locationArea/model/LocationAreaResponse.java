@@ -5,71 +5,16 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import au.com.carecareers.android.profileModule.selectAvatar.model.AvatarResponse.Links;
+import au.com.carecareers.android.base.model.BaseListResponse;
 
 /**
  * Created by Nischal Manandhar on 28/11/2017.
  */
 
-public class LocationAreaResponse {
-    @SerializedName("total_items")
-    @Expose
-    private Integer totalItems;
-    @SerializedName("page_size")
-    @Expose
-    private Integer pageSize;
-    @SerializedName("page_count")
-    @Expose
-    private Integer pageCount;
-    @SerializedName("page")
-    @Expose
-    private Integer page;
-    @SerializedName("_links")
-    @Expose
-    private Links links;
+public class LocationAreaResponse extends BaseListResponse {
     @SerializedName("_embedded")
     @Expose
     private EmbeddedLocation embedded;
-
-    public Integer getTotalItems() {
-        return totalItems;
-    }
-
-    public void setTotalItems(Integer totalItems) {
-        this.totalItems = totalItems;
-    }
-
-    public Integer getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(Integer pageSize) {
-        this.pageSize = pageSize;
-    }
-
-    public Integer getPageCount() {
-        return pageCount;
-    }
-
-    public void setPageCount(Integer pageCount) {
-        this.pageCount = pageCount;
-    }
-
-    public Integer getPage() {
-        return page;
-    }
-
-    public void setPage(Integer page) {
-        this.page = page;
-    }
-
-    public Links getLinks() {
-        return links;
-    }
-
-    public void setLinks(Links links) {
-        this.links = links;
-    }
 
     public EmbeddedLocation getEmbedded() {
         return this.embedded;

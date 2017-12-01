@@ -186,13 +186,11 @@ public class LocationAreaActivity extends BaseActivity implements LocationAreaCo
 
     @Override
     public void showFooterProgress() {
-        //Todo show footer progress
         // locationAreaAdapter.showFooterProgress();
     }
 
     @Override
     public void hideFooterProgress() {
-        //Todo hide footer progress
         //locationAreaAdapter.removeFooterProgress();
     }
 
