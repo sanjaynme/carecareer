@@ -11,12 +11,12 @@ import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -97,13 +97,12 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
     }
 
     private void setUpWelcome() {
-        String fullName = " "
-                + preferenceManager.getStringValues(AppContract.Preferences.FIRST_NAME)
+        String fullName = preferenceManager.getStringValues(AppContract.Preferences.FIRST_NAME)
                 + " " +
                 preferenceManager.getStringValues(AppContract.Preferences.LAST_NAME);
         SpannableString nameString = new SpannableString("Welcome, " + fullName);
-        nameString.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.textColorPrimary)), 15, 30, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        nameString.setSpan(new StyleSpan(Typeface.BOLD), 8, 9 + fullName.length(), 0);
+        int namelength = 9 + fullName.length();
+        nameString.setSpan(new StyleSpan(Typeface.BOLD), 8, namelength, 0);
         SpannableStringBuilder spanString = new SpannableStringBuilder("\n Search for your next career move");
         tvWelcomeUser.setText(TextUtils.concat(nameString, spanString));
     }
@@ -142,15 +141,14 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
         final SpinnerAdapter statesAdapter = new SpinnerAdapter(getActivity(), R.layout.item_spinner, countryName, AppContract.Extras.COUNTRYLIST);
         statesAdapter.setDropDownViewResource(R.layout.custom_dropdown);
         spinnerLocations.setAdapter(statesAdapter);
-        spinnerLocations.setSelection(statesAdapter.getCount());
+//        spinnerLocations.setSelection(statesAdapter.getCount());
 
 
-
-      /*  spinnerLocations.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinnerLocations.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                String countryNames = locationResponse.getEmbedded().getLocations().get(position).getName();
-                int countryId = locationResponse.getEmbedded().getLocations().get(position).getId();
+                String countryNames = countryList.get(position).name;
+                int countryId = countryList.get(position).id;
                 AppLog.d("position:" + position);
                 AppLog.d("country selected name::::" + countryNames);
                 AppLog.d("country selected id:::::" + countryId);
@@ -161,7 +159,7 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
-*/
+
 
     }
 
@@ -177,13 +175,16 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
         int locationId = locationModel.getId();
         presenter.searchJobs(keywords, locationId);*/
 
-        if (spinnerLocations.getSelectedItemPosition() != countryList.size()) {
-            pos = spinnerLocations.getSelectedItemPosition();
-            id = countryList.get(pos).id;
-            AppLog.d("sanjay pos:::" + pos);
-            AppLog.d("sanjay id:::" + id);
-        }
-        Toast.makeText(getActivity(), "Search", Toast.LENGTH_SHORT).show();
+//        if (spinnerLocations.getSelectedItemPosition() != countryList.size()) {
+//            pos = spinnerLocations.getSelectedItemPosition();
+//            id = countryList.get(pos).id;
+//            AppLog.d("sanjay pos:::" + pos);
+//            AppLog.d("sanjay id:::" + id);
+//        }
+//        Toast.makeText(getActivity(), "Search", Toast.LENGTH_SHORT).show();
+
+        JobAdsActivity.start(getActivity());
+        transitionActivityOpen();
     }
 
     @Override

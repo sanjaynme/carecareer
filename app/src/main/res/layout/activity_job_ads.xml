@@ -57,9 +57,9 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/dimen_15dp"
             android:layout_marginStart="@dimen/dimen_15dp"
+            android:text="Results:"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/txt_15sp"
-            tools:text="Results:" />
+            android:textSize="@dimen/txt_15sp" />
 
 
         <TextView
@@ -72,9 +72,9 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/dimen_70dp"
             android:layout_marginRight="@dimen/dimen_70dp"
+            android:text="Save Search"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/txt_15sp"
-            tools:text="Save Search" />
+            android:textSize="@dimen/txt_15sp" />
 
         <TextView
             android:id="@+id/tv_sort"
@@ -85,9 +85,9 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/dimen_15dp"
             android:layout_marginRight="@dimen/dimen_15dp"
+            android:text="Sort"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/txt_15sp"
-            tools:text="Sort" />
+            android:textSize="@dimen/txt_15sp" />
 
     </RelativeLayout>
 
@@ -97,6 +97,7 @@
         android:layout_below="@+id/rl_results">
 
         <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_job_ads"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/item_job_ads" />

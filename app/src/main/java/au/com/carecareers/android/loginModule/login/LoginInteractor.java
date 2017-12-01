@@ -41,6 +41,7 @@ public class LoginInteractor extends BaseInteractor implements LoginContract.ILo
         getPreferenceManager().setKeyValues(AppContract.Preferences.CANDIDATE_ID, loginResponse.getUser().getId());
         getPreferenceManager().setKeyValues(AppContract.Preferences.FIRST_NAME, loginResponse.getUser().getFirstName());
         getPreferenceManager().setKeyValues(AppContract.Preferences.LAST_NAME, loginResponse.getUser().getLastName());
+        AppLog.d("Last Name:" + getPreferenceManager().getStringValues(AppContract.Preferences.LAST_NAME));
         getPreferenceManager().setKeyValues(AppContract.Preferences.LAST_LOGIN_DATE, loginResponse.getUser().getLastLoginDate());
     }
 }

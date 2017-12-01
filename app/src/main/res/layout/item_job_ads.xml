@@ -85,7 +85,7 @@
         <View
             android:id="@+id/view"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_2dp"
+            android:layout_height="@dimen/dimen_0.5dp"
             android:layout_below="@+id/tv_item_location"
             android:background="@color/colorHint" />
 
