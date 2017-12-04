@@ -65,19 +65,12 @@
 
             <TextView
                 android:id="@+id/tv_upload_photo"
-                fontPath="@string/font_source_san_pro_semi_bold"
+                style="@style/TvUpload"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/fl_profile_image"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/bg_upload_photo"
-                android:paddingBottom="@dimen/dimen_15dp"
-                android:paddingLeft="@dimen/dimen_18dp"
-                android:paddingRight="@dimen/dimen_18dp"
-                android:paddingTop="@dimen/dimen_15dp"
-                android:text="@string/tv_upload_photo"
-                android:textColor="@color/colorWhite"
-                android:textSize="@dimen/txt_15sp" />
+                android:text="@string/tv_upload_photo" />
 
             <TextView
                 android:id="@+id/tv_select_avatar"

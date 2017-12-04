@@ -120,9 +120,9 @@ public interface ApiService {
                     "accept:application/json"
             })
     @Multipart
-    @POST(UrlContract.UPLOAD_FILE)
-    Observable<FileUploadResponse> uploadFile(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
-                                              @Part MultipartBody.Part file);
+    @POST(UrlContract.UPLOAD_IMAGE_FILE)
+    Observable<FileUploadResponse> uploadImageFile(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
+                                                   @Part MultipartBody.Part file);
 
     @Headers(
             {"Content-Type:application/json",
@@ -140,4 +140,16 @@ public interface ApiService {
     @GET(UrlContract.PROFESSION_ROLE)
     Observable<ProfessionRoleResponse> getProfessionRole(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
                                                          @Query(UrlContract.Keys.LIMIT) int limit);
+
+    @Headers(
+            {
+                    "accept:application/json"
+            })
+    @Multipart
+    @POST(UrlContract.UPLOAD_FILE)
+    Observable<FileUploadResponse> uploadFile(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
+                                              @Path(UrlContract.Keys.CANDIDATE_ID) String candidateId,
+                                              @Path(UrlContract.Keys.SKIP) int skip,
+                                              @Path(UrlContract.Keys.TYPE) int type,
+                                              @Part MultipartBody.Part file);
 }

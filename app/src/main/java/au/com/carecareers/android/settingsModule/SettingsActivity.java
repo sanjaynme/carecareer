@@ -19,6 +19,7 @@ import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.loginModule.changePassword.ChangePasswordActivity;
 import au.com.carecareers.android.loginModule.login.LoginActivity;
 import au.com.carecareers.android.loginModule.termsAndCondition.TermsAndConditionActivity;
+import au.com.carecareers.android.profileModule.uploadFile.UploadFileActivity;
 import au.com.carecareers.android.settingsModule.injection.SettingsModule;
 import au.com.carecareers.android.utilities.AppLog;
 import butterknife.BindView;
@@ -81,11 +82,16 @@ public class SettingsActivity extends BaseActivity implements SettingContract.IS
         transitionActivityOpen();
     }
 
+    @OnClick(R.id.tv_upload_file)
+    void uploadFile() {
+        UploadFileActivity.start(this);
+        transitionActivityOpen();
+    }
+
     @OnClick(R.id.tv_logout)
     void onLogOut() {
         showWarningDialog(getString(R.string.msg_logout));
     }
-
 
     @OnClick(R.id.tv_terms_and_conditions)
     void onTermsAndConditionsClicked() {

@@ -36,7 +36,7 @@ public class ProfileSetupInteractor extends BaseInteractor implements ProfileSet
         // MultipartBody.Part is used to send also the actual file tvName
         MultipartBody.Part body = MultipartBody.Part.createFormData("file", file.getName(), requestFile);
 
-        return getApiService().uploadFile(
+        return getApiService().uploadImageFile(
                 getPreferenceManager().getStringValues(AppContract.Preferences.ACCESS_TOKEN),
                 body
         );

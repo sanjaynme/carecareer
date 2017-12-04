@@ -24,6 +24,8 @@ import au.com.carecareers.android.profileModule.profileSetup.injection.ProfileSe
 import au.com.carecareers.android.profileModule.profileSetup.injection.ProfileSetupSubComponent;
 import au.com.carecareers.android.profileModule.selectAvatar.injection.SelectAvatarModule;
 import au.com.carecareers.android.profileModule.selectAvatar.injection.SelectAvatarSubComponent;
+import au.com.carecareers.android.profileModule.uploadFile.injection.UploadFileModule;
+import au.com.carecareers.android.profileModule.uploadFile.injection.UploadFileSubComponent;
 import au.com.carecareers.android.settingsModule.injection.SettingsModule;
 import au.com.carecareers.android.settingsModule.injection.SettingsSubComponent;
 import au.com.carecareers.android.splashModule.injection.SplashModule;
@@ -60,6 +62,8 @@ public interface BaseComponent {
     LocationAreaSubComponent provideLocationAreaSubComponent(LocationAreaModule locationAreaModule);
 
     ProfessionRoleSubcomponent provideProfessionRoleSubComponent(ProfessionRoleModule professionRoleModule);
+
+    UploadFileSubComponent provideUploadFileSubComponent(UploadFileModule uploadFileModule);
 
     void inject(PreferredLocationActivity preferredLocationActivity);
 

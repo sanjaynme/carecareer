@@ -22,9 +22,10 @@ public class UrlContract {
     public static final String PRIVACY_POLICY = "contents/{type}/{id_or_slug}";
     public static final String GET_AVATARS = "avatars";//GET
     public static final String SET_AVATAR = "candidates/{" + Keys.CANDIDATE_ID + "}/avatar";//PUT
-    public static final String UPLOAD_FILE = "upload-file";//POST
+    public static final String UPLOAD_IMAGE_FILE = "upload-file";//POST
     public static final String LOCATION_AREA = "locations-areas";//GET
     public static final String PROFESSION_ROLE = "professions-roles";//GET
+    public static final String UPLOAD_FILE = "candidates/{" + Keys.CANDIDATE_ID + "}/files"; //POST
 
 
     public class Keys {
@@ -35,6 +36,8 @@ public class UrlContract {
         public static final String LIMIT = "limit";
         public static final String CANDIDATE_ID = "candidate_id";
         public static final String COUNTRY_ID = "country_id";
+        public static final String SKIP = "skip";
+        public static final String TYPE = "type";
     }
 
     public class Values {

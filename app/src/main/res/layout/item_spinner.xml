@@ -13,7 +13,6 @@
         android:textColorHint="@color/colorHint"
         android:textSize="@dimen/txt_15sp" />
 
-
 </LinearLayout>
 
 

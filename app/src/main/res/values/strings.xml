@@ -4,6 +4,7 @@
     <string name="err_no_data_available">No Data Available</string>
     <string name="err_no_location_selected">Please select location.</string>
     <string name="err_no_area_selected">Please select a location.</string>
+    <string name="err_no_file_type_selected">Please select file type.</string>
 
     <string name="title_activity_landing">LandingActivity</string>
     <string name="title_personal_details">Personal Details</string>
@@ -12,6 +13,7 @@
     <string name="title_location_area">Location/Area</string>
     <string name="title_my_profile">My profile</string>
     <string name="title_profession_role">Profession/role</string>
+    <string name="title_upload_file">Upload file</string>
 
     <!--TextViews-->
     <string name="lorem_epsum">
@@ -45,6 +47,9 @@
     <string name="tv_choose_from_gallery">Choose from gallery</string>
     <string name="tv_personal_search_settings">Personal Search Settings</string>
     <string name="tv_hi">Hi, </string>
+    <string name="tv_upload_your_files">Please upload your files.</string>
+    <string name="tv_select_file">Select file</string>
+    <string name="tv_type">Type</string>
 
 
     <string name="tv_preferred_location">Preferred Location(s)</string>
@@ -122,5 +127,13 @@
     <string name="tv_settings_terms_and_conditions">Terms &amp; Conditions</string>
     <string name="tv_settings_privacy_policy">Privacy Policy</string>
     <string name="tv_settings_share_app">Share app</string>
+    <string name="tv_settings_upload_file">Upload file</string>
     <string name="tv_settings_logout">Logout</string>
+
+    <string-array name="file_types">
+        <item>Type</item>
+        <item>Resume</item>
+        <item>Cover letter</item>
+        <item>File</item>
+    </string-array>
 </resources>
