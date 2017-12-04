@@ -85,7 +85,7 @@ public class LocationAreaAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     public List<LocationAreaResponse.Area> getCheckedItems() {
         List<LocationAreaResponse.Area> listSelectedAreas = new ArrayList<>();
-        for (LocationAreaResponse.Location location : filteredList) {
+        for (LocationAreaResponse.Location location : originalList) {
             for (LocationAreaResponse.Area area : location.getEmbedded().getAreas()) {
                 if (area.isChecked()) {
                     listSelectedAreas.add(area);
@@ -197,12 +197,11 @@ public class LocationAreaAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         protected FilterResults performFiltering(CharSequence constraint) {
             String filterString = constraint.toString().toLowerCase();
             FilterResults filterResults = new FilterResults();
-            List<LocationAreaResponse.Location> tempOriginalList = originalList;
-            List<LocationAreaResponse.Location> tempFilterList = new ArrayList<>(tempOriginalList.size());
+            List<LocationAreaResponse.Location> tempFilterList = new ArrayList<>(originalList.size());
             if (filterString.isEmpty()) {
-                tempFilterList.addAll(tempOriginalList);
+                tempFilterList.addAll(originalList);
             } else {
-                for (LocationAreaResponse.Location location : tempOriginalList) {
+                for (LocationAreaResponse.Location location : originalList) {
                     List<LocationAreaResponse.Area> listAreas = location.getEmbedded().getAreas();
                     List<LocationAreaResponse.Area> tempAreaList = new ArrayList<>();
                     for (LocationAreaResponse.Area area : listAreas) {

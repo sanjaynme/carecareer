@@ -66,7 +66,7 @@ public class ProfessionRoleAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     public List<ProfessionRoleResponse.Role> getCheckedItems() {
         List<ProfessionRoleResponse.Role> listSelectedRoles = new ArrayList<>();
-        for (ProfessionRoleResponse.Profession profession : filteredList) {
+        for (ProfessionRoleResponse.Profession profession : originalList) {
             for (ProfessionRoleResponse.Role role : profession.getEmbedded().getRoles()) {
                 if (role.isChecked()) {
                     listSelectedRoles.add(role);
