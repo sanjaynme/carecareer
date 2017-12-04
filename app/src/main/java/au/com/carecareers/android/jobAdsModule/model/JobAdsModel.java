@@ -5,8 +5,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import au.com.carecareers.android.jobDetailsModule.model.JobsDetailsModel;
-
 /**
  * Created by Nikesh on 12/1/2017.
  */
@@ -42,33 +40,31 @@ public class JobAdsModel {
         public List<JobAdsTypes> jobTypes = null;
         @SerializedName("countries")
         @Expose
-        private List<JobsDetailsModel.JobsDetailResponse.JobEmbedded.Country> countries = null;
+        private List<JobCountry> countries = null;
         @SerializedName("job_counts")
         @Expose
         private JobCounts jobCounts;
 
         public class JobAdsTypes {
-            @SerializedName("1")
+            @SerializedName("job_type_id")
             @Expose
-            public String _1;
-            @SerializedName("2")
-            @Expose
-            public String _2;
-            @SerializedName("3")
-            @Expose
-            public String _3;
+            private String jobTypeId;
         }
 
         public class Links {
+
             @SerializedName("self")
             @Expose
-            public JobAdsSelf self;
+            private JobAdsSelf self;
             @SerializedName("first")
             @Expose
-            public First first;
+            private First first;
             @SerializedName("last")
             @Expose
-            public Last last;
+            private Last last;
+            @SerializedName("next")
+            @Expose
+            private Next next;
 
             public class JobAdsSelf {
                 @SerializedName("href")
@@ -77,7 +73,6 @@ public class JobAdsModel {
             }
 
             public class First {
-
                 @SerializedName("href")
                 @Expose
                 public String href;
@@ -88,6 +83,12 @@ public class JobAdsModel {
                 @Expose
                 public String href;
             }
+
+            private class Next {
+                @SerializedName("href")
+                @Expose
+                private String href;
+            }
         }
 
         public class Embedded {
@@ -95,29 +96,86 @@ public class JobAdsModel {
             @Expose
             public List<Object> premiumJobs = null;
         }
+
+        private class JobCountry {
+            @SerializedName("country_id")
+            @Expose
+            private CountryId countryId;
+
+            private class CountryId {
+                @SerializedName("id")
+                @Expose
+                private Integer id;
+                @SerializedName("currency_symbol")
+                @Expose
+                private String currencySymbol;
+            }
+        }
     }
 
     public static class JobCounts {
         @SerializedName("professions")
         @Expose
-        public List<Object> professions = null;
+        private List<Profession> professions = null;
         @SerializedName("roles")
         @Expose
-        public List<Object> roles = null;
+        private List<JobAdsRole> roles = null;
         @SerializedName("countries")
         @Expose
-        public List<Object> countries = null;
+        private List<JobAdsCountry_> countries = null;
         @SerializedName("locations")
         @Expose
-        public List<Object> locations = null;
+        private List<JobAdsLocation> locations = null;
         @SerializedName("areas")
         @Expose
-        public List<Object> areas = null;
-        @SerializedName("worktypes")
+        private List<JobAdsArea> areas = null;
+        @SerializedName("work_types")
         @Expose
-        public List<Object> worktypes = null;
+        private List<JobAdsWorkType> workTypes = null;
         @SerializedName("advertisers")
         @Expose
-        public List<Object> advertisers = null;
+        private List<JobAdsAdvertiser> advertisers = null;
+
+        private class Profession {
+            @SerializedName("profession_id")
+            @Expose
+            private Integer professionId;
+        }
+
+        private class JobAdsRole {
+            @SerializedName("role_id")
+            @Expose
+            private Integer roleId;
+        }
+
+        private class JobAdsCountry_ {
+            @SerializedName("country_id")
+            @Expose
+            private Integer countryId;
+        }
+
+        private class JobAdsLocation {
+            @SerializedName("location_id")
+            @Expose
+            private Integer locationId;
+        }
+
+        private class JobAdsArea {
+            @SerializedName("area_id")
+            @Expose
+            private Integer areaId;
+        }
+
+        private class JobAdsWorkType {
+            @SerializedName("work_type_id")
+            @Expose
+            private Integer workTypeId;
+        }
+
+        private class JobAdsAdvertiser {
+            @SerializedName("advertiser_id")
+            @Expose
+            private Integer advertiserId;
+        }
     }
 }
