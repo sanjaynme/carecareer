@@ -211,7 +211,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_your_career_move"
+                android:id="@+id/ll_next_career_move"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ll_preferred_industry"
@@ -220,12 +220,12 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_label_your_career_move"
+                    android:id="@+id/tv_label_next_career_move"
                     style="@style/TextViewTitleProfileSetup"
-                    android:text="@string/tv_your_career_move" />
+                    android:text="@string/tv_next_career_move" />
 
                 <LinearLayout
-                    android:id="@+id/ll_what_is_your_career_move"
+                    android:id="@+id/ll_nxt_career_move"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/dimen_20dp"
@@ -234,15 +234,16 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/et_what_is_your_career_move"
+                        android:id="@+id/et_nxt_career_move"
                         style="@style/TextViewBodyProfileSetup"
                         android:gravity="top"
-                        android:hint="@string/hint_what_is_your_next_career_move"
+                        android:hint="@string/hint_what_would_u_like_to_do"
                         android:minLines="4" />
 
                     <ImageButton
-                        android:id="@+id/ib_what_is_your_career_move"
+                        android:id="@+id/ib_nxt_career_move"
                         style="@style/IconProfileSetup"
+                        android:contentDescription="@null"
                         android:src="@drawable/ic_info_grey_small" />
                 </LinearLayout>
 

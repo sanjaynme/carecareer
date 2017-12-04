@@ -71,8 +71,8 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
     TextView tvProfessionRole;
     @BindView(R.id.tv_work_type)
     TextView tvWorkType;
-    @BindView(R.id.et_what_is_your_career_move)
-    EditText etCareerMove;
+    @BindView(R.id.et_nxt_career_move)
+    EditText etNextCareerMove;
     @BindView(R.id.submit_view)
     SubmitView submitView;
 
@@ -111,8 +111,8 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
         scrollView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (etCareerMove.hasFocus()) {
-                    etCareerMove.clearFocus();
+                if (etNextCareerMove.hasFocus()) {
+                    etNextCareerMove.clearFocus();
                 }
 
                 return false;

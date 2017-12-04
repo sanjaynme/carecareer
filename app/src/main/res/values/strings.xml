@@ -29,7 +29,7 @@
     <string name="tv_terms_conditions">By registering, you are agreeing to the \n <u>Terms &amp; Conditions</u></string>
     <string name="tv_forgot_email">Enter the email you registered with:</string>
     <string name="tv_submit">Submit</string>
-    <string name="tv_skip"><u>Skip</u></string>
+    <string name="tv_skip">Skip</string>
     <string name="tv_next">Next</string>
     <string name="tv_profile_greetings">Thank you for registering. Lets\'s get your profile set up so employers can find you.</string>
     <string name="tv_upload_photo">Upload Photo</string>
@@ -49,7 +49,7 @@
 
     <string name="tv_preferred_location">Preferred Location(s)</string>
     <string name="tv_preferred_industry">Preferred Industry(s)</string>
-    <string name="tv_your_career_move">Your Career Move</string>
+    <string name="tv_next_career_move">Next Career Move</string>
     <string name="tv_forgot_password">Forgot Password</string>
 
     <!--Error-->
@@ -69,7 +69,7 @@
 
     <!--Success-->
     <string name="sucess_forgot_email">A password reset link has been sent to your email. Please reset your password.</string>
-    <string name="sucess_registration">Registeration has been done successfully.</string>
+    <string name="sucess_registration">Registration has been done successfully.</string>
     <string name="sucess_change_password">Password has been changed successfully.</string>
 
     <!--EditTexts-->
@@ -92,7 +92,7 @@
     <string name="hint_location_area">Location/area*</string>
     <string name="hint_profession_role">Profession/role*</string>
     <string name="hint_work_type">Work type*</string>
-    <string name="hint_what_is_your_next_career_move">What is your next career move?</string>
+    <string name="hint_what_would_u_like_to_do">What would you like to do?</string>
     <string name="hint_search">Search</string>
 
     <!--Messages-->
