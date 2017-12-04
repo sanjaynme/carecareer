@@ -2,7 +2,7 @@ ext {
     appConfiguration = [
             applicationId       : "au.com.carecareers.android",
             // Sdk and tools
-            minSdkVersion       : 16,
+            minSdkVersion       : 19,
             targetSdkVersion    : 26,
             compileSdkVersion   : 26,
             buildToolsVersion   : "26.0.2",
