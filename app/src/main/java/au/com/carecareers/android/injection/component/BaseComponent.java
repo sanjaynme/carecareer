@@ -26,6 +26,8 @@ import au.com.carecareers.android.profileModule.selectAvatar.injection.SelectAva
 import au.com.carecareers.android.profileModule.selectAvatar.injection.SelectAvatarSubComponent;
 import au.com.carecareers.android.profileModule.uploadFile.injection.UploadFileModule;
 import au.com.carecareers.android.profileModule.uploadFile.injection.UploadFileSubComponent;
+import au.com.carecareers.android.profileModule.workType.injection.WorkTypeModule;
+import au.com.carecareers.android.profileModule.workType.injection.WorkTypeSubComponent;
 import au.com.carecareers.android.settingsModule.injection.SettingsModule;
 import au.com.carecareers.android.settingsModule.injection.SettingsSubComponent;
 import au.com.carecareers.android.splashModule.injection.SplashModule;
@@ -41,29 +43,31 @@ import dagger.Component;
         NetModule.class,
 })
 public interface BaseComponent {
-    SplashSubComponent provideSplashSubComponent(SplashModule splashModule);
+    SplashSubComponent splashSubComponent(SplashModule splashModule);
 
-    LoginSubComponent provideLoginSubComponent(LoginModule loginModule);
+    LoginSubComponent loginSubComponent(LoginModule loginModule);
 
-    TermsAndConditionSubComponent provideTermsAndConditionsSubComponent(TermsAndConditionsModule termsAndConditionsModule);
+    TermsAndConditionSubComponent termsAndConditionsSubComponent(TermsAndConditionsModule termsAndConditionsModule);
 
-    SettingsSubComponent provideSettingsSubComponent(SettingsModule settingsSubComponentModule);
+    SettingsSubComponent settingsSubComponent(SettingsModule settingsSubComponentModule);
 
-    RegisterSubComponent provideRegisterSubComponent(RegisterModule registerModule);
+    RegisterSubComponent registerSubComponent(RegisterModule registerModule);
 
-    ForgotPasswordSubComponent provideForgotPasswordSubComponent(ForgotPasswordModule forgotPasswordModule);
+    ForgotPasswordSubComponent forgotPasswordSubComponent(ForgotPasswordModule forgotPasswordModule);
 
-    ChangePasswordSubComponent provideChangePasswordSubComponent(ChangePasswordModule changePasswordModule);
+    ChangePasswordSubComponent changePasswordSubComponent(ChangePasswordModule changePasswordModule);
 
-    ProfileSetupSubComponent provideProfileSetupSubComponent(ProfileSetupModule profileSetupModule);
+    ProfileSetupSubComponent profileSetupSubComponent(ProfileSetupModule profileSetupModule);
 
-    SelectAvatarSubComponent provideSelectAvatarSubComponent(SelectAvatarModule selectAvatarModule);
+    SelectAvatarSubComponent selectAvatarSubComponent(SelectAvatarModule selectAvatarModule);
 
-    LocationAreaSubComponent provideLocationAreaSubComponent(LocationAreaModule locationAreaModule);
+    LocationAreaSubComponent locationAreaSubComponent(LocationAreaModule locationAreaModule);
 
-    ProfessionRoleSubcomponent provideProfessionRoleSubComponent(ProfessionRoleModule professionRoleModule);
+    ProfessionRoleSubcomponent professionRoleSubComponent(ProfessionRoleModule professionRoleModule);
 
-    UploadFileSubComponent provideUploadFileSubComponent(UploadFileModule uploadFileModule);
+    UploadFileSubComponent uploadFileSubComponent(UploadFileModule uploadFileModule);
+
+    WorkTypeSubComponent workTypeSubComponent(WorkTypeModule workTypeModule);
 
     void inject(PreferredLocationActivity preferredLocationActivity);
 

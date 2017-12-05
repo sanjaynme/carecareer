@@ -14,7 +14,6 @@ import javax.inject.Inject;
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.contracts.AppContract;
-import au.com.carecareers.android.customViews.EbAlertDialog;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.profileModule.uploadFile.injection.UploadFileModule;
 import au.com.carecareers.android.profileModule.uploadFile.model.UploadFileModel;
@@ -48,7 +47,7 @@ public class UploadFileActivity extends BaseActivity implements UploadFileContra
 
     @Override
     protected void injectComponent(BaseComponent baseComponent) {
-        baseComponent.provideUploadFileSubComponent(new UploadFileModule()).inject(this);
+        baseComponent.uploadFileSubComponent(new UploadFileModule()).inject(this);
     }
 
     @Override

@@ -10,7 +10,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
@@ -95,7 +94,7 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
 
     @Override
     protected void injectComponent(BaseComponent baseComponent) {
-        baseComponent.provideProfileSetupSubComponent(new ProfileSetupModule()).inject(this);
+        baseComponent.profileSetupSubComponent(new ProfileSetupModule()).inject(this);
     }
 
     @Override

@@ -58,7 +58,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
 
     @Override
     protected void injectComponent(BaseComponent baseComponent) {
-        baseComponent.provideLoginSubComponent(new LoginModule()).inject(this);
+        baseComponent.loginSubComponent(new LoginModule()).inject(this);
     }
 
     @Override
