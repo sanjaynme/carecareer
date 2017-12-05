@@ -1,4 +1,4 @@
-package au.com.carecareers.android.profileModule.locationArea;
+package au.com.carecareers.android.profileModule.professionRole;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -27,18 +27,18 @@ import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.customViews.EbProgressView;
 import au.com.carecareers.android.injection.component.BaseComponent;
-import au.com.carecareers.android.profileModule.locationArea.adapter.LocationAreaAdapter;
-import au.com.carecareers.android.profileModule.locationArea.injection.LocationAreaModule;
-import au.com.carecareers.android.profileModule.locationArea.model.LocationAreaResponse;
+import au.com.carecareers.android.profileModule.professionRole.adapter.ProfessionRoleAdapter;
+import au.com.carecareers.android.profileModule.professionRole.injection.ProfessionRoleModule;
+import au.com.carecareers.android.profileModule.professionRole.model.ProfessionRoleResponse;
 import au.com.carecareers.android.utilities.ViewUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class LocationAreaActivity extends BaseActivity implements LocationAreaContract.ILocationAreaView {
+public class ProfessionRoleActivity extends BaseActivity implements ProfessionRoleContract.IProfessionRoleView {
     @Inject
-    LocationAreaAdapter locationAreaAdapter;
+    ProfessionRoleContract.IProfessionRolePresenter presenter;
     @Inject
-    LocationAreaContract.ILocationAreaPresenter presenter;
+    ProfessionRoleAdapter adapter;
     @Inject
     Gson gson;
     @BindView(R.id.toolbar)
@@ -54,33 +54,32 @@ public class LocationAreaActivity extends BaseActivity implements LocationAreaCo
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
     private MenuItem menuItemDone;
-    private int totalPage;
-    private List<LocationAreaResponse.Area> listArea;
+    private List<ProfessionRoleResponse.Role> roleList;
 
     public static void startForResult(Activity activity, String data) {
         Intent intent = new Intent();
-        intent.setClass(activity, LocationAreaActivity.class);
+        intent.setClass(activity, ProfessionRoleActivity.class);
         intent.putExtra(AppContract.Extras.DATA, data);
-        activity.startActivityForResult(intent, AppContract.RequestCode.LOCATION_AREA);
+        activity.startActivityForResult(intent, AppContract.RequestCode.PROFESSION_ROLE);
     }
 
     @Override
     protected int getLayout() {
-        return R.layout.activity_location_area;
+        return R.layout.activity_profession_role;
     }
 
     @Override
     protected void injectComponent(BaseComponent baseComponent) {
-        baseComponent.provideLocationAreaSubComponent(new LocationAreaModule()).inject(this);
+        baseComponent.provideProfessionRoleSubComponent(new ProfessionRoleModule()).inject(this);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ViewUtils.setupUI(findViewById(R.id.activity_location_area), this);
-        presenter.onAttach(this);
+        ViewUtils.setupUI(findViewById(R.id.activity_profession_role), this);
         setupRecyclerView();
-        presenter.loadLocationWithoutPagination();
+        presenter.onAttach(this);
+        presenter.loadProfessionsRoles();
         etSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -93,7 +92,7 @@ public class LocationAreaActivity extends BaseActivity implements LocationAreaCo
 
             @Override
             public void afterTextChanged(Editable s) {
-                locationAreaAdapter.getFilter().filter(s.toString().trim());
+                adapter.getFilter().filter(s.toString().trim());
                 if (!s.toString().isEmpty()) {
                     ibCross.setVisibility(View.VISIBLE);
                 } else {
@@ -103,32 +102,28 @@ public class LocationAreaActivity extends BaseActivity implements LocationAreaCo
         });
     }
 
+    @Override
+    protected void onDestroy() {
+        presenter.onDetach();
+        super.onDestroy();
+    }
+
     private void setupRecyclerView() {
         String extra = getIntent().getStringExtra(AppContract.Extras.DATA);
-        listArea = gson.fromJson(extra, new TypeToken<List<LocationAreaResponse.Area>>() {
+        roleList = gson.fromJson(extra, new TypeToken<List<ProfessionRoleResponse.Role>>() {
         }.getType());
 
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(manager);
-        locationAreaAdapter.setListener(() -> {
-            if (locationAreaAdapter.getCheckedItems().isEmpty()) {
+        adapter.setListener(() -> {
+            if (adapter.getCheckedItems().isEmpty()) {
                 menuItemDone.setVisible(false);
             } else {
                 menuItemDone.setVisible(true);
             }
         });
-        recyclerView.setAdapter(locationAreaAdapter);
-
-        /*Remove pagination as per requirement*/
-       /* recyclerView.addOnScrollListener(new EndlessRecyclerViewScrollListener(manager) {
-            @Override
-            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                if (page <= totalPage && etSearch.getText().toString().isEmpty()) {
-                    presenter.loadLocationArea(page, locationAreaAdapter.getItemCount() > 0);
-                }
-            }
-        });*/
+        recyclerView.setAdapter(adapter);
     }
 
     @OnClick(R.id.ib_cross)
@@ -137,11 +132,6 @@ public class LocationAreaActivity extends BaseActivity implements LocationAreaCo
         ibCross.setVisibility(View.GONE);
     }
 
-    @Override
-    protected void onDestroy() {
-        presenter.onDetach();
-        super.onDestroy();
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -159,7 +149,7 @@ public class LocationAreaActivity extends BaseActivity implements LocationAreaCo
                 break;
             case R.id.menu_done:
                 Intent intent = new Intent();
-                intent.putExtra(AppContract.Extras.DATA, gson.toJson(locationAreaAdapter.getCheckedItems()));
+                intent.putExtra(AppContract.Extras.DATA, gson.toJson(adapter.getCheckedItems()));
                 setResult(RESULT_OK, intent);
                 onBackPressed();
                 break;
@@ -167,11 +157,12 @@ public class LocationAreaActivity extends BaseActivity implements LocationAreaCo
         return true;
     }
 
+
     @Override
     public void setupToolbar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        tvToolbarTitle.setText(getMessage(R.string.title_location_area));
+        tvToolbarTitle.setText(getMessage(R.string.title_profession_role));
     }
 
     @Override
@@ -182,16 +173,6 @@ public class LocationAreaActivity extends BaseActivity implements LocationAreaCo
     @Override
     public void hideProgressBar() {
         ebProgressView.hideProgress();
-    }
-
-    @Override
-    public void showFooterProgress() {
-        // locationAreaAdapter.showFooterProgress();
-    }
-
-    @Override
-    public void hideFooterProgress() {
-        //locationAreaAdapter.removeFooterProgress();
     }
 
     @Override
@@ -215,19 +196,13 @@ public class LocationAreaActivity extends BaseActivity implements LocationAreaCo
     }
 
     @Override
-    public void setList(LocationAreaResponse locationAreaResponse) {
-        totalPage = locationAreaResponse.getPageCount();
-        locationAreaAdapter.setListLocation(locationAreaResponse.getEmbedded().getLocations());
-        if (listArea != null && !listArea.isEmpty()) {
-            locationAreaAdapter.persistCheckedList(listArea);
+    public void setList(ProfessionRoleResponse professionRoleResponse) {
+        adapter.setProfessionRoleList(professionRoleResponse.getEmbedded().getProfessions());
+        if (roleList != null && !roleList.isEmpty()) {
+            adapter.persistCheckedList(roleList);
             menuItemDone.setVisible(true);
         } else {
             menuItemDone.setVisible(false);
         }
-    }
-
-    @Override
-    public void addMoreItems(LocationAreaResponse locationAreaResponse) {
-        locationAreaAdapter.addMoreItems(locationAreaResponse.getEmbedded().getLocations());
     }
 }

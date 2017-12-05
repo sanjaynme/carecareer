@@ -4,6 +4,8 @@
     <string name="err_no_data_available">No Data Available</string>
     <string name="err_no_location_selected">Please select location.</string>
     <string name="err_no_area_selected">Please select a location.</string>
+    <string name="err_no_file_selected">Please select file.</string>
+    <string name="err_no_file_type_selected">Please select file type.</string>
 
     <string name="title_activity_landing">LandingActivity</string>
     <string name="title_personal_details">Personal Details</string>
@@ -11,6 +13,8 @@
     <string name="title_select_avatar">@string/tv_select_an_avatar</string>
     <string name="title_location_area">Location/Area</string>
     <string name="title_my_profile">My profile</string>
+    <string name="title_profession_role">Profession/role</string>
+    <string name="title_upload_file">Upload file</string>
 
     <!--TextViews-->
     <string name="lorem_epsum">
@@ -31,7 +35,7 @@
     <string name="tv_terms_conditions">By registering, you are agreeing to the \n <u>Terms &amp; Conditions</u></string>
     <string name="tv_forgot_email">Enter the email you registered with:</string>
     <string name="tv_submit">Submit</string>
-    <string name="tv_skip"><u>Skip</u></string>
+    <string name="tv_skip">Skip</string>
     <string name="tv_next">Next</string>
     <string name="tv_profile_greetings">Thank you for registering. Lets\'s get your profile set up so employers can find you.</string>
     <string name="tv_upload_photo">Upload Photo</string>
@@ -47,9 +51,14 @@
     <string name="tv_choose_from_gallery">Choose from gallery</string>
     <string name="tv_personal_search_settings">Personal Search Settings</string>
     <string name="tv_hi">Hi, </string>
+    <string name="tv_upload_your_files">Please upload your files.</string>
+    <string name="tv_select_file">Select file</string>
+    <string name="tv_type">Type</string>
+
+
     <string name="tv_preferred_location">Preferred Location(s)</string>
     <string name="tv_preferred_industry">Preferred Industry(s)</string>
-    <string name="tv_your_career_move">Your Career Move</string>
+    <string name="tv_next_career_move">Next Career Move</string>
     <string name="tv_forgot_password">Forgot Password</string>
     <!--SettingsProfile-->
     <string name="tv_settings_change_password">Change Password</string>
@@ -57,6 +66,7 @@
     <string name="tv_settings_privacy_policy">Privacy Policy</string>
     <string name="tv_settings_share_app">Share app</string>
     <string name="tv_settings_logout">Logout</string>
+    <string name="tv_settings_upload_file">Upload file</string>
 
     <!--JobSearch Screen-->
     <string name="tv_search">Search</string>
@@ -92,7 +102,7 @@
 
     <!--Success-->
     <string name="sucess_forgot_email">A password reset link has been sent to your email. Please reset your password.</string>
-    <string name="sucess_registration">Registeration has been done successfully.</string>
+    <string name="sucess_registration">Registration has been done successfully.</string>
     <string name="sucess_change_password">Password has been changed successfully.</string>
 
     <!--EditTexts-->
@@ -116,12 +126,13 @@
     <string name="hint_location_area">Location/area*</string>
     <string name="hint_profession_role">Profession/role*</string>
     <string name="hint_work_type">Work type*</string>
-    <string name="hint_what_is_your_next_career_move">What is your next career move?</string>
+    <string name="hint_what_would_u_like_to_do">What would you like to do?</string>
     <string name="hint_search">Search</string>
 
     <!--Messages-->
     <string name="msg_loading">Loading...</string>
     <string name="msg_logout">Are you sure you want to logout?</string>
+    <string name="msg_success">Success!</string>
 
     <!--Fonts-->
     <string name="font_source_san_pro_regular">fonts/SourceSansPro-Regular.ttf</string>
@@ -152,4 +163,10 @@
     <string name="tv_searches"><u>Searches</u></string>
     <string name="tv_job_name"><b>Aged care</b></string>
 
+    <string-array name="file_types">
+        <item>Type</item>
+        <item>Resume</item>
+        <item>Cover letter</item>
+        <item>File</item>
+    </string-array>
 </resources>

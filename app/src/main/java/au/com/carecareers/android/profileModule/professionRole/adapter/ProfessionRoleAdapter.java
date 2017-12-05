@@ -1,4 +1,4 @@
-package au.com.carecareers.android.profileModule.locationArea.adapter;
+package au.com.carecareers.android.profileModule.professionRole.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,7 +18,7 @@ import javax.inject.Inject;
 
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.injection.scope.ActivityScope;
-import au.com.carecareers.android.profileModule.locationArea.model.LocationAreaResponse;
+import au.com.carecareers.android.profileModule.professionRole.model.ProfessionRoleResponse;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -26,33 +26,33 @@ import butterknife.ButterKnife;
  * Created by Nischal Manandhar on 28/11/2017.
  */
 @ActivityScope
-public class LocationAreaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements Filterable {
-    private List<LocationAreaResponse.Location> originalList;
-    private List<LocationAreaResponse.Location> filteredList;
-    private LocationAreaFilter filter = new LocationAreaFilter();
+public class ProfessionRoleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements Filterable {
+    private List<ProfessionRoleResponse.Profession> originalList;
+    private List<ProfessionRoleResponse.Profession> filteredList;
+    private ItemFilter filter = new ItemFilter();
     private Listener listener;
 
     @Inject
-    public LocationAreaAdapter() {
+    public ProfessionRoleAdapter() {
         this.originalList = new ArrayList<>();
         this.filteredList = new ArrayList<>();
     }
 
-    public void setListLocation(List<LocationAreaResponse.Location> listLocation) {
-        this.filteredList = listLocation;
+    public void setProfessionRoleList(List<ProfessionRoleResponse.Profession> listProfession) {
+        this.filteredList = listProfession;
         this.originalList = this.filteredList;
         notifyDataSetChanged();
     }
 
     /**
-     * @param listArea list of previously selected area list
+     * @param roleList list of previously selected area list
      */
-    public void persistCheckedList(List<LocationAreaResponse.Area> listArea) {
-        for (LocationAreaResponse.Location location : filteredList) {
-            for (LocationAreaResponse.Area area : location.getEmbedded().getAreas()) {
-                for (LocationAreaResponse.Area persistedArea : listArea) {
-                    if (area.getId().equals(persistedArea.getId())) {
-                        area.setChecked(persistedArea.isChecked());
+    public void persistCheckedList(List<ProfessionRoleResponse.Role> roleList) {
+        for (ProfessionRoleResponse.Profession profession : filteredList) {
+            for (ProfessionRoleResponse.Role role : profession.getEmbedded().getRoles()) {
+                for (ProfessionRoleResponse.Role persistedRole : roleList) {
+                    if (role.getId().equals(persistedRole.getId())) {
+                        role.setChecked(persistedRole.isChecked());
                     }
                 }
             }
@@ -64,35 +64,16 @@ public class LocationAreaAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         this.listener = listener;
     }
 
-    public void showFooterProgress() {
-        LocationAreaResponse.Location location = new LocationAreaResponse.Location();
-        location.setId(-1);
-        this.filteredList.add(location);
-        notifyItemInserted(filteredList.size());
-    }
-
-    public void removeFooterProgress() {
-        this.filteredList.remove(filteredList.size() - 1);
-        notifyItemRemoved(filteredList.size());
-    }
-
-    public void addMoreItems(List<LocationAreaResponse.Location> listLocation) {
-        int lastPosition = filteredList.size() - 1;
-        this.filteredList.addAll(listLocation);
-        this.originalList = this.filteredList;
-        notifyItemRangeInserted(lastPosition + 1, listLocation.size());
-    }
-
-    public List<LocationAreaResponse.Area> getCheckedItems() {
-        List<LocationAreaResponse.Area> listSelectedAreas = new ArrayList<>();
-        for (LocationAreaResponse.Location location : originalList) {
-            for (LocationAreaResponse.Area area : location.getEmbedded().getAreas()) {
-                if (area.isChecked()) {
-                    listSelectedAreas.add(area);
+    public List<ProfessionRoleResponse.Role> getCheckedItems() {
+        List<ProfessionRoleResponse.Role> listSelectedRoles = new ArrayList<>();
+        for (ProfessionRoleResponse.Profession profession : originalList) {
+            for (ProfessionRoleResponse.Role role : profession.getEmbedded().getRoles()) {
+                if (role.isChecked()) {
+                    listSelectedRoles.add(role);
                 }
             }
         }
-        return listSelectedAreas;
+        return listSelectedRoles;
     }
 
     @Override
@@ -156,20 +137,20 @@ public class LocationAreaAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         @Override
         public void bind(int position) {
             tvCategoryTitle.setText(filteredList.get(position).getName());
-            List<LocationAreaResponse.Area> listArea = filteredList.get(position).getEmbedded().getAreas();
+            List<ProfessionRoleResponse.Role> listRole = filteredList.get(position).getEmbedded().getRoles();
             llSubCategory.removeAllViews();
-            if (listArea != null && !listArea.isEmpty()) {
-                for (LocationAreaResponse.Area area : listArea) {
+            if (listRole != null && !listRole.isEmpty()) {
+                for (ProfessionRoleResponse.Role role : listRole) {
                     LinearLayout subCategory = (LinearLayout) LayoutInflater.from(itemView.getContext()).inflate(R.layout.item_sub_category, llSubCategory, false);
                     CheckBox cbSubCategory = subCategory.findViewById(R.id.cb_sub_category);
-                    cbSubCategory.setText(area.getName());
+                    cbSubCategory.setText(role.getName());
                     cbSubCategory.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                        area.setChecked(buttonView.isChecked());
+                        role.setChecked(buttonView.isChecked());
                         if (listener != null) {
                             listener.onCheckedChanged();
                         }
                     });
-                    cbSubCategory.setChecked(area.isChecked());
+                    cbSubCategory.setChecked(role.isChecked());
                     llSubCategory.addView(subCategory);
                 }
             }
@@ -191,36 +172,36 @@ public class LocationAreaAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
     }
 
-    class LocationAreaFilter extends Filter {
+    class ItemFilter extends Filter {
 
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             String filterString = constraint.toString().toLowerCase();
             FilterResults filterResults = new FilterResults();
-            List<LocationAreaResponse.Location> tempFilterList = new ArrayList<>(originalList.size());
+            List<ProfessionRoleResponse.Profession> tempFilterList = new ArrayList<>(originalList.size());
             if (filterString.isEmpty()) {
                 tempFilterList.addAll(originalList);
             } else {
-                for (LocationAreaResponse.Location location : originalList) {
-                    List<LocationAreaResponse.Area> listAreas = location.getEmbedded().getAreas();
-                    List<LocationAreaResponse.Area> tempAreaList = new ArrayList<>();
-                    for (LocationAreaResponse.Area area : listAreas) {
-                        String filterable = area.getName().toLowerCase();
+                for (ProfessionRoleResponse.Profession profession : originalList) {
+                    List<ProfessionRoleResponse.Role> rolesList = profession.getEmbedded().getRoles();
+                    List<ProfessionRoleResponse.Role> tempRoleList = new ArrayList<>();
+                    for (ProfessionRoleResponse.Role role : rolesList) {
+                        String filterable = role.getName().toLowerCase();
                         if (filterable.startsWith(filterString)) {
-                            tempAreaList.add(area);
+                            tempRoleList.add(role);
                         }
                     }
-                    if (tempAreaList.size() > 0) {
-                        LocationAreaResponse.Location tempLocation = new LocationAreaResponse.Location();
-                        tempLocation.setId(location.getId());
-                        tempLocation.setName(location.getName());
-                        tempLocation.setCountryId(location.getCountryId());
-                        tempLocation.setActive(location.getActive());
-                        tempLocation.setLinks(location.getLinks());
-                        tempLocation.setPosition(location.getPosition());
-                        tempLocation.setEmbedded(new LocationAreaResponse.EmbeddedArea());
-                        tempLocation.getEmbedded().setAreas(tempAreaList);
-                        tempFilterList.add(tempLocation);
+                    if (tempRoleList.size() > 0) {
+                        ProfessionRoleResponse.Profession tempProfession = new ProfessionRoleResponse.Profession();
+                        tempProfession.setId(profession.getId());
+                        tempProfession.setName(profession.getName());
+                        tempProfession.setActive(profession.getActive());
+                        tempProfession.setLinks(profession.getLinks());
+                        tempProfession.setPosition(profession.getPosition());
+                        tempProfession.setSlug(profession.getSlug());
+                        tempProfession.setEmbedded(new ProfessionRoleResponse.EmbeddedRole());
+                        tempProfession.getEmbedded().setRoles(tempRoleList);
+                        tempFilterList.add(tempProfession);
                     }
                 }
             }
@@ -232,7 +213,7 @@ public class LocationAreaAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-            filteredList = (List<LocationAreaResponse.Location>) results.values;
+            filteredList = (List<ProfessionRoleResponse.Profession>) results.values;
             notifyDataSetChanged();
         }
     }

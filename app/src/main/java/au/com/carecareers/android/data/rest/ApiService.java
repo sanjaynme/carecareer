@@ -15,9 +15,11 @@ import au.com.carecareers.android.loginModule.login.model.LoginModel;
 import au.com.carecareers.android.loginModule.register.model.RegisterModel;
 import au.com.carecareers.android.loginModule.register.model.TaxonomyModel;
 import au.com.carecareers.android.profileModule.locationArea.model.LocationAreaResponse;
+import au.com.carecareers.android.profileModule.professionRole.model.ProfessionRoleResponse;
 import au.com.carecareers.android.profileModule.selectAvatar.model.AvatarRequest;
 import au.com.carecareers.android.profileModule.selectAvatar.model.AvatarResponse;
 import au.com.carecareers.android.profileModule.selectAvatar.model.FileUploadResponse;
+import au.com.carecareers.android.profileModule.uploadFile.model.UploadFileModel;
 import au.com.carecareers.android.splashModule.model.AuthenticationModel;
 import io.reactivex.Completable;
 import io.reactivex.Observable;
@@ -121,9 +123,9 @@ public interface ApiService {
                     "accept:application/json"
             })
     @Multipart
-    @POST(UrlContract.UPLOAD_FILE)
-    Observable<FileUploadResponse> uploadFile(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
-                                              @Part MultipartBody.Part file);
+    @POST(UrlContract.UPLOAD_IMAGE_FILE)
+    Observable<FileUploadResponse> uploadImageFile(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
+                                                   @Part MultipartBody.Part file);
 
     @Headers(
             {"Content-Type:application/json",
@@ -149,4 +151,24 @@ public interface ApiService {
                                                      @Query(UrlContract.Keys.KEYWORD) String keyWord,
                                                      @Query(UrlContract.Keys.LOCATION_ID) int locationId);
 
+
+    @Headers(
+            {"Content-Type:application/json",
+                    "accept:application/json"
+            })
+    @GET(UrlContract.PROFESSION_ROLE)
+    Observable<ProfessionRoleResponse> getProfessionRole(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
+                                                         @Query(UrlContract.Keys.LIMIT) int limit);
+
+    @Headers(
+            {
+                    "accept:application/json"
+            })
+    @Multipart
+    @POST(UrlContract.UPLOAD_FILE)
+    Observable<UploadFileModel> uploadFile(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
+                                           @Path(UrlContract.Keys.CANDIDATE_ID) String candidateId,
+                                           @Part(UrlContract.Keys.SKIP) int skip,
+                                           @Part(UrlContract.Keys.TYPE) int type,
+                                           @Part MultipartBody.Part file);
 }

@@ -9,8 +9,7 @@
         fontPath="@string/font_source_san_pro_bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
+        android:background="@drawable/bg_button"
         android:gravity="center"
         android:padding="@dimen/dimen_16dp"
         android:text="@string/tv_submit"
@@ -22,11 +21,11 @@
         fontPath="@string/font_source_san_pro_bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
+        android:background="@drawable/bg_button"
         android:gravity="center"
         android:padding="@dimen/dimen_16dp"
         android:text="@string/tv_skip"
+        android:textAllCaps="true"
         android:textColor="@color/colorWhite" />
 
     <TextView
@@ -35,8 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:clickable="true"
-        android:focusable="true"
+        android:background="@drawable/bg_button"
         android:gravity="center"
         android:padding="@dimen/dimen_16dp"
         android:text="@string/tv_next"

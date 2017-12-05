@@ -22,16 +22,17 @@ public class UrlContract {
     public static final String GET_LOCATIONS = "locations";
     public static final String GET_AVATARS = "avatars";//GET
     public static final String SET_AVATAR = "candidates/{" + Keys.CANDIDATE_ID + "}/avatar";//PUT
-    public static final String UPLOAD_FILE = "upload-file";//POST
-    public static final String LOCATION_AREA = "locations-areas";//POST
     public static final String GET_JOB_ADS = "locations-areas";
+    public static final String UPLOAD_IMAGE_FILE = "upload-file";//POST
+    public static final String LOCATION_AREA = "locations-areas";//GET
+    public static final String PROFESSION_ROLE = "professions-roles";//GET
+    public static final String UPLOAD_FILE = "candidates/{" + Keys.CANDIDATE_ID + "}/files"; //POST
 
 
     public class Keys {
         public static final String GRANT_TYPE = "grant_type";
         public final static String AUTHORIZATION = "authorization";
         public final static String ACCESS_TOKEN = "access_token";
-        public static final String TYPE = "type";
         public static final String ID_OR_SLUG = "id_or_slug";
         public static final String PAGE = "page";
         public static final String LIMIT = "limit";
@@ -39,6 +40,8 @@ public class UrlContract {
         public static final String COUNTRY_ID = "country_id";
         public static final String KEYWORD ="keyword" ;
         public static final String LOCATION_ID ="location_id" ;
+        public static final String SKIP = "skip";
+        public static final String TYPE = "type";
     }
 
     public class Values {

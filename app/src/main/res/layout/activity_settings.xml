@@ -42,10 +42,18 @@
         android:text="@string/tv_settings_share_app" />
 
     <TextView
-        android:id="@+id/tv_logout"
+        android:id="@+id/tv_upload_file"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_share_app"
+        android:padding="@dimen/dimen_20dp"
+        android:text="@string/tv_settings_upload_file" />
+
+    <TextView
+        android:id="@+id/tv_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_upload_file"
         android:padding="@dimen/dimen_20dp"
         android:text="@string/tv_settings_logout" />
 

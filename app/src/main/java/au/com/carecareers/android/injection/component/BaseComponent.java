@@ -24,10 +24,16 @@ import au.com.carecareers.android.loginModule.register.injection.RegisterSubComp
 import au.com.carecareers.android.profileModule.locationArea.injection.LocationAreaModule;
 import au.com.carecareers.android.profileModule.locationArea.injection.LocationAreaSubComponent;
 import au.com.carecareers.android.profileModule.preferredLocation.PreferredLocationActivity;
+import au.com.carecareers.android.profileModule.professionRole.injection.ProfessionRoleModule;
+import au.com.carecareers.android.profileModule.professionRole.injection.ProfessionRoleSubcomponent;
 import au.com.carecareers.android.profileModule.profileSetup.injection.ProfileSetupModule;
 import au.com.carecareers.android.profileModule.profileSetup.injection.ProfileSetupSubComponent;
 import au.com.carecareers.android.profileModule.selectAvatar.injection.SelectAvatarModule;
 import au.com.carecareers.android.profileModule.selectAvatar.injection.SelectAvatarSubComponent;
+import au.com.carecareers.android.settingsModule.injection.SettingsModule;
+import au.com.carecareers.android.settingsModule.injection.SettingsSubComponent;
+import au.com.carecareers.android.profileModule.uploadFile.injection.UploadFileModule;
+import au.com.carecareers.android.profileModule.uploadFile.injection.UploadFileSubComponent;
 import au.com.carecareers.android.settingsModule.injection.SettingsModule;
 import au.com.carecareers.android.settingsModule.injection.SettingsSubComponent;
 import au.com.carecareers.android.splashModule.injection.SplashModule;
@@ -69,6 +75,10 @@ public interface BaseComponent {
     JobAdsSubComponent provideJobAdsSubComponent(JobAdsModule jobAdsModule);
 
     JobAdsDetailsSubComponent provideJobDetailsSubComponent(JobAdsDetailsModule jobAdsModule);
+
+    ProfessionRoleSubcomponent provideProfessionRoleSubComponent(ProfessionRoleModule professionRoleModule);
+
+    UploadFileSubComponent provideUploadFileSubComponent(UploadFileModule uploadFileModule);
 
     void inject(PreferredLocationActivity preferredLocationActivity);
 

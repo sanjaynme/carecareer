@@ -22,6 +22,7 @@ android {
         }
         release {
             buildConfigField "String", "BASE_URL", '"https://carecareers.jxt9.com/api/jobboard/v1/"'
+            resValue "string", "google_maps_key", (project.findProperty("GOOGLE_MAPS_API_KEY") ?: "")
             minifyEnabled true
             shrinkResources true
             debuggable false

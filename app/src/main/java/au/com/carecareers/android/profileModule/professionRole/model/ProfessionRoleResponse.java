@@ -1,4 +1,4 @@
-package au.com.carecareers.android.profileModule.locationArea.model;
+package au.com.carecareers.android.profileModule.professionRole.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -8,48 +8,48 @@ import java.util.List;
 import au.com.carecareers.android.base.model.BaseListResponse;
 
 /**
- * Created by Nischal Manandhar on 28/11/2017.
+ * Created by Nischal Manandhar on 01/12/2017.
  */
 
-public class LocationAreaResponse extends BaseListResponse {
+public class ProfessionRoleResponse extends BaseListResponse {
     @SerializedName("_embedded")
     @Expose
-    private EmbeddedLocation embedded;
+    private Embedded embedded;
 
-    public EmbeddedLocation getEmbedded() {
-        return this.embedded;
+    public Embedded getEmbedded() {
+        return embedded;
     }
 
-    public void setEmbedded(EmbeddedLocation embedded) {
+    public void setEmbedded(Embedded embedded) {
         this.embedded = embedded;
     }
 
-    public static class EmbeddedLocation {
+    public static class Embedded {
 
-        @SerializedName("locations")
+        @SerializedName("professions")
         @Expose
-        private List<Location> locations = null;
+        private List<Profession> professions = null;
 
-        public List<Location> getLocations() {
-            return locations;
+        public List<Profession> getProfessions() {
+            return professions;
         }
 
-        public void setLocations(List<Location> locations) {
-            this.locations = locations;
+        public void setProfessions(List<Profession> professions) {
+            this.professions = professions;
         }
     }
 
-    public static class Location {
+    public static class Profession {
 
         @SerializedName("id")
         @Expose
         private Integer id;
-        @SerializedName("country_id")
-        @Expose
-        private Integer countryId;
         @SerializedName("name")
         @Expose
         private String name;
+        @SerializedName("slug")
+        @Expose
+        private String slug;
         @SerializedName("active")
         @Expose
         private Integer active;
@@ -61,7 +61,7 @@ public class LocationAreaResponse extends BaseListResponse {
         private Links links;
         @SerializedName("_embedded")
         @Expose
-        private EmbeddedArea embedded;
+        private EmbeddedRole embedded;
 
         public Integer getId() {
             return id;
@@ -71,20 +71,20 @@ public class LocationAreaResponse extends BaseListResponse {
             this.id = id;
         }
 
-        public Integer getCountryId() {
-            return countryId;
-        }
-
-        public void setCountryId(Integer countryId) {
-            this.countryId = countryId;
-        }
-
         public String getName() {
             return name;
         }
 
         public void setName(String name) {
             this.name = name;
+        }
+
+        public String getSlug() {
+            return slug;
+        }
+
+        public void setSlug(String slug) {
+            this.slug = slug;
         }
 
         public Integer getActive() {
@@ -111,41 +111,46 @@ public class LocationAreaResponse extends BaseListResponse {
             this.links = links;
         }
 
-        public EmbeddedArea getEmbedded() {
-            return this.embedded;
+        public EmbeddedRole getEmbedded() {
+            return embedded;
         }
 
-        public void setEmbedded(EmbeddedArea embedded) {
+        public void setEmbedded(EmbeddedRole embedded) {
             this.embedded = embedded;
         }
+
     }
 
-    public static class EmbeddedArea {
+    public static class EmbeddedRole {
 
-        @SerializedName("areas")
+        @SerializedName("roles")
         @Expose
-        private List<Area> areas = null;
+        private List<Role> roles = null;
 
-        public List<Area> getAreas() {
-            return areas;
+        public List<Role> getRoles() {
+            return roles;
         }
 
-        public void setAreas(List<Area> areas) {
-            this.areas = areas;
+        public void setRoles(List<Role> roles) {
+            this.roles = roles;
         }
+
     }
 
-    public static class Area {
+    public static class Role {
 
         @SerializedName("id")
         @Expose
         private Integer id;
-        @SerializedName("location_id")
+        @SerializedName("profession_id")
         @Expose
-        private Integer locationId;
+        private Integer professionId;
         @SerializedName("name")
         @Expose
         private String name;
+        @SerializedName("slug")
+        @Expose
+        private String slug;
         @SerializedName("active")
         @Expose
         private Integer active;
@@ -155,8 +160,7 @@ public class LocationAreaResponse extends BaseListResponse {
         @SerializedName("_links")
         @Expose
         private Links links;
-        @SerializedName("is_checked")
-        @Expose
+
         private boolean isChecked;
 
         public Integer getId() {
@@ -167,12 +171,12 @@ public class LocationAreaResponse extends BaseListResponse {
             this.id = id;
         }
 
-        public Integer getLocationId() {
-            return locationId;
+        public Integer getProfessionId() {
+            return professionId;
         }
 
-        public void setLocationId(Integer locationId) {
-            this.locationId = locationId;
+        public void setProfessionId(Integer professionId) {
+            this.professionId = professionId;
         }
 
         public String getName() {
@@ -181,6 +185,14 @@ public class LocationAreaResponse extends BaseListResponse {
 
         public void setName(String name) {
             this.name = name;
+        }
+
+        public String getSlug() {
+            return slug;
+        }
+
+        public void setSlug(String slug) {
+            this.slug = slug;
         }
 
         public Integer getActive() {
@@ -215,5 +227,4 @@ public class LocationAreaResponse extends BaseListResponse {
             isChecked = checked;
         }
     }
-
 }

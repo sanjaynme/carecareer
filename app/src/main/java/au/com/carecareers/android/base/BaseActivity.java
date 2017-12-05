@@ -100,6 +100,42 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     }
 
     @Override
+    public void showAlertDialog(String message) {
+        EbAlertDialog.showAlertDialog(this, message);
+    }
+
+    @Override
+    public void showAlertDialogFinishActivity(int message) {
+        EbAlertDialog.showAlertDialogWithCallback(this, getMessage(message), new EbAlertDialog.ConfirmationDialogCallback() {
+            @Override
+            public void onOkClicked() {
+                onBackPressed();
+            }
+
+            @Override
+            public void onCancelClicked() {
+
+            }
+        });
+    }
+
+    @Override
+    public void showAlertDialogFinishActivity(String message) {
+        EbAlertDialog.showAlertDialogWithCallback(this, message, new EbAlertDialog.ConfirmationDialogCallback() {
+            @Override
+            public void onOkClicked() {
+                onBackPressed();
+            }
+
+            @Override
+            public void onCancelClicked() {
+
+            }
+        });
+    }
+
+
+    @Override
     public void showError(ResponseBody errorResponseBody, int errorType) {
         EbAlertDialog.showAlertDialog(this, getErrorMessage(errorResponseBody, errorType));
     }
@@ -157,6 +193,11 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     @Override
     public void sendAnalyticsData() {
+
+    }
+
+    @Override
+    public void setupToolbar() {
 
     }
 

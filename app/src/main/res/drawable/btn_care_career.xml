@@ -3,7 +3,7 @@
     <!-- Button Focused Pressed-->
     <item android:drawable="@color/colorRedButton" android:state_focused="true" android:state_pressed="true" />
     <!-- Button Pressed-->
-    <item android:drawable="@color/colorAccentTrans" android:state_focused="false" android:state_pressed="true" />
+    <item android:drawable="@color/colorAccentDark" android:state_focused="false" android:state_pressed="true" />
     <!-- Button Default Image-->
     <item android:drawable="@color/colorRedButton" />
 </selector>

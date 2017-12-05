@@ -70,10 +70,12 @@ public class AppContract {
     public class RequestCode {
         public static final int CAMERA = 100;
         public static final int GALLERY = 101;
+        public static final int FILES = 102;
 
         public static final int PREFERRED_LOCATION = 201;
         public static final int SELECT_AVATAR = 202;
         public static final int LOCATION_AREA = 203;
+        public static final int PROFESSION_ROLE = 204;
     }
 
 }

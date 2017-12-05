@@ -72,31 +72,31 @@
 
         <TextView
             android:id="@+id/tv_personal_details"
-            style="@style/TVMyProfile"
+            style="@style/TvMyProfile"
             android:layout_marginBottom="@dimen/dimen_15dp"
             android:text="@string/tv_personal_details" />
 
         <TextView
             android:id="@+id/tv_education"
-            style="@style/TVMyProfile"
+            style="@style/TvMyProfile"
             android:layout_marginBottom="@dimen/dimen_15dp"
             android:text="@string/tv_education" />
 
         <TextView
             android:id="@+id/tv_employment"
-            style="@style/TVMyProfile"
+            style="@style/TvMyProfile"
             android:layout_marginBottom="@dimen/dimen_15dp"
             android:text="@string/tv_employment" />
 
         <TextView
             android:id="@+id/tv_files"
-            style="@style/TVMyProfile"
+            style="@style/TvMyProfile"
             android:layout_marginBottom="@dimen/dimen_15dp"
             android:text="@string/tv_files" />
 
         <TextView
             android:id="@+id/tv_personal_search_settings"
-            style="@style/TVMyProfile"
+            style="@style/TvMyProfile"
             android:layout_marginBottom="@dimen/dimen_20dp"
             android:text="@string/tv_personal_search_settings" />
 
