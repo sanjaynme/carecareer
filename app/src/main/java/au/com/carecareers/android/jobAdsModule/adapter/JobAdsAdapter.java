@@ -12,8 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
@@ -64,8 +66,19 @@ public class JobAdsAdapter extends RecyclerView.Adapter<JobAdsAdapter.JobAdsView
                     .load(jobSearchResponseData.get(position).links.advertiserLogoUrl.href)
                     .resize(200, 200)
                     .centerCrop()
-                    .placeholder(R.color.colorGrey700)
-                    .into(holder.ivItemBackground);
+                    .error(R.color.colorGrey700)
+                    .into(holder.ivItemBackground, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            holder.progressBar.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onError() {
+                            holder.progressBar.setVisibility(View.VISIBLE);
+
+                        }
+                    });
 
             holder.ivItemSave.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -95,7 +108,6 @@ public class JobAdsAdapter extends RecyclerView.Adapter<JobAdsAdapter.JobAdsView
         try {
             convertedDate = dateFormat.parse(dateString);
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         System.out.println(convertedDate);
@@ -123,6 +135,7 @@ public class JobAdsAdapter extends RecyclerView.Adapter<JobAdsAdapter.JobAdsView
         TextView tvItemCompanyName, tvItemProfession, tvItemPostedDate, tvItemWorkType, tvItemLocation;
         Button btnJobViewDetails;
         ImageView ivItemBackground, ivItemSave, ivItemShare;
+        ProgressBar progressBar;
 
         JobAdsViewHolder(View itemView) {
             super(itemView);
@@ -135,6 +148,7 @@ public class JobAdsAdapter extends RecyclerView.Adapter<JobAdsAdapter.JobAdsView
             ivItemBackground = itemView.findViewById(R.id.iv_item_background);
             ivItemSave = itemView.findViewById(R.id.iv_item_save);
             ivItemShare = itemView.findViewById(R.id.iv_item_share);
+            progressBar = itemView.findViewById(R.id.jobads_progress_bar);
         }
     }
 }
