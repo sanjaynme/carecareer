@@ -25,13 +25,15 @@ public class SearchContract {
         void loadLocations();
 
         void searchJobs(String keywords, int locationId);
+
+        void searchJobs(JobAdsModel.JobAdsRequest jobAdsRequestModel);
     }
 
     public interface ISearchInteractor extends IBaseInteractor {
 
         Observable<LocationModel.LocationResponse> loadLocations();
 
-        Observable<JobAdsModel.JobAdsResponse> searchJobAds(String keywords, int locationId);
+        Observable<JobAdsModel.JobAdsResponse> searchJobAds(JobAdsModel.JobAdsRequest jobAdsRequest);
 
     }
 }

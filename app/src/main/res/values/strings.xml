@@ -54,8 +54,13 @@
     <string name="tv_upload_your_files">Please upload your files.</string>
     <string name="tv_select_file">Select file</string>
     <string name="tv_type">Type</string>
-
-
+    <string name="tv_name_of_search">Name of Search *</string>
+    <string name="tv_search_details">Search Details</string>
+    <string name="tv_profession_or_role">Profession / role</string>
+    <string name="tv_keyword">Keywords</string>
+    <string name="tv_shortlist_jobs">Shortlist Jobs</string>
+    <string name="tv_searches"><u>Searches</u></string>
+    <string name="tv_job_name"><b>Aged care</b></string>
     <string name="tv_preferred_location">Preferred Location(s)</string>
     <string name="tv_preferred_industry">Preferred Industry(s)</string>
     <string name="tv_next_career_move">Next Career Move</string>
@@ -79,11 +84,12 @@
     <string name="tv_view_details">View Details</string>
     <string name="tv_job_advertiser">View more jobs from this advertiser</string>
     <string name="tv_job_description">Description</string>
-    <string name="tv_date_posted">Date posted</string>
+    <string name="tv_date_posted">Date posted:</string>
     <string name="tv_sector">Sector</string>
-    <string name="tv_profession">Profession</string>
-    <string name="tv_location">Location</string>
+    <string name="tv_profession">Profession:</string>
+    <string name="tv_location">Location:</string>
     <string name="tv_job_details">Job Details</string>
+    <string name="tv_job_work_type">Worktype:</string>
 
     <!--Error-->
     <string name="err_firstname">Please enter your first name.</string>
@@ -155,13 +161,6 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="tv_name_of_search">Name of Search *</string>
-    <string name="tv_search_details">Search Details</string>
-    <string name="tv_profession_or_role">Profession / role</string>
-    <string name="tv_keyword">Keywords</string>
-    <string name="tv_shortlist_jobs">Shortlist Jobs</string>
-    <string name="tv_searches"><u>Searches</u></string>
-    <string name="tv_job_name"><b>Aged care</b></string>
 
     <string-array name="file_types">
         <item>Type</item>

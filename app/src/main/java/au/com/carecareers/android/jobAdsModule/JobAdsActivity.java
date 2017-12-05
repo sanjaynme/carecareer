@@ -20,7 +20,6 @@ import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.jobAdsModule.adapter.JobAdsAdapter;
 import au.com.carecareers.android.jobAdsModule.adapter.JobAdsListListener;
-import au.com.carecareers.android.jobAdsModule.injection.JobAdsModule;
 import au.com.carecareers.android.jobAdsModule.model.JobAdsModel;
 import au.com.carecareers.android.jobDetailsModule.JobDetailsActivity;
 import butterknife.BindView;
@@ -30,7 +29,7 @@ import butterknife.OnClick;
  * Created by Nikesh on 11/30/2017.
  */
 
-public class JobAdsActivity extends BaseActivity implements JobAdsContract.IJobAdsView, JobAdsListListener {
+public class JobAdsActivity extends BaseActivity implements JobAdsListListener {
     @BindView(R.id.iv_back_arrow)
     ImageView ivBackArrow;
     @BindView(R.id.et_job_search)
@@ -46,7 +45,7 @@ public class JobAdsActivity extends BaseActivity implements JobAdsContract.IJobA
     @BindView(R.id.recycler_view_job_ads)
     RecyclerView recyclerViewJobAds;
     private JobAdsModel.JobAdsResponse jobSearchResponse;
-    private List<JobAdsModel.JobAdsResponse> jobSearchStringResponse;
+    private List<JobAdsModel.JobAdsResponse.Embedded.Job> jobsList;
     private JobAdsAdapter jobAdsAdapter;
 
     public static void start(Context context, String extraData) {
@@ -68,7 +67,7 @@ public class JobAdsActivity extends BaseActivity implements JobAdsContract.IJobA
 
     @Override
     protected void injectComponent(BaseComponent baseComponent) {
-        baseComponent.provideJobAdsSubComponent(new JobAdsModule()).inject(this);
+//        baseComponent.provideJobAdsSubComponent(new JobAdsModule()).inject(this);
     }
 
     @Override
@@ -77,10 +76,11 @@ public class JobAdsActivity extends BaseActivity implements JobAdsContract.IJobA
         if (getIntent().getExtras() != null) {
             jobSearchResponse = new Gson().fromJson(getIntent().getStringExtra(AppContract.Extras.DATA), JobAdsModel.JobAdsResponse.class);
         }
-        setUpJobAdsRecyclerView(jobSearchStringResponse);
+        jobsList = jobSearchResponse.embedded.jobs;
+        setUpJobAdsRecyclerView(jobsList);
     }
 
-    private void setUpJobAdsRecyclerView(List<JobAdsModel.JobAdsResponse> jobSearchResponse) {
+    private void setUpJobAdsRecyclerView(List<JobAdsModel.JobAdsResponse.Embedded.Job> jobSearchResponse) {
         jobAdsAdapter = new JobAdsAdapter(JobAdsActivity.this, jobSearchResponse, this);
         recyclerViewJobAds.setAdapter(jobAdsAdapter);
         recyclerViewJobAds.setLayoutManager(new LinearLayoutManager(this));
@@ -92,9 +92,20 @@ public class JobAdsActivity extends BaseActivity implements JobAdsContract.IJobA
     }
 
     @Override
-    public void onRecyclerLongItemClick(int jobAdId, int position) {
-        JobDetailsActivity.start(this);
-//        JobDetailsActivity.start(this, jobAdId, position);
+    public void onRecyclerViewDetailsItemClick(JobAdsModel.JobAdsResponse.Embedded.Job jobDetailsResponse) {
+        Gson gson = new Gson();
+        JobDetailsActivity.start(this, gson.toJson(jobDetailsResponse));
         transitionActivityOpen();
+    }
+
+
+    @Override
+    public void onRecyclerViewShareItemClick(String jobAdId) {
+
+    }
+
+    @Override
+    public void onRecyclerViewSaveItemClick(String jobAdId) {
+
     }
 }

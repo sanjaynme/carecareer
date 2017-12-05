@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -27,10 +28,8 @@
                     android:id="@+id/iv_job_details"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/colorWhite"
                     android:contentDescription="@null"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_pencil_unselected" />
+                    android:scaleType="centerCrop" />
 
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/anim_toolbar"
@@ -79,45 +78,45 @@
                     android:layout_marginStart="@dimen/dimen_10dp">
 
                     <TextView
-                        android:id="@+id/tv_item_job_details"
-                        style="@style/TVJobDetails"
+                        android:id="@+id/tv_job_details"
+                        style="@style/TvJobDetails"
                         android:text="@string/tv_job_details" />
 
                     <TextView
-                        android:id="@+id/tv_item_location"
-                        style="@style/TVJobDetails"
-                        android:layout_below="@+id/tv_item_job_details"
+                        android:id="@+id/tv_details_location"
+                        style="@style/TvJobDetails"
+                        android:layout_below="@+id/tv_job_details"
                         android:text="@string/tv_location" />
 
                     <TextView
-                        android:id="@+id/tv_item_profession"
-                        style="@style/TVJobDetails"
-                        android:layout_below="@+id/tv_item_location"
+                        android:id="@+id/tv_details_profession"
+                        style="@style/TvJobDetails"
+                        android:layout_below="@+id/tv_details_location"
                         android:text="@string/tv_profession_or_role" />
 
                     <TextView
-                        android:id="@+id/tv_item_sector"
-                        style="@style/TVJobDetails"
-                        android:layout_below="@+id/tv_item_profession"
+                        android:id="@+id/tv_details_sector"
+                        style="@style/TvJobDetails"
+                        android:layout_below="@+id/tv_details_profession"
                         android:text="@string/tv_sector" />
 
                     <TextView
-                        android:id="@+id/tv_item_posted_date"
-                        style="@style/TVJobDetails"
-                        android:layout_below="@+id/tv_item_sector"
+                        android:id="@+id/tv_details_posted_date"
+                        style="@style/TvJobDetails"
+                        android:layout_below="@+id/tv_details_sector"
                         android:text="@string/tv_date_posted" />
 
                     <TextView
-                        android:id="@+id/tv_item_description"
-                        style="@style/TVJobDetails"
-                        android:layout_below="@+id/tv_item_posted_date"
+                        android:id="@+id/tv_details_description"
+                        style="@style/TvJobDetails"
+                        android:layout_below="@+id/tv_details_posted_date"
                         android:text="@string/lorem_epsum" />
 
                     <Button
                         android:id="@+id/btn_view_jobs_advertiser"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/tv_item_description"
+                        android:layout_below="@+id/tv_details_description"
                         android:layout_marginLeft="@dimen/dimen_20dp"
                         android:layout_marginRight="@dimen/dimen_20dp"
                         android:background="@drawable/btn_job_search"
@@ -154,7 +153,8 @@
                 android:contentDescription="@null"
                 android:padding="10dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_star_unselected" />
+                android:src="@drawable/ic_star_unselected"
+                tools:ignore="RtlHardcoded" />
 
             <ImageView
                 android:id="@+id/iv_item_share"
@@ -169,7 +169,8 @@
                 android:contentDescription="@null"
                 android:padding="10dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_star_unselected" />
+                android:src="@drawable/ic_star_unselected"
+                tools:ignore="RtlHardcoded" />
 
             <Button
                 android:id="@+id/btn_job_apply"
@@ -187,7 +188,8 @@
                 android:text="@string/tv_apply"
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhite"
-                android:textSize="@dimen/txt_15sp" />
+                android:textSize="@dimen/txt_15sp"
+                tools:ignore="RtlHardcoded" />
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 

@@ -31,7 +31,6 @@ import au.com.carecareers.android.data.local.SharedPreferenceManager;
 import au.com.carecareers.android.injection.component.BaseComponent;
 import au.com.carecareers.android.jobAdsModule.JobAdsActivity;
 import au.com.carecareers.android.jobAdsModule.model.JobAdsModel;
-import au.com.carecareers.android.jobDetailsModule.JobDetailsActivity;
 import au.com.carecareers.android.jobSearchModule.injection.SearchModule;
 import au.com.carecareers.android.jobSearchModule.model.LocationModel;
 import au.com.carecareers.android.loginModule.getPages.PagesActivity;
@@ -64,11 +63,15 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
     Spinner spinnerLocations;
 
     ArrayList<LocationModel.LocationResponse.Embedded.SearchLocation> countryList;
+    ArrayList<Integer> locationIdList;
+
+    JobAdsModel.JobAdsRequest jobAdsRequestModel;
     @Inject
     SharedPreferenceManager preferenceManager;
     ArrayList<String> countryName;
     private int pos;
     private int id;
+    private ArrayList<Integer> countryIdList, roleIdList, areaIdList, professionIdList;
 
     @Override
     public void injectComponent(BaseComponent baseComponent) {
@@ -92,6 +95,14 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
         setUpButton();
         presenter.onAttach(this);
         presenter.loadLocations();
+
+        jobAdsRequestModel = new JobAdsModel.JobAdsRequest();
+        locationIdList = new ArrayList<>();
+        countryIdList = new ArrayList<>();
+        areaIdList = new ArrayList<>();
+        professionIdList = new ArrayList<>();
+        roleIdList = new ArrayList<>();
+
     }
 
     private void setUpButton() {
@@ -133,7 +144,7 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
         spinnerLocations.setVisibility(View.VISIBLE);
         countryName = new ArrayList<>();
         countryList = new ArrayList<>();
-        countryName.add("Select a location");
+//        countryName.add("Select a location");
         for (int i = 0; i < locationResponse.getEmbedded().getLocations().size(); i++) {
             LocationModel.LocationResponse.Embedded.SearchLocation searchLocations = new LocationModel.LocationResponse.Embedded.SearchLocation();
             searchLocations.name = locationResponse.getEmbedded().getLocations().get(i).getName();
@@ -157,7 +168,7 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
                 AppLog.d("position:" + position);
                 AppLog.d("country selected name::::" + countryNames);
                 AppLog.d("country selected id:::::" + countryId);
-//                locationModel.setId(countryId);
+                locationIdList.add(countryList.get(position).id);
             }
 
             @Override
@@ -178,13 +189,9 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
     @OnClick(R.id.btn_job_search)
     void onJobSearchClicked() {
         String keywords = etSearchKeyword.getText().toString().trim();
-        /*int locationId = countryList.get(0).id;
-        presenter.searchJobs(keywords, locationId);*/
-        JobDetailsActivity.start(getActivity());
-        transitionActivityOpen();
-
-//        JobAdsActivity.start(getActivity(), "");
-//        transitionActivityOpen();
+        jobAdsRequestModel.setLocation(locationIdList);
+        jobAdsRequestModel.setKeyWords(keywords);
+        presenter.searchJobs(jobAdsRequestModel);
     }
 
     @Override

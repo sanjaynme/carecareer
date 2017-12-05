@@ -29,8 +29,7 @@ public class SearchInteractor extends BaseInteractor implements SearchContract.I
     }
 
     @Override
-    public Observable<JobAdsModel.JobAdsResponse> searchJobAds(String keywords, int locationId) {
-        return getApiService().getJobAds(getPreferenceManager().getStringValues(AppContract.Preferences.AUTHORIZATION_KEY), keywords, locationId);
-
+    public Observable<JobAdsModel.JobAdsResponse> searchJobAds(JobAdsModel.JobAdsRequest jobAdsRequest) {
+        return getApiService().getJobAds(getPreferenceManager().getStringValues(AppContract.Preferences.AUTHORIZATION_KEY), jobAdsRequest.getKeyWords(), jobAdsRequest.getLocation().get(0));
     }
 }

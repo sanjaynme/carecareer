@@ -12,7 +12,7 @@ import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by Nikesh on 11/29/2017.
+ * Created by Sanjay on 11/29/2017.
  */
 
 public class SearchPresenter extends BasePresenter<SearchContract.ISearchView, SearchContract.ISearchInteractor> implements SearchContract.ISearchPresenter {
@@ -31,8 +31,13 @@ public class SearchPresenter extends BasePresenter<SearchContract.ISearchView, S
 
     @Override
     public void searchJobs(String keywords, int locationId) {
+
+    }
+
+    @Override
+    public void searchJobs(JobAdsModel.JobAdsRequest jobAdsRequestModel) {
         getView().showProgressDialog(R.string.msg_loading);
-        getCompositeDisposable().add(getInteractor().searchJobAds(keywords, locationId)
+        getCompositeDisposable().add(getInteractor().searchJobAds(jobAdsRequestModel)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(getJobSearchObserver()));
@@ -42,8 +47,13 @@ public class SearchPresenter extends BasePresenter<SearchContract.ISearchView, S
         return new DisposableObserver<JobAdsModel.JobAdsResponse>() {
             @Override
             public void onNext(JobAdsModel.JobAdsResponse jobAdsResponse) {
-                getView().hideProgressDialog();
-                getView().navigateToJobAds(jobAdsResponse);
+                if (getView() != null) {
+                    if (jobAdsResponse != null){
+                        getView().hideProgressDialog();
+                        getView().navigateToJobAds(jobAdsResponse);
+                    }
+
+                }
             }
 
             @Override

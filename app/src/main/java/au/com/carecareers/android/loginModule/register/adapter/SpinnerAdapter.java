@@ -14,7 +14,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import au.com.carecareers.android.R;
-import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.utilities.AppLog;
 
 /**
@@ -86,7 +85,7 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
             convertView.setTag(holder);
         }
         Holder holder = (Holder) convertView.getTag();
-        if (position == getCount()) {
+     /*   if (position == getCount()) {
             AppLog.d("inside count");
             if (spinnerid == AppContract.Extras.COUNTRYLIST) {
                 AppLog.d("inside location" + spinnerList.get(position));
@@ -94,14 +93,14 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
             } else {
                 AppLog.d("ouside location");
             }
-        } else {
-            AppLog.d("outside count" + spinnerList.get(position));
-            holder.textView1.setText(spinnerList.get(position));
-            holder.textView1.setTypeface(externalFont);
-            holder.textView1.setTextSize(15);
-            holder.textView1.setHintTextColor(context.getResources().getColor(R.color.colorHint));
-            holder.textView1.setTextColor(context.getResources().getColor(R.color.colorHint));
-        }
+        } else {*/
+        AppLog.d("outside count" + spinnerList.get(position));
+        holder.textView1.setText(spinnerList.get(position));
+        holder.textView1.setTypeface(externalFont);
+        holder.textView1.setTextSize(15);
+        holder.textView1.setHintTextColor(context.getResources().getColor(R.color.colorHint));
+        holder.textView1.setTextColor(context.getResources().getColor(R.color.colorHint));
+//        }
         return convertView;
     }
 

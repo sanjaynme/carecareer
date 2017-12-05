@@ -5,8 +5,6 @@ import javax.inject.Singleton;
 import au.com.carecareers.android.homeModule.myProfile.MyProfileFragment;
 import au.com.carecareers.android.injection.module.AppModule;
 import au.com.carecareers.android.injection.module.NetModule;
-import au.com.carecareers.android.jobAdsModule.injection.JobAdsModule;
-import au.com.carecareers.android.jobAdsModule.injection.JobAdsSubComponent;
 import au.com.carecareers.android.jobDetailsModule.injection.JobAdsDetailsModule;
 import au.com.carecareers.android.jobDetailsModule.injection.JobAdsDetailsSubComponent;
 import au.com.carecareers.android.jobSearchModule.injection.SearchModule;
@@ -30,8 +28,6 @@ import au.com.carecareers.android.profileModule.profileSetup.injection.ProfileSe
 import au.com.carecareers.android.profileModule.profileSetup.injection.ProfileSetupSubComponent;
 import au.com.carecareers.android.profileModule.selectAvatar.injection.SelectAvatarModule;
 import au.com.carecareers.android.profileModule.selectAvatar.injection.SelectAvatarSubComponent;
-import au.com.carecareers.android.settingsModule.injection.SettingsModule;
-import au.com.carecareers.android.settingsModule.injection.SettingsSubComponent;
 import au.com.carecareers.android.profileModule.uploadFile.injection.UploadFileModule;
 import au.com.carecareers.android.profileModule.uploadFile.injection.UploadFileSubComponent;
 import au.com.carecareers.android.settingsModule.injection.SettingsModule;
@@ -70,9 +66,6 @@ public interface BaseComponent {
     SelectAvatarSubComponent provideSelectAvatarSubComponent(SelectAvatarModule selectAvatarModule);
 
     LocationAreaSubComponent provideLocationAreaSubComponent(LocationAreaModule locationAreaModule);
-
-
-    JobAdsSubComponent provideJobAdsSubComponent(JobAdsModule jobAdsModule);
 
     JobAdsDetailsSubComponent provideJobDetailsSubComponent(JobAdsDetailsModule jobAdsModule);
 

@@ -7,6 +7,7 @@ import au.com.carecareers.android.contracts.UrlContract;
 import au.com.carecareers.android.homeModule.model.LogOutModel;
 import au.com.carecareers.android.homeModule.model.TokenRefreshModel;
 import au.com.carecareers.android.jobAdsModule.model.JobAdsModel;
+import au.com.carecareers.android.jobDetailsModule.model.JobsDetailsModel;
 import au.com.carecareers.android.jobSearchModule.model.LocationModel;
 import au.com.carecareers.android.loginModule.changePassword.model.ChangePasswordModel;
 import au.com.carecareers.android.loginModule.forgotPassword.model.ForgotPasswordModel;
@@ -151,6 +152,13 @@ public interface ApiService {
                                                      @Query(UrlContract.Keys.KEYWORD) String keyWord,
                                                      @Query(UrlContract.Keys.LOCATION_ID) int locationId);
 
+    @Headers({"Content-Type:application/json",
+            "accept:application/json",})
+    @GET(UrlContract.GET_JOB_DETAILS)
+    Observable<JobsDetailsModel.JobsDetailResponse> getJobDetails(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
+                                                                  @Path(UrlContract.Keys.JOB_ID) int jobId
+    );
+
 
     @Headers(
             {"Content-Type:application/json",
@@ -160,10 +168,7 @@ public interface ApiService {
     Observable<ProfessionRoleResponse> getProfessionRole(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
                                                          @Query(UrlContract.Keys.LIMIT) int limit);
 
-    @Headers(
-            {
-                    "accept:application/json"
-            })
+    @Headers({"accept:application/json"})
     @Multipart
     @POST(UrlContract.UPLOAD_FILE)
     Observable<UploadFileModel> uploadFile(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
@@ -171,4 +176,5 @@ public interface ApiService {
                                            @Part(UrlContract.Keys.SKIP) int skip,
                                            @Part(UrlContract.Keys.TYPE) int type,
                                            @Part MultipartBody.Part file);
+
 }

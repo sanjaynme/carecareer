@@ -16,13 +16,8 @@
 
         <TextView
             android:id="@+id/tv_item_company_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dimen_20dp"
-            android:lines="1"
-            android:text="sdfdsfffff sdhgkj kjhkj hkj hkj hkj hkj hkj hkjh kjh kjhkjh kjhkj hkjhkjh kjh kjhkjh kjhjfds fsdf sdf sdf sdf sd fds fsd fsdfdsf sd fsdf dsfdfsdf"
-            android:textColor="@color/textColorPrimary"
-            android:textSize="15sp" />
+            style="@style/TvJobDetails"
+            tools:text="Company name" />
 
         <ImageView
             android:id="@+id/iv_item_background"
@@ -36,51 +31,28 @@
 
         <TextView
             android:id="@+id/tv_item_profession"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TvJobDetails"
             android:layout_below="@+id/iv_item_background"
-            android:layout_marginBottom="@dimen/dimen_20dp"
-            android:layout_marginLeft="@dimen/dimen_10dp"
-            android:layout_marginRight="@dimen/dimen_10dp"
-            android:textColor="@color/textColorPrimary"
-            android:textSize="15sp"
-            android:text="Profession" />
+            tools:text="Profession" />
 
         <TextView
             android:id="@+id/tv_item_posted_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TvJobDetails"
             android:layout_below="@+id/tv_item_profession"
             android:layout_marginBottom="@dimen/dimen_20dp"
-            android:layout_marginLeft="@dimen/dimen_10dp"
-            android:layout_marginRight="@dimen/dimen_10dp"
-            android:textColor="@color/textColorPrimary"
-            android:textSize="15sp"
-            android:text="Date posted" />
+            tools:text="Date posted" />
 
         <TextView
             android:id="@+id/tv_item_work_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TvJobDetails"
             android:layout_below="@+id/tv_item_posted_date"
-            android:layout_marginBottom="@dimen/dimen_20dp"
-            android:layout_marginLeft="@dimen/dimen_10dp"
-            android:layout_marginRight="@dimen/dimen_10dp"
-            android:textColor="@color/textColorPrimary"
-            android:textSize="15sp"
-            android:text="Work Type" />
+            tools:text="Work Type" />
 
         <TextView
             android:id="@+id/tv_item_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TvJobDetails"
             android:layout_below="@+id/tv_item_work_type"
-            android:layout_marginBottom="@dimen/dimen_20dp"
-            android:layout_marginLeft="@dimen/dimen_10dp"
-            android:layout_marginRight="@dimen/dimen_10dp"
-            android:textColor="@color/textColorPrimary"
-            android:textSize="15sp"
-            android:text="Location" />
+            tools:text="Location" />
 
         <View
             android:id="@+id/view"
@@ -120,12 +92,10 @@
                 android:contentDescription="@null"
                 android:padding="10dp"
                 android:scaleType="centerCrop"
-
                 android:src="@drawable/ic_star_unselected" />
 
             <Button
                 android:id="@+id/btn_job_view_details"
-                style="@style/Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -137,10 +107,11 @@
                 android:layout_toEndOf="@+id/iv_item_share"
                 android:layout_toRightOf="@+id/iv_item_share"
                 android:background="@drawable/btn_job_search"
-                android:text="View Details"
+                android:text="@string/tv_view_details"
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhite"
-                android:textSize="@dimen/txt_15sp" />
+                android:textSize="@dimen/txt_15sp"
+                tools:ignore="RtlHardcoded" />
 
         </RelativeLayout>
     </RelativeLayout>

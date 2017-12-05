@@ -142,11 +142,12 @@
         <item name="fontPath">@string/font_source_san_pro_semi_bold</item>
     </style>
 
-    <style name="TVJobDetails">
+    <style name="TvJobDetails">
+        <!--<item name="fontPath">@string/font_source_san_pro_semi_bold</item>-->
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/textColorPrimary</item>
-        <item name="android:textSize">@dimen/txt_15sp</item>
+        <item name="android:textSize">@dimen/txt_18sp</item>
         <item name="android:layout_marginBottom">@dimen/dimen_20dp</item>
     </style>
 
