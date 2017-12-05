@@ -79,7 +79,7 @@
     <string name="sucess_change_password">Password has been changed successfully.</string>
 
     <!--EditTexts-->
-    <string name="et_username">Username</string>
+    <string name="et_email">Email</string>
     <string name="et_password">Password</string>
     <string name="et_forgot_password"><u>Forgot Your Password?</u></string>
 
