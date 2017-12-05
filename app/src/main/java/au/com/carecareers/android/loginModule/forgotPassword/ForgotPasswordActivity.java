@@ -47,7 +47,7 @@ public class ForgotPasswordActivity extends BaseActivity implements ForgotPasswo
 
     @Override
     protected void injectComponent(BaseComponent baseComponent) {
-        baseComponent.provideForgotPasswordSubComponent(new ForgotPasswordModule()).inject(this);
+        baseComponent.forgotPasswordSubComponent(new ForgotPasswordModule()).inject(this);
     }
 
     public static void start(Context context) {

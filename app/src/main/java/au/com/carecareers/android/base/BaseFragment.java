@@ -7,9 +7,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.tooltip.Tooltip;
 
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.application.CareCareerApp;
@@ -157,5 +160,18 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
 
     protected void transitionActivityOpen() {
         getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
+    protected void showTooltip(View view, @StringRes int message) {
+        new Tooltip.Builder(view)
+                .setText(message)
+                .setTextSize(R.dimen.txt_normal)
+                .setTextColor(getResources().getColor(R.color.colorWhite))
+                .setBackgroundColor(getResources().getColor(R.color.colorAccent))
+                .setGravity(Gravity.TOP)
+                .setPadding(R.dimen.dimen_10dp)
+                .setDismissOnClick(true)
+                .setCancelable(true)
+                .show();
     }
 }

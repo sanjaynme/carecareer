@@ -132,6 +132,11 @@
     <string name="tv_settings_upload_file">Upload file</string>
     <string name="tv_settings_logout">Logout</string>
 
+
+    <string name="info_preferred_location">Sed ut otam rem aperiam, eaque ipsa quae ab illo inventore veritatis</string>
+    <string name="info_nxt_career_move">Sed ut eriam, eaque ipsa quae ab illo inventore veritatis</string>
+
+
     <string-array name="file_types">
         <item>Type</item>
         <item>Resume</item>

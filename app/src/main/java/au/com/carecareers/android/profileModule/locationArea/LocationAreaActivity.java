@@ -71,7 +71,7 @@ public class LocationAreaActivity extends BaseActivity implements LocationAreaCo
 
     @Override
     protected void injectComponent(BaseComponent baseComponent) {
-        baseComponent.provideLocationAreaSubComponent(new LocationAreaModule()).inject(this);
+        baseComponent.locationAreaSubComponent(new LocationAreaModule()).inject(this);
     }
 
     @Override

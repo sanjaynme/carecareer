@@ -58,7 +58,7 @@ public class TermsAndConditionActivity extends BaseActivity implements
 
     @Override
     protected void injectComponent(BaseComponent baseComponent) {
-        baseComponent.provideTermsAndConditionsSubComponent(new TermsAndConditionsModule()).inject(this);
+        baseComponent.termsAndConditionsSubComponent(new TermsAndConditionsModule()).inject(this);
     }
 
     @Override
