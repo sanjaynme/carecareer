@@ -17,6 +17,7 @@ import au.com.carecareers.android.profileModule.professionRole.model.ProfessionR
 import au.com.carecareers.android.profileModule.selectAvatar.model.AvatarRequest;
 import au.com.carecareers.android.profileModule.selectAvatar.model.AvatarResponse;
 import au.com.carecareers.android.profileModule.selectAvatar.model.FileUploadResponse;
+import au.com.carecareers.android.profileModule.uploadFile.model.UploadFileModel;
 import au.com.carecareers.android.splashModule.model.AuthenticationModel;
 import io.reactivex.Completable;
 import io.reactivex.Observable;
@@ -147,9 +148,9 @@ public interface ApiService {
             })
     @Multipart
     @POST(UrlContract.UPLOAD_FILE)
-    Observable<FileUploadResponse> uploadFile(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
-                                              @Path(UrlContract.Keys.CANDIDATE_ID) String candidateId,
-                                              @Path(UrlContract.Keys.SKIP) int skip,
-                                              @Path(UrlContract.Keys.TYPE) int type,
-                                              @Part MultipartBody.Part file);
+    Observable<UploadFileModel> uploadFile(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
+                                           @Path(UrlContract.Keys.CANDIDATE_ID) String candidateId,
+                                           @Part(UrlContract.Keys.SKIP) int skip,
+                                           @Part(UrlContract.Keys.TYPE) int type,
+                                           @Part MultipartBody.Part file);
 }

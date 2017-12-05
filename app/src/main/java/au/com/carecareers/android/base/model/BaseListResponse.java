@@ -83,6 +83,9 @@ public class BaseListResponse {
         @SerializedName("avatar_url")
         @Expose
         private UrlLink avatarUrl;  // Link to saved avatar image
+        @SerializedName("download_file")
+        @Expose
+        private UrlLink fileUrl;  // Link to saved file url
 
         public UrlLink getSelf() {
             return self;

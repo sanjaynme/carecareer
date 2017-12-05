@@ -4,6 +4,7 @@
     <string name="err_no_data_available">No Data Available</string>
     <string name="err_no_location_selected">Please select location.</string>
     <string name="err_no_area_selected">Please select a location.</string>
+    <string name="err_no_file_selected">Please select file.</string>
     <string name="err_no_file_type_selected">Please select file type.</string>
 
     <string name="title_activity_landing">LandingActivity</string>
@@ -103,6 +104,7 @@
     <!--Messages-->
     <string name="msg_loading">Loading...</string>
     <string name="msg_logout">Are you sure you want to logout?</string>
+    <string name="msg_success">Success!</string>
 
     <!--Fonts-->
     <string name="font_source_san_pro_regular">fonts/SourceSansPro-Regular.ttf</string>

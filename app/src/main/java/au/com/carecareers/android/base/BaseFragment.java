@@ -82,7 +82,6 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
     @Override
     public void showToastMessage(int message) {
         ViewUtils.showToastMessage(getActivity(), getMessage(message));
-
     }
 
     protected String getMessage(@StringRes int message) {
@@ -91,13 +90,47 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
 
     @Override
     public void showAlertDialog(int message) {
-        EbAlertDialog.showAlertDialog(getActivity(), getMessage(message));
+        EbAlertDialog.showAlertDialog(getContext(), getMessage(message));
+    }
+
+    @Override
+    public void showAlertDialog(String message) {
+        EbAlertDialog.showAlertDialog(getContext(), message);
+    }
+
+    @Override
+    public void showAlertDialogFinishActivity(int message) {
+        EbAlertDialog.showAlertDialogWithCallback(getContext(), getMessage(message), new EbAlertDialog.ConfirmationDialogCallback() {
+            @Override
+            public void onOkClicked() {
+                getActivity().onBackPressed();
+            }
+
+            @Override
+            public void onCancelClicked() {
+
+            }
+        });
+    }
+
+    @Override
+    public void showAlertDialogFinishActivity(String message) {
+        EbAlertDialog.showAlertDialogWithCallback(getContext(), message, new EbAlertDialog.ConfirmationDialogCallback() {
+            @Override
+            public void onOkClicked() {
+                getActivity().onBackPressed();
+            }
+
+            @Override
+            public void onCancelClicked() {
+
+            }
+        });
     }
 
     @Override
     public void showError(ResponseBody errorResponseBody, int errorType) {
         EbAlertDialog.showAlertDialog(getActivity(), getErrorMessage(errorResponseBody, errorType));
-
     }
 
     private String getErrorMessage(ResponseBody errorResponseBody, int errorType) {
@@ -106,6 +139,11 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
 
     @Override
     public void sendAnalyticsData() {
+
+    }
+
+    @Override
+    public void setupToolbar() {
 
     }
 

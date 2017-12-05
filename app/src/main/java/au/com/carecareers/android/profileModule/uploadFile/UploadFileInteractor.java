@@ -10,6 +10,8 @@ import au.com.carecareers.android.contracts.UrlContract;
 import au.com.carecareers.android.data.local.SharedPreferenceManager;
 import au.com.carecareers.android.data.rest.ApiService;
 import au.com.carecareers.android.injection.scope.ActivityScope;
+import au.com.carecareers.android.profileModule.uploadFile.model.UploadFileModel;
+import io.reactivex.Observable;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -25,18 +27,18 @@ public class UploadFileInteractor extends BaseInteractor implements UploadFileCo
     }
 
     @Override
-    public void uploadFile(String filePath) {
-        File file = new File(filePath);
+    public Observable<UploadFileModel> uploadFile(UploadFileModel.Request request) {
+        File file = new File(request.getFilePath());
         // create RequestBody instance from file
         RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
         // MultipartBody.Part is used to send also the actual file tvName
         MultipartBody.Part body = MultipartBody.Part.createFormData("file", file.getName(), requestFile);
 
-        getApiService().uploadFile(
+        return getApiService().uploadFile(
                 getPreferenceManager().getStringValues(AppContract.Preferences.ACCESS_TOKEN),
                 UrlContract.Values.CANDIDATE_ID,
-                1,
-                1,
+                0,
+                request.getType(),
                 body
         );
     }

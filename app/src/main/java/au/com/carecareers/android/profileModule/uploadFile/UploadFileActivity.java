@@ -6,20 +6,25 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import javax.inject.Inject;
 
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.contracts.AppContract;
+import au.com.carecareers.android.customViews.EbAlertDialog;
 import au.com.carecareers.android.injection.component.BaseComponent;
+import au.com.carecareers.android.profileModule.uploadFile.injection.UploadFileModule;
+import au.com.carecareers.android.profileModule.uploadFile.model.UploadFileModel;
 import au.com.carecareers.android.utilities.FileUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class UploadFileActivity extends BaseActivity {
+public class UploadFileActivity extends BaseActivity implements UploadFileContract.IUploadFileView {
+    @Inject
+    UploadFileContract.IUploadFilePresenter presenter;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.tv_toolbar_title)
@@ -43,27 +48,24 @@ public class UploadFileActivity extends BaseActivity {
 
     @Override
     protected void injectComponent(BaseComponent baseComponent) {
-
+        baseComponent.provideUploadFileSubComponent(new UploadFileModule()).inject(this);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        presenter.onAttach(this);
         initView();
     }
 
+    @Override
+    protected void onDestroy() {
+        presenter.onDetach();
+        super.onDestroy();
+    }
+
     private void initView() {
-        spChooseType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
     }
 
     @Override
@@ -80,11 +82,10 @@ public class UploadFileActivity extends BaseActivity {
                 break;
             }
             case R.id.menu_done: {
-                if (spChooseType.getSelectedItemPosition() != 0) {
-
-                } else {
-                    showAlertDialog(R.string.err_no_file_type_selected);
-                }
+                UploadFileModel.Request request = new UploadFileModel.Request();
+                request.setFilePath(filePath);
+                request.setType(spChooseType.getSelectedItemPosition());
+                presenter.doneClicked(request);
                 break;
             }
 

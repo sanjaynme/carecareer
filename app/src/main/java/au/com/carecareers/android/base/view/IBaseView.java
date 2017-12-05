@@ -17,7 +17,13 @@ public interface IBaseView {
 
     void showAlertDialog(@StringRes int message);
 
-    void showError(ResponseBody message,int errorType);
+    void showAlertDialog(String message);
+
+    void showAlertDialogFinishActivity(@StringRes int message);
+
+    void showAlertDialogFinishActivity(String message);
+
+    void showError(ResponseBody message, int errorType);
 
     void sendAnalyticsData();
 
