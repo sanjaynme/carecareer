@@ -42,6 +42,7 @@ ext {
             junitVersion                : "4.12",
             espressoCoreVersion         : "3.0.1",
             testRunnerVersion           : "1.0.1",
+            tooltipVersion              : "0.1.9",
     ]
 
     libraries = [
@@ -107,6 +108,7 @@ ext {
             ui = [
                     fab        : "com.github.clans:fab:$versions.fabVersion",
                     calligraphy: "uk.co.chrisjenx:calligraphy:$versions.calligraphyVersion",
+                    toolTip    : "com.github.vihtarb:tooltip:$versions.tooltipVersion",
             ],
 
             smack = [

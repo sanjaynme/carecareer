@@ -10,6 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
@@ -107,6 +108,7 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
         scrollView.setDescendantFocusability(ViewGroup.FOCUS_BEFORE_DESCENDANTS);
         scrollView.setFocusable(true);
         scrollView.setFocusableInTouchMode(true);
+
         //Todo Fix scroll issue with scrollbar and edittext
         scrollView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -158,13 +160,10 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(ebImageHelperFragment, EbImageHelperFragment.TAG);
         transaction.commit();
-        ebImageHelperFragment.setListener(new EbImageHelperFragment.EbImageHelperListener() {
-            @Override
-            public void onImageSuccess(String imagePath) {
-                Log.d("path", "onImageSuccess: " + imagePath);
-                presenter.uploadImage(imagePath);
-                setProfileImage(imagePath, false);
-            }
+        ebImageHelperFragment.setListener(imagePath -> {
+            Log.d("path", "onImageSuccess: " + imagePath);
+            presenter.uploadImage(imagePath);
+            setProfileImage(imagePath, false);
         });
     }
 
@@ -235,6 +234,16 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
     public void professionRoleClicked() {
         ProfessionRoleActivity.startForResult(this, gson.toJson(roleList));
         transitionActivityOpen();
+    }
+
+    @OnClick(R.id.ib_preferred_location)
+    public void locationAreaInfo(View view) {
+        showTooltip(view, R.string.info_preferred_location);
+    }
+
+    @OnClick(R.id.ib_nxt_career_move)
+    public void nextCareerMove(View view) {
+        showTooltip(view, R.string.info_nxt_career_move);
     }
 
     @Override

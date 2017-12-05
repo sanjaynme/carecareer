@@ -71,6 +71,7 @@ dependencies {
 
     //UI
     implementation ui.calligraphy
+    implementation ui.toolTip
 
     //Google
     implementation google.googlePlaces
