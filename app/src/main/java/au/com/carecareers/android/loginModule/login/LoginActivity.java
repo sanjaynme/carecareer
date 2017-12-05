@@ -32,8 +32,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
     @BindView(R.id.login_toolbar)
     Toolbar toolbar;
 
-    @BindView(R.id.et_username)
-    EditText etUsername;
+    @BindView(R.id.et_email)
+    EditText etEmail;
 
     @BindView(R.id.et_password)
     EditText etPassword;
@@ -78,9 +78,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
 
     @OnClick(R.id.btn_login)
     public void loginClicked() {
-        String username = etUsername.getText().toString().trim();
+        String username = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
-
         if (presenter.validateFields(username, password)) {
             presenter.loginClicked(username, password);
         }
@@ -94,7 +93,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
 
     @Override
     public void navigateToHomeActivity() {
-        etUsername.getText().clear();
+        etEmail.getText().clear();
         etPassword.getText().clear();
         finishAffinity();
         HomeActivity.start(LoginActivity.this);
@@ -119,7 +118,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
                 finish();
                 LandingActivity.start(this);
                 transitionBackPressed();
-                etUsername.getText().clear();
+                etEmail.getText().clear();
                 etPassword.getText().clear();
                 break;
         }
