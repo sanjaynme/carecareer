@@ -51,7 +51,7 @@ public class SettingsActivity extends BaseActivity implements SettingContract.IS
 
     @Override
     public void injectComponent(BaseComponent baseComponent) {
-        baseComponent.provideSettingsSubComponent(new SettingsModule()).inject(this);
+        baseComponent.settingsSubComponent(new SettingsModule()).inject(this);
     }
 
     @Override

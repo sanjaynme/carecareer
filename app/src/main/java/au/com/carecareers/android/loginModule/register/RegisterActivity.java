@@ -88,7 +88,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
 
     @Override
     protected void injectComponent(BaseComponent baseComponent) {
-        baseComponent.provideRegisterSubComponent(new RegisterModule()).inject(this);
+        baseComponent.registerSubComponent(new RegisterModule()).inject(this);
     }
 
     @Override
@@ -98,7 +98,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
 
         presenter.onAttach(this);
         btnShowHidePassword.setImageResource(R.drawable.ic_eye);
-        presenter.getStates();
+        presenter.getStatesWithAuthTokenCheck();
         registerModel = new RegisterModel.RegisterRequest();
         metaModel = new RegisterModel.RegisterRequest.Meta();
     }
@@ -136,7 +136,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
     private void showRegisterSuccessMessageDialog(String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(message);
-        builder.setTitle("Care Career");
+        builder.setTitle(getString(R.string.app_name));
         builder.setCancelable(false);
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 

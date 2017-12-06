@@ -22,9 +22,9 @@ public class AppContract {
     public class Preferences {
         public final static String IS_LOGGED_IN = "is_logged_in";
         public final static String IS_PROFILE_COMPLETE = "is_profile_complete";
-        public final static String AUTHORIZATION_KEY = "authorization_key";
+        public final static String AUTHORIZATION_KEY = "authorization_key";// token generated after basic getAuthenticationToken
+        public final static String ACCESS_TOKEN = "access_token";//Logged user access token
         public final static String CANDIDATE_ID = "candidate_id";
-        public final static String ACCESS_TOKEN = "access_token";
         public final static String EXPIRES_IN = "expires_in";
         public final static String REFRESH_TOKEN = "refresh_token";
         public final static String TOKEN_TYPE = "token_type";

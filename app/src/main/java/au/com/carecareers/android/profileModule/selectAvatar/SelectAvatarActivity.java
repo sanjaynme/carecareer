@@ -62,7 +62,7 @@ public class SelectAvatarActivity extends BaseActivity implements SelectAvatarCo
 
     @Override
     protected void injectComponent(BaseComponent baseComponent) {
-        baseComponent.provideSelectAvatarSubComponent(new SelectAvatarModule()).inject(this);
+        baseComponent.selectAvatarSubComponent(new SelectAvatarModule()).inject(this);
     }
 
     @Override

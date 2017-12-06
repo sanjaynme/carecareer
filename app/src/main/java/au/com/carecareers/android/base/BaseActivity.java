@@ -7,6 +7,10 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
+import android.view.View;
+
+import com.tooltip.Tooltip;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -215,5 +219,18 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     protected void transitionActivityOpen() {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
+    protected void showTooltip(View view, @StringRes int message) {
+        new Tooltip.Builder(view)
+                .setText(message)
+                .setTextSize(R.dimen.txt_normal)
+                .setTextColor(getResources().getColor(R.color.colorWhite))
+                .setBackgroundColor(getResources().getColor(R.color.colorAccent))
+                .setGravity(Gravity.TOP)
+                .setPadding(R.dimen.dimen_10dp)
+                .setDismissOnClick(true)
+                .setCancelable(true)
+                .show();
     }
 }

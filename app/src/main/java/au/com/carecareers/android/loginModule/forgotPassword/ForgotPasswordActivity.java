@@ -47,7 +47,7 @@ public class ForgotPasswordActivity extends BaseActivity implements ForgotPasswo
 
     @Override
     protected void injectComponent(BaseComponent baseComponent) {
-        baseComponent.provideForgotPasswordSubComponent(new ForgotPasswordModule()).inject(this);
+        baseComponent.forgotPasswordSubComponent(new ForgotPasswordModule()).inject(this);
     }
 
     public static void start(Context context) {
@@ -105,7 +105,7 @@ public class ForgotPasswordActivity extends BaseActivity implements ForgotPasswo
     private void showForgetMessageDialog(String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(message);
-        builder.setTitle("Care Career");
+        builder.setTitle(getString(R.string.app_name));
         builder.setCancelable(false);
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 

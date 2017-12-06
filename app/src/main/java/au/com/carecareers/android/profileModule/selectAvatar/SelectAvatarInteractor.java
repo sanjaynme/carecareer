@@ -20,6 +20,6 @@ public class SelectAvatarInteractor extends BaseInteractor implements SelectAvat
 
     @Override
     public Observable<AvatarResponse> getAvatarList(int page) {
-        return getApiService().getAvatars(getPreferenceManager().getStringValues(AppContract.Preferences.AUTHORIZATION_KEY), page);
+        return getApiService().getAvatars(getPreferenceManager().getStringValues(AppContract.Preferences.ACCESS_TOKEN), page);
     }
 }

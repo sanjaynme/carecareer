@@ -70,7 +70,7 @@ public class ProfessionRoleActivity extends BaseActivity implements ProfessionRo
 
     @Override
     protected void injectComponent(BaseComponent baseComponent) {
-        baseComponent.provideProfessionRoleSubComponent(new ProfessionRoleModule()).inject(this);
+        baseComponent.professionRoleSubComponent(new ProfessionRoleModule()).inject(this);
     }
 
     @Override

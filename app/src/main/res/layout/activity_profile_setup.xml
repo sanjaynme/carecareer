@@ -125,6 +125,7 @@
                     <ImageButton
                         android:id="@+id/ib_preferred_location"
                         style="@style/IconProfileSetup"
+                        android:contentDescription="@null"
                         android:src="@drawable/ic_info_grey_small" />
                 </LinearLayout>
 
@@ -144,6 +145,7 @@
                     <ImageButton
                         android:id="@+id/ib_location_area"
                         style="@style/IconProfileSetup"
+                        android:contentDescription="@null"
                         android:src="@drawable/ic_chevron_down" />
                 </LinearLayout>
 
@@ -180,6 +182,7 @@
                     <ImageButton
                         android:id="@+id/ib_profession_role"
                         style="@style/IconProfileSetup"
+                        android:contentDescription="@null"
                         android:src="@drawable/ic_chevron_down" />
                 </LinearLayout>
 
@@ -199,6 +202,7 @@
                     <ImageButton
                         android:id="@+id/ib_work_type"
                         style="@style/IconProfileSetup"
+                        android:contentDescription="@null"
                         android:src="@drawable/ic_chevron_down" />
                 </LinearLayout>
             </LinearLayout>

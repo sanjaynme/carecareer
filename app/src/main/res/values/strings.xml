@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Care careers</string>
+    <string name="app_name">carecareers</string>
 
     <string name="err_no_data_available">No Data Available</string>
     <string name="err_no_location_selected">Please select location.</string>
@@ -165,6 +165,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tv_sort">Sort</string>
     <string name="tv_save_search">Save Search</string>
+
+
+    <string name="info_preferred_location">Sed ut otam rem aperiam, eaque ipsa quae ab illo inventore veritatis</string>
+    <string name="info_nxt_career_move">Sed ut eriam, eaque ipsa quae ab illo inventore veritatis</string>
+
 
     <string-array name="file_types">
         <item>Type</item>

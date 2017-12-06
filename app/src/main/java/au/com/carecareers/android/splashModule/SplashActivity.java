@@ -27,7 +27,7 @@ public class SplashActivity extends BaseActivity implements SplashContract.ISpla
 
     @Override
     protected void injectComponent(BaseComponent baseComponent) {
-        baseComponent.provideSplashSubComponent(new SplashModule()).inject(this);
+        baseComponent.splashSubComponent(new SplashModule()).inject(this);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class SplashActivity extends BaseActivity implements SplashContract.ISpla
         super.onCreate(savedInstanceState);
 
         presenter.onAttach(this);
-        presenter.auth();
+        presenter.getAuthenticationToken();
     }
 
     @Override

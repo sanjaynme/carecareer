@@ -21,15 +21,4 @@ public class SplashInteractor extends BaseInteractor implements SplashContract.I
     SplashInteractor(ApiService apiService, SharedPreferenceManager sharedPreferenceManager) {
         super(apiService, sharedPreferenceManager);
     }
-
-    @Override
-    public Observable<AuthenticationModel.AuthenticationResponse> auth() {
-        return getApiService().auth(AuthenticationModel.getBase64(), UrlContract.Values.CLIENT_CREDENTIALS);
-    }
-
-    @Override
-    public void saveBasicAuthToken(AuthenticationModel.AuthenticationResponse authenticationResponse) {
-        AppLog.d("authKey:::"+authenticationResponse.getTokenType() + " " + authenticationResponse.getAccessToken());
-        getPreferenceManager().setKeyValues(AppContract.Preferences.AUTHORIZATION_KEY, authenticationResponse.getTokenType() + " " + authenticationResponse.getAccessToken());
-    }
 }
