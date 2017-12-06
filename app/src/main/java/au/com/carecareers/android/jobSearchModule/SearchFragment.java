@@ -72,6 +72,7 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
     private int pos;
     private int id;
     private ArrayList<Integer> countryIdList, roleIdList, areaIdList, professionIdList;
+    private String searchkeyWords;
 
     @Override
     public void injectComponent(BaseComponent baseComponent) {
@@ -97,6 +98,7 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
         presenter.loadLocations();
 
         jobAdsRequestModel = new JobAdsModel.JobAdsRequest();
+
         locationIdList = new ArrayList<>();
         countryIdList = new ArrayList<>();
         areaIdList = new ArrayList<>();
@@ -182,15 +184,15 @@ public class SearchFragment extends BaseFragment implements SearchContract.ISear
     @Override
     public void navigateToJobAds(JobAdsModel.JobAdsResponse jobAdsResponse) {
         Gson gson = new Gson();
-        JobAdsActivity.start(getActivity(), gson.toJson(jobAdsResponse));
+        JobAdsActivity.start(getActivity(),searchkeyWords, gson.toJson(jobAdsResponse));
         transitionActivityOpen();
     }
 
     @OnClick(R.id.btn_job_search)
     void onJobSearchClicked() {
-        String keywords = etSearchKeyword.getText().toString().trim();
+        searchkeyWords = etSearchKeyword.getText().toString().trim();
         jobAdsRequestModel.setLocation(locationIdList);
-        jobAdsRequestModel.setKeyWords(keywords);
+        jobAdsRequestModel.setKeyWords(searchkeyWords);
         presenter.searchJobs(jobAdsRequestModel);
     }
 

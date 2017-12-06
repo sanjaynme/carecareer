@@ -182,8 +182,17 @@ public class JobsDetailsModel {
                     @SerializedName("self")
                     @Expose
                     public Self_ self;
+                    @SerializedName("logo_url")
+                    @Expose
+                    public LogoUrl logoUrl;
 
                     public class Self_ {
+                        @SerializedName("href")
+                        @Expose
+                        public String href;
+                    }
+
+                    public class LogoUrl {
                         @SerializedName("href")
                         @Expose
                         public String href;

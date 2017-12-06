@@ -5,6 +5,5 @@
         android:id="@+id/menu_done"
         android:title="@string/menu_done"
         app:showAsAction="always">
-
     </item>
 </menu>

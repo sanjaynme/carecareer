@@ -39,7 +39,8 @@ public class UrlContract {
         public static final String LIMIT = "limit";
         public static final String CANDIDATE_ID = "candidate_id";
         public static final String COUNTRY_ID = "country_id";
-        public static final String KEYWORD = "keyword";
+        public static final String SEARCH_KEYWORD = "keyword";
+        public static final String ADVERTISER_ID = "advertiser";
         public static final String LOCATION_ID = "location_id";
         public static final String SKIP = "skip";
         public static final String TYPE = "type";

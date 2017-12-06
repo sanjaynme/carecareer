@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.presenter.BasePresenter;
+import au.com.carecareers.android.jobAdsModule.model.JobAdsModel;
 import au.com.carecareers.android.jobDetailsModule.model.JobsDetailsModel;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -29,11 +30,47 @@ public class JobDetailsPresenter extends BasePresenter<JobDetailsContract.IJobDe
                 .subscribeWith(getJobDetailsObserver()));
     }
 
+    @Override
+    public void searchJobs(Integer id) {
+        getView().showProgressDialog(R.string.msg_loading);
+        getCompositeDisposable().add(getInteractor().searchJobAds(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(getJobSearchObserver()));
+    }
+
+    private DisposableObserver<JobAdsModel.JobAdsResponse> getJobSearchObserver() {
+        return new DisposableObserver<JobAdsModel.JobAdsResponse>() {
+            @Override
+            public void onNext(JobAdsModel.JobAdsResponse jobAdsResponse) {
+                if (getView() != null) {
+                    if (jobAdsResponse != null){
+                        getView().hideProgressDialog();
+                        getView().navigateToJobAds(jobAdsResponse);
+                    }
+
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        };
+    }
+
+
     private DisposableObserver<JobsDetailsModel.JobsDetailResponse> getJobDetailsObserver() {
         return new DisposableObserver<JobsDetailsModel.JobsDetailResponse>() {
             @Override
             public void onNext(JobsDetailsModel.JobsDetailResponse jobsDetailResponse) {
                 if(isViewAttached()){
+                    if(jobsDetailResponse!=null)
                     getView().hideProgressDialog();
                     getView().populateJobDetails(jobsDetailResponse);
                 }

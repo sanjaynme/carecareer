@@ -15,42 +15,26 @@
         <ImageView
             android:id="@+id/iv_back_arrow"
             style="@style/BackArrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:contentDescription="@null" />
 
 
         <EditText
             android:id="@+id/et_job_search"
             style="@style/EllipsizeEditText"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_40dp"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="50dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginStart="50dp"
-            android:background="@color/colorWhite"
-            android:cursorVisible="false"
-            android:drawableLeft="@drawable/ic_search_unselected"
-            android:drawableStart="@drawable/ic_search_unselected"
-            android:inputType="text"
-            android:paddingLeft="@dimen/dimen_10dp"
-            android:paddingStart="@dimen/dimen_10dp" />
+            tools:ignore="LabelFor" />
 
         <TextView
             android:id="@+id/tv_filters"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginBottom="18dp"
-            android:paddingEnd="@dimen/dimen_5dp"
-            android:paddingRight="@dimen/dimen_5dp"
-            android:text="Filters"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dimen_15dp"
+            android:text="@string/tv_filter"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/txt_15sp" />
+            android:textSize="@dimen/txt_15sp"
+            tools:ignore="RelativeOverlap,RtlHardcoded" />
 
     </RelativeLayout>
 
@@ -69,11 +53,12 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/dimen_15dp"
-            android:layout_marginStart="@dimen/dimen_15dp"
-            android:text="Results:"
+            android:layout_marginLeft="@dimen/dimen_40dp"
+            android:layout_marginStart="@dimen/dimen_40dp"
+            android:text="@string/tv_results"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/txt_15sp" />
+            android:textSize="@dimen/txt_15sp"
+            tools:ignore="RtlHardcoded" />
 
 
         <TextView
@@ -82,13 +67,13 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="@dimen/dimen_70dp"
-            android:layout_marginRight="@dimen/dimen_70dp"
-            android:text="Save Search"
+            android:layout_marginEnd="@dimen/dimen_80dp"
+            android:layout_marginRight="@dimen/dimen_80dp"
+            android:text="@string/tv_save_search"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/txt_15sp" />
+            android:textSize="@dimen/txt_15sp"
+            tools:ignore="RelativeOverlap,RtlHardcoded" />
 
         <TextView
             android:id="@+id/tv_sort"
@@ -97,11 +82,12 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="@dimen/dimen_15dp"
-            android:layout_marginRight="@dimen/dimen_15dp"
-            android:text="Sort"
+            android:layout_marginEnd="@dimen/dimen_20dp"
+            android:layout_marginRight="@dimen/dimen_20dp"
+            android:text="@string/tv_sort"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/txt_15sp" />
+            android:textSize="@dimen/txt_15sp"
+            tools:ignore="RelativeOverlap,RtlHardcoded" />
 
     </RelativeLayout>
 
@@ -114,6 +100,7 @@
             android:id="@+id/recycler_view_job_ads"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dimen_12dp"
             tools:listitem="@layout/item_job_ads" />
 
     </RelativeLayout>

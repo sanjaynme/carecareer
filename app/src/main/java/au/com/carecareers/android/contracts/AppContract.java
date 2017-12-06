@@ -43,6 +43,7 @@ public class AppContract {
         public static final String EXTRA_COMPRESS_IMAGE = "compress_image";
         public static final int STATELIST = 1;
         public static final int COUNTRYLIST = 2;
+        public static final String SEARCH_KEYWORD="search_keyword";
     }
 
     public class Page {

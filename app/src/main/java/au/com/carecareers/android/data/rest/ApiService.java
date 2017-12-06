@@ -149,8 +149,14 @@ public interface ApiService {
             "accept:application/json",})
     @GET(UrlContract.GET_JOB_ADS)
     Observable<JobAdsModel.JobAdsResponse> getJobAds(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
-                                                     @Query(UrlContract.Keys.KEYWORD) String keyWord,
+                                                     @Query(UrlContract.Keys.SEARCH_KEYWORD) String keyWord,
                                                      @Query(UrlContract.Keys.LOCATION_ID) int locationId);
+
+    @Headers({"Content-Type:application/json",
+            "accept:application/json",})
+    @GET(UrlContract.GET_JOB_ADS)
+    Observable<JobAdsModel.JobAdsResponse> getJobAdsByAdvertiserId(@Header(UrlContract.Keys.AUTHORIZATION) String authorization,
+                                                                   @Query(UrlContract.Keys.ADVERTISER_ID) Integer advertiserId);
 
     @Headers({"Content-Type:application/json",
             "accept:application/json",})

@@ -61,24 +61,25 @@ public class JobAdsAdapter extends RecyclerView.Adapter<JobAdsAdapter.JobAdsView
             holder.tvItemPostedDate.setText(convertToBold("Date posted: ", postedDate));
             holder.tvItemWorkType.setText(convertToBold("Worktype: ", worktypeName));
             holder.tvItemProfession.setText(convertToBold("Profession: ", professionName));
+            if (jobSearchResponseData.get(position).links.advertiserLogoUrl.href != null) {
+                Picasso.with(holder.ivItemBackground.getContext())
+                        .load(jobSearchResponseData.get(position).links.advertiserLogoUrl.href)
+                        .resize(200, 200)
+                        .centerCrop()
+                        .error(R.color.colorGrey700)
+                        .into(holder.ivItemBackground, new Callback() {
+                            @Override
+                            public void onSuccess() {
+                                holder.progressBar.setVisibility(View.GONE);
+                            }
 
-            Picasso.with(holder.ivItemBackground.getContext())
-                    .load(jobSearchResponseData.get(position).links.advertiserLogoUrl.href)
-                    .resize(200, 200)
-                    .centerCrop()
-                    .error(R.color.colorGrey700)
-                    .into(holder.ivItemBackground, new Callback() {
-                        @Override
-                        public void onSuccess() {
-                            holder.progressBar.setVisibility(View.GONE);
-                        }
+                            @Override
+                            public void onError() {
+                                holder.progressBar.setVisibility(View.VISIBLE);
+                            }
+                        });
 
-                        @Override
-                        public void onError() {
-                            holder.progressBar.setVisibility(View.VISIBLE);
-
-                        }
-                    });
+            }
 
             holder.ivItemSave.setOnClickListener(new View.OnClickListener() {
                 @Override

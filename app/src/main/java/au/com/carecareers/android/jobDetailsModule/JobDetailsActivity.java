@@ -9,6 +9,8 @@ import android.support.annotation.Nullable;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.StyleSpan;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,6 +28,7 @@ import au.com.carecareers.android.R;
 import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.injection.component.BaseComponent;
+import au.com.carecareers.android.jobAdsModule.JobAdsActivity;
 import au.com.carecareers.android.jobAdsModule.model.JobAdsModel;
 import au.com.carecareers.android.jobDetailsModule.injection.JobAdsDetailsModule;
 import au.com.carecareers.android.jobDetailsModule.model.JobsDetailsModel;
@@ -47,6 +50,8 @@ public class JobDetailsActivity extends BaseActivity implements JobDetailsContra
     TextView tvJobDetails;
     @BindView(R.id.iv_job_details)
     ImageView ivJobDetails;
+    @BindView(R.id.iv_job_details_logo)
+    ImageView ivJobDetailsLogo;
     @BindView(R.id.tv_details_location)
     TextView tvDetailsLocation;
     @BindView(R.id.tv_details_profession)
@@ -57,6 +62,14 @@ public class JobDetailsActivity extends BaseActivity implements JobDetailsContra
     TextView tvDetailsPostedDate;
     @BindView(R.id.tv_details_description)
     TextView tvDetailsDescription;
+    @BindView(R.id.btn_view_jobs_advertiser)
+    Button btnViewJobsAdvertiser;
+    @BindView(R.id.iv_job_details_save)
+    ImageView ivJobSave;
+    @BindView(R.id.iv_job_details_share)
+    ImageView ivJobShare;
+    @BindView(R.id.btn_job_apply)
+    Button btnJobApply;
 
     public static void start(Context context, String extraData) {
         Intent intent = new Intent();
@@ -95,18 +108,59 @@ public class JobDetailsActivity extends BaseActivity implements JobDetailsContra
     @Override
     public void populateJobDetails(JobsDetailsModel.JobsDetailResponse jobsDetailResponse) {
         Picasso.with(ivJobDetails.getContext())
-                .load(jobsDetailResponse.links.url.href)
+                .load(jobsDetailResponse.embedded.advertiser.links.logoUrl.href)
                 .resize(200, 200)
                 .centerCrop()
                 .placeholder(R.color.colorGrey700)
                 .into(ivJobDetails);
 
+        Picasso.with(ivJobDetailsLogo.getContext())
+                .load(jobsDetailResponse.embedded.advertiser.links.logoUrl.href)
+                .resize(200, 200)
+                .centerCrop()
+                .placeholder(R.color.colorGrey700)
+                .into(ivJobDetailsLogo);
+
         tvJobDetails.setText(convertToBold("Job Details ", ""));
-        tvDetailsDescription.setText(convertToBold("Description: ", jobsDetailResponse.description));
+        tvDetailsDescription.setText(convertToBold("Description \n \n \n \n", jobsDetailResponse.description));
         tvDetailsLocation.setText(convertToBold("Location: ", jobsDetailResponse.embedded.location.name));
         tvDetailsSector.setText(convertToBold("Sector: ", jobsDetailResponse.embedded.sector.name));
         tvDetailsPostedDate.setText(convertToBold("Date posted: ", convertDateFormat(jobsDetailResponse.postedDate)));
         tvDetailsProfession.setText(convertToBold("Profession: ", jobsDetailResponse.embedded.profession.name));
+
+        btnJobApply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        btnViewJobsAdvertiser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.searchJobs(jobsDetailResponse.embedded.advertiser.id);
+            }
+        });
+
+        ivJobSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        ivJobShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+    }
+
+    @Override
+    public void navigateToJobAds(JobAdsModel.JobAdsResponse jobAdsResponse) {
+        Gson gson = new Gson();
+        JobAdsActivity.start(this, "", gson.toJson(jobAdsResponse));
+        transitionActivityOpen();
     }
 
     private String convertDateFormat(String dateString) {

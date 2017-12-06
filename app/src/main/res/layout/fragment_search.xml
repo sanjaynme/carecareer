@@ -19,12 +19,12 @@
 
             <TextView
                 android:id="@+id/tv_welcome_user"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/dimen_30dp"
-                android:layout_marginLeft="@dimen/dimen_30dp"
-                android:layout_marginStart="@dimen/dimen_30dp"
-                android:layout_marginTop="@dimen/dimen_30dp"
+                android:layout_marginBottom="@dimen/dimen_35dp"
+                android:layout_marginLeft="@dimen/dimen_17dp"
+                android:layout_marginStart="@dimen/dimen_17dp"
+                android:layout_marginTop="@dimen/dimen_35dp"
                 android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/txt_14sp"
                 tools:text="@string/tv_landing_welcom_message" />
@@ -32,8 +32,6 @@
             <EditText
                 android:id="@+id/et_search_keyword"
                 style="@style/EditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/dimen_30dp"
                 android:hint="@string/hint_search_keywords"
                 android:inputType="text" />
@@ -41,7 +39,7 @@
             <FrameLayout
                 android:id="@+id/fl_search_locations"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="@dimen/dimen_45dp"
                 android:layout_marginBottom="@dimen/dimen_30dp"
                 android:layout_marginEnd="@dimen/dimen_15dp"
                 android:layout_marginLeft="@dimen/dimen_15dp"
@@ -67,24 +65,15 @@
                     android:layout_gravity="center_vertical|end"
                     android:layout_marginEnd="@dimen/dimen_8dp"
                     android:layout_marginRight="@dimen/dimen_8dp"
-                    android:visibility="visible" />
+                    android:visibility="visible"
+                    tools:ignore="RtlHardcoded" />
 
             </FrameLayout>
 
             <Button
                 android:id="@+id/btn_job_search"
-                style="@style/Button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/dimen_30dp"
-                android:layout_marginLeft="@dimen/dimen_30dp"
-                android:layout_marginRight="@dimen/dimen_30dp"
-                android:background="@drawable/btn_job_search"
-                android:padding="@dimen/dimen_17dp"
-                android:text="@string/tv_search"
-                android:textAllCaps="false"
-                android:textColor="@color/colorWhite"
-                android:textSize="@dimen/txt_15sp" />
+                style="@style/SearchButton"
+                android:text="@string/tv_search" />
 
             <TextView
                 android:id="@+id/tv_view_my_fav_search"
@@ -99,19 +88,20 @@
             <Button
                 android:id="@+id/btn_starting_out"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/dimen_100dp"
                 android:layout_marginBottom="@dimen/dimen_30dp"
-                android:layout_marginLeft="@dimen/dimen_30dp"
-                android:layout_marginRight="@dimen/dimen_30dp"
+                android:layout_marginLeft="@dimen/dimen_12dp"
+                android:layout_marginRight="@dimen/dimen_12dp"
                 android:background="@color/colorWhite"
-                android:drawableEnd="@drawable/ic_chevron_down"
-                android:drawableRight="@drawable/ic_chevron_down"
+                android:drawableEnd="@drawable/ic_rt_chevron"
+                android:drawableRight="@drawable/ic_rt_chevron"
                 android:gravity="start"
-                android:padding="@dimen/dimen_30dp"
+                android:padding="@dimen/dimen_15dp"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
                 android:textColor="@color/colorHint"
-                android:textSize="@dimen/txt_15sp" />
+                android:textSize="@dimen/txt_15sp"
+                tools:ignore="RtlHardcoded" />
 
         </LinearLayout>
 

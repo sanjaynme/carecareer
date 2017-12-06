@@ -42,16 +42,20 @@ public class JobAdsActivity extends BaseActivity implements JobAdsListListener {
     TextView tvSaveSearch;
     @BindView(R.id.tv_sort)
     TextView tvSort;
+
     @BindView(R.id.recycler_view_job_ads)
     RecyclerView recyclerViewJobAds;
+
     private JobAdsModel.JobAdsResponse jobSearchResponse;
     private List<JobAdsModel.JobAdsResponse.Embedded.Job> jobsList;
     private JobAdsAdapter jobAdsAdapter;
+    private String searchKeyword;
 
-    public static void start(Context context, String extraData) {
+    public static void start(Context context, String searchkeyWords, String extraData) {
         Intent intent = new Intent();
         intent.setClass(context, JobAdsActivity.class);
         intent.putExtra(AppContract.Extras.DATA, extraData);
+        intent.putExtra(AppContract.Extras.SEARCH_KEYWORD, searchkeyWords);
         context.startActivity(intent);
     }
 
@@ -67,7 +71,6 @@ public class JobAdsActivity extends BaseActivity implements JobAdsListListener {
 
     @Override
     protected void injectComponent(BaseComponent baseComponent) {
-//        baseComponent.provideJobAdsSubComponent(new JobAdsModule()).inject(this);
     }
 
     @Override
@@ -75,9 +78,11 @@ public class JobAdsActivity extends BaseActivity implements JobAdsListListener {
         super.onCreate(savedInstanceState);
         if (getIntent().getExtras() != null) {
             jobSearchResponse = new Gson().fromJson(getIntent().getStringExtra(AppContract.Extras.DATA), JobAdsModel.JobAdsResponse.class);
+            searchKeyword = getIntent().getStringExtra(AppContract.Extras.SEARCH_KEYWORD);
         }
         jobsList = jobSearchResponse.embedded.jobs;
         setUpJobAdsRecyclerView(jobsList);
+        etJobSearch.setText(searchKeyword);
     }
 
     private void setUpJobAdsRecyclerView(List<JobAdsModel.JobAdsResponse.Embedded.Job> jobSearchResponse) {
