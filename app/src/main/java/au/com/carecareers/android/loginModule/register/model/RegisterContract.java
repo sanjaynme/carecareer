@@ -19,6 +19,8 @@ public class RegisterContract {
     public interface IRegisterPresenter extends IBasePresenter<RegisterContract.IRegisterView, RegisterContract.IRegisterInteractor> {
         void getStates();
 
+        void getStatesWithAuthTokenCheck();
+
         boolean validateFields(RegisterModel.RegisterRequest registerModel);
 
         void sendRegisterDetails(RegisterModel.RegisterRequest registerModel);
@@ -27,6 +29,8 @@ public class RegisterContract {
     }
 
     public interface IRegisterInteractor extends IBaseInteractor {
+        Observable<Boolean> isPreferenceCleared();
+
         Observable<TaxonomyModel.TaxonomyResponse> getStates();
 
         Observable<RegisterModel.RegisterResponse> register(RegisterModel.RegisterRequest request);

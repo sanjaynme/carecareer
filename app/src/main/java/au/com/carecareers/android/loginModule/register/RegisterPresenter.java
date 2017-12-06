@@ -17,7 +17,6 @@ import au.com.carecareers.android.loginModule.register.model.RegisterModel;
 import au.com.carecareers.android.loginModule.register.model.TaxonomyModel;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.Consumer;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
@@ -38,23 +37,54 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterV
         getCompositeDisposable().add(getInteractor().getStates()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<TaxonomyModel.TaxonomyResponse>() {
+                .subscribe(taxonomyResponse -> {
+                    if (isViewAttached()) {
+                        getView().setUpStatesSpinner(taxonomyResponse);
+                    }
+                }, throwable -> {
+                    if (isViewAttached()) {
+                        Log.d(TAG, "onError: ");
+                        ResponseBody responseBody = ((HttpException) throwable).response().errorBody();
+                        getView().showError(responseBody, AppContract.ErrorTypes.REGISTER);
+                    }
+                }));
+    }
+
+    public void getStatesWithAuthTokenCheck() {
+        getCompositeDisposable().add(getInteractor().isPreferenceCleared()
+                .flatMap(aBoolean -> {
+                    if (aBoolean) {
+                        return getInteractor().getAuthenticationToken()
+                                .flatMap(authenticationResponse -> {
+                                    getInteractor().saveAuthenticationToken(authenticationResponse);
+                                    return getInteractor().getStates();
+                                });
+                    } else {
+                        return getInteractor().getStates();
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableObserver<TaxonomyModel.TaxonomyResponse>() {
                     @Override
-                    public void accept(TaxonomyModel.TaxonomyResponse taxonomyResponse) throws Exception {
+                    public void onNext(TaxonomyModel.TaxonomyResponse taxonomyResponse) {
                         if (isViewAttached()) {
-//                            getView().hideProgressDialog();
                             getView().setUpStatesSpinner(taxonomyResponse);
                         }
                     }
-                }, new Consumer<Throwable>() {
+
                     @Override
-                    public void accept(Throwable throwable) throws Exception {
+                    public void onError(Throwable e) {
                         if (isViewAttached()) {
                             Log.d(TAG, "onError: ");
-                            ResponseBody responseBody = ((HttpException) throwable).response().errorBody();
-//                            getView().hideProgressDialog();
+                            ResponseBody responseBody = ((HttpException) e).response().errorBody();
                             getView().showError(responseBody, AppContract.ErrorTypes.REGISTER);
                         }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
                     }
                 }));
     }
@@ -90,7 +120,18 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterV
     @Override
     public void sendRegisterDetails(RegisterModel.RegisterRequest registerRequest) {
         getView().showProgressDialog(R.string.msg_loading);
-        getCompositeDisposable().add(getInteractor().register(registerRequest)
+        getCompositeDisposable().add(getInteractor().isPreferenceCleared()
+                .flatMap(aBoolean -> {
+                    if (aBoolean) {
+                        return getInteractor().getAuthenticationToken()
+                                .flatMap(authenticationResponse -> {
+                                    getInteractor().saveAuthenticationToken(authenticationResponse);
+                                    return getInteractor().register(registerRequest);
+                                });
+                    } else {
+                        return getInteractor().register(registerRequest);
+                    }
+                })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(getObserver()));

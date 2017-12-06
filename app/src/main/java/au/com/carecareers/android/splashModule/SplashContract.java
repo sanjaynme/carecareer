@@ -16,12 +16,9 @@ public class SplashContract {
     }
 
     public interface ISplashPresenter extends IBasePresenter<SplashContract.ISplashView, SplashContract.ISplashInteractor> {
-        void auth();
+        void getAuthenticationToken();
     }
 
     public interface ISplashInteractor extends IBaseInteractor {
-        Observable<AuthenticationModel.AuthenticationResponse> auth();
-
-        void saveBasicAuthToken(AuthenticationModel.AuthenticationResponse authenticationResponse);
     }
 }

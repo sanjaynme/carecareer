@@ -35,7 +35,7 @@ public class SplashActivity extends BaseActivity implements SplashContract.ISpla
         super.onCreate(savedInstanceState);
 
         presenter.onAttach(this);
-        presenter.auth();
+        presenter.getAuthenticationToken();
     }
 
     @Override

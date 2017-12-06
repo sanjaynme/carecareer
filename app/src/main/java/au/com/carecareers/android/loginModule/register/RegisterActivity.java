@@ -98,7 +98,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
 
         presenter.onAttach(this);
         btnShowHidePassword.setImageResource(R.drawable.ic_eye);
-        presenter.getStates();
+        presenter.getStatesWithAuthTokenCheck();
         registerModel = new RegisterModel.RegisterRequest();
         metaModel = new RegisterModel.RegisterRequest.Meta();
     }
