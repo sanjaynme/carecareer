@@ -136,7 +136,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
     private void showRegisterSuccessMessageDialog(String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(message);
-        builder.setTitle("Care Career");
+        builder.setTitle(getString(R.string.app_name));
         builder.setCancelable(false);
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 

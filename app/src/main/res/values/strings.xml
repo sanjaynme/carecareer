@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Care careers</string>
+    <string name="app_name">carecareers</string>
 
     <string name="err_no_data_available">No Data Available</string>
     <string name="err_no_location_selected">Please select location.</string>

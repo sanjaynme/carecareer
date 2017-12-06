@@ -143,7 +143,7 @@ public class ChangePasswordActivity extends BaseActivity implements ChangePasswo
     private void showChangePasswordMessageDialog(String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(message);
-        builder.setTitle("Care Career");
+        builder.setTitle(getString(R.string.app_name));
         builder.setCancelable(false);
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 
