@@ -5,10 +5,10 @@ import javax.inject.Singleton;
 import au.com.carecareers.android.homeModule.myProfile.MyProfileFragment;
 import au.com.carecareers.android.injection.module.AppModule;
 import au.com.carecareers.android.injection.module.NetModule;
-import au.com.carecareers.android.jobDetailsModule.injection.JobAdsDetailsModule;
-import au.com.carecareers.android.jobDetailsModule.injection.JobAdsDetailsSubComponent;
-import au.com.carecareers.android.jobSearchModule.injection.SearchModule;
-import au.com.carecareers.android.jobSearchModule.injection.SearchSubComponent;
+import au.com.carecareers.android.jobModule.jobDetailsModule.injection.JobAdsDetailsModule;
+import au.com.carecareers.android.jobModule.jobDetailsModule.injection.JobAdsDetailsSubComponent;
+import au.com.carecareers.android.jobModule.jobSearchModule.injection.SearchModule;
+import au.com.carecareers.android.jobModule.jobSearchModule.injection.SearchSubComponent;
 import au.com.carecareers.android.loginModule.changePassword.injection.ChangePasswordModule;
 import au.com.carecareers.android.loginModule.changePassword.injection.ChangePasswordSubComponent;
 import au.com.carecareers.android.loginModule.forgotPassword.injection.ForgotPasswordModule;
@@ -30,8 +30,6 @@ import au.com.carecareers.android.profileModule.selectAvatar.injection.SelectAva
 import au.com.carecareers.android.profileModule.selectAvatar.injection.SelectAvatarSubComponent;
 import au.com.carecareers.android.profileModule.uploadFile.injection.UploadFileModule;
 import au.com.carecareers.android.profileModule.uploadFile.injection.UploadFileSubComponent;
-import au.com.carecareers.android.profileModule.workType.injection.WorkTypeModule;
-import au.com.carecareers.android.profileModule.workType.injection.WorkTypeSubComponent;
 import au.com.carecareers.android.settingsModule.injection.SettingsModule;
 import au.com.carecareers.android.settingsModule.injection.SettingsSubComponent;
 import au.com.carecareers.android.splashModule.injection.SplashModule;
@@ -42,17 +40,13 @@ import dagger.Component;
  * Created by Nischal Manandhar on 13/11/2017.
  */
 @Singleton
-@Component(modules = {
-        AppModule.class,
-        NetModule.class,
-})
+@Component(modules = {AppModule.class, NetModule.class,})
 public interface BaseComponent {
     SplashSubComponent splashSubComponent(SplashModule splashModule);
 
     LoginSubComponent loginSubComponent(LoginModule loginModule);
 
     PagesSubComponent provideTermsAndConditionsSubComponent(PagesModule pagesModule);
-
 
     SearchSubComponent provideSearchSubComponent(SearchModule searchModule);
 
@@ -72,13 +66,13 @@ public interface BaseComponent {
 
     JobAdsDetailsSubComponent provideJobDetailsSubComponent(JobAdsDetailsModule jobAdsModule);
 
-    ProfessionRoleSubcomponent provideProfessionRoleSubComponent(ProfessionRoleModule professionRoleModule);
+//    ProfessionRoleSubcomponent provideProfessionRoleSubComponent(ProfessionRoleModule professionRoleModule);
 
     ProfessionRoleSubcomponent professionRoleSubComponent(ProfessionRoleModule professionRoleModule);
 
     UploadFileSubComponent uploadFileSubComponent(UploadFileModule uploadFileModule);
 
-    WorkTypeSubComponent workTypeSubComponent(WorkTypeModule workTypeModule);
+//    WorkTypeSubComponent workTypeSubComponent(WorkTypeModule workTypeModule);
 
     void inject(PreferredLocationActivity preferredLocationActivity);
 

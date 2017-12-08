@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import au.com.carecareers.android.BuildConfig;
 import au.com.carecareers.android.R;
 import au.com.carecareers.android.injection.component.BaseComponent;
+import au.com.carecareers.android.injection.component.DaggerBaseComponent;
 import au.com.carecareers.android.injection.module.AppModule;
 import au.com.carecareers.android.injection.module.NetModule;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;

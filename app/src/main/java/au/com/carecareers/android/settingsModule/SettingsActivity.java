@@ -107,11 +107,11 @@ public class SettingsActivity extends BaseActivity implements SettingContract.IS
 
     @OnClick(R.id.tv_share_app)
     void onShareAppClicked() {
-//        Intent sendIntent = new Intent();
-//        sendIntent.setAction(Intent.ACTION_SEND);
-//        sendIntent.putExtra(Intent.EXTRA_TEXT, "https://www.carecareers.com.au"); // Simple text and URL to share
-//        sendIntent.setType("text/plain");
-//        this.startActivity(sendIntent);
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "https://www.carecareers.com.au"); // Simple text and URL to share
+        sendIntent.setType("text/plain");
+        this.startActivity(sendIntent);
     }
 
     @Override

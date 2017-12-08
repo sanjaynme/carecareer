@@ -21,7 +21,7 @@ import au.com.carecareers.android.homeModule.fragments.SaveListsFragment;
 import au.com.carecareers.android.homeModule.model.HomeContract;
 import au.com.carecareers.android.homeModule.myProfile.MyProfileFragment;
 import au.com.carecareers.android.injection.component.BaseComponent;
-import au.com.carecareers.android.jobSearchModule.SearchFragment;
+import au.com.carecareers.android.jobModule.jobSearchModule.SearchFragment;
 import butterknife.BindView;
 
 /**
