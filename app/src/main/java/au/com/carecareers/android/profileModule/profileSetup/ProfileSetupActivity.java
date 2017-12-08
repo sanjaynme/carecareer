@@ -283,7 +283,6 @@ public class ProfileSetupActivity extends BaseActivity implements ProfileSetupCo
 
     @Override
     public void setPhoneNumber(String phoneNumber) {
-
     }
 
     @Override

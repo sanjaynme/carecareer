@@ -25,10 +25,10 @@ import java.util.Date;
 import javax.inject.Inject;
 
 import au.com.carecareers.android.R;
-import au.com.carecareers.android.jobModule.applyJobModule.ApplyJobActivity;
 import au.com.carecareers.android.base.BaseActivity;
 import au.com.carecareers.android.contracts.AppContract;
 import au.com.carecareers.android.injection.component.BaseComponent;
+import au.com.carecareers.android.jobModule.applyJobModule.ApplyJobActivity;
 import au.com.carecareers.android.jobModule.jobAdsModule.JobAdsActivity;
 import au.com.carecareers.android.jobModule.jobAdsModule.model.JobAdsModel;
 import au.com.carecareers.android.jobModule.jobDetailsModule.injection.JobAdsDetailsModule;
@@ -71,6 +71,8 @@ public class JobDetailsActivity extends BaseActivity implements JobDetailsContra
     ImageView ivJobShare;
     @BindView(R.id.btn_job_apply)
     Button btnJobApply;
+    @Inject
+    Gson gson;
 
     public static void start(Context context, String extraData) {
         Intent intent = new Intent();
@@ -164,7 +166,6 @@ public class JobDetailsActivity extends BaseActivity implements JobDetailsContra
 
     @Override
     public void navigateToJobAds(JobAdsModel.JobAdsResponse jobAdsResponse) {
-        Gson gson = new Gson();
         JobAdsActivity.start(this, "", gson.toJson(jobAdsResponse));
         transitionActivityOpen();
     }

@@ -119,6 +119,10 @@
             android:name=".jobModule.applyJobModule.ApplyJobActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <activity
+            android:name=".jobModule.filterJobModule.JobFilterActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
     </application>
 
 </manifest>

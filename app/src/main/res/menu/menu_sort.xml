@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_most_relevant"
+        android:state_pressed="true"
+        android:state_focused="true"
+        android:title="@string/menu_most_relevant"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menu_most_viewed"
+        android:title="@string/menu_most_viewed"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menu_alphabetical"
+        android:title="@string/menu_alphabetical"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menu_most_recent"
+        android:title="@string/menu_most_recent"
+        app:showAsAction="ifRoom" />
+</menu>

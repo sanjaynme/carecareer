@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/activity_job_ads"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
@@ -30,7 +31,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/dimen_15dp"
+            android:layout_marginRight="@dimen/dimen_5dp"
+            android:padding="@dimen/dimen_10dp"
             android:text="@string/tv_filter"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/txt_15sp"

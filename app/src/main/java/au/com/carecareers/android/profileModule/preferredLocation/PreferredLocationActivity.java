@@ -103,7 +103,7 @@ public class PreferredLocationActivity extends BaseActivity implements OnMapRead
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_preferred_location, menu);
+        getMenuInflater().inflate(R.menu.menu_done, menu);
         return true;
     }
 

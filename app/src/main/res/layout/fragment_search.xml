@@ -95,13 +95,14 @@
                 android:background="@color/colorWhite"
                 android:drawableEnd="@drawable/ic_rt_chevron"
                 android:drawableRight="@drawable/ic_rt_chevron"
-                android:gravity="start"
+                android:gravity="center_vertical"
                 android:padding="@dimen/dimen_15dp"
-                android:textAlignment="textStart"
+                android:textAlignment="gravity"
                 android:textAllCaps="false"
                 android:textColor="@color/colorHint"
                 android:textSize="@dimen/txt_15sp"
-                tools:ignore="RtlHardcoded" />
+                tools:ignore="RtlHardcoded"
+                tools:text="@string/hint_work_type" />
 
         </LinearLayout>
 

@@ -93,6 +93,9 @@
     <string name="tv_job_details">Job Details</string>
     <string name="tv_job_work_type">Worktype:</string>
 
+    <!--JobFilter-->
+    <string name="tv_title_select_filter">Select Filters</string>
+
     <!--Error-->
     <string name="err_firstname">Please enter your first name.</string>
     <string name="err_username">Please enter your username.</string>
@@ -169,6 +172,11 @@
 
     <string name="info_preferred_location">Sed ut otam rem aperiam, eaque ipsa quae ab illo inventore veritatis</string>
     <string name="info_nxt_career_move">Sed ut eriam, eaque ipsa quae ab illo inventore veritatis</string>
+    <string name="hint_filter_salary">Salary</string>
+    <string name="menu_most_relevant">Most Relevant</string>
+    <string name="menu_most_viewed">Most Viewed</string>
+    <string name="menu_alphabetical">Alphabetical</string>
+    <string name="menu_most_recent">Most Recent</string>
 
 
     <string-array name="file_types">

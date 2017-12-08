@@ -51,13 +51,21 @@
         <item name="android:layout_centerVertical">true</item>
         <item name="android:drawableLeft">@drawable/ic_search_unselected</item>
         <item name="android:lines">1</item>
+        <item name="android:cursorVisible">false</item>
         <item name="android:inputType">text</item>
         <item name="android:layout_marginLeft">@dimen/dimen_45dp</item>
         <item name="android:paddingLeft">@dimen/dimen_10dp</item>
         <item name="android:background">@color/colorWhite</item>
         <item name="android:layout_marginRight">@dimen/dimen_70dp</item>
-        <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="PopupMenu">
+        <item name="android:itemBackground">@drawable/register_and_login</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:colorBackground">@color/colorWhite</item>
+        <item name="android:dividerHeight">1dp</item>
     </style>
 
     <style name="Spinner">

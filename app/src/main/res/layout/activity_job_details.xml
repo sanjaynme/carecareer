@@ -42,7 +42,7 @@
                     app:navigationIcon="@drawable/ic_back_arrow">
 
                     <TextView
-                        android:id="@+id/tv_toolbar_title"
+                        android:id="@+id/tv_toolbar_job_details_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"

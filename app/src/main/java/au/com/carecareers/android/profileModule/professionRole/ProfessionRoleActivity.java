@@ -135,7 +135,7 @@ public class ProfessionRoleActivity extends BaseActivity implements ProfessionRo
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_preferred_location, menu);
+        getMenuInflater().inflate(R.menu.menu_done, menu);
         menuItemDone = menu.findItem(R.id.menu_done);
         menuItemDone.setVisible(false);
         return true;
